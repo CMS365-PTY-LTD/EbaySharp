@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/EbaySharp/obj
+/.vs
+/EbaySharp/bin/Debug/net6.0
