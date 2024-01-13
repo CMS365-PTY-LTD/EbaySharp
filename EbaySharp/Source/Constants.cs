@@ -8,7 +8,7 @@
             internal const string ENDPOINT_URL = "commerce/taxonomy/v1";
             internal struct METHODS
             {
-                internal const string GET_DEFAULT_CATEGORY_TREE_ID = "get_default_category_tree_id?{0}";
+                internal const string GET_DEFAULT_CATEGORY_TREE_ID = "get_default_category_tree_id?marketplace_id={0}";
             }
         }
         internal struct IDENTITY

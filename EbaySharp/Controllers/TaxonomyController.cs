@@ -27,7 +27,7 @@ namespace EbaySharp.Controllers
                 }
                 return JsonConvert.DeserializeObject<CategoryTree>(responseContent);
             }
-            throw new Exception($"Error, {response.Content}");
+            throw new Exception(responseContent);
         }
     }
 }

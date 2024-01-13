@@ -6,20 +6,10 @@ namespace EbaySharp.Controllers
     public class EbayController
     {
         private string accessToken;
-        public EbayController(string longLivedAccessToken)
+        public EbayController(string accessToken)
         {
-            accessToken = longLivedAccessToken;
+            this.accessToken = accessToken;
         }
-
-        #region IDENTITY 
-
-        public async Task<ClientCredentials> GetClientCredentials(string clinetId, string clientSecret)
-        {
-            return await new IdentityController().GetClientCredentials(clinetId, clientSecret);
-        }
-
-        #endregion
-
 
         #region TAXONOMY 
 

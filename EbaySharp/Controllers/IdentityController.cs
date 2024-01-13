@@ -7,12 +7,6 @@ namespace EbaySharp.Controllers
 {
     public class IdentityController
     {
-        //private string clinetId;
-        //private string clientSecret;
-        //public IdentityController(string clinetId, string clientSecret) {
-        //    this.clinetId = clinetId;
-        //    this.clientSecret = clientSecret;
-        //}
         public async Task<ClientCredentials> GetClientCredentials(string clinetId, string clientSecret)
         {
             var client = Helpers.GetHttpClient();
@@ -20,8 +14,11 @@ namespace EbaySharp.Controllers
             var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
             var clientCreds = Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}");
             request.Headers.Add("Authorization", $"Basic {Convert.ToBase64String(clientCreds)}");
-            var collection = new List<KeyValuePair<string, string>>();
-            collection.Add(new("grant_type", "client_credentials"));
+            var collection = new List<KeyValuePair<string, string>>
+            {
+                new("grant_type", "client_credentials"),
+                new("scope", "https://api.ebay.com/oauth/api_scope")
+            };
             var content = new FormUrlEncodedContent(collection);
             request.Content = content;
             var response = await client.SendAsync(request);
