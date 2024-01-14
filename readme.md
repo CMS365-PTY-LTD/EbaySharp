@@ -3,7 +3,7 @@
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/EbaySharp/main.svg?logo=github)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.EbaySharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.EbaySharp/)
 [![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionId=9)
-[![license](https://img.shields.io/github/license/CMS365/EbaySharp.svg?maxAge=3600)](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/LICENSE.md)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. It's used for creating listings and managing orders using C# and .NET
 # Installation
@@ -15,9 +15,9 @@ Install-Package CMS365.EbaySharp
 ```
 # API support
 
-| EbaySharp version    | eBay REST API version            | Build versions     |
-| -------------------- | -------------------------------- |--------------------|
-| 1                    | Taxonomy Taxonomy API v1.0.1     | 0                  |
+| EbaySharp version    | eBay REST API version            
+| -------------------- | -------------------------------- 
+| 1.1.X                | Taxonomy Taxonomy API v1.0.1    
 
 EbaySharp currently supports the following Facebook Graph APIs:
 
@@ -27,6 +27,7 @@ EbaySharp currently supports the following Facebook Graph APIs:
     -   [Using the EbaySharp](#using-the-EbaySharp)
     -   [Taxonomy](#taxonomy)
         -   [Get default category tree id](#get-default-category-tree-id)
+        -   [Get category suggestions](#get-category-suggestions)
 
 ## Access and Security
 You will need Clinet ID and Client Secret to genertae an access token. Visit https://developer.ebay.com/my/keys and create both.
@@ -50,3 +51,8 @@ You can see a list of Taxonomy methods here https://developer.ebay.com/api-docs/
 CategoryTree categoryTree = await ebayController.GetDefaultCategoryTreeId([marketplace_id]);
 ```
 You need to pass marketplace_id, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
+### Get category suggestions
+```C#
+CategorySuggestionsResponse categorySuggestionsResponse = await ebayController.GetCategorySuggestions([category tree ID], [product title]);
+```
+You need to pass Category Tree ID and the product title you are searcjing categories for.

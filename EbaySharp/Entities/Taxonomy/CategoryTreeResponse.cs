@@ -2,7 +2,7 @@
 
 namespace EbaySharp.Entities.Taxonomy
 {
-    public class CategoryTree
+    public class CategoryTreeResponse
     {
         [JsonProperty("categoryTreeId")]
         public string TreeId { get; set; }

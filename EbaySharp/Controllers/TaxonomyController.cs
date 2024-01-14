@@ -1,6 +1,5 @@
 ﻿using EbaySharp.Entities.Taxonomy;
 using EbaySharp.Source;
-using Newtonsoft.Json;
 
 namespace EbaySharp.Controllers
 {
@@ -11,23 +10,15 @@ namespace EbaySharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
-        public async Task<CategoryTree> GetDefaultCategoryTreeId(string marketplace_id)
+        public async Task<CategoryTreeResponse> GetDefaultCategoryTreeID(string marketplace_id)
         {
-            var client = Helpers.GetHttpClient();
-            string requestUrl = $"{Constants.SERVER_URL}/{Constants.TAXONOMY.ENDPOINT_URL}/{string.Format(Constants.TAXONOMY.METHODS.GET_DEFAULT_CATEGORY_TREE_ID, marketplace_id)}";
-            var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
-            request.Headers.Add("Authorization", $"Bearer {accessToken}");
-            var response = await client.SendAsync(request);
-            string responseContent = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                if (string.IsNullOrEmpty(responseContent))
-                {
-                    throw new Exception("No content found.");
-                }
-                return JsonConvert.DeserializeObject<CategoryTree>(responseContent);
-            }
-            throw new Exception(responseContent);
+            string requestUrl = $"{Constants.SERVER_URL}/{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_DEFAULT_CATEGORY_TREE_ID, marketplace_id)}";
+            return await new RequestExecuter().ExecuteRequest<CategoryTreeResponse>(requestUrl, this.accessToken);
+        }
+        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string category_tree_id, string query)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}/{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, category_tree_id, query)}";
+            return await new RequestExecuter().ExecuteRequest<CategorySuggestionsResponse>(requestUrl, this.accessToken);
         }
     }
 }

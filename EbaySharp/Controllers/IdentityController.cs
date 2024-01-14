@@ -7,7 +7,7 @@ namespace EbaySharp.Controllers
 {
     public class IdentityController
     {
-        public async Task<ClientCredentials> GetClientCredentials(string clinetId, string clientSecret)
+        public async Task<ClientCredentialsResponse> GetClientCredentials(string clinetId, string clientSecret)
         {
             var client = Helpers.GetHttpClient();
             string requestUrl = $"{Constants.SERVER_URL}/{Constants.IDENTITY.ENDPOINT_URL}/{Constants.IDENTITY.METHODS.TOKEN}";
@@ -29,7 +29,7 @@ namespace EbaySharp.Controllers
                 {
                     throw new Exception("No content found.");
                 }
-                return JsonConvert.DeserializeObject<ClientCredentials>(responseContent);
+                return JsonConvert.DeserializeObject<ClientCredentialsResponse>(responseContent);
             }
             throw new Exception($"Error, {response.Content}");
         }
