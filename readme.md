@@ -21,7 +21,8 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version |
 | ----------------- | --------------------- |
-| 1.1.X             | Taxonomy API v1.0.1   |
+| 1.0.X             | Taxonomy API v1.0.1 
+|                   | Metadata API v1.7.1   |
 
 EbaySharp currently supports the following Facebook Graph APIs:
 
