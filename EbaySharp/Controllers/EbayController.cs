@@ -1,4 +1,5 @@
-﻿using EbaySharp.Entities.Taxonomy;
+﻿using EbaySharp.Entities.Metadata;
+using EbaySharp.Entities.Taxonomy;
 
 namespace EbaySharp.Controllers
 {
@@ -12,13 +13,26 @@ namespace EbaySharp.Controllers
 
         #region TAXONOMY 
 
-        public async Task<CategoryTreeResponse> GetDefaultCategoryTreeID(string marketplace_id)
+        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeID(string MarketplaceID)
         {
-            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(marketplace_id);
+            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(MarketplaceID);
         }
-        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string category_tree_id, string query)
+        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string CategoryTreeID, string query)
         {
-            return await new TaxonomyController(accessToken).GetCategorySuggestions(category_tree_id, query);
+            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeID, query);
+        }
+        public async Task<CategoryTreeResponse> GetCategoryTree(string CategoryTreeID)
+        {
+            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeID);
+        }
+
+        #endregion
+
+        #region metadata 
+
+        public async Task<ReturnPoliciesResponse> GetReturnPolicies(string MarketplaceID)
+        {
+            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceID);
         }
 
         #endregion

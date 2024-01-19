@@ -10,15 +10,20 @@ namespace EbaySharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
-        public async Task<CategoryTreeResponse> GetDefaultCategoryTreeID(string marketplace_id)
+        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeID(string MarketplaceID)
         {
-            string requestUrl = $"{Constants.SERVER_URL}/{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_DEFAULT_CATEGORY_TREE_ID, marketplace_id)}";
-            return await new RequestExecuter().ExecuteRequest<CategoryTreeResponse>(requestUrl, this.accessToken);
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
+            return await new RequestExecuter().ExecuteRequest<CategoryTreeIDResponse>(requestUrl, this.accessToken);
         }
-        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string category_tree_id, string query)
+        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string CategoryTreeID, string query)
         {
-            string requestUrl = $"{Constants.SERVER_URL}/{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, category_tree_id, query)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeID, query)}";
             return await new RequestExecuter().ExecuteRequest<CategorySuggestionsResponse>(requestUrl, this.accessToken);
+        }
+        public async Task<CategoryTreeResponse> GetCategoryTree(string CategoryTreeID)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeID)}";
+            return await new RequestExecuter().ExecuteRequest<CategoryTreeResponse>(requestUrl, this.accessToken);
         }
     }
 }
