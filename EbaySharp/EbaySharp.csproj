@@ -38,6 +38,7 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+    <None Include="..\Wiki\Home.md" Link="Wiki\Home.md" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,6 +47,7 @@
 
   <ItemGroup>
     <Folder Include="Entities\Common\" />
+    <Folder Include="Wiki\" />
   </ItemGroup>
 
 </Project>
