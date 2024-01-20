@@ -13,26 +13,26 @@ namespace EbaySharp.Controllers
 
         #region TAXONOMY 
 
-        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeID(string MarketplaceID)
+        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeIDAsync(string MarketplaceID)
         {
-            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(MarketplaceID);
+            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeIDAsync(MarketplaceID);
         }
-        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string CategoryTreeID, string query)
+        public async Task<CategorySuggestionsResponse> GetCategorySuggestionsAsync(string CategoryTreeID, string query)
         {
-            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeID, query);
+            return await new TaxonomyController(accessToken).GetCategorySuggestionsAsync(CategoryTreeID, query);
         }
-        public async Task<CategoryTreeResponse> GetCategoryTree(string CategoryTreeID)
+        public async Task<CategoryTreeResponse> GetCategoryTreeAsync(string CategoryTreeID)
         {
-            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeID);
+            return await new TaxonomyController(accessToken).GetCategoryTreeAsync(CategoryTreeID);
         }
 
         #endregion
 
         #region metadata 
 
-        public async Task<ReturnPoliciesResponse> GetReturnPolicies(string MarketplaceID)
+        public async Task<ReturnPoliciesResponse> GetReturnPoliciesAsync(string MarketplaceID)
         {
-            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceID);
+            return await new MetadataController(accessToken).GetReturnPoliciesAsync(MarketplaceID);
         }
 
         #endregion

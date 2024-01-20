@@ -11,10 +11,10 @@ namespace EbaySharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
-        public async Task<ReturnPoliciesResponse> GetReturnPolicies(string marketplaceName)
+        public async Task<ReturnPoliciesResponse> GetReturnPoliciesAsync(string marketplaceName)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.METADATA.ENDPOINT_URL}{string.Format(Constants.METADATA.METHODS.GET_RETURN_POLICIES, marketplaceName)}";
-            return await new RequestExecuter().ExecuteRequest<ReturnPoliciesResponse>(requestUrl, this.accessToken);
+            return await new RequestExecuter().ExecuteRequestAsync<ReturnPoliciesResponse>(requestUrl, this.accessToken);
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using EbaySharp.Entities.Identity;
-using EbaySharp.Source;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -7,17 +6,18 @@ namespace EbaySharp.Controllers
 {
     public class IdentityController
     {
-        public async Task<ClientCredentialsResponse> GetClientCredentials(string clinetId, string clientSecret)
+        public async Task<ClientCredentialsResponse> GetClientCredentials(string clinetId, string clientSecret, string refreshToken, string scope)
         {
-            var client = Helpers.GetHttpClient();
-            string requestUrl = $"{Constants.SERVER_URL}/{Constants.IDENTITY.ENDPOINT_URL}/{Constants.IDENTITY.METHODS.TOKEN}";
-            var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-            var clientCreds = Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}");
-            request.Headers.Add("Authorization", $"Basic {Convert.ToBase64String(clientCreds)}");
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.ebay.com/identity/v1/oauth2/token");
+
+            string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
+            request.Headers.Add("Authorization", $"Basic {authorizationCode}");
             var collection = new List<KeyValuePair<string, string>>
             {
-                new("grant_type", "client_credentials"),
-                new("scope", "https://api.ebay.com/oauth/api_scope")
+                new("grant_type", "refresh_token"),
+                new("refresh_token",refreshToken),
+                new("scope", scope)
             };
             var content = new FormUrlEncodedContent(collection);
             request.Content = content;

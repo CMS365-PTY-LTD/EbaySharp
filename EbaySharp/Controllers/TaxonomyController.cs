@@ -10,20 +10,20 @@ namespace EbaySharp.Controllers
         {
             accessToken = longLivedAccessToken;
         }
-        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeID(string MarketplaceID)
+        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeIDAsync(string MarketplaceID)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
-            return await new RequestExecuter().ExecuteRequest<CategoryTreeIDResponse>(requestUrl, this.accessToken);
+            return await new RequestExecuter().ExecuteRequestAsync<CategoryTreeIDResponse>(requestUrl, this.accessToken);
         }
-        public async Task<CategorySuggestionsResponse> GetCategorySuggestions(string CategoryTreeID, string query)
+        public async Task<CategorySuggestionsResponse> GetCategorySuggestionsAsync(string CategoryTreeID, string query)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeID, query)}";
-            return await new RequestExecuter().ExecuteRequest<CategorySuggestionsResponse>(requestUrl, this.accessToken);
+            return await new RequestExecuter().ExecuteRequestAsync<CategorySuggestionsResponse>(requestUrl, this.accessToken);
         }
-        public async Task<CategoryTreeResponse> GetCategoryTree(string CategoryTreeID)
+        public async Task<CategoryTreeResponse> GetCategoryTreeAsync(string CategoryTreeID)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeID)}";
-            return await new RequestExecuter().ExecuteRequest<CategoryTreeResponse>(requestUrl, this.accessToken);
+            return await new RequestExecuter().ExecuteRequestAsync<CategoryTreeResponse>(requestUrl, this.accessToken);
         }
     }
 }

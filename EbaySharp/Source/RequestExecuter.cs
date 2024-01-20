@@ -4,7 +4,7 @@ namespace EbaySharp.Source
 {
     internal class RequestExecuter
     {
-        public async Task<T> ExecuteRequest<T>(string requestUrl, string accessToken)
+        public async Task<T> ExecuteRequestAsync<T>(string requestUrl, string accessToken)
         {
             var client = Helpers.GetHttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, requestUrl);
