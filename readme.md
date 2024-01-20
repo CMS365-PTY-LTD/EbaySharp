@@ -39,27 +39,35 @@ EbaySharp currently supports the following Ebay REST APIs:
 
 ## Access and Security
 
-Create an account here https://developer.ebay.com/my/keys and genertae keys for production.
+Create an account here https://developer.ebay.com/my/keys and generate keys for production.
+
 For example: ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/keys.png?raw=true)
+
 Navigate to user tokens https://developer.ebay.com/my/auth/?env=production&index=0 and select following options.
+
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/user_token.png?raw=true)
-From the same page, genertae the ebay redirect url (called RU)
+
+From the same page, generate the ebay redirect URL (called RU)
+
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/ru.png?raw=true)
-Copy the url for the field "Your branded eBay Production Sign In (OAuth)" and open a new browser in provate mode and also save a copy of the url for future use.
+
+Copy the URL of the field "Your branded eBay Production Sign In (OAuth)" and open a new browser in private mode and also save a copy of the URL for future use.
 Log in with your store user id and password and you will be redirected ot the following page
+
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/consent.png?raw=true)
-Copy the url of the page and assing it to a varibale called "secureUrl" and execute the following funciton.
+
+Copy the URL of the page and assign it to a variable called "secureURL" and execute the following function.
 ```C#
 public async Task<string> GetRefreshTokenAsync()
 {
-    string secureUrl1 = "https://signin.ebay.com/ws/eBayISAPI.dll?ThirdPartyAuthSucessFailure&isAuthSuccessful=true&code=v%5E1.1%23i%5E1%23p%5E3%23f%5E0%23r%5E1%23I%5E3%23t%5EUl41Xzg6QUE5OEU0QzVEQkM3Q0NDQjAyMjM1RTAxMTQ3MEY1MjZfMF8xI0VeMjYw&expires_in=299";
+    string secureURL = "https://signin.ebay.com/ws/eBayISAPI.dll?ThirdPartyAuthSucessFailure&isAuthSuccessful=true&code=v%5E1.1%23i%5E1%23p%5E3%23f%5E0%23r%5E1%23I%5E3%23t%5EUl41Xzg6QUE5OEU0QzVEQkM3Q0NDQjAyMjM1RTAxMTQ3MEY1MjZfMF8xI0VeMjYw&expires_in=299";
     var client = new HttpClient();
     var request = new HttpRequestMessage(HttpMethod.Post, "https://api.ebay.com/identity/v1/oauth2/token");
 
     string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes("ReplaceYourClientID:ReplaceYourClientSecret"));
 
     request.Headers.Add("Authorization", $"Basic {authorizationCode}");
-    var parsed = HttpUtility.ParseQueryString(secureUrl1);
+    var parsed = HttpUtility.ParseQueryString(secureURL);
     var collection = new List<KeyValuePair<string, string>>
     {
         new("redirect_uri", "Replace with your ru genertaed above"),
@@ -75,8 +83,8 @@ public async Task<string> GetRefreshTokenAsync()
 }
 ```
 
-This method returns you an access token and a refesh token (valid for 18 months), we will not use access token becasue this requires a manual step of generting a code form a brwoser.
-We will use the refresh token and genertae an access token.
+This method returns you an access token and a refresh token (valid for 18 months), we will not use access token because this requires a manual step of generating a code form a browser.
+We will use the refresh token and generate an access token.
 
 ```C#
 public async Task<ClientCredentialsResponse> GetEbayGetClientCredentials()
@@ -133,3 +141,4 @@ ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPo
 ```
 
 You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
+
