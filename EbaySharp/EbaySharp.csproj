@@ -47,6 +47,7 @@
 
   <ItemGroup>
     <Folder Include="Entities\Common\" />
+    <Folder Include="Screenshots\" />
     <Folder Include="Wiki\" />
   </ItemGroup>
 

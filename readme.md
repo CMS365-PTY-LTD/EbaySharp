@@ -39,6 +39,10 @@ EbaySharp currently supports the following Ebay REST APIs:
 
 ## Access and Security
 
+Create a developer account here https://developer.ebay.com/my/keys and genertae keys for production.
+For example: ![alt text](http://url/to/img.png)
+
+
 You will need Client ID and Client Secret to generate an application access token. Visit https://developer.ebay.com/my/keys and create both.
 Execute following lines and you will get ClientCredentials object which contains the access token.
 
