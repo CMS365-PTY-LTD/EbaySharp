@@ -27,7 +27,7 @@ Install-Package CMS365.EbaySharp
 EbaySharp currently supports the following Ebay REST APIs:
 
 - Access and Security
-  - [Getting the application access token](#access-and-security)
+  - [Getting a user access token](#access-and-security)
 - Using the EbaySharp
   - [Using the EbaySharp](#using-the-EbaySharp)
   - [Taxonomy](#taxonomy)
@@ -39,15 +39,15 @@ EbaySharp currently supports the following Ebay REST APIs:
 
 ## Access and Security
 
-Create a developer account here https://developer.ebay.com/my/keys and genertae keys for production.
+Create an account here https://developer.ebay.com/my/keys and genertae keys for production.
 For example: ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/keys.png?raw=true)
 Navigate to user tokens https://developer.ebay.com/my/auth/?env=production&index=0 and select following options.
-![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/user_token?raw=true)
+![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/user_token.png?raw=true)
 From the same page, genertae the ebay redirect url (called RU)
-![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/ru?raw=true)
+![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/ru.png?raw=true)
 Copy the url for the field "Your branded eBay Production Sign In (OAuth)" and open a new browser in provate mode and also save a copy of the url for future use.
 Log in with your store user id and password and you will be redirected ot the following page
-![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/consent?raw=true)
+![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/consent.png?raw=true)
 Copy the url of the page and assing it to a varibale called "secureUrl" and execute the following funciton.
 ```C#
 public async Task<string> GetRefreshTokenAsync()
