@@ -21,8 +21,9 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version |
 | ----------------- | --------------------- |
-| 1.0.X             | Taxonomy API v1.0.1 
+| 1.0.X             | Inventory API 1.17.2  |
 |                   | Metadata API v1.7.1   |
+|                   | Taxonomy API v1.0.1   |
 
 EbaySharp currently supports the following Ebay REST APIs:
 
@@ -33,13 +34,14 @@ EbaySharp currently supports the following Ebay REST APIs:
   - [Sales](#sales)
     - [Inventory](#inventory)
         - [Bulk migrate listings](#bulk-migrate-listings)
+    - [Metadata](#metadata)
+        - [Get return policies](#get-return-policies)
   - [Commerce](#Commerce)
-  - [Taxonomy](#taxonomy)
-    - [Get default category tree id](#get-default-category-tree-id)
-    - [Get category suggestions](#get-category-suggestions)
-    - [Get category tree](#get-category-tree)
-  - [Metadata](#metadata)
-    - [Get return policies](#get-return-policies)
+    - [Taxonomy](#taxonomy)
+        - [Get default category tree id](#get-default-category-tree-id)
+        - [Get category suggestions](#get-category-suggestions)
+        - [Get category tree](#get-category-tree)
+  
 
 ## Access and Security
 
