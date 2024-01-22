@@ -1,4 +1,5 @@
-﻿using EbaySharp.Entities.Metadata;
+﻿using EbaySharp.Entities.Inventory;
+using EbaySharp.Entities.Metadata;
 using EbaySharp.Entities.Taxonomy;
 
 namespace EbaySharp.Controllers
@@ -28,11 +29,20 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region metadata 
+        #region METADATA 
 
         public async Task<ReturnPoliciesResponse> GetReturnPoliciesAsync(string MarketplaceID)
         {
             return await new MetadataController(accessToken).GetReturnPoliciesAsync(MarketplaceID);
+        }
+
+        #endregion
+
+        #region INVENTORY 
+
+        public async Task<BulkMigrateListingResponse> BulkMigrateAsync(BulkMigrateListingRequest bulkMigrateListingRequest)
+        {
+            return await new InventoryController(accessToken).BulkMigrateAsync(bulkMigrateListingRequest);
         }
 
         #endregion

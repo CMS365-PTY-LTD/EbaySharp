@@ -30,6 +30,10 @@ EbaySharp currently supports the following Ebay REST APIs:
   - [Getting a user access token](#access-and-security)
 - Using the EbaySharp
   - [Using the EbaySharp](#using-the-EbaySharp)
+  - [Sales](#sales)
+    - [Inventory](#inventory)
+        - [Bulk migrate listings](#bulk-migrate-listings)
+  - [Commerce](#Commerce)
   - [Taxonomy](#taxonomy)
     - [Get default category tree id](#get-default-category-tree-id)
     - [Get category suggestions](#get-category-suggestions)
@@ -51,47 +55,27 @@ From the same page, generate the ebay redirect URL (called RU)
 
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/ru.png?raw=true)
 
-Copy the URL of the field "Your branded eBay Production Sign In (OAuth)" and open a new browser in private mode and also save a copy of the URL for future use.
-Log in with your store user id and password and you will be redirected ot the following page
+Copy the URL of the field "Your branded eBay Production Sign In (OAuth)" and open in a new browser in private mode and also save a copy of the URL for future use.
+Log in with your store user id and password and you will be redirected to the following page
 
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/consent.png?raw=true)
 
-Copy the URL of the page and assign it to a variable called "secureURL" and execute the following function.
+Copy the URL of the thank you page and assign it to a variable called "secureURL" and execute the following function.
 ```C#
 public async Task<string> GetRefreshTokenAsync()
 {
-    string secureURL = "https://signin.ebay.com/ws/eBayISAPI.dll?ThirdPartyAuthSucessFailure&isAuthSuccessful=true&code=v%5E1.1%23i%5E1%23p%5E3%23f%5E0%23r%5E1%23I%5E3%23t%5EUl41Xzg6QUE5OEU0QzVEQkM3Q0NDQjAyMjM1RTAxMTQ3MEY1MjZfMF8xI0VeMjYw&expires_in=299";
-    var client = new HttpClient();
-    var request = new HttpRequestMessage(HttpMethod.Post, "https://api.ebay.com/identity/v1/oauth2/token");
-
-    string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes("ReplaceYourClientID:ReplaceYourClientSecret"));
-
-    request.Headers.Add("Authorization", $"Basic {authorizationCode}");
-    var parsed = HttpUtility.ParseQueryString(secureURL);
-    var collection = new List<KeyValuePair<string, string>>
-    {
-        new("redirect_uri", "Replace with your ru genertaed above"),
-        new("grant_type", "authorization_code"),
-        new("code",HttpUtility.UrlDecode(parsed["code"]))
-    };
-    var content = new FormUrlEncodedContent(collection);
-    request.Content = content;
-    var response = await client.SendAsync(request);
-    JObject responseContent = JObject.Parse(await response.Content.ReadAsStringAsync());
-    string refreshToken = responseContent.GetValue("refresh_token").ToString();
-    return refreshToken;
+    string secureURL="repalce with the url of the thank you page";
+    EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IdentityController();
+    string refreshToken = await identityController.GetRefreshTokenAsync(ReplaceYourClientID, ReplaceYourClientSecret, 
+        , secureURL, Replace with RU);
 }
 ```
 
-This method returns you an access token and a refresh token (valid for 18 months), we will not use access token because this requires a manual step of generating a code form a browser.
-We will use the refresh token and generate an access token.
+This method returns a refresh token whcih is valid for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
-public async Task<ClientCredentialsResponse> GetEbayGetClientCredentials()
-{
-    var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
-    return clientCredentials;
-}
+IdentityController identityController=new IdentityController();
+var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
 ```
 This method now gives you ClientCredentialsResponse object which contains an access token.
 
@@ -103,11 +87,44 @@ Initialize the instance with the access token.
 EbayController ebayController = new EbayController(clientCredentials.AccessToken);
 ```
 
-## Taxonomy
+## Sales
+
+### Inventory
+
+You can see a list of Inventory methods here https://developer.ebay.com/api-docs/sell/inventory/resources/methods
+
+#### Bulk migrate listings
+If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API.
+
+```C#
+BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrateAsync(new BulkMigrateListingRequest()
+{
+    Requests = new BulkMigrateListingRequestItem[]
+    {
+        new BulkMigrateListingRequestItem(){ListingID = "Replace with item number" },
+        new BulkMigrateListingRequestItem(){ListingID = "Replace with item number" }
+    }
+});
+```
+
+### Metadata
+You can see a list of Metadata methods here https://developer.ebay.com/api-docs/sell/metadata/resources/methods
+
+#### Get return policies
+
+```C#
+ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPoliciesAsync([MarketplaceID]);
+```
+
+You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
+
+## Commerce
+
+### Taxonomy
 
 You can see a list of Taxonomy methods here https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods
 
-### Get default category tree id
+#### Get default category tree id
 
 ```C#
 CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultCategoryTreeIDAsync([MarketplaceID]);
@@ -115,7 +132,7 @@ CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultC
 
 You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
 
-### Get category suggestions
+#### Get category suggestions
 
 ```C#
 CategorySuggestionsResponse categorySuggestionsResponse = await ebayController.GetCategorySuggestionsAsync([CategoryTreeID], [ProductTitle]);
@@ -123,7 +140,7 @@ CategorySuggestionsResponse categorySuggestionsResponse = await ebayController.G
 
 You need to pass a Category Tree ID and the product title you are searching categories for.
 
-### Get category tree
+#### Get category tree
 
 ```C#
 CategoryTreeResponse categorySuggestionsResponse = await ebayController.GetCategoryTreeAsync([CategoryTreeID]);
@@ -131,14 +148,5 @@ CategoryTreeResponse categorySuggestionsResponse = await ebayController.GetCateg
 
 You need to pass a Category Tree ID.
 
-## Metadata
-You can see a list of Metadata methods here https://developer.ebay.com/api-docs/sell/metadata/resources/methods
 
-### Get return policies
-
-```C#
-ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPoliciesAsync([MarketplaceID]);
-```
-
-You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
 

@@ -1,37 +1,37 @@
 ﻿using EbaySharp.Entities.Identity;
-using Newtonsoft.Json;
+using EbaySharp.Source;
 using System.Text;
+using System.Web;
 
 namespace EbaySharp.Controllers
 {
     public class IdentityController
     {
-        public async Task<ClientCredentialsResponse> GetClientCredentials(string clinetId, string clientSecret, string refreshToken, string scope)
+        public async Task<string> GetRefreshTokenAsync(string clinetId, string clientSecret, string authSuccessPageURL, string RUName)
         {
-            var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.ebay.com/identity/v1/oauth2/token");
-
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
             string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
-            request.Headers.Add("Authorization", $"Basic {authorizationCode}");
+            var parsed = HttpUtility.ParseQueryString(authSuccessPageURL);
+            var collection = new List<KeyValuePair<string, string>>
+            {
+                new("redirect_uri", RUName),
+                new("grant_type", "authorization_code"),
+                new("code",HttpUtility.UrlDecode(parsed["code"]))
+            };
+            ClientCredentialsResponse clientCredentialsResponse = await new RequestExecuter().ExecutePostRequestAsync<ClientCredentialsResponse>(requestUrl, $"Basic {authorizationCode}", collection);
+            return clientCredentialsResponse.RefreshToken;
+        }
+        public async Task<ClientCredentialsResponse> GetClientCredentialsAsync(string clinetId, string clientSecret, string refreshToken, string scope)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
+            string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
             var collection = new List<KeyValuePair<string, string>>
             {
                 new("grant_type", "refresh_token"),
                 new("refresh_token",refreshToken),
                 new("scope", scope)
             };
-            var content = new FormUrlEncodedContent(collection);
-            request.Content = content;
-            var response = await client.SendAsync(request);
-            var responseContent = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode)
-            {
-                if (string.IsNullOrEmpty(responseContent))
-                {
-                    throw new Exception("No content found.");
-                }
-                return JsonConvert.DeserializeObject<ClientCredentialsResponse>(responseContent);
-            }
-            throw new Exception($"Error, {response.Content}");
+            return await new RequestExecuter().ExecutePostRequestAsync<ClientCredentialsResponse>(requestUrl, $"Basic {authorizationCode}", collection);
         }
     }
 }

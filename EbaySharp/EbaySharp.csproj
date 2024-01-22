@@ -7,7 +7,7 @@
     <ApplicationIcon>EbaySharp_ico.ico</ApplicationIcon>
     <PackageId>CMS365.EbaySharp</PackageId>
     <Title>EbaySharp</Title>
-    <Version>1.0.4</Version>
+    <Version>1.0.5</Version>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
     <Description>EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. It's used for creating listings and managing orders using C# and .NET</Description>
