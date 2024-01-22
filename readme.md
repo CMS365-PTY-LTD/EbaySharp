@@ -99,7 +99,7 @@ You can see a list of Inventory methods here https://developer.ebay.com/api-docs
 If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API.
 
 ```C#
-BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrateAsync(new BulkMigrateListingRequest()
+BulkMigrateListingRequest bulkMigrateListingRequest = new BulkMigrateListingRequest()
 {
     Requests = new BulkMigrateListingRequestItem[]
     {
@@ -107,6 +107,9 @@ BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.Bul
         new BulkMigrateListingRequestItem(){ListingID = "Replace with item number" }
     }
 });
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrateAsync(bulkMigrateListingRequest);
+
 ```
 
 ### Metadata
