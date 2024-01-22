@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Metadata
+﻿namespace EbaySharp.Entities.Sell.Metadata.Marketplace
 {
     public class ReturnPolicy
     {

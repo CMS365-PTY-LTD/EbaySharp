@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EbaySharp.Entities.Inventory
+namespace EbaySharp.Entities.Sell.Inventory.Listing
 {
     public class BulkMigrateListingRequestItem
     {

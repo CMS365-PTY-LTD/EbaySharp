@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Inventory;
+﻿using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Source;
 using Newtonsoft.Json;
 

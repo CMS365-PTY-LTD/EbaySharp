@@ -1,5 +1,5 @@
-﻿using EbaySharp.Entities.Inventory;
-using EbaySharp.Entities.Metadata;
+﻿using EbaySharp.Entities.Sell.Inventory.Listing;
+using EbaySharp.Entities.Sell.Metadata.Marketplace;
 using EbaySharp.Entities.Taxonomy;
 
 namespace EbaySharp.Controllers

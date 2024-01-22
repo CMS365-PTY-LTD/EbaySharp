@@ -31,16 +31,19 @@ EbaySharp currently supports the following Ebay REST APIs:
   - [Getting a user access token](#access-and-security)
 - Using the EbaySharp
   - [Using the EbaySharp](#using-the-EbaySharp)
-  - [Sales](#sales)
+  - [Sell](#sell)
     - [Inventory](#inventory)
-        - [Bulk migrate listings](#bulk-migrate-listings)
+        - [Listing](#listing)
+            - [Bulk migrate listings](#bulk-migrate-listings)
     - [Metadata](#metadata)
-        - [Get return policies](#get-return-policies)
+        - [Marketplace](#Marketplace)
+            - [Get return policies](#get-return-policies)
   - [Commerce](#Commerce)
     - [Taxonomy](#taxonomy)
-        - [Get default category tree id](#get-default-category-tree-id)
-        - [Get category suggestions](#get-category-suggestions)
-        - [Get category tree](#get-category-tree)
+        - [Category Tree](#category-tree)
+            - [Get default category tree id](#get-default-category-tree-id)
+            - [Get category suggestions](#get-category-suggestions)
+            - [Get category tree](#get-category-tree)
   
 
 ## Access and Security
@@ -89,13 +92,14 @@ Initialize the instance with the access token.
 EbayController ebayController = new EbayController(clientCredentials.AccessToken);
 ```
 
-## Sales
+## Sell
 
 ### Inventory
 
 You can see a list of Inventory methods here https://developer.ebay.com/api-docs/sell/inventory/resources/methods
+#### Listing
 
-#### Bulk migrate listings
+##### Bulk migrate listings
 If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API.
 
 ```C#
@@ -114,8 +118,8 @@ BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.Bul
 
 ### Metadata
 You can see a list of Metadata methods here https://developer.ebay.com/api-docs/sell/metadata/resources/methods
-
-#### Get return policies
+#### Marketplace
+##### Get return policies
 
 ```C#
 ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPoliciesAsync([MarketplaceID]);
@@ -128,8 +132,9 @@ You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs
 ### Taxonomy
 
 You can see a list of Taxonomy methods here https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods
+#### Category Tree
 
-#### Get default category tree id
+##### Get default category tree id
 
 ```C#
 CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultCategoryTreeIDAsync([MarketplaceID]);
