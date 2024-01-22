@@ -24,6 +24,8 @@
                 internal struct METHODS
                 {
                     internal const string BULK_MIGRATE_LISTING = "/bulk_migrate_listing";
+                    internal const string INVENTORY_ITEMS = "/inventory_item?limit={0}&offset={1}";
+                    internal const string INVENTORY_ITEM = "/inventory_item/{0}";
                 }
             }
             internal struct METADATA

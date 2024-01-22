@@ -1,4 +1,5 @@
-﻿using EbaySharp.Entities.Sell.Inventory.Listing;
+﻿using EbaySharp.Entities.Sell.Inventory.InventoryItem;
+using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
 using EbaySharp.Entities.Taxonomy;
 
@@ -43,6 +44,14 @@ namespace EbaySharp.Controllers
         public async Task<BulkMigrateListingResponse> BulkMigrateAsync(BulkMigrateListingRequest bulkMigrateListingRequest)
         {
             return await new InventoryController(accessToken).BulkMigrateAsync(bulkMigrateListingRequest);
+        }
+        public async Task<InventoryItemsResponse> GetInventoryItems(int limit, int offset)
+        {
+            return await new InventoryController(accessToken).GetInventoryItems(limit, offset);
+        }
+        public async Task<InventoryItemResponse> GetInventoryItem(string SKU)
+        {
+            return await new InventoryController(accessToken).GetInventoryItem(SKU);
         }
 
         #endregion

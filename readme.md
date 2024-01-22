@@ -35,6 +35,8 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Inventory](#inventory)
         - [Listing](#listing)
             - [Bulk migrate listings](#bulk-migrate-listings)
+            - [Get inventory items](#get-inventory-items)
+            - [Get inventory item](#get-inventory-item)
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
@@ -69,14 +71,14 @@ Copy the URL of the thank you page and assign it to a variable called "secureURL
 ```C#
 public async Task<string> GetRefreshTokenAsync()
 {
-    string secureURL="repalce with the url of the thank you page";
+    string secureURL="replace with the URL of the thank you page";
     EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IdentityController();
     string refreshToken = await identityController.GetRefreshTokenAsync(ReplaceYourClientID, ReplaceYourClientSecret, 
         , secureURL, Replace with RU);
 }
 ```
 
-This method returns a refresh token whcih is valid for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
+This method returns a refresh token which is valid for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
 IdentityController identityController=new IdentityController();
@@ -96,56 +98,77 @@ EbayController ebayController = new EbayController(clientCredentials.AccessToken
 
 ### Inventory
 
-You can see a list of Inventory methods here https://developer.ebay.com/api-docs/sell/inventory/resources/methods
+You can see a list of Inventory methods [here](https://developer.ebay.com/api-docs/sell/inventory/resources/methods)
 #### Listing
 
 ##### Bulk migrate listings
 If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API.
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/listing/methods/bulkMigrateListing)
 
 ```C#
 BulkMigrateListingRequest bulkMigrateListingRequest = new BulkMigrateListingRequest()
 {
     Requests = new BulkMigrateListingRequestItem[]
     {
-        new BulkMigrateListingRequestItem(){ListingID = "Replace with item number" },
-        new BulkMigrateListingRequestItem(){ListingID = "Replace with item number" }
+        new BulkMigrateListingRequestItem(){ListingID = "21432432432" },
+        new BulkMigrateListingRequestItem(){ListingID = "78658678678" }
     }
 });
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrateAsync(bulkMigrateListingRequest);
 
 ```
+##### Get inventory items
+You can get list of existing items, you need to pass limit (default is 25 and max is 200) and offset (default for first page is 0).
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+InventoryItemsResponse bulkMigrateListingResponse = await ebayController.GetInventoryItems(limit, offset);
+
+```
+##### Get inventory item
+You can get an item based on a sKU
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+InventoryItemResponse inventoryItemResponse = await ebayController.GetInventoryItem(SKU);
+
+```
 
 ### Metadata
-You can see a list of Metadata methods here https://developer.ebay.com/api-docs/sell/metadata/resources/methods
+You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
 #### Marketplace
 ##### Get return policies
 
 ```C#
-ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPoliciesAsync([MarketplaceID]);
+ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPoliciesAsync("EBAY_US");
 ```
 
-You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
+You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 
 ## Commerce
 
 ### Taxonomy
 
-You can see a list of Taxonomy methods here https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods
+You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods)
 #### Category Tree
 
 ##### Get default category tree id
 
 ```C#
-CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultCategoryTreeIDAsync([MarketplaceID]);
+CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultCategoryTreeIDAsync("EBAY_US");
 ```
 
-You need to pass MarketplaceID, please visit https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html for supported market places.
+You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 
 #### Get category suggestions
 
 ```C#
-CategorySuggestionsResponse categorySuggestionsResponse = await ebayController.GetCategorySuggestionsAsync([CategoryTreeID], [ProductTitle]);
+CategorySuggestionsResponse categorySuggestionsResponse = await ebayController.GetCategorySuggestionsAsync(15, "I am a table, look for me");
 ```
 
 You need to pass a Category Tree ID and the product title you are searching categories for.
@@ -153,7 +176,7 @@ You need to pass a Category Tree ID and the product title you are searching cate
 #### Get category tree
 
 ```C#
-CategoryTreeResponse categorySuggestionsResponse = await ebayController.GetCategoryTreeAsync([CategoryTreeID]);
+CategoryTreeResponse categorySuggestionsResponse = await ebayController.GetCategoryTreeAsync(15);
 ```
 
 You need to pass a Category Tree ID.
