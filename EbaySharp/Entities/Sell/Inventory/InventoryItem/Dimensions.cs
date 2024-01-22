@@ -5,6 +5,6 @@
         public string Height { get; set; }
         public string Length { get; set; }
         public string Unit { get; set; }
-        public string Width { get; set; }
+        public string WIDth { get; set; }
     }
 }

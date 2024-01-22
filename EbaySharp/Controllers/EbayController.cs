@@ -1,5 +1,6 @@
 ﻿using EbaySharp.Entities.Sell.Inventory.InventoryItem;
 using EbaySharp.Entities.Sell.Inventory.Listing;
+using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
 using EbaySharp.Entities.Taxonomy;
 
@@ -52,6 +53,14 @@ namespace EbaySharp.Controllers
         public async Task<InventoryItemResponse> GetInventoryItem(string SKU)
         {
             return await new InventoryController(accessToken).GetInventoryItem(SKU);
+        }
+        public async Task<OffersResponse> GetOffers(string SKU)
+        {
+            return await new InventoryController(accessToken).GetOffers(SKU);
+        }
+        public async Task DeleteInventoryItem(string SKU)
+        {
+            await new InventoryController(accessToken).DeleteInventoryItem(SKU);
         }
 
         #endregion

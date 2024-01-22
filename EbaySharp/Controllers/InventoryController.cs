@@ -1,7 +1,11 @@
-﻿using EbaySharp.Entities.Sell.Inventory.InventoryItem;
+﻿// Ignore Spelling: SKU
+
+using EbaySharp.Entities.Sell.Inventory.InventoryItem;
 using EbaySharp.Entities.Sell.Inventory.Listing;
+using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Source;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace EbaySharp.Controllers
 {
@@ -26,6 +30,16 @@ namespace EbaySharp.Controllers
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
             return await new RequestExecuter().ExecuteGetRequestAsync<InventoryItemResponse>(requestUrl, $"Bearer {accessToken}");
+        }
+        public async Task DeleteInventoryItem(string SKU)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
+            await new RequestExecuter().ExecuteDeleteRequestAsync<InventoryItemResponse>(requestUrl, $"Bearer {accessToken}");
+        }
+        public async Task<OffersResponse> GetOffers(string SKU)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, SKU)}";
+            return await new RequestExecuter().ExecuteGetRequestAsync<OffersResponse>(requestUrl, $"Bearer {accessToken}");
         }
     }
 }

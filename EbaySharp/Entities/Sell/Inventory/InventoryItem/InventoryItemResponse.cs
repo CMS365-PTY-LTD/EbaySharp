@@ -6,7 +6,7 @@
         public string Condition { get; set; }
         public string ConditionDescription { get; set; }
         public List<ConditionDescriptor> ConditionDescriptors { get; set; }
-        public List<string> GroupIds { get; set; }
+        public List<string> GroupIDs { get; set; }
         public List<string> InventoryItemGroupKeys { get; set; }
         public string Locale { get; set; }
         public PackageWeightAndSize PackageWeightAndSize { get; set; }

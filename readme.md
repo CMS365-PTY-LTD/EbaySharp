@@ -3,7 +3,7 @@
 [![NuGet version](https://img.shields.io/nuget/v/CMS365.EbaySharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.EbaySharp/)
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/EbaySharp/main.svg?logo=github)
 [![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.EbaySharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.EbaySharp/)
-[![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionId=9)
+[![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionID=9)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. It's used for creating listings and managing orders using C# and .NET
@@ -37,13 +37,16 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Bulk migrate listings](#bulk-migrate-listings)
             - [Get inventory items](#get-inventory-items)
             - [Get inventory item](#get-inventory-item)
+            - [Delete inventory item](#delete-inventory-item)
+        - [Offer](#offer)
+            - [Get offers](#get-offers) 
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
   - [Commerce](#Commerce)
     - [Taxonomy](#taxonomy)
         - [Category Tree](#category-tree)
-            - [Get default category tree id](#get-default-category-tree-id)
+            - [Get default category tree ID](#get-default-category-tree-ID)
             - [Get category suggestions](#get-category-suggestions)
             - [Get category tree](#get-category-tree)
   
@@ -63,7 +66,7 @@ From the same page, generate the ebay redirect URL (called RU)
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/ru.png?raw=true)
 
 Copy the URL of the field "Your branded eBay Production Sign In (OAuth)" and open in a new browser in private mode and also save a copy of the URL for future use.
-Log in with your store user id and password and you will be redirected to the following page
+Log in with your store user ID and password and you will be redirected to the following page
 
 ![alt text](https://github.com/CMS365-PTY-LTD/EbaySharp/blob/main/EbaySharp/Screenshots/consent.png?raw=true)
 
@@ -72,17 +75,17 @@ Copy the URL of the thank you page and assign it to a variable called "secureURL
 public async Task<string> GetRefreshTokenAsync()
 {
     string secureURL="replace with the URL of the thank you page";
-    EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IdentityController();
-    string refreshToken = await identityController.GetRefreshTokenAsync(ReplaceYourClientID, ReplaceYourClientSecret, 
+    EbaySharp.Controllers.IDentityController IDentityController = new EbaySharp.Controllers.IDentityController();
+    string refreshToken = await IDentityController.GetRefreshTokenAsync(ReplaceYourClientID, ReplaceYourClientSecret, 
         , secureURL, Replace with RU);
 }
 ```
 
-This method returns a refresh token which is valid for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
+This method returns a refresh token which is valID for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
-IdentityController identityController=new IdentityController();
-var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
+IDentityController IDentityController=new IDentityController();
+var clientCredentials = await IDentityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
 ```
 This method now gives you ClientCredentialsResponse object which contains an access token.
 
@@ -129,13 +132,34 @@ InventoryItemsResponse bulkMigrateListingResponse = await ebayController.GetInve
 
 ```
 ##### Get inventory item
-You can get an item based on a sKU
+You can get an item based on a SKU
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
 
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 InventoryItemResponse inventoryItemResponse = await ebayController.GetInventoryItem(SKU);
+
+```
+##### Delete inventory item
+You can delete an item based on a SKU
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/deleteInventoryItem)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+await ebayController.DeleteInventoryItem(SKU);
+
+```
+#### Offer
+##### Get offers
+You can get offers based on a SKU
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+OffersResponse offersResponse = await ebayController.GetOffers(SKU);
 
 ```
 
@@ -157,7 +181,7 @@ You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/a
 You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods)
 #### Category Tree
 
-##### Get default category tree id
+##### Get default category tree ID
 
 ```C#
 CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultCategoryTreeIDAsync("EBAY_US");

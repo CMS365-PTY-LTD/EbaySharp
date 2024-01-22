@@ -36,6 +36,15 @@ namespace EbaySharp.Source
             }
             throw new Exception(responseContent);
         }
+        public async Task ExecuteDeleteRequestAsync<T>(string requestUrl, string authHeaderValue)
+        {
+            HttpResponseMessage response = await executeRequestAsync(HttpMethod.Delete, requestUrl, authHeaderValue, null, null);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode==false)
+            {
+                throw new Exception(responseContent);
+            }
+        }
         public async Task<T> ExecutePostRequestAsync<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {
             HttpResponseMessage response = await executeRequestAsync(HttpMethod.Post, requestUrl, authHeaderValue, keyValuePayload, null);
