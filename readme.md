@@ -35,6 +35,7 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Inventory](#inventory)
         - [Listing](#listing)
             - [Bulk migrate listings](#bulk-migrate-listings)
+        - [Inventory item](#inventory-item)
             - [Get inventory items](#get-inventory-items)
             - [Get inventory item](#get-inventory-item)
             - [Delete inventory item](#delete-inventory-item)
@@ -105,8 +106,7 @@ You can see a list of Inventory methods [here](https://developer.ebay.com/api-do
 #### Listing
 
 ##### Bulk migrate listings
-If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API.
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/listing/methods/bulkMigrateListing)
+If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/listing/methods/bulkMigrateListing)
 
 ```C#
 BulkMigrateListingRequest bulkMigrateListingRequest = new BulkMigrateListingRequest()
@@ -121,9 +121,9 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrateAsync(bulkMigrateListingRequest);
 
 ```
+#### Inventory item
 ##### Get inventory items
-You can get list of existing items, you need to pass limit (default is 25 and max is 200) and offset (default for first page is 0).
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
+You can get list of existing items, you need to pass limit (default is 25 and max is 200) and offset (default for first page is 0). You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
 
 ```C#
 
@@ -132,8 +132,7 @@ InventoryItemsResponse bulkMigrateListingResponse = await ebayController.GetInve
 
 ```
 ##### Get inventory item
-You can get an item based on a SKU
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
+You can get an item based on a SKU. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
 
 ```C#
 
@@ -142,8 +141,7 @@ InventoryItemResponse inventoryItemResponse = await ebayController.GetInventoryI
 
 ```
 ##### Delete inventory item
-You can delete an item based on a SKU
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/deleteInventoryItem)
+You can delete an item based on a SKU. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/deleteInventoryItem)
 
 ```C#
 
@@ -153,8 +151,7 @@ await ebayController.DeleteInventoryItem(SKU);
 ```
 #### Offer
 ##### Get offers
-You can get offers based on a SKU
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
+You can get offers based on a SKU. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
 
 ```C#
 
