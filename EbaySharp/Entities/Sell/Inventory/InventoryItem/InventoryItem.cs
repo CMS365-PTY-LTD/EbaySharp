@@ -11,6 +11,6 @@
         public string Locale { get; set; }
         public PackageWeightAndSize PackageWeightAndSize { get; set; }
         public Product Product { get; set; }
-        public string Sku { get; set; }
+        public string SKU { get; set; }
     }
 }

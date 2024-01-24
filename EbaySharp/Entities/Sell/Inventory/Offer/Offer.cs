@@ -22,7 +22,7 @@
         public string QuantityLimitPerBuyer { get; set; }
         public Regulatory Regulatory { get; set; }
         public string SecondaryCategoryID { get; set; }
-        public string Sku { get; set; }
+        public string SKU { get; set; }
         public string Status { get; set; }
         public List<string> StoreCategoryNames { get; set; }
         public Tax Tax { get; set; }

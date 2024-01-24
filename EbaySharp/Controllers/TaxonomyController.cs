@@ -10,20 +10,20 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
-        public async Task<CategoryTreeIDResponse> GetDefaultCategoryTreeIDAsync(string MarketplaceID)
+        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(string MarketplaceID)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
-            return await new RequestExecuter().ExecuteGetRequestAsync<CategoryTreeIDResponse>(requestUrl, $"Bearer {accessToken}");
+            return await new RequestExecuter().ExecuteGetRequest<CategoryTreeID>(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task<CategorySuggestionsResponse> GetCategorySuggestionsAsync(string CategoryTreeID, string query)
+        public async Task<CategorySuggestionsList> GetCategorySuggestions(string CategoryTreeID, string query)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeID, query)}";
-            return await new RequestExecuter().ExecuteGetRequestAsync<CategorySuggestionsResponse>(requestUrl, $"Bearer {accessToken}");
+            return await new RequestExecuter().ExecuteGetRequest<CategorySuggestionsList>(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task<CategoryTreeResponse> GetCategoryTreeAsync(string CategoryTreeID)
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeID)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeID)}";
-            return await new RequestExecuter().ExecuteGetRequestAsync<CategoryTreeResponse>(requestUrl, $"Bearer {accessToken}");
+            return await new RequestExecuter().ExecuteGetRequest<CategoryTree>(requestUrl, $"Bearer {accessToken}");
         }
     }
 }

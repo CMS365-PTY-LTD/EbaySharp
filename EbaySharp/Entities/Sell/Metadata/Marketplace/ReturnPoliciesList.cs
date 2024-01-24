@@ -1,6 +1,6 @@
 ﻿namespace EbaySharp.Entities.Sell.Metadata.Marketplace
 {
-    public class ReturnPoliciesResponse
+    public class ReturnPoliciesList
     {
         public ReturnPolicy[] ReturnPolicies { get; set; }
     }

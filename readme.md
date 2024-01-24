@@ -73,11 +73,11 @@ Log in with your store user ID and password and you will be redirected to the fo
 
 Copy the URL of the thank you page and assign it to a variable called "secureURL" and execute the following function.
 ```C#
-public async Task<string> GetRefreshTokenAsync()
+public async Task<string> GetRefreshToken()
 {
     string secureURL="replace with the URL of the thank you page";
-    EbaySharp.Controllers.IDentityController IDentityController = new EbaySharp.Controllers.IDentityController();
-    string refreshToken = await IDentityController.GetRefreshTokenAsync(ReplaceYourClientID, ReplaceYourClientSecret, 
+    EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IDentityController();
+    string refreshToken = await IdentityController.GetRefreshToken(ReplaceYourClientID, ReplaceYourClientSecret, 
         , secureURL, Replace with RU);
 }
 ```
@@ -85,8 +85,8 @@ public async Task<string> GetRefreshTokenAsync()
 This method returns a refresh token which is valID for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
-IDentityController IDentityController=new IDentityController();
-var clientCredentials = await IDentityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
+IdentityController identityController=new IdentityController();
+var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
 ```
 This method now gives you ClientCredentialsResponse object which contains an access token.
 
@@ -118,7 +118,7 @@ BulkMigrateListingRequest bulkMigrateListingRequest = new BulkMigrateListingRequ
     }
 });
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrateAsync(bulkMigrateListingRequest);
+BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrate(bulkMigrateListingRequest);
 
 ```
 #### Inventory item
@@ -128,7 +128,7 @@ You can get list of existing items, you need to pass limit (default is 25 and ma
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-InventoryItemsResponse bulkMigrateListingResponse = await ebayController.GetInventoryItems(limit, offset);
+InventoryItemsList inventoryItemsList = await ebayController.GetInventoryItems(limit, offset);
 
 ```
 ##### Get inventory item
@@ -137,7 +137,7 @@ You can get an item based on a SKU. You can find more detail [here](https://deve
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-InventoryItemResponse inventoryItemResponse = await ebayController.GetInventoryItem(SKU);
+InventoryItem inventoryItem = await ebayController.GetInventoryItem(SKU);
 
 ```
 ##### Delete inventory item
@@ -156,7 +156,16 @@ You can get offers based on a SKU. You can find more detail [here](https://devel
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-OffersResponse offersResponse = await ebayController.GetOffers(SKU);
+OffersList offersList = await ebayController.GetOffers(SKU);
+
+```
+##### Get offer
+You can get a single offer based on an offer ID. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Offer offer = await ebayController.GetOffer(offerID);
 
 ```
 
@@ -164,13 +173,10 @@ OffersResponse offersResponse = await ebayController.GetOffers(SKU);
 You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
 #### Marketplace
 ##### Get return policies
-
-```C#
-ReturnPoliciesResponse returnPoliciesResponse = await ebayController.GetReturnPoliciesAsync("EBAY_US");
-```
-
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
-
+```C#
+ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("EBAY_US");
+```
 ## Commerce
 
 ### Taxonomy
@@ -179,28 +185,19 @@ You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-doc
 #### Category Tree
 
 ##### Get default category tree ID
-
-```C#
-CategoryTreeIDResponse categoryTreeIDResponse = await ebayController.GetDefaultCategoryTreeIDAsync("EBAY_US");
-```
-
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
-
+```C#
+CategoryTreeID categoryTreeID = await ebayController.GetDefaultCategoryTreeID("EBAY_US");
+```
 #### Get category suggestions
-
-```C#
-CategorySuggestionsResponse categorySuggestionsResponse = await ebayController.GetCategorySuggestionsAsync(15, "I am a table, look for me");
-```
-
 You need to pass a Category Tree ID and the product title you are searching categories for.
-
-#### Get category tree
-
 ```C#
-CategoryTreeResponse categorySuggestionsResponse = await ebayController.GetCategoryTreeAsync(15);
+CategorySuggestionsList categorySuggestionsList = await ebayController.GetCategorySuggestions(15, "I am a table, look for me");
 ```
-
+#### Get category tree
 You need to pass a Category Tree ID.
-
+```C#
+CategoryTree categoryTree = await ebayController.GetCategoryTree(15);
+```
 
 

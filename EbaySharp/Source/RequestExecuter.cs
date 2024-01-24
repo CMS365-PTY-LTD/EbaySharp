@@ -4,7 +4,7 @@ namespace EbaySharp.Source
 {
     internal class RequestExecuter
     {
-        private async Task<HttpResponseMessage> executeRequestAsync(HttpMethod httpMethod, string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload)
+        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload)
         {
             var client = Helpers.GetHttpClient();
             var request = new HttpRequestMessage(httpMethod, requestUrl);
@@ -22,9 +22,9 @@ namespace EbaySharp.Source
             var response = await client.SendAsync(request);
             return response;
         }
-        public async Task<T> ExecuteGetRequestAsync<T>(string requestUrl, string authHeaderValue)
+        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authHeaderValue)
         {
-            HttpResponseMessage response = await executeRequestAsync(HttpMethod.Get, requestUrl, authHeaderValue, null, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authHeaderValue, null, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -36,18 +36,18 @@ namespace EbaySharp.Source
             }
             throw new Exception(responseContent);
         }
-        public async Task ExecuteDeleteRequestAsync<T>(string requestUrl, string authHeaderValue)
+        public async Task ExecuteDeleteRequest(string requestUrl, string authHeaderValue)
         {
-            HttpResponseMessage response = await executeRequestAsync(HttpMethod.Delete, requestUrl, authHeaderValue, null, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Delete, requestUrl, authHeaderValue, null, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode==false)
             {
                 throw new Exception(responseContent);
             }
         }
-        public async Task<T> ExecutePostRequestAsync<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {
-            HttpResponseMessage response = await executeRequestAsync(HttpMethod.Post, requestUrl, authHeaderValue, keyValuePayload, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, keyValuePayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -55,9 +55,9 @@ namespace EbaySharp.Source
             }
             throw new Exception(responseContent);
         }
-        public async Task<T> ExecutePostRequestAsync<T>(string requestUrl, string authHeaderValue, string? JSONPayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload)
         {
-            HttpResponseMessage response = await executeRequestAsync(HttpMethod.Post, requestUrl, authHeaderValue, null, JSONPayload);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, null, JSONPayload);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
