@@ -55,6 +55,15 @@ namespace EbaySharp.Source
             }
             throw new Exception(responseContent);
         }
+        public async Task ExecutePostRequest(string requestUrl, string authHeaderValue, string JSONPayload)
+        {
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, null, JSONPayload);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode==false)
+            {
+                throw new Exception(responseContent);
+            }
+        }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, null, JSONPayload);

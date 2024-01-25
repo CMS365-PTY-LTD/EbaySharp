@@ -46,7 +46,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\Common\" />
     <Folder Include="Entities\Sell\Account\" />
     <Folder Include="Screenshots\" />
     <Folder Include="Wiki\" />

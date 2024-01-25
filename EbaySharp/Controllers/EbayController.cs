@@ -75,6 +75,10 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetInventoryLocation(merchantLocationKey);
         }
+        public async Task CreateInventoryLocation(InventoryLocation inventoryLocation)
+        {
+            await new InventoryController(accessToken).CreateInventoryLocation(inventoryLocation);
+        }
 
         #endregion
     }
