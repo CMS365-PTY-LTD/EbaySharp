@@ -2,7 +2,7 @@
 
 namespace EbaySharp.Entities.Identity
 {
-    public class ClientCredentialsResponse
+    public class ClientCredentials
     {
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }

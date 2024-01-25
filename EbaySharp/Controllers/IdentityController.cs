@@ -18,10 +18,10 @@ namespace EbaySharp.Controllers
                 new("grant_type", "authorization_code"),
                 new("code",HttpUtility.UrlDecode(parsed["code"]))
             };
-            ClientCredentialsResponse clientCredentialsResponse = await new RequestExecuter().ExecutePostRequest<ClientCredentialsResponse>(requestUrl, $"Basic {authorizationCode}", collection);
+            ClientCredentials clientCredentialsResponse = await new RequestExecuter().ExecutePostRequest<ClientCredentials>(requestUrl, $"Basic {authorizationCode}", collection);
             return clientCredentialsResponse.RefreshToken;
         }
-        public async Task<ClientCredentialsResponse> GetClientCredentials(string clinetID, string clientSecret, string refreshToken, string scope)
+        public async Task<ClientCredentials> GetClientCredentials(string clinetID, string clientSecret, string refreshToken, string scope)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
             string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetID}:{clientSecret}"));
@@ -31,7 +31,7 @@ namespace EbaySharp.Controllers
                 new("refresh_token",refreshToken),
                 new("scope", scope)
             };
-            return await new RequestExecuter().ExecutePostRequest<ClientCredentialsResponse>(requestUrl, $"Basic {authorizationCode}", collection);
+            return await new RequestExecuter().ExecutePostRequest<ClientCredentials>(requestUrl, $"Basic {authorizationCode}", collection);
         }
     }
 }

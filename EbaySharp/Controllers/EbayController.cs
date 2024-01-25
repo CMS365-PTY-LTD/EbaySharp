@@ -17,15 +17,15 @@ namespace EbaySharp.Controllers
 
         #region TAXONOMY 
 
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeIDAsync(string MarketplaceID)
+        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(string MarketplaceID)
         {
             return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(MarketplaceID);
         }
-        public async Task<CategorySuggestions> GetCategorySuggestionsAsync(string CategoryTreeID, string query)
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeID, string query)
         {
             return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeID, query);
         }
-        public async Task<CategoryTree> GetCategoryTreeAsync(string CategoryTreeID)
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeID)
         {
             return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeID);
         }
@@ -43,7 +43,7 @@ namespace EbaySharp.Controllers
 
         #region INVENTORY 
 
-        public async Task<BulkMigrateListingResponse> BulkMigrateAsync(BulkMigrateListingRequest bulkMigrateListingRequest)
+        public async Task<BulkMigrateListingResponse> BulkMigrate(BulkMigrateListingRequest bulkMigrateListingRequest)
         {
             return await new InventoryController(accessToken).BulkMigrate(bulkMigrateListingRequest);
         }

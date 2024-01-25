@@ -1,8 +1,11 @@
-﻿namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
+﻿using Newtonsoft.Json;
+
+namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
 {
     public class InventoryItems
     {
         public string Href { get; set; }
+        [JsonProperty("inventoryItems")]
         public List<InventoryItem> InventoryItemsList { get; set; }
         public string Limit { get; set; }
         public string Next { get; set; }
