@@ -15,10 +15,10 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
             return await new RequestExecuter().ExecuteGetRequest<CategoryTreeID>(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task<CategorySuggestionsList> GetCategorySuggestions(string CategoryTreeID, string query)
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeID, string query)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeID, query)}";
-            return await new RequestExecuter().ExecuteGetRequest<CategorySuggestionsList>(requestUrl, $"Bearer {accessToken}");
+            return await new RequestExecuter().ExecuteGetRequest<CategorySuggestions>(requestUrl, $"Bearer {accessToken}");
         }
         public async Task<CategoryTree> GetCategoryTree(string CategoryTreeID)
         {

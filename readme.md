@@ -121,9 +121,9 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrate(bulkMigrateListingRequest);
 
 ```
-#### Inventory item
+#### Inventory Item
 ##### Get inventory items
-You can get list of existing items, you need to pass limit (default is 25 and max is 200) and offset (default for first page is 0). You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
 
 ```C#
 
@@ -132,7 +132,7 @@ InventoryItemsList inventoryItemsList = await ebayController.GetInventoryItems(l
 
 ```
 ##### Get inventory item
-You can get an item based on a SKU. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
 
 ```C#
 
@@ -141,7 +141,7 @@ InventoryItem inventoryItem = await ebayController.GetInventoryItem(SKU);
 
 ```
 ##### Delete inventory item
-You can delete an item based on a SKU. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/deleteInventoryItem)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/deleteInventoryItem)
 
 ```C#
 
@@ -151,7 +151,7 @@ await ebayController.DeleteInventoryItem(SKU);
 ```
 #### Offer
 ##### Get offers
-You can get offers based on a SKU. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
 
 ```C#
 
@@ -160,12 +160,31 @@ OffersList offersList = await ebayController.GetOffers(SKU);
 
 ```
 ##### Get offer
-You can get a single offer based on an offer ID. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffer)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffer)
 
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Offer offer = await ebayController.GetOffer(offerID);
+
+```
+#### Inventory Location
+##### Get inventory locations
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/getInventoryLocations)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+InventoryLocations inventoryLocations = await ebayController.GetInventoryLocations(limit, offset);
+
+```
+##### Get inventory location
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/getInventoryLocation)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+InventoryLocation inventoryLocation = await ebayController.GetInventoryLocation(merchantLocationKey);
 
 ```
 

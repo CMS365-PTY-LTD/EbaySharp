@@ -6,7 +6,7 @@ namespace EbaySharp.Source
     {
         private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload)
         {
-            var client = Helpers.GetHttpClient();
+            var client = new HttpClient();
             var request = new HttpRequestMessage(httpMethod, requestUrl);
             request.Headers.Add("Authorization", authHeaderValue);
             if (keyValuePayload!=null)

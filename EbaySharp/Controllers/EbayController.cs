@@ -1,5 +1,6 @@
 ﻿using EbaySharp.Entities.Sell.Inventory.InventoryItem;
 using EbaySharp.Entities.Sell.Inventory.Listing;
+using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
 using EbaySharp.Entities.Taxonomy;
@@ -20,7 +21,7 @@ namespace EbaySharp.Controllers
         {
             return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(MarketplaceID);
         }
-        public async Task<CategorySuggestionsList> GetCategorySuggestionsAsync(string CategoryTreeID, string query)
+        public async Task<CategorySuggestions> GetCategorySuggestionsAsync(string CategoryTreeID, string query)
         {
             return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeID, query);
         }
@@ -33,7 +34,7 @@ namespace EbaySharp.Controllers
 
         #region METADATA 
 
-        public async Task<ReturnPoliciesList> GetReturnPoliciesAsync(string MarketplaceID)
+        public async Task<ReturnPolicies> GetReturnPoliciesAsync(string MarketplaceID)
         {
             return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceID);
         }
@@ -46,7 +47,7 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).BulkMigrate(bulkMigrateListingRequest);
         }
-        public async Task<InventoryItemsList> GetInventoryItems(int limit, int offset)
+        public async Task<InventoryItems> GetInventoryItems(int limit, int offset)
         {
             return await new InventoryController(accessToken).GetInventoryItems(limit, offset);
         }
@@ -54,7 +55,7 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetInventoryItem(SKU);
         }
-        public async Task<OffersList> GetOffers(string SKU)
+        public async Task<Offers> GetOffers(string SKU)
         {
             return await new InventoryController(accessToken).GetOffers(SKU);
         }
@@ -65,6 +66,14 @@ namespace EbaySharp.Controllers
         public async Task DeleteInventoryItem(string SKU)
         {
             await new InventoryController(accessToken).DeleteInventoryItem(SKU);
+        }
+        public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset)
+        {
+            return await new InventoryController(accessToken).GetInventoryLocations(limit, offset);
+        }
+        public async Task<InventoryLocation> GetInventoryLocation(string merchantLocationKey)
+        {
+            return await new InventoryController(accessToken).GetInventoryLocation(merchantLocationKey);
         }
 
         #endregion
