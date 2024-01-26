@@ -1,6 +1,4 @@
 ﻿using EbaySharp.Entities.Common;
-using Newtonsoft.Json.Converters;
-using System.Text.Json.Serialization;
 
 namespace EbaySharp.Entities.Sell.Inventory.Location
 {

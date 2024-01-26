@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace EbaySharp.Entities.Sell.Inventory.Offer
 {
@@ -7,7 +7,7 @@ namespace EbaySharp.Entities.Sell.Inventory.Offer
         public string Href { get; set; }
         public string Limit { get; set; }
         public string Next { get; set; }
-        [JsonProperty("offers")]
+        [JsonPropertyName("offers")]
         public List<Offer> OffersList { get; set; }
         public string Prev { get; set; }
         public string Size { get; set; }

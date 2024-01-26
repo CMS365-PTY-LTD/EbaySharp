@@ -1,12 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace EbaySharp.Entities.Taxonomy
 {
     public class CategoryTreeID
     {
-        [JsonProperty("categoryTreeID")]
+        [JsonPropertyName("categoryTreeId")]
         public string TreeID { get; set; }
-        [JsonProperty("categoryTreeVersion")]
-        public string TreeVersion { get; set; }
+        public string CategoryTreeVersion { get; set; }
     }
 }

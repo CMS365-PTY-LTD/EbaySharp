@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json;
 
 namespace EbaySharp.Source
 {
@@ -32,7 +32,7 @@ namespace EbaySharp.Source
                 {
                     throw new Exception("No content found.");
                 }
-                return JsonConvert.DeserializeObject<T>(responseContent);
+                return JsonSerializer.Deserialize<T>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             }
             throw new Exception(responseContent);
         }
@@ -51,7 +51,7 @@ namespace EbaySharp.Source
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<T>(responseContent);
+                return JsonSerializer.Deserialize<T>(responseContent);
             }
             throw new Exception(responseContent);
         }
@@ -70,7 +70,7 @@ namespace EbaySharp.Source
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                return JsonConvert.DeserializeObject<T>(responseContent);
+                return JsonSerializer.Deserialize<T>(responseContent);
             }
             throw new Exception(responseContent);
         }

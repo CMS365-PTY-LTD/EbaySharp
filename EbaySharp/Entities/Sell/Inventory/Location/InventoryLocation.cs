@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace EbaySharp.Entities.Sell.Inventory.Location
+﻿namespace EbaySharp.Entities.Sell.Inventory.Location
 {
     public class InventoryLocation
     {

@@ -5,9 +5,7 @@ using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Source;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System.Collections.Generic;
+using System.Text.Json;
 
 namespace EbaySharp.Controllers
 {
@@ -21,7 +19,7 @@ namespace EbaySharp.Controllers
         public async Task<BulkMigrateListingResponse> BulkMigrate(BulkMigrateListingRequest bulkMigrateRequest)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{Constants.SELL.INVENTORY.METHODS.BULK_MIGRATE_LISTING}";
-            return await new RequestExecuter().ExecutePostRequest<BulkMigrateListingResponse>(requestUrl, $"Bearer {accessToken}", JsonConvert.SerializeObject(bulkMigrateRequest));
+            return await new RequestExecuter().ExecutePostRequest<BulkMigrateListingResponse>(requestUrl, $"Bearer {accessToken}", JsonSerializer.Serialize(bulkMigrateRequest));
         }
         
         public async Task<InventoryItems> GetInventoryItems(int limit, int offset)
@@ -62,13 +60,11 @@ namespace EbaySharp.Controllers
         public async Task CreateInventoryLocation(InventoryLocation inventoryLocation)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.LOCATION, inventoryLocation.MerchantLocationKey)}";
-            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", JsonConvert.SerializeObject(inventoryLocation,
-                            Newtonsoft.Json.Formatting.None,
-                            new JsonSerializerSettings
-                            {
-                                NullValueHandling = NullValueHandling.Ignore,
-                                ContractResolver = new CamelCasePropertyNamesContractResolver()
-                            }));
+            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", JsonSerializer.Serialize(inventoryLocation, new JsonSerializerOptions()
+            {
+                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            }));
         }
     }
 }

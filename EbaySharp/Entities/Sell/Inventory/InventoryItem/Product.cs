@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Text.Json.Nodes;
 
 namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
 {
     public class Product
     {
-        public JObject Aspects { get; set; }
+        public JsonNode Aspects { get; set; }
         public string Brand { get; set; }
         public string Description { get; set; }
         public List<string> Ean { get; set; }

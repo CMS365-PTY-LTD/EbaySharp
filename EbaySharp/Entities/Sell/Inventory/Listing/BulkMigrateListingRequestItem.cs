@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace EbaySharp.Entities.Sell.Inventory.Listing
 {
     public class BulkMigrateListingRequestItem
     {
-        [JsonProperty("listingID")]
+        [JsonPropertyName("listingID")]
         public string ListingID { get; set; }
     }
 }
