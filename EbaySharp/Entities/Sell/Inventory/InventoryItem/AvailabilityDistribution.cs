@@ -4,6 +4,6 @@
     {
         public FulfillmentTime FulfillmentTime { get; set; }
         public string MerchantLocationKey { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

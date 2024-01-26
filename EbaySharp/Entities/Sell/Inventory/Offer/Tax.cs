@@ -2,8 +2,8 @@
 {
     public class Tax
     {
-        public string ApplyTax { get; set; }
+        public bool ApplyTax { get; set; }
         public string ThirdPartyTaxCategory { get; set; }
-        public string VatPercentage { get; set; }
+        public int VatPercentage { get; set; }
     }
 }

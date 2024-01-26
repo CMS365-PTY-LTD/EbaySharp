@@ -1,4 +1,5 @@
-﻿using EbaySharp.Entities.Taxonomy;
+﻿using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Taxonomy;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers
@@ -10,7 +11,7 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(string MarketplaceID)
+        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(MarketplaceIdEnum MarketplaceID)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
             return await new RequestExecuter().ExecuteGetRequest<CategoryTreeID>(requestUrl, $"Bearer {accessToken}");

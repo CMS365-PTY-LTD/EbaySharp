@@ -2,7 +2,7 @@
 {
     public class AllocationByFormat
     {
-        public string Auction { get; set; }
-        public string FixedPrice { get; set; }
+        public int Auction { get; set; }
+        public int FixedPrice { get; set; }
     }
 }

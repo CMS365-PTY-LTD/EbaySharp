@@ -4,6 +4,6 @@
     {
         public AllocationByFormat AllocationByFormat { get; set; }
         public List<AvailabilityDistribution> AvailabilityDistributions { get; set; }
-        public string Quantity { get; set; }
+        public int Quantity { get; set; }
     }
 }

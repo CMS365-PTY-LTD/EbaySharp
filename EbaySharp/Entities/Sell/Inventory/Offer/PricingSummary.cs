@@ -7,9 +7,9 @@ namespace EbaySharp.Entities.Sell.Inventory.Offer
         public Amount AuctionReservePrice { get; set; }
         public Amount AuctionStartPrice { get; set; }
         public Amount MinimumAdvertisedPrice { get; set; }
-        public string OriginallySoldForRetailPriceOn { get; set; }
+        public SoldOnEnum OriginallySoldForRetailPriceOn { get; set; }
         public Amount OriginalRetailPrice { get; set; }
         public Amount Price { get; set; }
-        public string PricingVisibility { get; set; }
+        public MinimumAdvertisedPriceHandlingEnum PricingVisibility { get; set; }
     }
 }

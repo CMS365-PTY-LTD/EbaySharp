@@ -1,4 +1,5 @@
-﻿using EbaySharp.Entities.Sell.Inventory.InventoryItem;
+﻿using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Sell.Inventory.InventoryItem;
 using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
@@ -17,7 +18,7 @@ namespace EbaySharp.Controllers
 
         #region TAXONOMY 
 
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(string MarketplaceID)
+        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(MarketplaceIdEnum MarketplaceID)
         {
             return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(MarketplaceID);
         }
@@ -78,6 +79,10 @@ namespace EbaySharp.Controllers
         public async Task CreateInventoryLocation(InventoryLocation inventoryLocation)
         {
             await new InventoryController(accessToken).CreateInventoryLocation(inventoryLocation);
+        }
+        public async Task DeleteInventoryLocation(string merchantLocationKey)
+        {
+            await new InventoryController(accessToken).DeleteInventoryLocation(merchantLocationKey);
         }
 
         #endregion

@@ -42,6 +42,8 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Inventory location](#inventory-locations)
             - [Get inventory locations](#get-inventory-locations)
             - [Get inventory location](#get-inventory-location)
+            - [Create inventory location](#create-inventory-location)
+            - [Delete inventory location](#delete-inventory-location)
         - [Offer](#offer)
             - [Get offers](#get-offers) 
     - [Metadata](#metadata)
@@ -152,25 +154,6 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 await ebayController.DeleteInventoryItem(SKU);
 
 ```
-#### Offer
-##### Get offers
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
-
-```C#
-
-EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-OffersList offersList = await ebayController.GetOffers(SKU);
-
-```
-##### Get offer
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffer)
-
-```C#
-
-EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-Offer offer = await ebayController.GetOffer(offerID);
-
-```
 #### Inventory Location
 ##### Get inventory locations
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/getInventoryLocations)
@@ -190,6 +173,55 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 InventoryLocation inventoryLocation = await ebayController.GetInventoryLocation(merchantLocationKey);
 
 ```
+##### Create inventory location
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/createInventoryLocation)
+
+```C#
+
+await ebayController.CreateInventoryLocation(new InventoryLocation()
+{
+    MerchantLocationKey = merchantLocationKey,
+    LocationTypes = new List<StoreTypeEnum>() { StoreTypeEnum.WAREHOUSE },
+    MerchantLocationStatus = StatusEnum.ENABLED,
+    Location = new Location()
+    {
+        Address = new Address()
+        {
+            PostalCode = "3698",
+            Country = CountryCodeEnum.AU
+        }
+    }
+});
+
+```
+##### Delete inventory location
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/deleteInventoryLocation)
+
+```C#
+
+await ebayController.DeleteInventoryLocation(merchantLocationKey);
+
+```
+#### Offer
+##### Get offers
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+OffersList offersList = await ebayController.GetOffers(SKU);
+
+```
+##### Get offer
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Offer offer = await ebayController.GetOffer(offerID);
+
+```
+
 
 ### Metadata
 You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)

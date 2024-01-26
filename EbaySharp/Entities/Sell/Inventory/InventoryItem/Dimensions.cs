@@ -2,9 +2,9 @@
 {
     public class Dimensions
     {
-        public string Height { get; set; }
-        public string Length { get; set; }
-        public string Unit { get; set; }
-        public string WIDth { get; set; }
+        public float Height { get; set; }
+        public float Length { get; set; }
+        public LengthUnitOfMeasureEnum Unit { get; set; }
+        public float WIDth { get; set; }
     }
 }

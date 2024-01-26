@@ -2,7 +2,7 @@
 {
     public class FulfillmentTime
     {
-        public string Unit { get; set; }
-        public string Value { get; set; }
+        public TimeDurationUnitEnum Unit { get; set; }
+        public int Value { get; set; }
     }
 }

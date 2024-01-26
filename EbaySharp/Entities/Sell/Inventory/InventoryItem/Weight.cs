@@ -2,7 +2,7 @@
 {
     public class Weight
     {
-        public string Unit { get; set; }
-        public string Value { get; set; }
+        public WeightUnitOfMeasureEnum Unit { get; set; }
+        public float Value { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace EbaySharp.Source
 {
@@ -32,7 +33,10 @@ namespace EbaySharp.Source
                 {
                     throw new Exception("No content found.");
                 }
-                return JsonSerializer.Deserialize<T>(responseContent, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                JsonSerializerOptions options = new();
+                options.PropertyNameCaseInsensitive = true;
+                options.Converters.Add(new JsonStringEnumConverter());
+                return JsonSerializer.Deserialize<T>(responseContent, options);
             }
             throw new Exception(responseContent);
         }

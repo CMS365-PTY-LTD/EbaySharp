@@ -66,5 +66,10 @@ namespace EbaySharp.Controllers
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             }));
         }
+        public async Task DeleteInventoryLocation(string merchantLocationKey)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.LOCATION, merchantLocationKey)}";
+            await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
+        }
     }
 }

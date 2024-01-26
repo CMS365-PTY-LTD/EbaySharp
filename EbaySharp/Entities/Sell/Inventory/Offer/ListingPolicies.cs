@@ -3,7 +3,7 @@
     public class ListingPolicies
     {
         public BestOfferTerms BestOfferTerms { get; set; }
-        public string EBayPlusIfEligible { get; set; }
+        public bool EBayPlusIfEligible { get; set; }
         public string FulfillmentPolicyID { get; set; }
         public string PaymentPolicyID { get; set; }
         public List<string> ProductCompliancePolicyIDs { get; set; }

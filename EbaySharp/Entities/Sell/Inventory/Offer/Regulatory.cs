@@ -4,6 +4,6 @@
     {
         public EnergyEfficiencyLabel EnergyEfficiencyLabel { get; set; }
         public Hazmat Hazmat { get; set; }
-        public string RepairScore { get; set; }
+        public int RepairScore { get; set; }
     }
 }

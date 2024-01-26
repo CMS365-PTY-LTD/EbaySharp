@@ -3,7 +3,7 @@
     public class PackageWeightAndSize
     {
         public Dimensions Dimensions { get; set; }
-        public string PackageType { get; set; }
+        public PackageTypeEnum PackageType { get; set; }
         public Weight Weight { get; set; }
     }
 }

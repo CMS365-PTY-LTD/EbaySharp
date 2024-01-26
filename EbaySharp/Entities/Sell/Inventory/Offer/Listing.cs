@@ -3,8 +3,8 @@
     public class Listing
     {
         public string ListingID { get; set; }
-        public string ListingOnHold { get; set; }
-        public string ListingStatus { get; set; }
-        public string SoldQuantity { get; set; }
+        public bool ListingOnHold { get; set; }
+        public ListingStatusEnum ListingStatus { get; set; }
+        public int SoldQuantity { get; set; }
     }
 }

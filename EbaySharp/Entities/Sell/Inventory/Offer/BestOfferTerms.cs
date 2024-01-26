@@ -4,6 +4,6 @@
     {
         public Amount AutoAcceptPrice { get; set; }
         public Amount AutoDeclinePrice { get; set; }
-        public string BestOfferEnabled { get; set; }
+        public bool BestOfferEnabled { get; set; }
     }
 }
