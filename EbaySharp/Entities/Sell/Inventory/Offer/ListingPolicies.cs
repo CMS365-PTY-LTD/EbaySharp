@@ -6,7 +6,7 @@
         public bool EBayPlusIfEligible { get; set; }
         public string FulfillmentPolicyID { get; set; }
         public string PaymentPolicyID { get; set; }
-        public List<string> ProductCompliancePolicyIDs { get; set; }
+        public string[] ProductCompliancePolicyIDs { get; set; }
         public RegionalProductCompliancePolicies RegionalProductCompliancePolicies { get; set; }
         public RegionalTakeBackPolicies RegionalTakeBackPolicies { get; set; }
         public string ReturnPolicyID { get; set; }

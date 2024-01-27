@@ -26,7 +26,7 @@ namespace EbaySharp.Entities.Sell.Inventory.Offer
         public string SecondaryCategoryID { get; set; }
         public string SKU { get; set; }
         public OfferStatusEnum Status { get; set; }
-        public List<string> StoreCategoryNames { get; set; }
+        public string[] StoreCategoryNames { get; set; }
         public Tax Tax { get; set; }
     }
 }

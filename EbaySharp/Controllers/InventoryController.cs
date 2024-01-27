@@ -19,9 +19,8 @@ namespace EbaySharp.Controllers
         public async Task<BulkMigrateListingResponse> BulkMigrate(BulkMigrateListingRequest bulkMigrateRequest)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{Constants.SELL.INVENTORY.METHODS.BULK_MIGRATE_LISTING}";
-            return await new RequestExecuter().ExecutePostRequest<BulkMigrateListingResponse>(requestUrl, $"Bearer {accessToken}", JsonSerializer.Serialize(bulkMigrateRequest));
+            return await new RequestExecuter().ExecutePostRequest<BulkMigrateListingResponse>(requestUrl, $"Bearer {accessToken}", bulkMigrateRequest.SerializeToJson() );
         }
-        
         public async Task<InventoryItems> GetInventoryItems(int limit, int offset)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEMS, limit, offset)}";
@@ -36,6 +35,11 @@ namespace EbaySharp.Controllers
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
             await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
+        }
+        public async Task CreateInventoryItem(string SKU, InventoryItem inventoryItem)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
+            await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", inventoryItem.SerializeToJson(), inventoryItem.Locale);
         }
         public async Task<Offers> GetOffers(string SKU)
         {
@@ -60,11 +64,7 @@ namespace EbaySharp.Controllers
         public async Task CreateInventoryLocation(InventoryLocation inventoryLocation)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.LOCATION, inventoryLocation.MerchantLocationKey)}";
-            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", JsonSerializer.Serialize(inventoryLocation, new JsonSerializerOptions()
-            {
-                DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            }));
+            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", inventoryLocation.SerializeToJson());
         }
         public async Task DeleteInventoryLocation(string merchantLocationKey)
         {

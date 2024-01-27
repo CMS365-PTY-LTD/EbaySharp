@@ -21,7 +21,7 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version |
 | ----------------- | --------------------- |
-| 1.0.X             | Inventory API 1.17.2  |
+| 6.0.X             | Inventory API 1.17.2  |
 |                   | Metadata API v1.7.1   |
 |                   | Taxonomy API v1.0.1   |
 
@@ -38,6 +38,7 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Inventory item](#inventory-item)
             - [Get inventory items](#get-inventory-items)
             - [Get inventory item](#get-inventory-item)
+            - [Create or replace inventory item](#create-or-replace-inventory-item)
             - [Delete inventory item](#delete-inventory-item)
         - [Inventory location](#inventory-locations)
             - [Get inventory locations](#get-inventory-locations)
@@ -45,7 +46,8 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Create inventory location](#create-inventory-location)
             - [Delete inventory location](#delete-inventory-location)
         - [Offer](#offer)
-            - [Get offers](#get-offers) 
+            - [Get offers](#get-offers)
+            - [Get offer](#get-offer)
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
@@ -143,6 +145,35 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 InventoryItem inventoryItem = await ebayController.GetInventoryItem(SKU);
+
+```
+##### Create or replace inventory item
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/createOrReplaceInventoryItem)
+
+```C#
+
+Dictionary<string, string[]> aspects = new Dictionary<string, string[]>
+{
+    { "Brand", new[] { "GoPro" } },
+    { "Type", new[] { "Helmet/Action" } }
+};
+
+await ebayController.CreateInventoryItem("test-sku-api", new InventoryItem()
+{
+    Availability = new Availability() { ShipToLocationAvailability = new ShipToLocationAvailability() { Quantity = 3 } },
+    Condition = ConditionEnum.NEW,
+    Product = new Product()
+    {
+        Title = "Creating from REST API, please don't buy",
+        Description = "I am created by the REST API",
+        Aspects = aspects,
+        Brand = "GoPro",
+        MPN = "CHDHX-401",
+        ImageUrls = new[] { "https://i.ebayimg.com/images/g/OKsAAOSwr2VlsUPx/s-l1600.jpg", "https://i.ebayimg.com/images/g/a9AAAOSw2IVlsUPz/s-l1600.jpg" }
+    },
+    //Find locale information here https://developer.ebay.com/api-docs/static/rest-request-components.html#marketpl
+    Locale = "en-AU"
+});
 
 ```
 ##### Delete inventory item

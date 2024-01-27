@@ -3,8 +3,8 @@
     public class Hazmat
     {
         public string Component { get; set; }
-        public List<string> Pictograms { get; set; }
+        public string[] Pictograms { get; set; }
         public string SignalWord { get; set; }
-        public List<string> Statements { get; set; }
+        public string[] Statements { get; set; }
     }
 }

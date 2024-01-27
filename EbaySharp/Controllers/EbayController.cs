@@ -56,6 +56,10 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetInventoryItem(SKU);
         }
+        public async Task CreateInventoryItem(string SKU, InventoryItem inventoryItem)
+        {
+            await new InventoryController(accessToken).CreateInventoryItem(SKU, inventoryItem);
+        }
         public async Task<Offers> GetOffers(string SKU)
         {
             return await new InventoryController(accessToken).GetOffers(SKU);
