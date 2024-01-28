@@ -5,7 +5,6 @@ using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Source;
-using System.Text.Json;
 
 namespace EbaySharp.Controllers
 {
@@ -36,11 +35,14 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
             await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task CreateInventoryItem(string SKU, InventoryItem inventoryItem)
+        public async Task CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
             await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", inventoryItem.SerializeToJson(), inventoryItem.Locale);
         }
+
+        #region OFFER
+
         public async Task<Offers> GetOffers(string SKU)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFERS, SKU)}";
@@ -51,6 +53,27 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}";
             return await new RequestExecuter().ExecuteGetRequest<Offer>(requestUrl, $"Bearer {accessToken}");
         }
+        public async Task<OfferCreated> CreateOffer(Offer offer, string locale)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{Constants.SELL.INVENTORY.METHODS.CREATE_OFFER}";
+            return await new RequestExecuter().ExecutePostRequest<OfferCreated>(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
+        }
+        public async Task UpdateOffer(string offerID, Offer offer, string locale)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}";
+            await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
+        }
+        public async Task<OfferPublished> PublishOffer(string offerID, string locale)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}/publish";
+            return await new RequestExecuter().ExecutePostRequest<OfferPublished>(requestUrl, $"Bearer {accessToken}", null, locale);
+        }
+
+        #endregion
+
+
+        #region INVENTORY_LOCATION
+
         public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.LOCATIONS, limit, offset)}";
@@ -64,12 +87,14 @@ namespace EbaySharp.Controllers
         public async Task CreateInventoryLocation(InventoryLocation inventoryLocation)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.LOCATION, inventoryLocation.MerchantLocationKey)}";
-            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", inventoryLocation.SerializeToJson());
+            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", inventoryLocation.SerializeToJson(), null);
         }
         public async Task DeleteInventoryLocation(string merchantLocationKey)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.LOCATION, merchantLocationKey)}";
             await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
         }
+
+        #endregion
     }
 }

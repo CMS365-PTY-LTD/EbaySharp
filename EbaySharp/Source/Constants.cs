@@ -28,6 +28,7 @@
                     internal const string INVENTORY_ITEM = "/inventory_item/{0}";
                     internal const string OFFERS = "/offer?sku={0}";
                     internal const string OFFER = "/offer/{0}";
+                    internal const string CREATE_OFFER = "/offer";
                     internal const string LOCATIONS = "/location?limit={0}&offset={1}";
                     internal const string LOCATION = "/location/{0}";
                 }

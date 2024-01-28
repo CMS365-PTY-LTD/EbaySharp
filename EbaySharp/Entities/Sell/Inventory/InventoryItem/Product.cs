@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Nodes;
-
-namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
+﻿namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
 {
     public class Product
     {
@@ -15,6 +13,6 @@ namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
         public string Subtitle { get; set; }
         public string Title { get; set; }
         public string[] UPC { get; set; }
-        public string[] VIDeoIDs { get; set; }
+        public string[] VideoIds { get; set; }
     }
 }

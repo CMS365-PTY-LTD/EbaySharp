@@ -49,9 +49,9 @@
                 throw new Exception(responseContent);
             }
         }
-        private async Task<T> executePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload)
+        private async Task<T> executePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, null, keyValuePayload, JSONPayload);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -59,7 +59,16 @@
             }
             throw new Exception(responseContent);
         }
-        public async Task ExecutePutRequest(string requestUrl, string authHeaderValue, string JSONPayload, string contentLanguage)
+        //private async Task executePostRequest(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
+        //{
+        //    HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
+        //    string responseContent = await response.Content.ReadAsStringAsync();
+        //    if (response.IsSuccessStatusCode==false)
+        //    {
+        //        throw new Exception(responseContent);
+        //    }
+        //}
+        public async Task ExecutePutRequest(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload);
             string responseContent = await response.Content.ReadAsStringAsync();
@@ -68,13 +77,17 @@
                 throw new Exception(responseContent);
             }
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>> keyValuePayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {
-            return await executePostRequest<T>(requestUrl, authHeaderValue, keyValuePayload, null);
+            return await executePostRequest<T>(requestUrl, authHeaderValue, keyValuePayload, null, null);
         }
-        public async Task ExecutePostRequest(string requestUrl, string authHeaderValue, string JSONPayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, null, null, JSONPayload);
+            return await executePostRequest<T>(requestUrl, authHeaderValue, null, JSONPayload, contentLanguage);
+        }
+        public async Task ExecutePostRequest(string requestUrl, string authHeaderValue, string JSONPayload, string? contentLanguage)
+        {
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode==false)
             {
@@ -83,7 +96,7 @@
         }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload)
         {
-            return await executePostRequest<T>(requestUrl, authHeaderValue, null, JSONPayload);
+            return await executePostRequest<T>(requestUrl, authHeaderValue, null, JSONPayload, null);
         }
     }
 }

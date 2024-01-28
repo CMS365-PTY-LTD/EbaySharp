@@ -56,9 +56,9 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetInventoryItem(SKU);
         }
-        public async Task CreateInventoryItem(string SKU, InventoryItem inventoryItem)
+        public async Task CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
         {
-            await new InventoryController(accessToken).CreateInventoryItem(SKU, inventoryItem);
+            await new InventoryController(accessToken).CreateOrReplaceInventoryItem(SKU, inventoryItem);
         }
         public async Task<Offers> GetOffers(string SKU)
         {
@@ -67,6 +67,18 @@ namespace EbaySharp.Controllers
         public async Task<Offer> GetOffer(string offerID)
         {
             return await new InventoryController(accessToken).GetOffer(offerID);
+        }
+        public async Task<OfferCreated>CreateOffer(Offer offer, string locale)
+        {
+            return await new InventoryController(accessToken).CreateOffer(offer, locale);
+        }
+        public async Task UpdateOffer(string offerId, Offer offer, string locale)
+        {
+            await new InventoryController(accessToken).UpdateOffer(offerId, offer, locale);
+        }
+        public async Task<OfferPublished> PublishOffer(string offerId, string locale)
+        {
+            return await new InventoryController(accessToken).PublishOffer(offerId, locale);
         }
         public async Task DeleteInventoryItem(string SKU)
         {

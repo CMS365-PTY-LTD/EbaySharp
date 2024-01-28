@@ -158,7 +158,7 @@ Dictionary<string, string[]> aspects = new Dictionary<string, string[]>
     { "Type", new[] { "Helmet/Action" } }
 };
 
-await ebayController.CreateInventoryItem("test-sku-api", new InventoryItem()
+await ebayController.CreateOrReplaceInventoryItem("test-sku-api", new InventoryItem()
 {
     Availability = new Availability() { ShipToLocationAvailability = new ShipToLocationAvailability() { Quantity = 3 } },
     Condition = ConditionEnum.NEW,
