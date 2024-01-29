@@ -23,7 +23,7 @@ namespace EbaySharp.Entities.Sell.Inventory.Offer
         public int? QuantityLimitPerBuyer { get; set; }
         public Regulatory Regulatory { get; set; }
         public string SecondaryCategoryId { get; set; }
-        public string Sku { get; set; }
+        public string SKU { get; set; }
         public OfferStatusEnum? Status { get; set; }
         public string[] StoreCategoryNames { get; set; }
         public Tax Tax { get; set; }

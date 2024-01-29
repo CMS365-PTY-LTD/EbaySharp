@@ -68,6 +68,11 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}/publish";
             return await new RequestExecuter().ExecutePostRequest<OfferPublished>(requestUrl, $"Bearer {accessToken}", null, locale);
         }
+        public async Task<OfferWithdrawn> WithdrawOffer(string offerID)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}/withdraw";
+            return await new RequestExecuter().ExecutePostRequest<OfferWithdrawn>(requestUrl, $"Bearer {accessToken}", null, null);
+        }
 
         #endregion
 

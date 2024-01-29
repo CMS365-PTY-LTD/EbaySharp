@@ -48,6 +48,10 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Offer](#offer)
             - [Get offers](#get-offers)
             - [Get offer](#get-offer)
+            - [Create offer](#create-offer)
+            - [Update offer](#update-offer)
+            - [Publish offer](#publish-offer)
+            - [Withdraw offer](#withdraw-offer)
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
@@ -252,7 +256,63 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 Offer offer = await ebayController.GetOffer(offerID);
 
 ```
+##### Create offer
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/createOffer)
 
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Offer offer = new Offer()
+{
+    Sku = SKU,
+    MarketplaceId = MarketplaceEnum.EBAY_AU,
+    Format = FormatTypeEnum.FIXED_PRICE,
+    PricingSummary = new PricingSummary()
+    {
+        Price = new Amount()
+        {
+            Currency = "AUD",
+            Value = "75"
+        }
+    },
+    MerchantLocationKey = inventoryLocation.MerchantLocationKey,
+    CategoryId = "162480",
+    ListingPolicies = new ListingPolicies()
+    {
+        FulfillmentPolicyId = "ReplaceYourFulfillmentPolicyId",
+        PaymentPolicyId = "ReplaceYourPaymentPolicyId",
+        ReturnPolicyId = "ReplaceYourReturnPolicyId"
+    }
+};
+OfferCreated offerCreated = await ebayController.CreateOffer(offer, "en-AU");
+
+```
+##### Update offer
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/updateOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Offer offer = await ebayController.GetOffer(offerId);
+offer.PricingSummary.Price.Value = "100";
+await ebayController.UpdateOffer(offerId, offer, "en-AU");
+```
+##### Publish offer
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/publishOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+OfferPublished offerPublished = await ebayController.PublishOffer(offerId, "en-AU");
+```
+##### Withdraw offer
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/withdrawOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+OfferWithdrawn offerWithdrawn = await ebayController.WithdrawOffer(offerId);
+```
 
 ### Metadata
 You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)

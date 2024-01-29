@@ -19,7 +19,7 @@
                 var content = new StringContent(JSONPayload, null, "application/json");
                 if (string.IsNullOrEmpty(contentLanguageHeaderValue) == false)
                 {
-                    content.Headers.Add("Content-Language", contentLanguageHeaderValue);
+                    content.Headers.Add("Content-Language", contentLanguageHeaderValue.Replace("_", "-"));
                 }
                 request.Content = content;
             }

@@ -80,6 +80,10 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).PublishOffer(offerId, locale);
         }
+        public async Task<OfferWithdrawn> WithdrawOffer(string offerId)
+        {
+            return await new InventoryController(accessToken).WithdrawOffer(offerId);
+        }
         public async Task DeleteInventoryItem(string SKU)
         {
             await new InventoryController(accessToken).DeleteInventoryItem(SKU);

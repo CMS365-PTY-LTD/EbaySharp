@@ -4,7 +4,7 @@
     {
         public string Category { get; set; }
         public string Domain { get; set; }
-        public string ErrorID { get; set; }
+        public int ErrorId { get; set; }
         public string[] InputRefIDs { get; set; }
         public string LongMessage { get; set; }
         public string Message { get; set; }
