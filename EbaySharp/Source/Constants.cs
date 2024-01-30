@@ -41,6 +41,18 @@
                     internal const string GET_RETURN_POLICIES = "/marketplace/{0}/get_return_policies";
                 }
             }
+            internal struct FULFILLEMENT
+            {
+                internal const string ENDPOINT_URL = "/sell/fulfillment/v1";
+                internal struct ORDER
+                {
+                    internal const string ENDPOINT_URL = "/order";
+                    internal struct METHODS
+                    {
+                        internal const string GET_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
+                    }
+                }
+            }
         }
         internal struct IDENTITY
         {

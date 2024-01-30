@@ -15,11 +15,17 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
+
+        #region LISTING
         public async Task<BulkMigrateListingResponse> BulkMigrate(BulkMigrateListingRequest bulkMigrateRequest)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{Constants.SELL.INVENTORY.METHODS.BULK_MIGRATE_LISTING}";
-            return await new RequestExecuter().ExecutePostRequest<BulkMigrateListingResponse>(requestUrl, $"Bearer {accessToken}", bulkMigrateRequest.SerializeToJson() );
+            return await new RequestExecuter().ExecutePostRequest<BulkMigrateListingResponse>(requestUrl, $"Bearer {accessToken}", bulkMigrateRequest.SerializeToJson());
         }
+
+        #endregion
+
+        #region INVENTORY_ITEM
         public async Task<InventoryItems> GetInventoryItems(int limit, int offset)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEMS, limit, offset)}";
@@ -40,6 +46,8 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
             await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", inventoryItem.SerializeToJson(), inventoryItem.Locale);
         }
+
+        #endregion
 
         #region OFFER
 
@@ -75,8 +83,7 @@ namespace EbaySharp.Controllers
         }
 
         #endregion
-
-
+        
         #region INVENTORY_LOCATION
 
         public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset)

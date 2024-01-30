@@ -1,4 +1,5 @@
 ﻿using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Entities.Sell.Inventory.InventoryItem;
 using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Inventory.Location;
@@ -18,9 +19,9 @@ namespace EbaySharp.Controllers
 
         #region TAXONOMY 
 
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(MarketplaceIdEnum MarketplaceID)
+        public async Task<CategoryTreeID> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
         {
-            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeID(MarketplaceID);
+            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
         }
         public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeID, string query)
         {
@@ -35,19 +36,26 @@ namespace EbaySharp.Controllers
 
         #region METADATA 
 
-        public async Task<ReturnPolicies> GetReturnPoliciesAsync(string MarketplaceID)
+        public async Task<ReturnPolicies> GetReturnPoliciesAsync(string MarketplaceId)
         {
-            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceID);
+            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
         }
 
         #endregion
 
         #region INVENTORY 
 
+        #region LISTING
+
         public async Task<BulkMigrateListingResponse> BulkMigrate(BulkMigrateListingRequest bulkMigrateListingRequest)
         {
             return await new InventoryController(accessToken).BulkMigrate(bulkMigrateListingRequest);
         }
+
+        #endregion
+
+        #region INVENTORY_ITEM
+
         public async Task<InventoryItems> GetInventoryItems(int limit, int offset)
         {
             return await new InventoryController(accessToken).GetInventoryItems(limit, offset);
@@ -60,6 +68,15 @@ namespace EbaySharp.Controllers
         {
             await new InventoryController(accessToken).CreateOrReplaceInventoryItem(SKU, inventoryItem);
         }
+        public async Task DeleteInventoryItem(string SKU)
+        {
+            await new InventoryController(accessToken).DeleteInventoryItem(SKU);
+        }
+
+        #endregion
+
+        #region OFFER
+
         public async Task<Offers> GetOffers(string SKU)
         {
             return await new InventoryController(accessToken).GetOffers(SKU);
@@ -68,7 +85,7 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetOffer(offerID);
         }
-        public async Task<OfferCreated>CreateOffer(Offer offer, string locale)
+        public async Task<OfferCreated> CreateOffer(Offer offer, string locale)
         {
             return await new InventoryController(accessToken).CreateOffer(offer, locale);
         }
@@ -84,10 +101,11 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).WithdrawOffer(offerId);
         }
-        public async Task DeleteInventoryItem(string SKU)
-        {
-            await new InventoryController(accessToken).DeleteInventoryItem(SKU);
-        }
+
+        #endregion
+
+        #region INVENTORY_LOCATION
+
         public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset)
         {
             return await new InventoryController(accessToken).GetInventoryLocations(limit, offset);
@@ -104,6 +122,25 @@ namespace EbaySharp.Controllers
         {
             await new InventoryController(accessToken).DeleteInventoryLocation(merchantLocationKey);
         }
+
+        #endregion
+
+        #endregion
+
+        #region FULFILLMENT
+
+        #region ORDER
+
+        #region SHIPPING_FULFILLEMENT
+
+        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
+        {
+            return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
+        }
+
+        #endregion
+
+        #endregion
 
         #endregion
     }

@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
+﻿namespace EbaySharp.Entities.Common
 {
     public class Parameter
     {

@@ -19,11 +19,12 @@ Install-Package CMS365.EbaySharp
 
 # API support
 
-| EbaySharp version | eBay REST API version |
-| ----------------- | --------------------- |
-| 6.0.X             | Inventory API 1.17.2  |
-|                   | Metadata API v1.7.1   |
-|                   | Taxonomy API v1.0.1   |
+| EbaySharp version | eBay REST API version   |
+| ----------------- | ----------------------- |
+| 6.1.X             | Inventory API 1.17.2    |
+|                   | Metadata API v1.7.1     |
+|                   | Taxonomy API v1.0.1     |
+|                   | Fulfillment API v1.20.3 |
 
 EbaySharp currently supports the following Ebay REST APIs:
 
@@ -52,6 +53,10 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Update offer](#update-offer)
             - [Publish offer](#publish-offer)
             - [Withdraw offer](#withdraw-offer)
+    - [Fulfillment](#fulfillment)
+        - [Order](#order)
+            - [Shipping fulfillment](#shipping-fulfillment)
+                - [Get shipping fulfillment](#get-shipping-fulfillment)
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
@@ -313,6 +318,18 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 OfferWithdrawn offerWithdrawn = await ebayController.WithdrawOffer(offerId);
 ```
+### Fulfillment
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)
+#### Order
+##### Shipping Fulfillment
+###### Get shipping Fulfillments
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/withdrawOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Fulfillments fulfillments = await ebayController.GetShippingFulfillments("Order Number");
+```
 
 ### Metadata
 You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
@@ -332,7 +349,7 @@ You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-doc
 ##### Get default category tree ID
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
-CategoryTreeID categoryTreeID = await ebayController.GetDefaultCategoryTreeID("EBAY_US");
+CategoryTreeID categoryTreeID = await ebayController.GetDefaultCategoryTreeId("EBAY_US");
 ```
 #### Get category suggestions
 You need to pass a Category Tree ID and the product title you are searching categories for.

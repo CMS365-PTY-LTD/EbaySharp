@@ -11,7 +11,7 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeID(MarketplaceIdEnum MarketplaceID)
+        public async Task<CategoryTreeID> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceID)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
             return await new RequestExecuter().ExecuteGetRequest<CategoryTreeID>(requestUrl, $"Bearer {accessToken}");
