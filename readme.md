@@ -2,7 +2,6 @@
 
 [![NuGet version](https://img.shields.io/nuget/v/CMS365.EbaySharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.EbaySharp/)
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/EbaySharp/main.svg?logo=github)
-[![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.EbaySharp.svg?logo=nuget)](https://www.nuget.org/packages/CMS365.EbaySharp/)
 [![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionID=9)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
@@ -21,7 +20,7 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version   |
 | ----------------- | ----------------------- |
-| 6.1.X             | Inventory API v1.17.2   |
+| 6.2.X             | Inventory API v1.17.2   |
 |                   | Metadata API v1.7.1     |
 |                   | Taxonomy API v1.0.1     |
 |                   | Fulfillment API v1.20.3 |
@@ -70,7 +69,7 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Get category tree](#get-category-tree)
   
 
-## Access and Security
+# Access and Security
 
 Create an account here https://developer.ebay.com/my/keys and generate keys for production.
 
@@ -116,14 +115,14 @@ Initialize the instance with the access token.
 EbayController ebayController = new EbayController(clientCredentials.AccessToken);
 ```
 
-## Sell
+# Sell
 
-### Inventory
+## Inventory
 
 You can see a list of Inventory methods [here](https://developer.ebay.com/api-docs/sell/inventory/resources/methods)
-#### Listing
+### Listing
 
-##### Bulk migrate listings
+#### Bulk migrate listings
 If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/listing/methods/bulkMigrateListing)
 
 ```C#
@@ -139,8 +138,8 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrate(bulkMigrateListingRequest);
 
 ```
-#### Inventory Item
-##### Get inventory items
+### Inventory Item
+#### Get inventory items
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
 
 ```C#
@@ -149,7 +148,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 InventoryItemsList inventoryItemsList = await ebayController.GetInventoryItems(limit, offset);
 
 ```
-##### Get inventory item
+#### Get inventory item
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItem)
 
 ```C#
@@ -158,7 +157,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 InventoryItem inventoryItem = await ebayController.GetInventoryItem(SKU);
 
 ```
-##### Create or replace inventory item
+#### Create or replace inventory item
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/createOrReplaceInventoryItem)
 
 ```C#
@@ -187,7 +186,7 @@ await ebayController.CreateOrReplaceInventoryItem("test-sku-api", new InventoryI
 });
 
 ```
-##### Delete inventory item
+#### Delete inventory item
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/deleteInventoryItem)
 
 ```C#
@@ -196,8 +195,8 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 await ebayController.DeleteInventoryItem(SKU);
 
 ```
-#### Inventory Location
-##### Get inventory locations
+### Inventory Location
+#### Get inventory locations
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/getInventoryLocations)
 
 ```C#
@@ -206,7 +205,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 InventoryLocations inventoryLocations = await ebayController.GetInventoryLocations(limit, offset);
 
 ```
-##### Get inventory location
+#### Get inventory location
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/getInventoryLocation)
 
 ```C#
@@ -215,7 +214,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 InventoryLocation inventoryLocation = await ebayController.GetInventoryLocation(merchantLocationKey);
 
 ```
-##### Create inventory location
+#### Create inventory location
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/createInventoryLocation)
 
 ```C#
@@ -236,7 +235,7 @@ await ebayController.CreateInventoryLocation(new InventoryLocation()
 });
 
 ```
-##### Delete inventory location
+#### Delete inventory location
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/deleteInventoryLocation)
 
 ```C#
@@ -244,8 +243,8 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 await ebayController.DeleteInventoryLocation(merchantLocationKey);
 
 ```
-#### Offer
-##### Get offers
+### Offer
+#### Get offers
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffers)
 
 ```C#
@@ -254,7 +253,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 OffersList offersList = await ebayController.GetOffers(SKU);
 
 ```
-##### Get offer
+#### Get offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/getOffer)
 
 ```C#
@@ -263,7 +262,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 Offer offer = await ebayController.GetOffer(offerID);
 
 ```
-##### Create offer
+#### Create offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/createOffer)
 
 ```C#
@@ -294,7 +293,7 @@ Offer offer = new Offer()
 OfferCreated offerCreated = await ebayController.CreateOffer(offer, "en-AU");
 
 ```
-##### Update offer
+#### Update offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/updateOffer)
 
 ```C#
@@ -304,7 +303,7 @@ Offer offer = await ebayController.GetOffer(offerId);
 offer.PricingSummary.Price.Value = "100";
 await ebayController.UpdateOffer(offerId, offer, "en-AU");
 ```
-##### Publish offer
+#### Publish offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/publishOffer)
 
 ```C#
@@ -312,7 +311,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 OfferPublished offerPublished = await ebayController.PublishOffer(offerId, "en-AU");
 ```
-##### Withdraw offer
+#### Withdraw offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/withdrawOffer)
 
 ```C#
@@ -320,7 +319,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 OfferWithdrawn offerWithdrawn = await ebayController.WithdrawOffer(offerId);
 ```
-##### Delete offer
+#### Delete offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/deleteOffer)
 
 ```C#
@@ -328,11 +327,11 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 await ebayController.DeleteOffer(offerId);
 ```
-### Fulfillment
+## Fulfillment
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)
-#### Order
-##### Shipping Fulfillment
-###### Get shipping Fulfillments
+### Order
+#### Shipping Fulfillment
+##### Get shipping Fulfillments
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/withdrawOffer)
 
 ```C#
@@ -340,7 +339,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Fulfillments fulfillments = await ebayController.GetShippingFulfillments("Order Number");
 ```
-##### Get orders
+#### Get orders
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
 
 ```C#
@@ -349,32 +348,32 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 Orders orders = await ebayController.GetOrders(new string[] { "ORDERNUMBER", "ORDERNUMBER" });
 ```
 
-### Metadata
+## Metadata
 You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
-#### Marketplace
-##### Get return policies
+### Marketplace
+#### Get return policies
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
 ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("EBAY_US");
 ```
-## Commerce
+# Commerce
 
-### Taxonomy
+## Taxonomy
 
 You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods)
-#### Category Tree
+### Category Tree
 
-##### Get default category tree ID
+#### Get default category tree ID
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
 CategoryTreeID categoryTreeID = await ebayController.GetDefaultCategoryTreeId("EBAY_US");
 ```
-#### Get category suggestions
+### Get category suggestions
 You need to pass a Category Tree ID and the product title you are searching categories for.
 ```C#
 CategorySuggestionsList categorySuggestionsList = await ebayController.GetCategorySuggestions(15, "I am a table, look for me");
 ```
-#### Get category tree
+### Get category tree
 You need to pass a Category Tree ID.
 ```C#
 CategoryTree categoryTree = await ebayController.GetCategoryTree(15);
