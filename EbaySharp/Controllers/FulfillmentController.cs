@@ -28,6 +28,12 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.FULFILLEMENT.ENDPOINT_URL}{Constants.SELL.FULFILLEMENT.ORDER.ENDPOINT_URL}{string.Format(Constants.SELL.FULFILLEMENT.ORDER.METHODS.GET_ORDERS_BY_ORDER_NUMBERS, string.Join(',', orderNumbers))}";
             return await new RequestExecuter().ExecuteGetRequest<Orders>(requestUrl, $"Bearer {accessToken}");
         }
+        public async Task<Orders> GetOrders(string filter, int limit, int offset)
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.FULFILLEMENT.ENDPOINT_URL}{Constants.SELL.FULFILLEMENT.ORDER.ENDPOINT_URL}" +
+                $"{string.Format(Constants.SELL.FULFILLEMENT.ORDER.METHODS.GET_ORDERS_BY_FILTER, filter, limit, offset)}";
+            return await new RequestExecuter().ExecuteGetRequest<Orders>(requestUrl, $"Bearer {accessToken}");
+        }
 
         #endregion
 

@@ -57,7 +57,8 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Order](#order)
             - [Shipping fulfillment](#shipping-fulfillment)
                 - [Get shipping fulfillment](#get-shipping-fulfillment)
-            - [Get orders](#get-orders)
+            - [Get orders by order numbers](#get-orders-by-order-numbers)
+            - [Get orders by filter](#get-orders-by-filter)
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
@@ -339,13 +340,26 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Fulfillments fulfillments = await ebayController.GetShippingFulfillments("Order Number");
 ```
-#### Get orders
+#### Get orders by order numbers
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
 
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Orders orders = await ebayController.GetOrders(new string[] { "ORDERNUMBER", "ORDERNUMBER" });
+```
+#### Get orders by filter
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+string dateRange = $"{(DateTime.UtcNow.AddDays(-10).ToString("yyyy-MM-ddThh:mm:00.0Z"))}..{(DateTime.UtcNow.ToString("yyyy-MM-ddThh:mm:00.0Z"))}";
+Orders orders = await ebayController.GetOrders($"creationdate:[{dateRange}]",50);
+or
+orders = await ebayController.GetOrders($"lastmodifieddate:[{dateRange}]");
+or
+orders = await ebayController.GetOrders("orderfulfillmentstatus:{NOT_STARTED|IN_PROGRESS}");
 ```
 
 ## Metadata

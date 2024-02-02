@@ -58,7 +58,7 @@
                     internal struct METHODS
                     {
                         internal const string GET_ORDERS_BY_ORDER_NUMBERS = "?orderIds={0}";
-
+                        internal const string GET_ORDERS_BY_FILTER = "?filter={0}&limit={1}&offset={2}";
                     }
                 }
             }

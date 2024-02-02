@@ -149,6 +149,10 @@ namespace EbaySharp.Controllers
         {
             return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
         }
+        public async Task<Orders> GetOrders(string filter, int limit=0, int offset=0)
+        {
+            return await new FulfillmentController(accessToken).GetOrders(filter, limit, offset);
+        }
 
         #endregion
 

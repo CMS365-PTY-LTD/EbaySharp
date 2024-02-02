@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Sell.Fulfillment
+﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
     public enum CollectionMethodEnum
     {
