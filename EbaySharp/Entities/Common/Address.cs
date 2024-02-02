@@ -1,6 +1,4 @@
-﻿using EbaySharp.Entities.Common;
-
-namespace EbaySharp.Entities.Sell.Inventory.Location
+﻿namespace EbaySharp.Entities.Common
 {
     public class Address
     {
@@ -8,6 +6,7 @@ namespace EbaySharp.Entities.Sell.Inventory.Location
         public string AddressLine2 { get; set; }
         public string City { get; set; }
         public CountryCodeEnum? Country { get; set; }
+        public CountryCodeEnum? CountryCode { get; set; }
         public string County { get; set; }
         public string PostalCode { get; set; }
         public string StateOrProvince { get; set; }

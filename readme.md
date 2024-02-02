@@ -21,7 +21,7 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version   |
 | ----------------- | ----------------------- |
-| 6.1.X             | Inventory API 1.17.2    |
+| 6.1.X             | Inventory API v1.17.2   |
 |                   | Metadata API v1.7.1     |
 |                   | Taxonomy API v1.0.1     |
 |                   | Fulfillment API v1.20.3 |
@@ -53,10 +53,12 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Update offer](#update-offer)
             - [Publish offer](#publish-offer)
             - [Withdraw offer](#withdraw-offer)
+            - [Delete offer](#delete-offer)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
             - [Shipping fulfillment](#shipping-fulfillment)
                 - [Get shipping fulfillment](#get-shipping-fulfillment)
+            - [Get orders](#get-orders)
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
@@ -318,6 +320,14 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 OfferWithdrawn offerWithdrawn = await ebayController.WithdrawOffer(offerId);
 ```
+##### Delete offer
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/deleteOffer)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+await ebayController.DeleteOffer(offerId);
+```
 ### Fulfillment
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)
 #### Order
@@ -329,6 +339,14 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Fulfillments fulfillments = await ebayController.GetShippingFulfillments("Order Number");
+```
+##### Get orders
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Orders orders = await ebayController.GetOrders(new string[] { "ORDERNUMBER", "ORDERNUMBER" });
 ```
 
 ### Metadata

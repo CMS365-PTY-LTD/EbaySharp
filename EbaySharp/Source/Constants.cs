@@ -47,9 +47,18 @@
                 internal struct ORDER
                 {
                     internal const string ENDPOINT_URL = "/order";
+                    internal struct SHIPPING_FULFILLEMENT
+                    {
+                        internal struct METHODS
+                        {
+                            internal const string GET_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
+
+                        }
+                    }
                     internal struct METHODS
                     {
-                        internal const string GET_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
+                        internal const string GET_ORDERS_BY_ORDER_NUMBERS = "?orderIds={0}";
+
                     }
                 }
             }

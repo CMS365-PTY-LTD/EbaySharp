@@ -1,4 +1,5 @@
 ﻿using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Sell.Fulfillment.Order;
 using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Entities.Sell.Inventory.InventoryItem;
 using EbaySharp.Entities.Sell.Inventory.Listing;
@@ -36,7 +37,7 @@ namespace EbaySharp.Controllers
 
         #region METADATA 
 
-        public async Task<ReturnPolicies> GetReturnPoliciesAsync(string MarketplaceId)
+        public async Task<ReturnPolicies> GetReturnPolicies(string MarketplaceId)
         {
             return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
         }
@@ -101,6 +102,10 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).WithdrawOffer(offerId);
         }
+        public async Task DeleteOffer(string offerId)
+        {
+            await new InventoryController(accessToken).DeleteOffer(offerId);
+        }
 
         #endregion
 
@@ -139,6 +144,11 @@ namespace EbaySharp.Controllers
         }
 
         #endregion
+
+        public async Task<Orders> GetOrders(string[] orderNumbers)
+        {
+            return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
+        }
 
         #endregion
 

@@ -1,4 +1,6 @@
-﻿namespace EbaySharp.Entities.Sell.Inventory.Offer
+﻿using EbaySharp.Entities.Common;
+
+namespace EbaySharp.Entities.Sell.Inventory.Offer
 {
     public class PricingSummary
     {

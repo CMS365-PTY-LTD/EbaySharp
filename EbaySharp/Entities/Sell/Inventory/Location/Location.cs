@@ -1,4 +1,6 @@
-﻿namespace EbaySharp.Entities.Sell.Inventory.Location
+﻿using EbaySharp.Entities.Common;
+
+namespace EbaySharp.Entities.Sell.Inventory.Location
 {
     public class Location
     {
