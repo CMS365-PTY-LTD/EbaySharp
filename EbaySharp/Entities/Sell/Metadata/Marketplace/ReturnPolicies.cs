@@ -2,6 +2,6 @@
 {
     public class ReturnPolicies
     {
-        public ReturnPolicy[] ReturnPoliciesList { get; set; }
+        public ReturnPolicy[] ReturnPolicyList { get; set; }
     }
 }

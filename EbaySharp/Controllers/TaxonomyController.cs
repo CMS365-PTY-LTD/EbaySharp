@@ -1,5 +1,5 @@
-﻿using EbaySharp.Entities.Common;
-using EbaySharp.Entities.Taxonomy;
+﻿using EbaySharp.Entities.Commerce.Taxonomy;
+using EbaySharp.Entities.Common;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

@@ -4,6 +4,7 @@ namespace EbaySharp.Entities.Sell.Inventory.Offer
 {
     public class Offer
     {
+        public int AvailableQuantity { get; set; }
         public string CategoryId { get; set; }
         public Charity Charity { get; set; }
         public ExtendedProducerResponsibility ExtendedProducerResponsibility { get; set; }

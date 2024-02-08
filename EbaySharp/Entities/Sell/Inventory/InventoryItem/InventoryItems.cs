@@ -6,7 +6,7 @@ namespace EbaySharp.Entities.Sell.Inventory.InventoryItem
     {
         public string Href { get; set; }
         [JsonPropertyName("inventoryItems")]
-        public List<InventoryItem> InventoryItemsList { get; set; }
+        public List<InventoryItem> InventoryItemList { get; set; }
         public int Limit { get; set; }
         public string Next { get; set; }
         public string Prev { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Taxonomy
+﻿namespace EbaySharp.Entities.Commerce.Taxonomy
 {
     public class CategoryTreeNodeAncestor
     {

@@ -33,17 +33,17 @@ namespace EbaySharp.Controllers
         }
         public async Task<InventoryItem> GetInventoryItem(string SKU)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, Uri.EscapeDataString(SKU))}";
             return await new RequestExecuter().ExecuteGetRequest<InventoryItem>(requestUrl, $"Bearer {accessToken}");
         }
         public async Task DeleteInventoryItem(string SKU)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, Uri.EscapeDataString(SKU))}";
             await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
         }
         public async Task CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, SKU)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, Uri.EscapeDataString(SKU))}";
             await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", inventoryItem.SerializeToJson(), inventoryItem.Locale);
         }
 
@@ -53,7 +53,7 @@ namespace EbaySharp.Controllers
 
         public async Task<Offers> GetOffers(string SKU)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFERS, SKU)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFERS, Uri.EscapeDataString(SKU))}";
             return await new RequestExecuter().ExecuteGetRequest<Offers>(requestUrl, $"Bearer {accessToken}");
         }
         public async Task<Offer> GetOffer(string offerID)

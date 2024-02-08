@@ -6,7 +6,7 @@ namespace EbaySharp.Entities.Sell.Inventory.Offer
     {
         public string Href { get; set; }
         [JsonPropertyName("offers")]
-        public List<Offer> OffersList { get; set; }
+        public List<Offer> OfferList { get; set; }
         public int Limit { get; set; }
         public string Next { get; set; }
         public string Prev { get; set; }

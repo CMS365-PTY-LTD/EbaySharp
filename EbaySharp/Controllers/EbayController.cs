@@ -1,4 +1,6 @@
-﻿using EbaySharp.Entities.Common;
+﻿using EbaySharp.Entities.Commerce.Taxonomy;
+using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Developer.Analytics.RateLimit;
 using EbaySharp.Entities.Sell.Fulfillment.Order;
 using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Entities.Sell.Inventory.InventoryItem;
@@ -6,7 +8,8 @@ using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
-using EbaySharp.Entities.Taxonomy;
+using EbaySharp.Source;
+using static EbaySharp.Source.Constants.SELL;
 
 namespace EbaySharp.Controllers
 {
@@ -57,7 +60,7 @@ namespace EbaySharp.Controllers
 
         #region INVENTORY_ITEM
 
-        public async Task<InventoryItems> GetInventoryItems(int limit, int offset)
+        public async Task<InventoryItems> GetInventoryItems(int limit=25, int offset = 0)
         {
             return await new InventoryController(accessToken).GetInventoryItems(limit, offset);
         }
@@ -142,6 +145,14 @@ namespace EbaySharp.Controllers
         {
             return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
         }
+        public async Task<Fulfillment> GetShippingFulfillment(string orderId, string fulfillmentId)
+        {
+            return await new FulfillmentController(accessToken).GetShippingFulfillment(orderId, fulfillmentId);
+        }
+        public async Task CreateShippingFulfillment(string orderId, Fulfillment fulfillment)
+        {
+            await new FulfillmentController(accessToken).CreateShippingFulfillment(orderId, fulfillment);
+        }
 
         #endregion
 
@@ -149,12 +160,25 @@ namespace EbaySharp.Controllers
         {
             return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
         }
+        public async Task<Order> GetOrder(string orderNumber)
+        {
+            return await new FulfillmentController(accessToken).GetOrder(orderNumber);
+        }
         public async Task<Orders> GetOrders(string filter, int limit=0, int offset=0)
         {
             return await new FulfillmentController(accessToken).GetOrders(filter, limit, offset);
         }
 
         #endregion
+
+        #endregion
+
+        #region ANALYTICS
+
+        public async Task<RateLimits> GetRateLimits()
+        {
+            return await new AnalyticsController(accessToken).GetRateLimits();
+        }
 
         #endregion
     }

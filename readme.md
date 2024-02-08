@@ -18,12 +18,13 @@ Install-Package CMS365.EbaySharp
 
 # API support
 
-| EbaySharp version | eBay REST API version   |
-| ----------------- | ----------------------- |
-| 6.2.X             | Inventory API v1.17.2   |
-|                   | Metadata API v1.7.1     |
-|                   | Taxonomy API v1.0.1     |
-|                   | Fulfillment API v1.20.3 |
+| EbaySharp version | eBay REST API version     |
+| ----------------- | --------------------------|
+| 6.2.X             | Inventory API v1.17.2     |
+|                   | Fulfillment API v1.20.3   |
+|                   | Metadata API v1.7.1       |
+|                   | Taxonomy API v1.0.1       |
+|                   | Analytics API v1_beta.0.0 |
 
 EbaySharp currently supports the following Ebay REST APIs:
 
@@ -56,6 +57,7 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Fulfillment](#fulfillment)
         - [Order](#order)
             - [Shipping fulfillment](#shipping-fulfillment)
+                - [Get shipping fulfillments](#get-shipping-fulfillments)
                 - [Get shipping fulfillment](#get-shipping-fulfillment)
             - [Get orders by order numbers](#get-orders-by-order-numbers)
             - [Get orders by filter](#get-orders-by-filter)
@@ -68,6 +70,10 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Get default category tree ID](#get-default-category-tree-ID)
             - [Get category suggestions](#get-category-suggestions)
             - [Get category tree](#get-category-tree)
+  - [Developer](#developer)
+    - [Analytics](#analytics)
+        - [Rate Limit](#rate-limit)
+            - [Get rate limits](#get-rate-limits)
   
 
 # Access and Security
@@ -124,6 +130,7 @@ You can see a list of Inventory methods [here](https://developer.ebay.com/api-do
 ### Listing
 
 #### Bulk migrate listings
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/listing/methods/bulkMigrateListing)
 If you have already created your listing using old API (for example .NET C# SDK), you will need to migrate all listing to new REST API. You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/listing/methods/bulkMigrateListing)
 
 ```C#
@@ -220,6 +227,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 
 ```C#
 
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 await ebayController.CreateInventoryLocation(new InventoryLocation()
 {
     MerchantLocationKey = merchantLocationKey,
@@ -240,7 +248,7 @@ await ebayController.CreateInventoryLocation(new InventoryLocation()
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/location/methods/deleteInventoryLocation)
 
 ```C#
-
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 await ebayController.DeleteInventoryLocation(merchantLocationKey);
 
 ```
@@ -333,12 +341,20 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfill
 ### Order
 #### Shipping Fulfillment
 ##### Get shipping Fulfillments
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/withdrawOffer)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/shipping_fulfillment/methods/getShippingFulfillments)
 
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Fulfillments fulfillments = await ebayController.GetShippingFulfillments("Order Number");
+```
+##### Get shipping Fulfillment
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/shipping_fulfillment/methods/getShippingFulfillment)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Fulfillment fulfillment = await ebayController.GetShippingFulfillment("Order Number", "Fulfillment Id);
 ```
 #### Get orders by order numbers
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
@@ -368,6 +384,7 @@ You can see a list of Metadata methods [here](https://developer.ebay.com/api-doc
 #### Get return policies
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("EBAY_US");
 ```
 # Commerce
@@ -378,19 +395,34 @@ You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-doc
 ### Category Tree
 
 #### Get default category tree ID
+You can find more detail [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getDefaultCategoryTreeId)
 You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
 CategoryTreeID categoryTreeID = await ebayController.GetDefaultCategoryTreeId("EBAY_US");
 ```
-### Get category suggestions
+#### Get category suggestions
+You can find more detail [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySuggestions)
 You need to pass a Category Tree ID and the product title you are searching categories for.
 ```C#
 CategorySuggestionsList categorySuggestionsList = await ebayController.GetCategorySuggestions(15, "I am a table, look for me");
 ```
-### Get category tree
+#### Get category tree
+You can find more detail [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getCategoryTree)
 You need to pass a Category Tree ID.
 ```C#
 CategoryTree categoryTree = await ebayController.GetCategoryTree(15);
 ```
+# Developer
 
+## Analytics
+
+You can see a list of Analytics methods [here](https://developer.ebay.com/api-docs/developer/analytics/resources/methods)
+### Rate Limits
+
+#### Get rate limits
+You can find more detail [here](https://developer.ebay.com/api-docs/developer/analytics/resources/rate_limit/methods/getRateLimits)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+RateLimits rateLimits = await ebayController.GetRateLimits();
+```
 

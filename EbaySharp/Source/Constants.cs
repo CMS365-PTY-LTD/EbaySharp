@@ -16,7 +16,7 @@
                 }
             }
         }
-        public struct SELL
+        internal struct SELL
         {
             internal struct INVENTORY
             {
@@ -52,11 +52,14 @@
                         internal struct METHODS
                         {
                             internal const string GET_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
+                            internal const string GET_SHIPPING_FULFILLEMENT = "/{0}/shipping_fulfillment/{1}";
+                            internal const string CREATE_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
 
                         }
                     }
                     internal struct METHODS
                     {
+                        internal const string GET_ORDER = "/{0}";
                         internal const string GET_ORDERS_BY_ORDER_NUMBERS = "?orderIds={0}";
                         internal const string GET_ORDERS_BY_FILTER = "?filter={0}&limit={1}&offset={2}";
                     }
@@ -70,6 +73,19 @@
             {
                 internal const string TOKEN = "/token";
             }
+        }
+        internal struct DEVELOPER
+        {
+            internal const string ENDPOINT_URL = "/developer";
+            internal struct ANALYTICS
+            {
+                internal const string ENDPOINT_URL = "/analytics/v1_beta";
+                internal struct METHODS
+                {
+                    internal const string GET_RATE_LIMITS = "/rate_limit";
+                }
+            }
+            
         }
     }
 }

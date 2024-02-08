@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace EbaySharp.Entities.Taxonomy
+namespace EbaySharp.Entities.Commerce.Taxonomy
 {
     public class CategoryTreeID
     {
