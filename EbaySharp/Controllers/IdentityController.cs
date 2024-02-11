@@ -7,10 +7,10 @@ namespace EbaySharp.Controllers
 {
     public class IdentityController
     {
-        public async Task<string> GetRefreshToken(string clinetID, string clientSecret, string authSuccessPageURL, string RUName)
+        public async Task<string> GetRefreshToken(string clinetId, string clientSecret, string authSuccessPageURL, string RUName)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
-            string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetID}:{clientSecret}"));
+            string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
             var parsed = HttpUtility.ParseQueryString(authSuccessPageURL);
             var collection = new List<KeyValuePair<string, string>>
             {
@@ -21,10 +21,10 @@ namespace EbaySharp.Controllers
             ClientCredentials clientCredentialsResponse = await new RequestExecuter().ExecutePostRequest<ClientCredentials>(requestUrl, $"Basic {authorizationCode}", collection);
             return clientCredentialsResponse.RefreshToken;
         }
-        public async Task<ClientCredentials> GetClientCredentials(string clinetID, string clientSecret, string refreshToken, string scope)
+        public async Task<ClientCredentials> GetClientCredentials(string clinetId, string clientSecret, string refreshToken, string scope)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
-            string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetID}:{clientSecret}"));
+            string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
             var collection = new List<KeyValuePair<string, string>>
             {
                 new("grant_type", "refresh_token"),

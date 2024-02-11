@@ -67,7 +67,7 @@ EbaySharp currently supports the following Ebay REST APIs:
   - [Commerce](#Commerce)
     - [Taxonomy](#taxonomy)
         - [Category Tree](#category-tree)
-            - [Get default category tree ID](#get-default-category-tree-ID)
+            - [Get default category tree Id](#get-default-category-tree-Id)
             - [Get category suggestions](#get-category-suggestions)
             - [Get category tree](#get-category-tree)
   - [Developer](#developer)
@@ -100,18 +100,19 @@ Copy the URL of the thank you page and assign it to a variable called "secureURL
 public async Task<string> GetRefreshToken()
 {
     string secureURL="replace with the URL of the thank you page";
-    EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IDentityController();
-    string refreshToken = await IdentityController.GetRefreshToken(ReplaceYourClientID, ReplaceYourClientSecret, 
+    EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IdentityController();
+    string refreshToken = await IdentityController.GetRefreshToken(ReplaceYourClientId, ReplaceYourClientSecret, 
         , secureURL, Replace with RU);
 }
 ```
 
-This method returns a refresh token which is valID for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
+This method returns a refresh token which is valid for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
 IdentityController identityController=new IdentityController();
-var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientID, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
+var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientId, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
 ```
+Provide scope separated by a space, for example https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly
 This method now gives you ClientCredentialsResponse object which contains an access token.
 
 ## Using the EbaySharp
@@ -138,8 +139,8 @@ BulkMigrateListingRequest bulkMigrateListingRequest = new BulkMigrateListingRequ
 {
     Requests = new BulkMigrateListingRequestItem[]
     {
-        new BulkMigrateListingRequestItem(){ListingID = "21432432432" },
-        new BulkMigrateListingRequestItem(){ListingID = "78658678678" }
+        new BulkMigrateListingRequestItem(){ListingId = "21432432432" },
+        new BulkMigrateListingRequestItem(){ListingId = "78658678678" }
     }
 });
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
@@ -268,7 +269,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-Offer offer = await ebayController.GetOffer(offerID);
+Offer offer = await ebayController.GetOffer(offerId);
 
 ```
 #### Create offer
@@ -279,7 +280,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Offer offer = new Offer()
 {
-    Sku = SKU,
+    SKU = SKU,
     MarketplaceId = MarketplaceEnum.EBAY_AU,
     Format = FormatTypeEnum.FIXED_PRICE,
     PricingSummary = new PricingSummary()
@@ -354,7 +355,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfill
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-Fulfillment fulfillment = await ebayController.GetShippingFulfillment("Order Number", "Fulfillment Id);
+Fulfillment fulfillment = await ebayController.GetShippingFulfillment("Order Number", "Fulfillment Id");
 ```
 #### Get orders by order numbers
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
@@ -382,7 +383,7 @@ orders = await ebayController.GetOrders("orderfulfillmentstatus:{NOT_STARTED|IN_
 You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
 ### Marketplace
 #### Get return policies
-You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
+You need to pass MarketplaceId, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("EBAY_US");
@@ -394,15 +395,15 @@ ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("
 You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods)
 ### Category Tree
 
-#### Get default category tree ID
+#### Get default category tree Id
 You can find more detail [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getDefaultCategoryTreeId)
-You need to pass MarketplaceID, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
+You need to pass MarketplaceId, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
 ```C#
-CategoryTreeID categoryTreeID = await ebayController.GetDefaultCategoryTreeId("EBAY_US");
+CategoryTreeId categoryTreeId = await ebayController.GetDefaultCategoryTreeId("EBAY_US");
 ```
 #### Get category suggestions
 You can find more detail [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySuggestions)
-You need to pass a Category Tree ID and the product title you are searching categories for.
+You need to pass a Category Tree Id and the product title you are searching categories for.
 ```C#
 CategorySuggestionsList categorySuggestionsList = await ebayController.GetCategorySuggestions(15, "I am a table, look for me");
 ```

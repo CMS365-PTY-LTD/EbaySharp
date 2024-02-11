@@ -2,8 +2,8 @@
 {
     public class ReturnPolicy
     {
-        public string CategoryTreeID { get; set; }
-        public string CategoryID { get; set; }
+        public string CategoryTreeId { get; set; }
+        public string CategoryId { get; set; }
         public ReturnPolicyDestination Domestic { get; set; }
         public ReturnPolicyDestination International { get; set; }
     }

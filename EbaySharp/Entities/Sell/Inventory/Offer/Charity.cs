@@ -2,7 +2,7 @@
 {
     public class Charity
     {
-        public string CharityID { get; set; }
+        public string CharityId { get; set; }
         public string DonationPercentage { get; set; }
     }
 }

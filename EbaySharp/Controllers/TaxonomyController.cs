@@ -11,19 +11,19 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceID)
+        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CategoryTreeID, MarketplaceID)}";
-            return await new RequestExecuter().ExecuteGetRequest<CategoryTreeID>(requestUrl, $"Bearer {accessToken}");
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CATEGORY_TREE_ID, MarketplaceId)}";
+            return await new RequestExecuter().ExecuteGetRequest<CategoryTreeId>(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeID, string query)
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeID, query)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeId, query)}";
             return await new RequestExecuter().ExecuteGetRequest<CategorySuggestions>(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeID)
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeID)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeId)}";
             return await new RequestExecuter().ExecuteGetRequest<CategoryTree>(requestUrl, $"Bearer {accessToken}");
         }
     }

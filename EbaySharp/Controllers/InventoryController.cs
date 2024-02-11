@@ -56,9 +56,9 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFERS, Uri.EscapeDataString(SKU))}";
             return await new RequestExecuter().ExecuteGetRequest<Offers>(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task<Offer> GetOffer(string offerID)
+        public async Task<Offer> GetOffer(string offerId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerId)}";
             return await new RequestExecuter().ExecuteGetRequest<Offer>(requestUrl, $"Bearer {accessToken}");
         }
         public async Task<OfferCreated> CreateOffer(Offer offer, string locale)
@@ -66,24 +66,24 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{Constants.SELL.INVENTORY.METHODS.CREATE_OFFER}";
             return await new RequestExecuter().ExecutePostRequest<OfferCreated>(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
         }
-        public async Task UpdateOffer(string offerID, Offer offer, string locale)
+        public async Task UpdateOffer(string offerId, Offer offer, string locale)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerId)}";
             await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
         }
-        public async Task<OfferPublished> PublishOffer(string offerID, string locale)
+        public async Task<OfferPublished> PublishOffer(string offerId, string locale)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}/publish";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerId)}/publish";
             return await new RequestExecuter().ExecutePostRequest<OfferPublished>(requestUrl, $"Bearer {accessToken}", null, locale);
         }
-        public async Task<OfferWithdrawn> WithdrawOffer(string offerID)
+        public async Task<OfferWithdrawn> WithdrawOffer(string offerId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}/withdraw";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerId)}/withdraw";
             return await new RequestExecuter().ExecutePostRequest<OfferWithdrawn>(requestUrl, $"Bearer {accessToken}", null, null);
         }
-        public async Task DeleteOffer(string offerID)
+        public async Task DeleteOffer(string offerId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerID)}";
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerId)}";
             await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
         }
 

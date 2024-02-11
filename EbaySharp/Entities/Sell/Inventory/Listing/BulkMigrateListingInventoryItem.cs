@@ -2,7 +2,7 @@
 {
     public class BulkMigrateListingInventoryItem
     {
-        public string OfferID { get; set; }
+        public string OfferId { get; set; }
         public string SKU { get; set; }
     }
 }

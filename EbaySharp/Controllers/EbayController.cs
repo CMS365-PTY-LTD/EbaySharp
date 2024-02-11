@@ -23,17 +23,17 @@ namespace EbaySharp.Controllers
 
         #region TAXONOMY 
 
-        public async Task<CategoryTreeID> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
+        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
         {
             return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
         }
-        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeID, string query)
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
         {
-            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeID, query);
+            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
         }
-        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeID)
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
         {
-            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeID);
+            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
         }
 
         #endregion
@@ -85,9 +85,9 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetOffers(SKU);
         }
-        public async Task<Offer> GetOffer(string offerID)
+        public async Task<Offer> GetOffer(string offerId)
         {
-            return await new InventoryController(accessToken).GetOffer(offerID);
+            return await new InventoryController(accessToken).GetOffer(offerId);
         }
         public async Task<OfferCreated> CreateOffer(Offer offer, string locale)
         {
