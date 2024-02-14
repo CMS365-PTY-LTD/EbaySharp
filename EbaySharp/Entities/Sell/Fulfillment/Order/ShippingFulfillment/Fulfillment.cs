@@ -1,6 +1,4 @@
-﻿using EbaySharp.Entities.Common;
-
-namespace EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment
+﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment
 {
     public class Fulfillment: Shipment
     {

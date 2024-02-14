@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Common
+﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
     public class Shipment
     {

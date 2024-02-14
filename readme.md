@@ -20,7 +20,7 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version     |
 | ----------------- | --------------------------|
-| 6.2.X             | Inventory API v1.17.2     |
+| 6.3.X             | Inventory API v1.17.2     |
 |                   | Fulfillment API v1.20.3   |
 |                   | Metadata API v1.7.1       |
 |                   | Taxonomy API v1.0.1       |
@@ -59,6 +59,7 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Shipping fulfillment](#shipping-fulfillment)
                 - [Get shipping fulfillments](#get-shipping-fulfillments)
                 - [Get shipping fulfillment](#get-shipping-fulfillment)
+                - [Create shipping fulfillment](#create-shipping-fulfillment)
             - [Get orders by order numbers](#get-orders-by-order-numbers)
             - [Get orders by filter](#get-orders-by-filter)
     - [Metadata](#metadata)
@@ -356,6 +357,35 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfill
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Fulfillment fulfillment = await ebayController.GetShippingFulfillment("Order Number", "Fulfillment Id");
+```
+##### Create shipping Fulfillment
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/shipping_fulfillment/methods/createShippingFulfillment)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+List<EbaySharp.Entities.Sell.Fulfillment.Order.Order> allOrders = new List<EbaySharp.Entities.Sell.Fulfillment.Order.Order>();
+int totalCount = 0;
+do
+{
+    var eBayOrders = await ebayController.GetOrders("orderfulfillmentstatus:{NOT_STARTED|IN_PROGRESS}", 50, totalCount);
+    totalCount = eBayOrders.Total;
+    allOrders.AddRange(eBayOrders.OrderList);
+} while (allOrders.Count < totalCount);
+EbaySharp.Entities.Sell.Fulfillment.Order.Order order = allOrders.Where(x => x.OrderId == orderTracking.OrderNumber).FirstOrDefault();
+
+//Execute the following block in a loop If you have multiple tracking numbers.
+await ebayController.CreateShippingFulfillment("Order Number", new EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment.Fulfillment()
+{
+    LineItems = order.LineItems.Select(x => new EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment.LineItem()
+    {
+        LineItemId = x.LineItemId,
+        Quantity = x.Quantity
+    }).ToList(),
+    TrackingNumber = "Tracking Number",
+    ShippingCarrierCode = "Courier Name",
+    ShippedDate = DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ss.0Z")
+});
 ```
 #### Get orders by order numbers
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/order/methods/getOrders)
