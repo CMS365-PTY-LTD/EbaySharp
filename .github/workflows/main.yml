@@ -2,20 +2,20 @@ name: Action to build and publish the project as a nuget package to github packa
 
 on:
   push:
-    branches: [master]
-      
+    branches: [main]
+
 jobs:
   build:
-    runs-on: ubuntu-latest    
-    outputs: 
+    runs-on: ubuntu-latest
+    outputs:
       Version: ${{ steps.gitversion.outputs.SemVer }}
-      CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }} 
+      CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
 
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0 #fetch-depth is needed for GitVersion
-        
+
     #Install and calculate the new version with GitVersion  
     - name: Install GitVersion
       uses: gittools/actions/gitversion/setup@v0.9.7
@@ -28,9 +28,9 @@ jobs:
       run: |
         echo "Version: ${{ steps.gitversion.outputs.SemVer }}"
         echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
-    
-    #Build/pack the project
+
     - name: Setup .NET
+      #Build/pack the project
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
@@ -40,14 +40,14 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: nugetPackage
-        path: bin/Release/ 
-        
+        path: bin/Release/
+
   release:
-    runs-on: ubuntu-latest    
+    runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/master' # only run job if on the master branch   
-    
-    steps:  
+    if: github.ref == 'refs/heads/main' # only run job if on the main branch   
+
+    steps:
     #Push NuGet package to GitHub packages
     - name: Download nuget package artifact
       uses: actions/download-artifact@v1.0.0
@@ -55,16 +55,16 @@ jobs:
         name: nugetPackage
     - name: Prep packages
       run: dotnet nuget add source --username shafaqat-ali-cms365 --password ${{ secrets.NUGET_PACKAGE_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/yourusername/index.json"
-    - name: Push package to GitHub packages 
+    - name: Push package to GitHub packages
       if: needs.build.outputs.CommitsSinceVersionSource > 0 #Only release if there has been a commit/version change  
       run: dotnet nuget push nugetPackage/*.nupkg --api-key ${{ secrets.NUGET_PACKAGE_TOKEN }}  --source "github"
-    
+
     #Create release
     - name: Create Release
       if: 1 == 0 #needs.build.outputs.CommitsSinceVersionSource > 0 #Only release if there has been a commit/version change
       uses: actions/create-release@v1
       env:
-        GITHUB_TOKEN: ${{ secrets.NUGET_PACKAGE_TOKEN }} 
+        GITHUB_TOKEN: ${{ secrets.NUGET_PACKAGE_TOKEN }}
       with:
         tag_name: ${{ needs.build.outputs.Version }}
         release_name: Release ${{ needs.build.outputs.Version }}
