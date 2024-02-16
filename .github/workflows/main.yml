@@ -35,7 +35,7 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Build and Pack NuGet package
-      run: dotnet pack ../../EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
+      run: dotnet pack /home/runner/work/EbaySharp/EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release
     - name: Upload NuGet package to GitHub
       uses: actions/upload-artifact@v2
       with:
