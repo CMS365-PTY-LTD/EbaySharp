@@ -2,9 +2,9 @@
 
 namespace EbaySharp.Entities.Sell.Inventory.Offer
 {
-    public class OfferPublished
+    public class OfferUpdated
     {
-        public string ListingId { get; set; }
+        public string OfferId { get; set; }
         public Warning[] Warnings { get; set; }
     }
 }

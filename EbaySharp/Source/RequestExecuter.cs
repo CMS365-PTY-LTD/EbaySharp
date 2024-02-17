@@ -68,14 +68,15 @@
         //        throw new Exception(responseContent);
         //    }
         //}
-        public async Task ExecutePutRequest(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
+        public async Task<T?> ExecutePutRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload);
             string responseContent = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode==false)
+            if (response.IsSuccessStatusCode)
             {
-                throw new Exception(responseContent);
+                return string.IsNullOrEmpty(responseContent) == true ? default(T) : responseContent.DeserializeToObject<T>();
             }
+            throw new Exception(responseContent);
         }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {

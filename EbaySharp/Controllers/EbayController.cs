@@ -68,9 +68,9 @@ namespace EbaySharp.Controllers
         {
             return await new InventoryController(accessToken).GetInventoryItem(SKU);
         }
-        public async Task CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
+        public async Task<CreatedOrReplacedInventoryItem> CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
         {
-            await new InventoryController(accessToken).CreateOrReplaceInventoryItem(SKU, inventoryItem);
+            return  await new InventoryController(accessToken).CreateOrReplaceInventoryItem(SKU, inventoryItem);
         }
         public async Task DeleteInventoryItem(string SKU)
         {

@@ -41,10 +41,10 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, Uri.EscapeDataString(SKU))}";
             await new RequestExecuter().ExecuteDeleteRequest(requestUrl, $"Bearer {accessToken}");
         }
-        public async Task CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
+        public async Task<CreatedOrReplacedInventoryItem> CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.INVENTORY_ITEM, Uri.EscapeDataString(SKU))}";
-            await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", inventoryItem.SerializeToJson(), inventoryItem.Locale);
+            return await new RequestExecuter().ExecutePutRequest< CreatedOrReplacedInventoryItem>(requestUrl, $"Bearer {accessToken}", inventoryItem.SerializeToJson(), inventoryItem.Locale);
         }
 
         #endregion
@@ -66,10 +66,10 @@ namespace EbaySharp.Controllers
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{Constants.SELL.INVENTORY.METHODS.CREATE_OFFER}";
             return await new RequestExecuter().ExecutePostRequest<OfferCreated>(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
         }
-        public async Task UpdateOffer(string offerId, Offer offer, string locale)
+        public async Task<OfferUpdated> UpdateOffer(string offerId, Offer offer, string locale)
         {
             string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.INVENTORY.ENDPOINT_URL}{string.Format(Constants.SELL.INVENTORY.METHODS.OFFER, offerId)}";
-            await new RequestExecuter().ExecutePutRequest(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
+            return await new RequestExecuter().ExecutePutRequest<OfferUpdated>(requestUrl, $"Bearer {accessToken}", offer.SerializeToJson(), locale);
         }
         public async Task<OfferPublished> PublishOffer(string offerId, string locale)
         {

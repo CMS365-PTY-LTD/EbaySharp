@@ -20,7 +20,7 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version     |
 | ----------------- | --------------------------|
-| 6.3.X             | Inventory API v1.17.2     |
+| 6.4.X             | Inventory API v1.17.2     |
 |                   | Fulfillment API v1.20.3   |
 |                   | Metadata API v1.7.1       |
 |                   | Taxonomy API v1.0.1       |
@@ -36,6 +36,7 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Inventory](#inventory)
         - [Listing](#listing)
             - [Bulk migrate listings](#bulk-migrate-listings)
+            - [Create a new listing](#create-a-new-listing)
         - [Inventory item](#inventory-item)
             - [Get inventory items](#get-inventory-items)
             - [Get inventory item](#get-inventory-item)
@@ -148,6 +149,58 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.BulkMigrate(bulkMigrateListingRequest);
 
 ```
+#### Create a new listing
+If you want to create a new listing, you will need to perform following 3 steps.
+
+```C#
+
+MarketplaceEnum? marketplaceId = MarketplaceEnum.EBAY_AU (for example)
+CurrencyCodeEnum? CurrencyCodeId = CurrencyCodeEnum.AUD (for example)
+
+
+1 - Create a new inventory item
+
+EbaySharp.Entities.Sell.Inventory.InventoryItem.InventoryItem inventoryItem = new EbaySharp.Entities.Sell.Inventory.InventoryItem.InventoryItem()
+{
+    Condition = ConditionEnum.NEW,
+    Availability = new Availability() { ShipToLocationAvailability = new ShipToLocationAvailability() { Quantity = 3, AllocationByFormat = new AllocationByFormat() { FixedPrice = 3 } } },
+    Product = new EbaySharp.Entities.Sell.Inventory.InventoryItem.Product()
+    {
+        Title = YOUR PRODCT TITLE,
+        Aspects = DICTIONARY OF ASPECTS IN Dictionary<string, string[]> FORMAT,
+        Brand = PRODUCT BRAND,
+        MPN = SKU/MPN,
+        ImageUrls = ARRAY OF IMAGE URLS
+    },
+    Locale = LOCALE OF YOUR STORE
+};
+CreatedOrReplacedInventoryItem createdOrReplacedInventoryItem = await ebayController.CreateOrReplaceInventoryItem(UNIQUE SKU OF THE PRODUCT, inventoryItem);
+
+2 - Create a new offer
+
+OfferCreated offerCreated = await ebayController.CreateOffer(new Offer()
+{
+    SKU = UNIQUE SKU OF THE PRODUC,
+    MarketplaceId = marketplaceId,
+    Format = FormatTypeEnum.FIXED_PRICE,
+    PricingSummary = new PricingSummary() { Price = new EbaySharp.Entities.Common.Amount() { Currency = CurrencyCodeId, Value = Math.Round(YOUR SELLING PRICE, 2).ToString() } },
+    MerchantLocationKey = MerchantLocationKey,
+    CategoryId = CATEGORY ID,
+    ListingPolicies = new ListingPolicies()
+    {
+        FulfillmentPolicyId = fulfillmentPolicyId, // YOU WILL NEED TO FIND THE ID OF YOUR POLICY ID
+        PaymentPolicyId = paymentPolicyId, // YOU WILL NEED TO FIND THE ID OF YOUR POLICY ID
+        ReturnPolicyId = returnPolicyId // YOU WILL NEED TO FIND THE ID OF YOUR POLICY ID
+    },
+    ListingDescription = LONG DESCRIPTION OF THE PRODUCT,
+    AvailableQuantity = quantity // FOR EXAMPLE 2
+}, locale);
+
+3 - Publish offer
+
+OfferPublished offerPublished = await ebayController.PublishOffer(offerCreated.OfferId, LOCALE OF YOUR STORE);
+
+```
 ### Inventory Item
 #### Get inventory items
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
@@ -178,7 +231,7 @@ Dictionary<string, string[]> aspects = new Dictionary<string, string[]>
     { "Type", new[] { "Helmet/Action" } }
 };
 
-await ebayController.CreateOrReplaceInventoryItem("test-sku-api", new InventoryItem()
+CreatedOrReplacedInventoryItem createdOrReplacedInventoryItem = await ebayController.CreateOrReplaceInventoryItem("test-sku-api", new InventoryItem()
 {
     Availability = new Availability() { ShipToLocationAvailability = new ShipToLocationAvailability() { Quantity = 3 } },
     Condition = ConditionEnum.NEW,
@@ -312,7 +365,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Offer offer = await ebayController.GetOffer(offerId);
 offer.PricingSummary.Price.Value = "100";
-await ebayController.UpdateOffer(offerId, offer, "en-AU");
+OfferUpdated offerUpdated = await ebayController.UpdateOffer(offerId, offer, "en-AU");
 ```
 #### Publish offer
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/offer/methods/publishOffer)
