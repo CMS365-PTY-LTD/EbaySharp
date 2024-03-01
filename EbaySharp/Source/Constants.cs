@@ -83,6 +83,7 @@
                 internal struct METHODS
                 {
                     internal const string GET_RATE_LIMITS = "/rate_limit";
+                    internal const string GET_USER_RATE_LIMITS = "/user_rate_limit";
                 }
             }
             

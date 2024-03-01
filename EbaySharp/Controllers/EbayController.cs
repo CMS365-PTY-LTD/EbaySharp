@@ -179,6 +179,10 @@ namespace EbaySharp.Controllers
         {
             return await new AnalyticsController(accessToken).GetRateLimits();
         }
+        public async Task<RateLimits> GetUserRateLimits()
+        {
+            return await new AnalyticsController(accessToken).GetUserRateLimits();
+        }
 
         #endregion
     }

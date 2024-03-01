@@ -21,5 +21,15 @@ namespace EbaySharp.Controllers
         }
 
         #endregion
+
+        #region USER_RATE_LIMIT
+
+        public async Task<RateLimits> GetUserRateLimits()
+        {
+            string requestUrl = $"{Constants.SERVER_URL}{Constants.DEVELOPER.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.METHODS.GET_USER_RATE_LIMITS}";
+            return await new RequestExecuter().ExecuteGetRequest<RateLimits>(requestUrl, $"Bearer {accessToken}");
+        }
+
+        #endregion
     }
 }

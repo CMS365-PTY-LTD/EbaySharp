@@ -37,6 +37,9 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Listing](#listing)
             - [Bulk migrate listings](#bulk-migrate-listings)
             - [Create a new listing](#create-a-new-listing)
+            - [Revise a listing](#revise-a-listing)
+            - [Update an active listing](#update-an-active-listing)
+            - [End a listing](#end-a-listing)
         - [Inventory item](#inventory-item)
             - [Get inventory items](#get-inventory-items)
             - [Get inventory item](#get-inventory-item)
@@ -76,6 +79,7 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Analytics](#analytics)
         - [Rate Limit](#rate-limit)
             - [Get rate limits](#get-rate-limits)
+            - [Get user rate limits](#get-user-rate-limits)
   
 
 # Access and Security
@@ -152,13 +156,11 @@ BulkMigrateListingResponse bulkMigrateListingResponse = await ebayController.Bul
 #### Create a new listing
 If you want to create a new listing, you will need to perform following 3 steps.
 
+1 - Create a new inventory item
 ```C#
 
 MarketplaceEnum? marketplaceId = MarketplaceEnum.EBAY_AU (for example)
 CurrencyCodeEnum? CurrencyCodeId = CurrencyCodeEnum.AUD (for example)
-
-
-1 - Create a new inventory item
 
 EbaySharp.Entities.Sell.Inventory.InventoryItem.InventoryItem inventoryItem = new EbaySharp.Entities.Sell.Inventory.InventoryItem.InventoryItem()
 {
@@ -175,31 +177,68 @@ EbaySharp.Entities.Sell.Inventory.InventoryItem.InventoryItem inventoryItem = ne
     Locale = LOCALE OF YOUR STORE
 };
 CreatedOrReplacedInventoryItem createdOrReplacedInventoryItem = await ebayController.CreateOrReplaceInventoryItem(UNIQUE SKU OF THE PRODUCT, inventoryItem);
-
+```
 2 - Create a new offer
-
-OfferCreated offerCreated = await ebayController.CreateOffer(new Offer()
-{
-    SKU = UNIQUE SKU OF THE PRODUC,
-    MarketplaceId = marketplaceId,
-    Format = FormatTypeEnum.FIXED_PRICE,
-    PricingSummary = new PricingSummary() { Price = new EbaySharp.Entities.Common.Amount() { Currency = CurrencyCodeId, Value = Math.Round(YOUR SELLING PRICE, 2).ToString() } },
-    MerchantLocationKey = MerchantLocationKey,
-    CategoryId = CATEGORY ID,
-    ListingPolicies = new ListingPolicies()
-    {
-        FulfillmentPolicyId = fulfillmentPolicyId, // YOU WILL NEED TO FIND THE ID OF YOUR POLICY ID
-        PaymentPolicyId = paymentPolicyId, // YOU WILL NEED TO FIND THE ID OF YOUR POLICY ID
-        ReturnPolicyId = returnPolicyId // YOU WILL NEED TO FIND THE ID OF YOUR POLICY ID
-    },
-    ListingDescription = LONG DESCRIPTION OF THE PRODUCT,
-    AvailableQuantity = quantity // FOR EXAMPLE 2
-}, locale);
+You can see detail [here](https://github.com/CMS365-PTY-LTD/EbaySharp?tab=readme-ov-file#create-offer) 
 
 3 - Publish offer
+You can see detail [here](https://github.com/CMS365-PTY-LTD/EbaySharp?tab=readme-ov-file#publish-offer)
+#### Revise a listing
+If you want to revise a listing, you will need to perform following 4 steps.
 
-OfferPublished offerPublished = await ebayController.PublishOffer(offerCreated.OfferId, LOCALE OF YOUR STORE);
+1 - Get an existing inventory item you want to revise
+You can see detail [here](https://github.com/CMS365-PTY-LTD/EbaySharp?tab=readme-ov-file#get-inventory-item)
+2 - Get an existing offer
+```C3
+Offers offers = await ebayController.GetOffers(product.SKU);
+Offer offer = offers.OfferList.FirstOrDefault();
+```
+3 - Make changes in the inventory item or offer
+```C#
+string locale = "en-AU" //FOR EXAMPLE
+inventoryItem.Product.Title = UPDATED TITLE;
+offer.PricingSummary.Price.Value = NEW PRICE;
+offer.AvailableQuantity = NEW STOCK;
+await ebayController.CreateOrReplaceInventoryItem(product.SKU, inventoryItem);
+await ebayController.UpdateOffer(offer.OfferId, offer, locale);
 
+```
+4 - Publish offer
+```C#
+OfferPublished offerPublished = await ebayController.PublishOffer(offer.OfferId, locale);
+```
+#### Update an active listing
+If you want to update an existing active listing, you will need to perform following 3 steps.
+
+1 - Get an existing inventory item you want to update
+You can see detail [here](https://github.com/CMS365-PTY-LTD/EbaySharp?tab=readme-ov-file#get-inventory-item)
+2 - Get an existing offer
+```C3
+Offers offers = await ebayController.GetOffers(product.SKU);
+Offer offer = offers.OfferList.FirstOrDefault();
+```
+3 - Make changes in the inventory item or offer
+```C#
+string locale = "en-AU" //FOR EXAMPLE
+inventoryItem.Product.Title = UPDATED TITLE;
+offer.PricingSummary.Price.Value = NEW PRICE;
+offer.AvailableQuantity = NEW STOCK;
+await ebayController.CreateOrReplaceInventoryItem(product.SKU, inventoryItem);
+await ebayController.UpdateOffer(offer.OfferId, offer, locale);
+
+```
+#### End a listing
+If you want to end a listing, you will need to perform following 2 steps.
+
+1 - Get an offer and set quantity to 0
+```C#
+Offers offers = await ebayController.GetOffers(SKU);
+Offer offer = offers.OfferList.FirstOrDefault();
+offer.AvailableQuantity = 0; //optional
+```
+2 - Withdraw offer
+```C#
+OfferWithdrawn offerWithdrawn = await ebayController.WithdrawOffer(offer.OfferId);
 ```
 ### Inventory Item
 #### Get inventory items
@@ -508,5 +547,11 @@ You can find more detail [here](https://developer.ebay.com/api-docs/developer/an
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 RateLimits rateLimits = await ebayController.GetRateLimits();
+```
+#### Get user rate limits
+You can find more detail [here](https://developer.ebay.com/api-docs/developer/analytics/resources/rate_limit/methods/getUserRateLimits)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+RateLimits rateLimits = await ebayController.GetUserRateLimits();
 ```
 
