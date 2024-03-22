@@ -1,5 +1,4 @@
 ﻿using EbaySharp.Entities.Developer.Analytics.RateLimit;
-using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers
