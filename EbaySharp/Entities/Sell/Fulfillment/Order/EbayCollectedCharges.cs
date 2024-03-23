@@ -2,6 +2,6 @@
 {
     public class EbayCollectedCharges
     {
-        public EbayShipping EbayShipping { get; set; }
+        public OrderAmount EbayShipping { get; set; }
     }
 }

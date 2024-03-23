@@ -1,6 +1,4 @@
-﻿using EbaySharp.Entities.Sell.Inventory.Offer;
-
-namespace EbaySharp.Entities.Sell.Fulfillment.Order
+﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
     public class Order
     {

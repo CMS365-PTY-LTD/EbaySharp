@@ -57,7 +57,7 @@
             {
                 return responseContent.DeserializeToObject<T>();
             }
-            throw new Exception((new { error = responseContent, payload = JSONPayload?.DeserializeToObject<object>() }).SerializeToJson());
+            throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload?.DeserializeToObject<object>() }).SerializeToJson());
         }
         //private async Task executePostRequest(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
         //{
@@ -76,7 +76,7 @@
             {
                 return string.IsNullOrEmpty(responseContent) == true ? default(T) : responseContent.DeserializeToObject<T>();
             }
-            throw new Exception((new { error = responseContent, payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
+            throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
         }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {

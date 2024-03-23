@@ -4,6 +4,7 @@ namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
     public class FulfillmentStartInstruction
     {
+        public Appointment Appointment { get; set; }
         public string DestinationTimeZone { get; set; }
         public bool? EbaySupportedFulfillment { get; set; }
         public Address FinalDestinationAddress { get; set; }

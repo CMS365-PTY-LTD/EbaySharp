@@ -8,6 +8,5 @@ namespace EbaySharp.Entities.Sell.Fulfillment.Order
         public string RefundDate { get; set; }
         public string RefundId { get; set; }
         public string RefundReferenceId { get; set; }
-        public RefundStatusEnum? RefundStatus { get; set; }
     }
 }

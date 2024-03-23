@@ -1,7 +1,7 @@
 ﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
-    public enum RefundStatusEnum
+    public enum AppointmentTypeEnum
     {
-        FAILED, PENDING, REFUNDED
+        TIME_SLOT, MACRO
     }
 }
