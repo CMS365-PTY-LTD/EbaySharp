@@ -20,8 +20,8 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version     |
 | ----------------- | --------------------------|
-| 6.5.X             | Inventory API v1.17.2     |
-|                   | Fulfillment API v1.20.3   |
+| 6.5.X             | Inventory API v1.17.4     |
+|                   | Fulfillment API v1.20.4   |
 |                   | Metadata API v1.7.1       |
 |                   | Taxonomy API v1.0.1       |
 |                   | Analytics API v1_beta.0.0 |
