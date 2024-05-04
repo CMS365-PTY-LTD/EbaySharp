@@ -112,7 +112,7 @@ public async Task<string> GetRefreshToken()
 }
 ```
 
-This method returns a refresh token which is valid for 18 months. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
+This method returns a refresh token which is valid for 18 months or If you change your user/id or password. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
 IdentityController identityController=new IdentityController();
