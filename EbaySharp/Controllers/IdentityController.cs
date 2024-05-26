@@ -9,7 +9,7 @@ namespace EbaySharp.Controllers
     {
         public async Task<string> GetRefreshToken(string clinetId, string clientSecret, string authSuccessPageURL, string RUName)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
             string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
             var parsed = HttpUtility.ParseQueryString(authSuccessPageURL);
             var collection = new List<KeyValuePair<string, string>>
@@ -23,7 +23,7 @@ namespace EbaySharp.Controllers
         }
         public async Task<ClientCredentials> GetClientCredentials(string clinetId, string clientSecret, string refreshToken, string scope)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.IDENTITY.ENDPOINT_URL}{Constants.IDENTITY.METHODS.TOKEN}";
             string authorizationCode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{clinetId}:{clientSecret}"));
             var collection = new List<KeyValuePair<string, string>>
             {

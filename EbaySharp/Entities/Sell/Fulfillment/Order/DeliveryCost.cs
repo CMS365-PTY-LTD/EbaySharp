@@ -1,11 +1,13 @@
-﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
+﻿using EbaySharp.Entities.Common;
+
+namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
-    public class DeliveryCost: OrderAmount
+    public class DeliveryCost: Amount
     {
         public double? DiscountAmount { get; set; }
         public double? HandlingCost { get; set; }
-        public OrderAmount ImportCharges { get; set; }
-        public OrderAmount ShippingCost { get; set; }
-        public OrderAmount ShippingIntermediationFee { get; set; }
+        public Amount ImportCharges { get; set; }
+        public Amount ShippingCost { get; set; }
+        public Amount ShippingIntermediationFee { get; set; }
     }
 }

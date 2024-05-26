@@ -13,17 +13,17 @@ namespace EbaySharp.Controllers
         }
         public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CATEGORY_TREE_ID, MarketplaceId)}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.COMMERCE.ENDPOINT_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_DEFAULT_CATEGORY_TREE_ID, MarketplaceId)}";
             return await new RequestExecuter().ExecuteGetRequest<CategoryTreeId>(requestUrl, $"Bearer {accessToken}");
         }
         public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeId, query)}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.COMMERCE.ENDPOINT_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_SUGGESTIONS, CategoryTreeId, query)}";
             return await new RequestExecuter().ExecuteGetRequest<CategorySuggestions>(requestUrl, $"Bearer {accessToken}");
         }
         public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeId)}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.COMMERCE.ENDPOINT_URL}{Constants.COMMERCE.TAXONOMY.ENDPOINT_URL}{string.Format(Constants.COMMERCE.TAXONOMY.METHODS.GET_CATEGORY_TREE, CategoryTreeId)}";
             return await new RequestExecuter().ExecuteGetRequest<CategoryTree>(requestUrl, $"Bearer {accessToken}");
         }
     }

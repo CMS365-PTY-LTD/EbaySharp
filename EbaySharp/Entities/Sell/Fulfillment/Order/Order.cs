@@ -1,4 +1,6 @@
-﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
+﻿using EbaySharp.Entities.Common;
+
+namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
     public class Order
     {
@@ -20,7 +22,7 @@
         public Program Program { get; set; }
         public string SalesRecordReference { get; set; }
         public string SellerId { get; set; }
-        public OrderAmount TotalFeeBasisAmount { get; set; }
-        public OrderAmount TotalMarketplaceFee { get; set; }
+        public Amount TotalFeeBasisAmount { get; set; }
+        public Amount TotalMarketplaceFee { get; set; }
     }
 }

@@ -6,14 +6,14 @@ namespace EbaySharp.Entities.Sell.Fulfillment.Order
     {
         public List<AppliedPromotion> AppliedPromotions { get; set; }
         public DeliveryCost DeliveryCost { get; set; }
-        public OrderAmount DiscountedLineItemCost { get; set; }
+        public Amount DiscountedLineItemCost { get; set; }
         public List<EbayCollectAndRemitTaxis> EbayCollectAndRemitTaxes { get; set; }
         public EbayCollectedCharges EbayCollectedCharges { get; set; }
         public GiftDetails GiftDetails { get; set; }
         public ItemLocation ItemLocation { get; set; }
         public string LegacyItemId { get; set; }
         public string LegacyVariationId { get; set; }
-        public OrderAmount LineItemCost { get; set; }
+        public Amount LineItemCost { get; set; }
         public LineItemFulfillmentInstructions LineItemFulfillmentInstructions { get; set; }
         public LineItemFulfillmentStatusEnum? LineItemFulfillmentStatus { get; set; }
         public string LineItemId { get; set; }
@@ -27,7 +27,7 @@ namespace EbaySharp.Entities.Sell.Fulfillment.Order
         public SoldFormatEnum? SoldFormat { get; set; }
         public List<Taxis> Taxes { get; set; }
         public string Title { get; set; }
-        public OrderAmount Total { get; set; }
+        public Amount Total { get; set; }
         public List<Parameter> VariationAspects { get; set; }
     }
 }

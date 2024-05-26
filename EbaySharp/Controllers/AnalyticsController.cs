@@ -15,7 +15,7 @@ namespace EbaySharp.Controllers
 
         public async Task<RateLimits> GetRateLimits()
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.DEVELOPER.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.METHODS.GET_RATE_LIMITS}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.DEVELOPER.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.METHODS.GET_RATE_LIMITS}";
             return await new RequestExecuter().ExecuteGetRequest<RateLimits>(requestUrl, $"Bearer {accessToken}");
         }
 
@@ -25,7 +25,7 @@ namespace EbaySharp.Controllers
 
         public async Task<RateLimits> GetUserRateLimits()
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.DEVELOPER.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.METHODS.GET_USER_RATE_LIMITS}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.DEVELOPER.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.ENDPOINT_URL}{Constants.DEVELOPER.ANALYTICS.METHODS.GET_USER_RATE_LIMITS}";
             return await new RequestExecuter().ExecuteGetRequest<RateLimits>(requestUrl, $"Bearer {accessToken}");
         }
 

@@ -2,12 +2,14 @@
 {
     internal class Constants
     {
-        internal const string SERVER_URL = "https://api.ebay.com";
-        public struct COMMERCE
+        internal const string API_SERVER_URL = "https://api.ebay.com";
+        internal const string APIZ_SERVER_URL = "https://apiz.ebay.com";
+        internal struct COMMERCE
         {
+            internal const string ENDPOINT_URL = "/commerce";
             internal struct TAXONOMY
             {
-                internal const string ENDPOINT_URL = "/commerce/taxonomy/v1";
+                internal const string ENDPOINT_URL = "/taxonomy/v1";
                 internal struct METHODS
                 {
                     internal const string GET_DEFAULT_CATEGORY_TREE_ID = "/get_default_category_tree_id?marketplace_id={0}";
@@ -18,9 +20,18 @@
         }
         internal struct SELL
         {
+            internal const string ENDPOINT_URL = "/sell";
+            internal struct FINANCES
+            {
+                internal const string ENDPOINT_URL = "/finances/v1";
+                internal struct METHODS
+                {
+                    internal const string GET_TRANSACTIONS = "/transaction?limit={0}&offset={1}";
+                }
+            }
             internal struct INVENTORY
             {
-                internal const string ENDPOINT_URL = "/sell/inventory/v1";
+                internal const string ENDPOINT_URL = "/inventory/v1";
                 internal struct METHODS
                 {
                     internal const string BULK_MIGRATE_LISTING = "/bulk_migrate_listing";
@@ -35,7 +46,7 @@
             }
             internal struct METADATA
             {
-                internal const string ENDPOINT_URL = "/sell/metadata/v1";
+                internal const string ENDPOINT_URL = "/metadata/v1";
                 internal struct METHODS
                 {
                     internal const string GET_RETURN_POLICIES = "/marketplace/{0}/get_return_policies";
@@ -43,7 +54,7 @@
             }
             internal struct FULFILLEMENT
             {
-                internal const string ENDPOINT_URL = "/sell/fulfillment/v1";
+                internal const string ENDPOINT_URL = "/fulfillment/v1";
                 internal struct ORDER
                 {
                     internal const string ENDPOINT_URL = "/order";

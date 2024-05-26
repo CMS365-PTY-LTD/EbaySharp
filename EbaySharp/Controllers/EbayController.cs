@@ -1,6 +1,7 @@
 ﻿using EbaySharp.Entities.Commerce.Taxonomy;
 using EbaySharp.Entities.Common;
 using EbaySharp.Entities.Developer.Analytics.RateLimit;
+using EbaySharp.Entities.Sell.Finances.Transaction;
 using EbaySharp.Entities.Sell.Fulfillment.Order;
 using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Entities.Sell.Inventory.InventoryItem;
@@ -114,7 +115,7 @@ namespace EbaySharp.Controllers
 
         #region INVENTORY_LOCATION
 
-        public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset)
+        public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset=0)
         {
             return await new InventoryController(accessToken).GetInventoryLocations(limit, offset);
         }
@@ -182,6 +183,15 @@ namespace EbaySharp.Controllers
         public async Task<RateLimits> GetUserRateLimits()
         {
             return await new AnalyticsController(accessToken).GetUserRateLimits();
+        }
+
+        #endregion
+
+        #region FINANCES
+
+        public async Task<Transactions> GetTransactions(string filter=null, string sort=null, int limit = 20, int offset = 0)
+        {
+            return await new FinancesController(accessToken).GetTransactions(filter, sort, limit, offset);
         }
 
         #endregion

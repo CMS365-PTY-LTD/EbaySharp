@@ -12,7 +12,7 @@ namespace EbaySharp.Controllers
         }
         public async Task<ReturnPolicies> GetReturnPolicies(string marketplaceName)
         {
-            string requestUrl = $"{Constants.SERVER_URL}{Constants.SELL.METADATA.ENDPOINT_URL}{string.Format(Constants.SELL.METADATA.METHODS.GET_RETURN_POLICIES, marketplaceName)}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.SELL.ENDPOINT_URL}{Constants.SELL.METADATA.ENDPOINT_URL}{string.Format(Constants.SELL.METADATA.METHODS.GET_RETURN_POLICIES, marketplaceName)}";
             return await new RequestExecuter().ExecuteGetRequest<ReturnPolicies>(requestUrl, $"Bearer {accessToken}");
         }
     }

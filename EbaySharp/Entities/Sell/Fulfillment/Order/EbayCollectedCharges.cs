@@ -1,7 +1,9 @@
-﻿namespace EbaySharp.Entities.Sell.Fulfillment.Order
+﻿using EbaySharp.Entities.Common;
+
+namespace EbaySharp.Entities.Sell.Fulfillment.Order
 {
     public class EbayCollectedCharges
     {
-        public OrderAmount EbayShipping { get; set; }
+        public Amount EbayShipping { get; set; }
     }
 }

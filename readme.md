@@ -5,7 +5,7 @@
 [![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionID=9)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
-EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. It's used for creating listings and managing orders using C# and .NET
+EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. This .NET SDK used for creating listings and managing orders using C#.
 
 # Installation
 
@@ -20,11 +20,13 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version     |
 | ----------------- | --------------------------|
-| 6.5.X             | Inventory API v1.17.4     |
+| 6.5.X             | Analytics API v1_beta.0.0 |
+|                   | Finances API v1.17.2      |
 |                   | Fulfillment API v1.20.4   |
+|                   | Inventory API v1.17.4     |
 |                   | Metadata API v1.7.1       |
 |                   | Taxonomy API v1.0.1       |
-|                   | Analytics API v1_beta.0.0 |
+|                   | 
 
 EbaySharp currently supports the following Ebay REST APIs:
 
@@ -69,6 +71,9 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Metadata](#metadata)
         - [Marketplace](#Marketplace)
             - [Get return policies](#get-return-policies)
+    - [Finances](#finances)
+        - [Transaction](#Transaction)
+            - [Get transactions](#get-transactions)
   - [Commerce](#Commerce)
     - [Taxonomy](#taxonomy)
         - [Category Tree](#category-tree)
@@ -510,6 +515,17 @@ You need to pass MarketplaceId, please visit [here](https://developer.ebay.com/a
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("EBAY_US");
 ```
+
+## Finances
+You can see a list of Finances methods [here](https://developer.ebay.com/api-docs/sell/finances/resources/methods)
+### Transaction
+#### Get transactions
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/transaction/methods/getTransactions)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Transactions transactions = await ebayController.GetTransactions();
+```
+
 # Commerce
 
 ## Taxonomy
