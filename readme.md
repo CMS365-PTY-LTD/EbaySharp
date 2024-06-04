@@ -571,5 +571,14 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("EBAY_US");
 ```
 
+## Stores
+You can see a list of Store methods [here](https://developer.ebay.com/api-docs/sell/stores/resources/methods)
+### Store
+#### Get store categories
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/stores/resources/store/methods/moveStoreCategory)
+```C#
+StoreCategories storeCategories = await ebayController.GetStoreCategories();
+```
+
 
 
