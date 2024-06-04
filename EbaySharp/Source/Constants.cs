@@ -47,9 +47,13 @@
             internal struct METADATA
             {
                 internal const string ENDPOINT_URL = "/metadata/v1";
-                internal struct METHODS
+                internal struct MARKETPLACE
                 {
-                    internal const string GET_RETURN_POLICIES = "/marketplace/{0}/get_return_policies";
+                    internal const string ENDPOINT_URL = "/marketplace";
+                    internal struct METHODS
+                    {
+                        internal const string GET_RETURN_POLICIES = "/{0}/get_return_policies";
+                    }
                 }
             }
             internal struct FULFILLEMENT
@@ -73,6 +77,18 @@
                         internal const string GET_ORDER = "/{0}";
                         internal const string GET_ORDERS_BY_ORDER_NUMBERS = "?orderIds={0}";
                         internal const string GET_ORDERS_BY_FILTER = "?filter={0}&limit={1}&offset={2}";
+                    }
+                }
+            }
+            internal struct STORES
+            {
+                internal const string ENDPOINT_URL = "/stores/v1";
+                internal struct STORE
+                {
+                    internal const string ENDPOINT_URL = "/store";
+                    internal struct METHODS
+                    {
+                        internal const string GET_STORE_CATEGORIES = "/categories";
                     }
                 }
             }

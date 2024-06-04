@@ -9,8 +9,7 @@ using EbaySharp.Entities.Sell.Inventory.Listing;
 using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
-using EbaySharp.Source;
-using static EbaySharp.Source.Constants.SELL;
+using EbaySharp.Entities.Sell.Stores.Store;
 
 namespace EbaySharp.Controllers
 {
@@ -192,6 +191,15 @@ namespace EbaySharp.Controllers
         public async Task<Transactions> GetTransactions(string filter=null, string sort=null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(filter, sort, limit, offset);
+        }
+
+        #endregion
+
+        #region STORES
+
+        public async Task<StoreCategories> GetStoreCategories()
+        {
+            return await new StoresController(accessToken).GetStoreCategories();
         }
 
         #endregion
