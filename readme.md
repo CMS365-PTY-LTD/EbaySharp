@@ -577,6 +577,7 @@ You can see a list of Store methods [here](https://developer.ebay.com/api-docs/s
 #### Get store categories
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/stores/resources/store/methods/moveStoreCategory)
 ```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 StoreCategories storeCategories = await ebayController.GetStoreCategories();
 ```
 
