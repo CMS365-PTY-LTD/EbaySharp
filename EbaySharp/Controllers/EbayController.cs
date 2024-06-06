@@ -1,4 +1,5 @@
-﻿using EbaySharp.Entities.Commerce.Taxonomy;
+﻿using EbaySharp.Entities.Buy.Browse;
+using EbaySharp.Entities.Commerce.Taxonomy;
 using EbaySharp.Entities.Common;
 using EbaySharp.Entities.Developer.Analytics.RateLimit;
 using EbaySharp.Entities.Sell.Finances.Transaction;
@@ -21,29 +22,78 @@ namespace EbaySharp.Controllers
             this.accessToken = accessToken;
         }
 
-        #region TAXONOMY 
+        #region ANALYTICS
 
-        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
+        #region RATE_LIMIT
+        public async Task<RateLimits> GetRateLimits()
         {
-            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
-        }
-        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
-        {
-            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
-        }
-        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
-        {
-            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
+            return await new AnalyticsController(accessToken).GetRateLimits();
         }
 
         #endregion
 
-        #region METADATA 
-
-        public async Task<ReturnPolicies> GetReturnPolicies(string MarketplaceId)
+        #region USER_RATE_LIMIT
+        public async Task<RateLimits> GetUserRateLimits()
         {
-            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
+            return await new AnalyticsController(accessToken).GetUserRateLimits();
         }
+
+        #endregion
+
+        #endregion
+
+        #region BROWSE
+
+        public async Task<Item> GetItem(string itemId)
+        {
+            return await new BrowseController(accessToken).GetItem(itemId);
+        }
+
+        #endregion
+
+        #region FINANCES
+        public async Task<Transactions> GetTransactions(string filter = null, string sort = null, int limit = 20, int offset = 0)
+        {
+            return await new FinancesController(accessToken).GetTransactions(filter, sort, limit, offset);
+        }
+
+        #endregion
+
+        #region FULFILLMENT
+
+        #region ORDER
+
+        #region SHIPPING_FULFILLEMENT
+
+        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
+        {
+            return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
+        }
+        public async Task<Fulfillment> GetShippingFulfillment(string orderId, string fulfillmentId)
+        {
+            return await new FulfillmentController(accessToken).GetShippingFulfillment(orderId, fulfillmentId);
+        }
+        public async Task CreateShippingFulfillment(string orderId, Fulfillment fulfillment)
+        {
+            await new FulfillmentController(accessToken).CreateShippingFulfillment(orderId, fulfillment);
+        }
+
+        #endregion
+
+        public async Task<Orders> GetOrders(string[] orderNumbers)
+        {
+            return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
+        }
+        public async Task<Order> GetOrder(string orderNumber)
+        {
+            return await new FulfillmentController(accessToken).GetOrder(orderNumber);
+        }
+        public async Task<Orders> GetOrders(string filter, int limit = 0, int offset = 0)
+        {
+            return await new FulfillmentController(accessToken).GetOrders(filter, limit, offset);
+        }
+
+        #endregion
 
         #endregion
 
@@ -60,7 +110,7 @@ namespace EbaySharp.Controllers
 
         #region INVENTORY_ITEM
 
-        public async Task<InventoryItems> GetInventoryItems(int limit=25, int offset = 0)
+        public async Task<InventoryItems> GetInventoryItems(int limit = 25, int offset = 0)
         {
             return await new InventoryController(accessToken).GetInventoryItems(limit, offset);
         }
@@ -70,7 +120,7 @@ namespace EbaySharp.Controllers
         }
         public async Task<CreatedOrReplacedInventoryItem> CreateOrReplaceInventoryItem(string SKU, InventoryItem inventoryItem)
         {
-            return  await new InventoryController(accessToken).CreateOrReplaceInventoryItem(SKU, inventoryItem);
+            return await new InventoryController(accessToken).CreateOrReplaceInventoryItem(SKU, inventoryItem);
         }
         public async Task DeleteInventoryItem(string SKU)
         {
@@ -114,7 +164,7 @@ namespace EbaySharp.Controllers
 
         #region INVENTORY_LOCATION
 
-        public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset=0)
+        public async Task<InventoryLocations> GetInventoryLocations(int limit, int offset = 0)
         {
             return await new InventoryController(accessToken).GetInventoryLocations(limit, offset);
         }
@@ -135,71 +185,37 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region FULFILLMENT
+        #region METADATA 
 
-        #region ORDER
-
-        #region SHIPPING_FULFILLEMENT
-
-        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
+        public async Task<ReturnPolicies> GetReturnPolicies(string MarketplaceId)
         {
-            return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
-        }
-        public async Task<Fulfillment> GetShippingFulfillment(string orderId, string fulfillmentId)
-        {
-            return await new FulfillmentController(accessToken).GetShippingFulfillment(orderId, fulfillmentId);
-        }
-        public async Task CreateShippingFulfillment(string orderId, Fulfillment fulfillment)
-        {
-            await new FulfillmentController(accessToken).CreateShippingFulfillment(orderId, fulfillment);
+            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
         }
 
         #endregion
-
-        public async Task<Orders> GetOrders(string[] orderNumbers)
-        {
-            return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
-        }
-        public async Task<Order> GetOrder(string orderNumber)
-        {
-            return await new FulfillmentController(accessToken).GetOrder(orderNumber);
-        }
-        public async Task<Orders> GetOrders(string filter, int limit=0, int offset=0)
-        {
-            return await new FulfillmentController(accessToken).GetOrders(filter, limit, offset);
-        }
-
-        #endregion
-
-        #endregion
-
-        #region ANALYTICS
-
-        public async Task<RateLimits> GetRateLimits()
-        {
-            return await new AnalyticsController(accessToken).GetRateLimits();
-        }
-        public async Task<RateLimits> GetUserRateLimits()
-        {
-            return await new AnalyticsController(accessToken).GetUserRateLimits();
-        }
-
-        #endregion
-
-        #region FINANCES
-
-        public async Task<Transactions> GetTransactions(string filter=null, string sort=null, int limit = 20, int offset = 0)
-        {
-            return await new FinancesController(accessToken).GetTransactions(filter, sort, limit, offset);
-        }
-
-        #endregion
-
+        
         #region STORES
 
         public async Task<StoreCategories> GetStoreCategories()
         {
             return await new StoresController(accessToken).GetStoreCategories();
+        }
+
+        #endregion
+
+        #region TAXONOMY 
+
+        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
+        {
+            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
+        }
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
+        {
+            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
+        }
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
+        {
+            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
         }
 
         #endregion

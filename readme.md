@@ -21,6 +21,7 @@ Install-Package CMS365.EbaySharp
 | EbaySharp version | eBay REST API version     |
 | ----------------- | --------------------------|
 | 6.6.X             | Analytics API v1_beta.0.0 |
+|                   | Browse API v1.19.7        |
 |                   | Finances API v1.17.2      |
 |                   | Fulfillment API v1.20.4   |
 |                   | Inventory API v1.17.4     |
@@ -34,6 +35,10 @@ EbaySharp currently supports the following Ebay REST APIs:
   - [Getting a user access token](#access-and-security)
 - Using the EbaySharp
   - [Using the EbaySharp](#using-the-EbaySharp)
+  - [Buy](#Buy)
+    - [Browse](#Browse)
+        - [Item](#item)
+            - [Get item](#get-item)
   - [Commerce](#Commerce)
     - [Taxonomy](#taxonomy)
         - [Category Tree](#category-tree)
@@ -134,6 +139,19 @@ Initialize the instance with the access token.
 
 ```C#
 EbayController ebayController = new EbayController(clientCredentials.AccessToken);
+```
+# Buy
+
+## Browse
+
+You can see a list of Browse methods [here](https://developer.ebay.com/api-docs/buy/browse/resources/methods)
+### Item
+#### Get item
+You can find more detail [here](https://developer.ebay.com/api-docs/buy/browse/resources/item/methods/getItem)
+You need to pass an item Id.
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Item item = await ebayController.GetItem("355731616267");
 ```
 # Commerce
 
@@ -575,7 +593,7 @@ ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("
 You can see a list of Store methods [here](https://developer.ebay.com/api-docs/sell/stores/resources/methods)
 ### Store
 #### Get store categories
-You can find more detail [here](https://developer.ebay.com/api-docs/sell/stores/resources/store/methods/moveStoreCategory)
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/stores/resources/store/methods/getStoreCategories)
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 StoreCategories storeCategories = await ebayController.GetStoreCategories();

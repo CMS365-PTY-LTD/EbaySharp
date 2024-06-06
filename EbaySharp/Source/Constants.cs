@@ -115,5 +115,21 @@
             }
             
         }
+        internal struct BUY
+        {
+            internal const string ENDPOINT_URL = "/buy";
+            internal struct BROWSE
+            {
+                internal const string ENDPOINT_URL = "/browse/v1";
+                internal struct ITEM
+                {
+                    internal const string ENDPOINT_URL = "/item";
+                    internal struct METHODS
+                    {
+                        internal const string GET_ITEM = "/v1|{0}|0";
+                    }
+                }
+            }
+        }
     }
 }
