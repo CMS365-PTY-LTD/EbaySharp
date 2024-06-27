@@ -603,17 +603,17 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 StoreCategories storeCategories = await ebayController.GetStoreCategories();
 ```
 ## Trading
-You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
+This is a legacy API, I have added only 1 method with a few important fields only. You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
 ### Standard Listing Calls
 #### GetSellerList
-You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetSellerList.html)
+This method is used to get a list of all active and ended items. You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetSellerList.html)
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 int pageNumber = 0;
 bool hasMoreResults = true;
 while (hasMoreResults)
 {
-    GetSellerListResponse getSellerListResponse = await ebayController.GetItems(pageNumber, 200, DateTime.Now.AddDays(-87).ToString("O"), DateTime.Now.AddDays(33).ToString("O"));
+    GetSellerListResponse getSellerListResponse = await ebayController.GetItems(++pageNumber, 200, DateTime.Now.AddDays(-87).ToString("O"), DateTime.Now.AddDays(33).ToString("O"));
     hasMoreResults = getSellerListResponse.HasMoreItems;
     //Process items response here.
 }
