@@ -1,4 +1,9 @@
-﻿namespace EbaySharp.Source
+﻿using System.IO;
+using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
+
+namespace EbaySharp.Source
 {
     internal class RequestExecuter
     {
@@ -59,6 +64,25 @@
             }
             throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload?.DeserializeToObject<object>() }).SerializeToJson());
         }
+        private async Task<T> executeLegacyPostRequest<T>(string callName, string payload)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage(HttpMethod.Post, $"{Constants.API_SERVER_URL}{Constants.TRADIONAL.ENDPOINT_URL}");
+            request.Headers.Add("X-EBAY-API-SITEID", "15");
+            request.Headers.Add("X-EBAY-API-COMPATIBILITY-LEVEL", "967");
+            request.Headers.Add("X-EBAY-API-CALL-NAME", callName);
+            var content = new StringContent(payload, null, "application/xml");
+            request.Content = content;
+            var response = await client.SendAsync(request);
+            string responseContent = await response.Content.ReadAsStringAsync();
+            XmlSerializer ser = new XmlSerializer(typeof(T));
+            T type;
+            using (XmlReader reader = XmlReader.Create(new StringReader(responseContent)))
+            {
+                type = (T)ser.Deserialize(reader);
+            }
+            return type;
+        }
         //private async Task executePostRequest(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
         //{
         //    HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
@@ -81,6 +105,10 @@
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {
             return await executePostRequest<T>(requestUrl, authHeaderValue, keyValuePayload, null, null);
+        }
+        public async Task<T> ExecuteLegacyPostRequest<T>(string callName, string payload)
+        {
+            return await executeLegacyPostRequest<T>(callName, payload);
         }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
         {

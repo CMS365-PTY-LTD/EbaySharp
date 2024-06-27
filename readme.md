@@ -18,16 +18,17 @@ Install-Package CMS365.EbaySharp
 
 # API support
 
-| EbaySharp version | eBay REST API version     |
-| ----------------- | --------------------------|
-| 6.6.X             | Analytics API v1_beta.0.0 |
-|                   | Browse API v1.19.7        |
-|                   | Finances API v1.17.2      |
-|                   | Fulfillment API v1.20.4   |
-|                   | Inventory API v1.17.4     |
-|                   | Metadata API v1.7.1       |
-|                   | Stores API v1             | 
-|                   | Taxonomy API v1.0.1       |
+| EbaySharp version | eBay REST API version       |
+| ----------------- | ----------------------------|
+| 6.6.X             | Analytics API v1_beta.0.0   |
+|                   | Browse API v1.19.7          |
+|                   | Finances API v1.17.2        |
+|                   | Fulfillment API v1.20.4     |
+|                   | Inventory API v1.17.4       |
+|                   | Metadata API v1.7.1         |
+|                   | Stores API v1               | 
+|                   | Taxonomy API v1.0.1         |
+|                   | Trading API (Legacy) v1363  |
 
 EbaySharp currently supports the following Ebay REST APIs:
 
@@ -93,6 +94,9 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Stores](#stores)
         - [Store](#Store)
             - [Get store categories](#get-store-categories)
+    - [Trading](#trading)
+        - [Standard Listing Calls](#standard-listing-calls)
+            - [GetSellerList](#GetSellerList)
             
 # Access and Security
 
@@ -598,6 +602,21 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/stores/
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 StoreCategories storeCategories = await ebayController.GetStoreCategories();
 ```
-
+## Trading
+You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
+### Standard Listing Calls
+#### GetSellerList
+You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetSellerList.html)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+int pageNumber = 0;
+bool hasMoreResults = true;
+while (hasMoreResults)
+{
+    GetSellerListResponse getSellerListResponse = await ebayController.GetItems(pageNumber, 200, DateTime.Now.AddDays(-87).ToString("O"), DateTime.Now.AddDays(33).ToString("O"));
+    hasMoreResults = getSellerListResponse.HasMoreItems;
+    //Process items response here.
+}
+```
 
 

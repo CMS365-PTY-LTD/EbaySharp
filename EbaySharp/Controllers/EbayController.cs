@@ -11,9 +11,12 @@ using EbaySharp.Entities.Sell.Inventory.Location;
 using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
 using EbaySharp.Entities.Sell.Stores.Store;
+using EbaySharp.Entities.TraditionalSelling.Trading;
 
 namespace EbaySharp.Controllers
 {
+
+    
     public class EbayController
     {
         private string accessToken;
@@ -216,6 +219,15 @@ namespace EbaySharp.Controllers
         public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
         {
             return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
+        }
+
+        #endregion
+
+        #region TRADING
+
+        public async Task<GetSellerListResponse> GetItems(int pageNumber, int entriesPerPage, string endTimeFrom, string endTimeTo)
+        {
+            return await new TradingController(accessToken).GetItems(pageNumber, entriesPerPage, endTimeFrom, endTimeTo);
         }
 
         #endregion

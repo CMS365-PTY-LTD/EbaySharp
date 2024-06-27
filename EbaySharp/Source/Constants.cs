@@ -131,5 +131,13 @@
                 }
             }
         }
+        internal struct TRADIONAL
+        {
+            internal const string ENDPOINT_URL = "/ws/api.dll";
+            internal struct CALLS
+            {
+                public const string GetSellerList = "GetSellerList";
+            }
+        }
     }
 }
