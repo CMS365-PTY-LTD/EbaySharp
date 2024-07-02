@@ -25,6 +25,7 @@ Install-Package CMS365.EbaySharp
 |                   | Finances API v1.17.2        |
 |                   | Fulfillment API v1.20.4     |
 |                   | Inventory API v1.17.4       |
+|                   | Key Management API v1.0.0   |
 |                   | Metadata API v1.7.1         |
 |                   | Stores API v1               | 
 |                   | Taxonomy API v1.0.1         |
@@ -51,6 +52,11 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Rate Limit](#rate-limit)
             - [Get rate limits](#get-rate-limits)
             - [Get user rate limits](#get-user-rate-limits)
+    - [Key Management](#key-management)
+        - [Signing Key](#signing-key)
+            - [Get signing keys](#get-signing-keys)
+            - [Get signing key](#get-signing-key)
+            - [Create signing key](#create-signing-key)
   - [Sell](#sell)
     - [Finances](#finances)
         - [Transaction](#Transaction)
@@ -200,7 +206,29 @@ You can find more detail [here](https://developer.ebay.com/api-docs/developer/an
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 RateLimits rateLimits = await ebayController.GetUserRateLimits();
 ```
+## Key Management
 
+You can see a list of Key management methods [here](https://developer.ebay.com/api-docs/developer/key-management/resources/methods)
+### Signing key
+
+#### Get signing keys
+You can find more detail [here](https://developer.ebay.com/api-docs/developer/key-management/resources/signing_key/methods/getSigningKeys)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+SigningKeys signingKeys = await ebayController.GetSigningKeys();
+```
+#### Get signing key
+You can find more detail [here](https://developer.ebay.com/api-docs/developer/key-management/resources/signing_key/methods/getSigningKey)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+SigningKeys signingKeys = await ebayController.GetSigningKey(string signinKeyId);
+```
+#### Create signing key
+You can find more detail [here](https://developer.ebay.com/api-docs/developer/key-management/resources/signing_key/methods/createSigningKey)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
+```
 # Sell
 ## Finances
 You can see a list of Finances methods [here](https://developer.ebay.com/api-docs/sell/finances/resources/methods)
@@ -209,6 +237,10 @@ You can see a list of Finances methods [here](https://developer.ebay.com/api-doc
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/transaction/methods/getTransactions)
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+//Important! Due to EU & UK Payments regulatory requirements, an additional security verification via Digital Signatures is required for certain API calls that are made on behalf of EU/UK sellers, including all Finances API methods.
+SigningKey signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
+Transactions transactions = await ebayController.GetTransactions(signingKey);
+or
 Transactions transactions = await ebayController.GetTransactions();
 ```
 ## Fulfillment

@@ -1,4 +1,6 @@
-﻿namespace EbaySharp.Entities.Sell.Finances.Transaction
+﻿using System.Text.Json.Serialization;
+
+namespace EbaySharp.Entities.Sell.Finances.Transaction
 {
     public class Transactions
     {
@@ -8,6 +10,7 @@
         public int Offset { get; set; }
         public string Prev { get; set; }
         public int Total { get; set; }
+        [JsonPropertyName("transactions")]
         public List<Transaction> TransactionList { get; set; }
     }
 }

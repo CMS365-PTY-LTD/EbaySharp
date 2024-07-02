@@ -104,6 +104,16 @@
         internal struct DEVELOPER
         {
             internal const string ENDPOINT_URL = "/developer";
+            internal struct KEY_MANAGEMENT
+            {
+                internal const string ENDPOINT_URL = "/key_management/v1";
+                internal struct METHODS
+                {
+                    internal const string CREATE_SIGNING_KEY = "/signing_key";
+                    internal const string GET_SIGNING_KEY = "/signing_key/{0}";
+                    internal const string GET_SIGNING_KEYS = "/signing_key";
+                }
+            }
             internal struct ANALYTICS
             {
                 internal const string ENDPOINT_URL = "/analytics/v1_beta";

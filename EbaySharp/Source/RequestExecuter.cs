@@ -1,14 +1,13 @@
-﻿using System.IO;
+﻿using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace EbaySharp.Source
 {
     internal class RequestExecuter
     {
-        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authHeaderValue, string? contentLanguageHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload
-            , string? JSONPayload)
+        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authHeaderValue, string? contentLanguageHeaderValue,
+            List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, SigningKey? signingKey)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(httpMethod, requestUrl);
@@ -18,6 +17,10 @@ namespace EbaySharp.Source
             {
                 var content = new FormUrlEncodedContent(keyValuePayload);
                 request.Content = content;
+            }
+            else if (signingKey != null)
+            {
+                request.GenerateEbaySignatureHeader(httpMethod, requestUrl, signingKey);
             }
             else if (JSONPayload != null)
             {
@@ -33,7 +36,11 @@ namespace EbaySharp.Source
         }
         public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authHeaderValue)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authHeaderValue, null, null, null);
+            return await ExecuteGetRequest<T>(requestUrl, authHeaderValue, null);
+        }
+        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authHeaderValue, SigningKey? signingKey)
+        {
+            HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authHeaderValue, null, null, null, signingKey);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -47,7 +54,7 @@ namespace EbaySharp.Source
         }
         public async Task ExecuteDeleteRequest(string requestUrl, string authHeaderValue)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Delete, requestUrl, authHeaderValue, null, null, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Delete, requestUrl, authHeaderValue, null, null, null, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode==false)
             {
@@ -56,7 +63,7 @@ namespace EbaySharp.Source
         }
         private async Task<T> executePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -94,7 +101,7 @@ namespace EbaySharp.Source
         //}
         public async Task<T?> ExecutePutRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -116,7 +123,7 @@ namespace EbaySharp.Source
         }
         public async Task ExecutePostRequest(string requestUrl, string authHeaderValue, string JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode==false)
             {

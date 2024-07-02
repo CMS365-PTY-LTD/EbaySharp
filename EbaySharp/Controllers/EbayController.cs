@@ -2,6 +2,7 @@
 using EbaySharp.Entities.Commerce.Taxonomy;
 using EbaySharp.Entities.Common;
 using EbaySharp.Entities.Developer.Analytics.RateLimit;
+using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
 using EbaySharp.Entities.Sell.Finances.Transaction;
 using EbaySharp.Entities.Sell.Fulfillment.Order;
 using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
@@ -16,7 +17,7 @@ using EbaySharp.Entities.TraditionalSelling.Trading;
 namespace EbaySharp.Controllers
 {
 
-    
+
     public class EbayController
     {
         private string accessToken;
@@ -57,7 +58,11 @@ namespace EbaySharp.Controllers
         #region FINANCES
         public async Task<Transactions> GetTransactions(string filter = null, string sort = null, int limit = 20, int offset = 0)
         {
-            return await new FinancesController(accessToken).GetTransactions(filter, sort, limit, offset);
+            return await new FinancesController(accessToken).GetTransactions(null, filter, sort, limit, offset);
+        }
+        public async Task<Transactions> GetTransactions(SigningKey signingKey, string filter = null, string sort = null, int limit = 20, int offset = 0)
+        {
+            return await new FinancesController(accessToken).GetTransactions(signingKey, filter, sort, limit, offset);
         }
 
         #endregion
@@ -182,6 +187,27 @@ namespace EbaySharp.Controllers
         public async Task DeleteInventoryLocation(string merchantLocationKey)
         {
             await new InventoryController(accessToken).DeleteInventoryLocation(merchantLocationKey);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region KEY_MANAGEMENT
+
+        #region SIGNING_KEY
+
+        public async Task<SigningKeys> GetSigningKeys()
+        {
+            return await new KeyManagementController(accessToken).GetSigningKeys();
+        }
+        public async Task<SigningKey> GetSigningKey(string signingKeyId)
+        {
+            return await new KeyManagementController(accessToken).GetSigningKey(signingKeyId);
+        }
+        public async Task<SigningKey> CreateSigningKey(SigningKeyCipher signingKeyCipher = SigningKeyCipher.ED25519)
+        {
+            return await new KeyManagementController(accessToken).CreateSigningKey(signingKeyCipher);
         }
 
         #endregion
