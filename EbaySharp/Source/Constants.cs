@@ -21,6 +21,14 @@
         internal struct SELL
         {
             internal const string ENDPOINT_URL = "/sell";
+            internal struct FEED
+            {
+                internal const string ENDPOINT_URL = "/feed/v1";
+                internal struct METHODS
+                {
+                    internal const string GET_DOWNLOAD_RESULT_FILE = "/task/{0}/download_result_file";
+                }
+            }
             internal struct FINANCES
             {
                 internal const string ENDPOINT_URL = "/finances/v1";

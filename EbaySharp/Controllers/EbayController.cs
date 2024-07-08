@@ -3,6 +3,7 @@ using EbaySharp.Entities.Commerce.Taxonomy;
 using EbaySharp.Entities.Common;
 using EbaySharp.Entities.Developer.Analytics.RateLimit;
 using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
+using EbaySharp.Entities.Sell.Feed;
 using EbaySharp.Entities.Sell.Finances.Transaction;
 using EbaySharp.Entities.Sell.Fulfillment.Order;
 using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
@@ -16,8 +17,6 @@ using EbaySharp.Entities.TraditionalSelling.Trading;
 
 namespace EbaySharp.Controllers
 {
-
-
     public class EbayController
     {
         private string accessToken;
@@ -25,6 +24,42 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
+
+        #region BUY
+
+        #region BROWSE
+
+        public async Task<Item> GetItem(string itemId)
+        {
+            return await new BrowseController(accessToken).GetItem(itemId);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region COMMERCE
+
+        #region TAXONOMY 
+
+        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
+        {
+            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
+        }
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
+        {
+            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
+        }
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
+        {
+            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region DEVELOPER
 
         #region ANALYTICS
 
@@ -46,11 +81,36 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region BROWSE
+        #region KEY_MANAGEMENT
 
-        public async Task<Item> GetItem(string itemId)
+        #region SIGNING_KEY
+
+        public async Task<SigningKeys> GetSigningKeys()
         {
-            return await new BrowseController(accessToken).GetItem(itemId);
+            return await new KeyManagementController(accessToken).GetSigningKeys();
+        }
+        public async Task<SigningKey> GetSigningKey(string signingKeyId)
+        {
+            return await new KeyManagementController(accessToken).GetSigningKey(signingKeyId);
+        }
+        public async Task<SigningKey> CreateSigningKey(SigningKeyCipher signingKeyCipher = SigningKeyCipher.ED25519)
+        {
+            return await new KeyManagementController(accessToken).CreateSigningKey(signingKeyCipher);
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region SELL
+
+        #region FEED
+
+        public async Task<ResultFile> GetResultFile(string taskId)
+        {
+            return await new FeedController(this.accessToken).GetResultFile(taskId);
         }
 
         #endregion
@@ -193,27 +253,6 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region KEY_MANAGEMENT
-
-        #region SIGNING_KEY
-
-        public async Task<SigningKeys> GetSigningKeys()
-        {
-            return await new KeyManagementController(accessToken).GetSigningKeys();
-        }
-        public async Task<SigningKey> GetSigningKey(string signingKeyId)
-        {
-            return await new KeyManagementController(accessToken).GetSigningKey(signingKeyId);
-        }
-        public async Task<SigningKey> CreateSigningKey(SigningKeyCipher signingKeyCipher = SigningKeyCipher.ED25519)
-        {
-            return await new KeyManagementController(accessToken).CreateSigningKey(signingKeyCipher);
-        }
-
-        #endregion
-
-        #endregion
-
         #region METADATA 
 
         public async Task<ReturnPolicies> GetReturnPolicies(string MarketplaceId)
@@ -222,7 +261,7 @@ namespace EbaySharp.Controllers
         }
 
         #endregion
-        
+
         #region STORES
 
         public async Task<StoreCategories> GetStoreCategories()
@@ -232,22 +271,9 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region TAXONOMY 
-
-        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
-        {
-            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
-        }
-        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
-        {
-            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
-        }
-        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
-        {
-            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
-        }
-
         #endregion
+
+        #region TRADITIONAL_SELLING
 
         #region TRADING
 
@@ -255,6 +281,8 @@ namespace EbaySharp.Controllers
         {
             return await new TradingController(accessToken).GetItems(pageNumber, entriesPerPage, endTimeFrom, endTimeTo);
         }
+
+        #endregion
 
         #endregion
     }

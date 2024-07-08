@@ -1,4 +1,6 @@
 ﻿using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
+using EbaySharp.Entities.Sell.Feed;
+using System.Net.Http.Headers;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -41,9 +43,20 @@ namespace EbaySharp.Source
         public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authHeaderValue, SigningKey? signingKey)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authHeaderValue, null, null, null, signingKey);
+
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
+                MediaTypeHeaderValue? contentType = response.Content.Headers.ContentType;
+                if (contentType!=null && contentType.MediaType== "application/octet-stream")
+                {
+                    if (response.Content.Headers.ContentDisposition!=null && response.Content.Headers.ContentDisposition.FileName != null)
+                    {
+                        ResultFile resultFile = new ResultFile() { FileContent = await response.Content.ReadAsStreamAsync(), FileName = response.Content.Headers.ContentDisposition.FileName };
+                        return (T)Convert.ChangeType(resultFile, typeof(T));
+                    }
+                    
+                }
                 if (string.IsNullOrEmpty(responseContent))
                 {
                     throw new Exception("No content found.");

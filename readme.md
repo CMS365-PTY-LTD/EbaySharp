@@ -22,6 +22,7 @@ Install-Package CMS365.EbaySharp
 | ----------------- | ----------------------------|
 | 6.6.X             | Analytics API v1_beta.0.0   |
 |                   | Browse API v1.19.7          |
+|                   | Feed API v1.3.1             |
 |                   | Finances API v1.17.2        |
 |                   | Fulfillment API v1.20.4     |
 |                   | Inventory API v1.17.4       |
@@ -58,8 +59,11 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Get signing key](#get-signing-key)
             - [Create signing key](#create-signing-key)
   - [Sell](#sell)
+    - [Feed](#feed)
+        - [Task](#task)
+            - [Get result file](#get-result-file)
     - [Finances](#finances)
-        - [Transaction](#Transaction)
+        - [Transaction](#transaction)
             - [Get transactions](#get-transactions)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
@@ -154,7 +158,7 @@ EbayController ebayController = new EbayController(clientCredentials.AccessToken
 
 ## Browse
 
-You can see a list of Browse methods [here](https://developer.ebay.com/api-docs/buy/browse/resources/methods)
+You can see a list of Browse API methods [here](https://developer.ebay.com/api-docs/buy/browse/resources/methods)
 ### Item
 #### Get item
 You can find more detail [here](https://developer.ebay.com/api-docs/buy/browse/resources/item/methods/getItem)
@@ -167,7 +171,7 @@ Item item = await ebayController.GetItem("355731616267");
 
 ## Taxonomy
 
-You can see a list of Taxonomy methods [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods)
+You can see a list of Taxonomy API methods [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/methods)
 ### Category Tree
 #### Get category suggestions
 You can find more detail [here](https://developer.ebay.com/api-docs/commerce/taxonomy/resources/category_tree/methods/getCategorySuggestions)
@@ -191,7 +195,7 @@ CategoryTreeId categoryTreeId = await ebayController.GetDefaultCategoryTreeId("E
 
 ## Analytics
 
-You can see a list of Analytics methods [here](https://developer.ebay.com/api-docs/developer/analytics/resources/methods)
+You can see a list of Analytics API methods [here](https://developer.ebay.com/api-docs/developer/analytics/resources/methods)
 ### Rate Limits
 
 #### Get rate limits
@@ -208,7 +212,7 @@ RateLimits rateLimits = await ebayController.GetUserRateLimits();
 ```
 ## Key Management
 
-You can see a list of Key management methods [here](https://developer.ebay.com/api-docs/developer/key-management/resources/methods)
+You can see a list of Key management API methods [here](https://developer.ebay.com/api-docs/developer/key-management/resources/methods)
 ### Signing key
 
 #### Get signing keys
@@ -230,8 +234,17 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
 ```
 # Sell
+# Feed
+You can see a list of Feed API methods [here](https://developer.ebay.com/api-docs/sell/feed/resources/methods)
+### Task
+#### Get result file
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/feed/resources/task/methods/getResultFile)
+```C#
+ResultFile resultFile = await ebayController.GetResultFile([TASK_ID]);
+await resultFile.SaveUncompressed("C:\\Work");
+```
 ## Finances
-You can see a list of Finances methods [here](https://developer.ebay.com/api-docs/sell/finances/resources/methods)
+You can see a list of Finances API methods [here](https://developer.ebay.com/api-docs/sell/finances/resources/methods)
 ### Transaction
 #### Get transactions
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/transaction/methods/getTransactions)
@@ -316,7 +329,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 Fulfillment fulfillment = await ebayController.GetShippingFulfillment("Order Number", "Fulfillment Id");
 ```
 ## Inventory
-You can see a list of Inventory methods [here](https://developer.ebay.com/api-docs/sell/inventory/resources/methods)
+You can see a list of Inventory API methods [here](https://developer.ebay.com/api-docs/sell/inventory/resources/methods)
 ### Inventory Item
 #### Get inventory items
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/inventory/resources/inventory_item/methods/getInventoryItems)
@@ -616,7 +629,7 @@ await ebayController.DeleteOffer(offerId);
 
 
 ## Metadata
-You can see a list of Metadata methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
+You can see a list of Metadata API methods [here](https://developer.ebay.com/api-docs/sell/metadata/resources/methods)
 ### Marketplace
 #### Get return policies
 You need to pass MarketplaceId, please visit [here](https://developer.ebay.com/api-docs/commerce/taxonomy/static/supportedmarketplaces.html) for supported market places.
@@ -626,7 +639,7 @@ ReturnPoliciesList returnPoliciesList = await ebayController.GetReturnPolicies("
 ```
 
 ## Stores
-You can see a list of Store methods [here](https://developer.ebay.com/api-docs/sell/stores/resources/methods)
+You can see a list of Stores API methods [here](https://developer.ebay.com/api-docs/sell/stores/resources/methods)
 ### Store
 #### Get store categories
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/stores/resources/store/methods/getStoreCategories)
