@@ -20,7 +20,7 @@ Install-Package CMS365.EbaySharp
 
 | EbaySharp version | eBay REST API version       |
 | ----------------- | ----------------------------|
-| 6.6.X             | Analytics API v1_beta.0.0   |
+| 6.X.X             | Analytics API v1_beta.0.0   |
 |                   | Browse API v1.19.7          |
 |                   | Feed API v1.3.1             |
 |                   | Finances API v1.17.2        |
