@@ -50,10 +50,15 @@ namespace EbaySharp.Source
                 MediaTypeHeaderValue? contentType = response.Content.Headers.ContentType;
                 if (contentType!=null && contentType.MediaType== "application/octet-stream")
                 {
-                    if (response.Content.Headers.ContentDisposition!=null && response.Content.Headers.ContentDisposition.FileName != null)
+                    string? contentDisposition = response.Content.Headers.GetValues("Content-Disposition").FirstOrDefault();
+                    if (contentDisposition!=null)
                     {
-                        ResultFile resultFile = new ResultFile() { FileContent = await response.Content.ReadAsStreamAsync(), FileName = response.Content.Headers.ContentDisposition.FileName };
-                        return (T)Convert.ChangeType(resultFile, typeof(T));
+                        string fileName = contentDisposition.Split(";", StringSplitOptions.RemoveEmptyEntries)[1].Split("=", StringSplitOptions.RemoveEmptyEntries)[1];
+                        if (contentDisposition != null)
+                        {
+                            ResultFile resultFile = new ResultFile() { FileContent = await response.Content.ReadAsStreamAsync(), FileName = fileName.Trim() };
+                            return (T)Convert.ChangeType(resultFile, typeof(T));
+                        }
                     }
                     
                 }

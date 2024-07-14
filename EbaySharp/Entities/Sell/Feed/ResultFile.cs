@@ -13,6 +13,7 @@ namespace EbaySharp.Entities.Sell.Feed
                 ZipEntry theEntry;
                 while ((theEntry = s.GetNextEntry()) != null)
                 {
+                    FileName = string.Concat(FileName.Split(Path.GetInvalidFileNameChars()));
                     using (FileStream streamWriter = File.Create($"{folderPath}\\{FileName.Replace(".zip","")}"))
                     {
 
