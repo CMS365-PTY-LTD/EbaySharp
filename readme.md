@@ -38,11 +38,11 @@ EbaySharp currently supports the following Ebay REST APIs:
   - [Getting a user access token](#access-and-security)
 - Using the EbaySharp
   - [Using the EbaySharp](#using-the-EbaySharp)
-  - [Buy](#Buy)
-    - [Browse](#Browse)
+  - [Buy](#buy)
+    - [Browse](#browse)
         - [Item](#item)
             - [Get item](#get-item)
-  - [Commerce](#Commerce)
+  - [Commerce](#commerce)
     - [Taxonomy](#taxonomy)
         - [Category Tree](#category-tree)
             - [Get category suggestions](#get-category-suggestions)
@@ -99,14 +99,14 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Withdraw offer](#withdraw-offer)
             - [Delete offer](#delete-offer)
     - [Metadata](#metadata)
-        - [Marketplace](#Marketplace)
+        - [Marketplace](#marketplace)
             - [Get return policies](#get-return-policies)
     - [Stores](#stores)
-        - [Store](#Store)
+        - [Store](#store)
             - [Get store categories](#get-store-categories)
     - [Trading](#trading)
         - [Standard Listing Calls](#standard-listing-calls)
-            - [GetSellerList](#GetSellerList)
+            - [GetSellerList](#getsellerlist)
             
 # Access and Security
 
