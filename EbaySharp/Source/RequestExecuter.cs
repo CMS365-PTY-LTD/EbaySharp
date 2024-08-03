@@ -1,5 +1,5 @@
-﻿using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
-using EbaySharp.Entities.Sell.Feed;
+﻿using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed;
+using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
 using System.Net.Http.Headers;
 using System.Xml;
 using System.Xml.Serialization;
@@ -89,11 +89,11 @@ namespace EbaySharp.Source
             }
             throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload?.DeserializeToObject<object>() }).SerializeToJson());
         }
-        private async Task<T> executeLegacyPostRequest<T>(string callName, string payload)
+        private async Task<T> executeLegacyPostRequest<T>(int siteId, string callName, string payload)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Post, $"{Constants.API_SERVER_URL}{Constants.TRADIONAL.ENDPOINT_URL}");
-            request.Headers.Add("X-EBAY-API-SITEID", "15");
+            request.Headers.Add("X-EBAY-API-SITEID", siteId.ToString());
             request.Headers.Add("X-EBAY-API-COMPATIBILITY-LEVEL", "967");
             request.Headers.Add("X-EBAY-API-CALL-NAME", callName);
             var content = new StringContent(payload, null, "application/xml");
@@ -131,9 +131,9 @@ namespace EbaySharp.Source
         {
             return await executePostRequest<T>(requestUrl, authHeaderValue, keyValuePayload, null, null);
         }
-        public async Task<T> ExecuteLegacyPostRequest<T>(string callName, string payload)
+        public async Task<T> ExecuteLegacyPostRequest<T>(int siteId, string callName, string payload)
         {
-            return await executeLegacyPostRequest<T>(callName, payload);
+            return await executeLegacyPostRequest<T>(siteId, callName, payload);
         }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
         {

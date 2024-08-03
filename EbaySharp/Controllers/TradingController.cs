@@ -12,7 +12,7 @@ namespace EbaySharp.Controllers
         {
             this.accessToken = accessToken;
         }
-        public async Task<GetSellerListResponse> GetItems(int pageNumber, int entriesPerPage, string endTimeFrom, string endTimeTo)
+        public async Task<GetSellerListResponse> GetItems(int siteId, int pageNumber, int entriesPerPage, string endTimeFrom, string endTimeTo)
         {
             XNamespace ns = "urn:ebay:apis:eBLBaseComponents";
             XDocument xmlDocument = new XDocument(
@@ -34,7 +34,7 @@ namespace EbaySharp.Controllers
             xmlDocument.Save(memory);
             string xmlText = Encoding.UTF8.GetString(memory.ToArray()).Replace("xmlns=\"\"", "");
 
-            return await new RequestExecuter().ExecuteLegacyPostRequest<GetSellerListResponse>(Constants.TRADIONAL.CALLS.GetSellerList, xmlText);
+            return await new RequestExecuter().ExecuteLegacyPostRequest<GetSellerListResponse>(siteId, Constants.TRADIONAL.CALLS.GetSellerList, xmlText);
         }
     }
 }

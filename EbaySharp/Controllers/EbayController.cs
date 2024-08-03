@@ -1,18 +1,18 @@
 ﻿using EbaySharp.Entities.Buy.Browse;
-using EbaySharp.Entities.Commerce.Taxonomy;
 using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Location;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Offer;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Stores.Store;
+using EbaySharp.Entities.Develop.Taxonomy;
 using EbaySharp.Entities.Developer.Analytics.RateLimit;
 using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
-using EbaySharp.Entities.Sell.Feed;
 using EbaySharp.Entities.Sell.Finances.Transaction;
 using EbaySharp.Entities.Sell.Fulfillment.Order;
 using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
-using EbaySharp.Entities.Sell.Inventory.InventoryItem;
-using EbaySharp.Entities.Sell.Inventory.Listing;
-using EbaySharp.Entities.Sell.Inventory.Location;
-using EbaySharp.Entities.Sell.Inventory.Offer;
 using EbaySharp.Entities.Sell.Metadata.Marketplace;
-using EbaySharp.Entities.Sell.Stores.Store;
 using EbaySharp.Entities.TraditionalSelling.Trading;
 
 namespace EbaySharp.Controllers
@@ -25,41 +25,9 @@ namespace EbaySharp.Controllers
             this.accessToken = accessToken;
         }
 
-        #region BUY
+        #region DEVELOP
 
-        #region BROWSE
-
-        public async Task<Item> GetItem(string itemId)
-        {
-            return await new BrowseController(accessToken).GetItem(itemId);
-        }
-
-        #endregion
-
-        #endregion
-
-        #region COMMERCE
-
-        #region TAXONOMY 
-
-        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
-        {
-            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
-        }
-        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
-        {
-            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
-        }
-        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
-        {
-            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
-        }
-
-        #endregion
-
-        #endregion
-
-        #region DEVELOPER
+        #region Application Settings Insights
 
         #region ANALYTICS
 
@@ -104,16 +72,26 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region SELL
+        #region Buying Apps
 
-        #region FEED
+        #region Inventory Discovery Refresh
 
-        public async Task<ResultFile> GetResultFile(string taskId)
+        #region BROWSE
+
+        public async Task<Item> GetItem(string itemId)
         {
-            return await new FeedController(this.accessToken).GetResultFile(taskId);
+            return await new BrowseController(accessToken).GetItem(itemId);
         }
 
         #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Selling Apps
+
+        #region Account Management
 
         #region FINANCES
         public async Task<Transactions> GetTransactions(string filter = null, string sort = null, int limit = 20, int offset = 0)
@@ -127,41 +105,16 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region FULFILLMENT
-
-        #region ORDER
-
-        #region SHIPPING_FULFILLEMENT
-
-        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
-        {
-            return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
-        }
-        public async Task<Fulfillment> GetShippingFulfillment(string orderId, string fulfillmentId)
-        {
-            return await new FulfillmentController(accessToken).GetShippingFulfillment(orderId, fulfillmentId);
-        }
-        public async Task CreateShippingFulfillment(string orderId, Fulfillment fulfillment)
-        {
-            await new FulfillmentController(accessToken).CreateShippingFulfillment(orderId, fulfillment);
-        }
-
         #endregion
 
-        public async Task<Orders> GetOrders(string[] orderNumbers)
-        {
-            return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
-        }
-        public async Task<Order> GetOrder(string orderNumber)
-        {
-            return await new FulfillmentController(accessToken).GetOrder(orderNumber);
-        }
-        public async Task<Orders> GetOrders(string filter, int limit = 0, int offset = 0)
-        {
-            return await new FulfillmentController(accessToken).GetOrders(filter, limit, offset);
-        }
+        #region Listing Management
 
-        #endregion
+        #region FEED
+
+        public async Task<ResultFile> GetResultFile(string taskId)
+        {
+            return await new FeedController(this.accessToken).GetResultFile(taskId);
+        }
 
         #endregion
 
@@ -198,7 +151,7 @@ namespace EbaySharp.Controllers
         #endregion
 
         #region OFFER
-
+        
         public async Task<Offers> GetOffers(string SKU)
         {
             return await new InventoryController(accessToken).GetOffers(SKU);
@@ -253,16 +206,9 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region METADATA 
-
-        public async Task<ReturnPolicies> GetReturnPolicies(string MarketplaceId)
-        {
-            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
-        }
-
-        #endregion
-
         #region STORES
+
+        #region STORE
 
         public async Task<StoreCategories> GetStoreCategories()
         {
@@ -273,13 +219,91 @@ namespace EbaySharp.Controllers
 
         #endregion
 
+        #endregion
+
+        #region Order Management
+
+        #region FULFILLMENT
+
+        #region ORDER
+
+        #region SHIPPING_FULFILLEMENT
+
+        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
+        {
+            return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
+        }
+        public async Task<Fulfillment> GetShippingFulfillment(string orderId, string fulfillmentId)
+        {
+            return await new FulfillmentController(accessToken).GetShippingFulfillment(orderId, fulfillmentId);
+        }
+        public async Task CreateShippingFulfillment(string orderId, Fulfillment fulfillment)
+        {
+            await new FulfillmentController(accessToken).CreateShippingFulfillment(orderId, fulfillment);
+        }
+
+        #endregion
+
+        public async Task<Orders> GetOrders(string[] orderNumbers)
+        {
+            return await new FulfillmentController(accessToken).GetOrders(orderNumbers);
+        }
+        public async Task<Order> GetOrder(string orderNumber)
+        {
+            return await new FulfillmentController(accessToken).GetOrder(orderNumber);
+        }
+        public async Task<Orders> GetOrders(string filter, int limit = 0, int offset = 0)
+        {
+            return await new FulfillmentController(accessToken).GetOrders(filter, limit, offset);
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region Selling Metadata
+
+        #region METADATA 
+
+        public async Task<ReturnPolicies> GetReturnPolicies(string MarketplaceId)
+        {
+            return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
+        }
+
+        #endregion
+
+        #endregion
+
+        #endregion
+
+        #region TAXONOMY 
+
+        public async Task<CategoryTreeId> GetDefaultCategoryTreeId(MarketplaceIdEnum MarketplaceId)
+        {
+            return await new TaxonomyController(accessToken).GetDefaultCategoryTreeId(MarketplaceId);
+        }
+        public async Task<CategorySuggestions> GetCategorySuggestions(string CategoryTreeId, string query)
+        {
+            return await new TaxonomyController(accessToken).GetCategorySuggestions(CategoryTreeId, query);
+        }
+        public async Task<CategoryTree> GetCategoryTree(string CategoryTreeId)
+        {
+            return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
+        }
+
+        #endregion
+
+        #endregion
+
         #region TRADITIONAL_SELLING
 
         #region TRADING
 
-        public async Task<GetSellerListResponse> GetItems(int pageNumber, int entriesPerPage, string endTimeFrom, string endTimeTo)
+        public async Task<GetSellerListResponse> GetItems(int siteId, int pageNumber, int entriesPerPage, string endTimeFrom, string endTimeTo)
         {
-            return await new TradingController(accessToken).GetItems(pageNumber, entriesPerPage, endTimeFrom, endTimeTo);
+            return await new TradingController(accessToken).GetItems(siteId, pageNumber, entriesPerPage, endTimeFrom, endTimeTo);
         }
 
         #endregion

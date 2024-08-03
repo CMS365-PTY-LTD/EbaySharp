@@ -1,9 +1,9 @@
 ﻿// Ignore Spelling: SKU
 
-using EbaySharp.Entities.Sell.Inventory.InventoryItem;
-using EbaySharp.Entities.Sell.Inventory.Listing;
-using EbaySharp.Entities.Sell.Inventory.Location;
-using EbaySharp.Entities.Sell.Inventory.Offer;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Location;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Offer;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

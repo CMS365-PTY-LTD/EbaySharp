@@ -1,5 +1,4 @@
-﻿using EbaySharp.Entities.Commerce.Taxonomy;
-using EbaySharp.Entities.Sell.Stores.Store;
+﻿using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Stores.Store;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

@@ -658,7 +658,7 @@ int pageNumber = 0;
 bool hasMoreResults = true;
 while (hasMoreResults)
 {
-    GetSellerListResponse getSellerListResponse = await ebayController.GetItems(++pageNumber, 200, DateTime.Now.AddDays(-87).ToString("O"), DateTime.Now.AddDays(33).ToString("O"));
+    GetSellerListResponse getSellerListResponse = await ebayController.GetItems(siteId, ++pageNumber, 200, DateTime.Now.AddDays(-87).ToString("O"), DateTime.Now.AddDays(33).ToString("O"));
     hasMoreResults = getSellerListResponse.HasMoreItems;
     //Process items response here.
 }
