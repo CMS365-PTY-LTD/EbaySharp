@@ -2,15 +2,15 @@
   "openapi": "3.0.0",
   "info": {
     "title": "Browse API",
-    "description": "The Browse API has the following resources:<ul><li><b>item_summary:</b><br>Allows shoppers to search for specific items by keyword, GTIN, category, charity, product, image <a href=\"/api-docs/static/versioning.html#experimental\" target=\"_blank\"><img src=\"/cms/img/docs/experimental-icon.svg\" class=\"legend-icon experimental-icon\" alt=\"Experimental Method\" title=\"Experimental Method\" />(Experimental Method)</a>, or item aspects and refine the results by using filters, such as aspects, compatibility, and fields values, or UI parameters.</li><li><b>item:</b><br>Allows shoppers to retrieve the details of a specific item or all items in an item group, which is an item with variations such as color and size and check if a product is compatible with the specified item, such as if a specific car is compatible with a specific part.<br><br>This resource also provides a bridge between the eBay legacy APIs, such as the <a href=\"/api-docs/user-guides/static/finding-user-guide-landing.html\" target=\"_blank\">Finding</b>, and the RESTful APIs, which use different formats for the item IDs.</li></ul>The <b>item_summary</b>, <b>search_by_image</b>, and <b>item</b> resource calls require an <a href=\"/api-docs/static/oauth-client-credentials-grant.html\" target=\"_blank\">Application access token</a>.",
+    "description": "The Browse API has the following resources:<ul><li><b>item_summary:</b><br>Allows shoppers to search for specific items by keyword, GTIN, category, charity, product, image, or item aspects and refine the results by using filters, such as aspects, compatibility, and fields values, or UI parameters.</li><li><b>item:</b><br>Allows shoppers to retrieve the details of a specific item or all items in an item group, which is an item with variations such as color and size and check if a product is compatible with the specified item, such as if a specific car is compatible with a specific part.<br><br>This resource also provides a bridge between the eBay legacy APIs, such as the <a href=\"/api-docs/user-guides/static/finding-user-guide-landing.html\" target=\"_blank\">Finding</b>, and the RESTful APIs, which use different formats for the item IDs.</li></ul>The <b>item_summary</b>, <b>search_by_image</b>, and <b>item</b> resource calls require an <a href=\"/api-docs/static/oauth-client-credentials-grant.html\" target=\"_blank\">Application access token</a>.",
     "contact": {
       "name": "eBay Inc,"
     },
     "license": {
       "name": "eBay API License Agreement",
-      "url": "https://go.developer.ebay.com/api-license-agreement"
+      "url": "https://developer.ebay.com/join/api-license-agreement"
     },
-    "version": "v1.19.7"
+    "version": "v1.19.8"
   },
   "servers": [
     {
@@ -483,7 +483,7 @@
         "tags": [
           "item_summary"
         ],
-        "description": "<span class=\"tablenote\"><b>Note:</b> <img src=\"/cms/img/docs/experimental-icon.svg\" class=\"legend-icon experimental-icon\" alt=\"Experimental Method\" title=\"Experimental Method\"> This is an <a href=\"/api-docs/static/versioning.html#experimental \">experimental</a> method that is available to select developers approved by business units. For information about how to obtain access to this API in production, refer to the <a href=\"/api-docs/buy/static/buy-requirements.html\" target=\"_blank\">Buy APIs Requirements</a>.</span><br>This method searches for eBay items based on a image and retrieves summaries of the items. You pass in a Base64 image in the request payload and can refine the search by category, or with other available filters.<br><br>To get the Base64 image string, you can use sites such as <a href=\"https://codebeautify.org/image-to-base64-converter \" target=\"_blank\">https://codebeautify.org/image-to-base64-converter</a>.<br><br>This method also supports the following:<ul> <li>Filtering by the value of one or multiple fields, such as listing format, item condition, price range, location, and more. For the fields supported by this method, refer to the <a href=\"#uri.filter\">filter</a> parameter.</li><li>Filtering by item aspects using the <a href=\"#uri.aspect_filter\">aspect_filter</a> parameter.</li></ul>For details and examples of these capabilities, refer to <a href=\"/api-docs/buy/static/api-browse.html\" target=\"_blank\">Browse API</a> in the Buying Integration Guide.<h3>URL Encoding for Parameters</h3>Query parameter values need to be URL encoded. For details, refer to <a href=\"/api-docs/static/rest-request-components.html#parameters\" target=\"_blank\">URL encoding query parameter values</a>. For readability, code examples in this document have not been URL encoded.<h3>Restrictions</h3>This method can return a maximum of 10,000 items. For a list of supported sites and other restrictions, refer to <a href=\"/api-docs/buy/browse/overview.html#API\">API Restrictions</a>.<br><br><span class=\"tablenote\"><b>eBay Partner Network:</b> In order to receive a commission for your sales, you must use the URL returned in the <code>itemAffiliateWebUrl</code> field to forward your buyer to the ebay.com site.</span>",
+        "description": "This method searches for eBay items based on a image and retrieves summaries of the items. You pass in a Base64 image in the request payload and can refine the search by category, or with other available filters.<br><br>To get the Base64 image string, you can use sites such as <a href=\"https://codebeautify.org/image-to-base64-converter \" target=\"_blank\">https://codebeautify.org/image-to-base64-converter</a>.<br><br>This method also supports the following:<ul> <li>Filtering by the value of one or multiple fields, such as listing format, item condition, price range, location, and more. For the fields supported by this method, refer to the <a href=\"#uri.filter\">filter</a> parameter.</li><li>Filtering by item aspects using the <a href=\"#uri.aspect_filter\">aspect_filter</a> parameter.</li></ul>For details and examples of these capabilities, refer to <a href=\"/api-docs/buy/static/api-browse.html\" target=\"_blank\">Browse API</a> in the Buying Integration Guide.<h3>URL Encoding for Parameters</h3>Query parameter values need to be URL encoded. For details, refer to <a href=\"/api-docs/static/rest-request-components.html#parameters\" target=\"_blank\">URL encoding query parameter values</a>. For readability, code examples in this document have not been URL encoded.<h3>Restrictions</h3>This method can return a maximum of 10,000 items. For a list of supported sites and other restrictions, refer to <a href=\"/api-docs/buy/browse/overview.html#API\">API Restrictions</a>.<br><br><span class=\"tablenote\"><b>eBay Partner Network:</b> In order to receive a commission for your sales, you must use the URL returned in the <code>itemAffiliateWebUrl</code> field to forward your buyer to the ebay.com site.</span>",
         "operationId": "searchByImage",
         "parameters": [
           {
@@ -1974,6 +1974,56 @@
         },
         "description": "The type that defines the fields for the <code>item_id</code> values that all use a common description. Often the item variations within an item group all have the same description. Instead of repeating this description in the item details of each item, a description that is shared by at least one other item is returned in this container. If the description is unique, it is returned in the <code>items.description</code> field."
       },
+      "CompanyAddress": {
+        "type": "object",
+        "properties": {
+          "addressLine1": {
+            "type": "string",
+            "description": "The first line of the product manufacturer's street address."
+          },
+          "addressLine2": {
+            "type": "string",
+            "description": "The second line of the product manufacturer's street address. This field is not always used, but can be used for secondary address information such as 'Suite Number' or 'Apt Number'."
+          },
+          "city": {
+            "type": "string",
+            "description": "The city of the product manufacturer's street address."
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The company name of the the product manufacturer."
+          },
+          "country": {
+            "type": "string",
+            "description": "The two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" target=\"_blank\">ISO 3166</a> standard code for the country of the address. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/buy/browse/types/ba:CountryCodeEnum'>eBay API documentation</a>"
+          },
+          "countryName": {
+            "type": "string",
+            "description": "The country name of the product manufacturer's street address."
+          },
+          "county": {
+            "type": "string",
+            "description": "The county of the product manufacturer's street address."
+          },
+          "email": {
+            "type": "string",
+            "description": "The product manufacturer's business email address."
+          },
+          "phone": {
+            "type": "string",
+            "description": "The product manufacturer's business phone number."
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code of the product manufacturer's street address."
+          },
+          "stateOrProvince": {
+            "type": "string",
+            "description": "The state or province of the product manufacturer's street address."
+          }
+        },
+        "description": "This type is used to provide contact information for the manufacturer of the product."
+      },
       "CompatibilityPayload": {
         "type": "object",
         "properties": {
@@ -2554,7 +2604,7 @@
           },
           "estimatedAvailableQuantity": {
             "type": "integer",
-            "description": "The estimated number of this item that are available for purchase. Because the quantity of an item can change several times within a second, it is impossible to return the exact quantity. So instead of returning quantity, the estimated availability of the item is returned.",
+            "description": "The estimated number of this item that are available for purchase. Because the quantity of an item can change several times within a second, it is impossible to return the exact quantity. So instead of returning quantity, the estimated availability of the item is returned.<br><br><span class=\"tablenote\"><b>Note:</b> To see if a listing is available for purchase, review the <a href=\"/api-docs/buy/browse/resources/item/methods/getItem#response.itemEndDate\">itemEndDate</a> and <a href=\"/api-docs/buy/browse/resources/item/methods/getItem#response.estimatedAvailabilities.estimatedAvailabilityStatus\">estimatedAvailablityStatus</a> fields. If the item has an <b>EndDate</b> in the past, or the <b>estimatedAvailabilityStatus</b> is <code>OUT_OF_STOCK</code>, the item is unavailable for purchase.</span>",
             "format": "int32"
           },
           "estimatedSoldQuantity": {
@@ -2839,6 +2889,10 @@
             "description": "The number of items in a lot. In other words, a lot size is the number of items that are being sold together.  <br><br>A lot is a set of two or more items included in a single listing that must be purchased together in a single order line item. All the items in the lot are the same but there can be multiple items in a single lot,  such as the package of batteries shown in the example below.   <br><br><table border=\"1\"> <tr> <tr>  <th>Item</th>  <th>Lot Definition</th> <th>Lot Size</th></tr>  <tr>  <td>A package of 24 AA batteries</td>  <td>A box of 10 packages</td>  <td>10  </td> </tr>  <tr>  <td>A P235/75-15 Goodyear tire </td>  <td>4 tires  </td>  <td>4  </td> </tr> <tr> <td>Fashion Jewelry Rings  </td> <td>Package of 100 assorted rings  </td> <td>100 </td> </tr></table>  <br><br><span class=\"tablenote\"><b>Note: </b>  Lots are not supported in all categories.  </span>",
             "format": "int32"
           },
+          "manufacturer": {
+            "description": "Contact information for the manufacturer of the product.",
+            "$ref": "#/components/schemas/CompanyAddress"
+          },
           "marketingPrice": {
             "description": "The original price and the discount amount and percentage.",
             "$ref": "#/components/schemas/MarketingPrice"
@@ -2894,6 +2948,10 @@
             "type": "string",
             "description": "The URL of a page containing the manufacturer's specification of this item, which helps buyers make a purchasing decision. This information is available only for items that include the European energy efficiency rating (EEK) but is not available for <em> all</em> items with an EEK rating and is returned only if this information is available. The EEK rating of the item is returned in the <b> energyEfficiencyClass</b> field."
           },
+          "productSafetyLabels": {
+            "description": "This container provides product safety labels which were provided by the seller, for the listing.<br><br>The <a href=\"/api-docs/sell/metadata/resources/marketplace/methods/getProductSafetyLabels\" target=\"_blank\">getProductSafetyLabels</a> method of the <a href=\"/api-docs/sell/metadata/static/overview.html\" target=\"_blank\">Sell Metadata API</a> can be used to retrieve the full set of available Product Safety pictogram labels and safety statements.",
+            "$ref": "#/components/schemas/ProductSafetyLabels"
+          },
           "qualifiedPrograms": {
             "type": "array",
             "description": "An array of the qualified programs available for the item, or for the item group when returned for the <b>getItemsByItemGroup</b> method, such as EBAY_PLUS, AUTHENTICITY_GUARANTEE, and AUTHENTICITY_VERIFICATION.<br><br><span class=\"tablenote\"><b>Note: </b>The <code>AUTHENTICITY_GUARANTEE</code> value being returned by the <b>getItemsByItemGroup</b> method indicates that at least one item in the item group supports this program, but doesn't guarantee that the program is available to all items in the item group. To verify if the Authenticity Program is indeed available for the item that you are interested in, grab the <b>items.itemId</b> value for that item and use the <b>getItem</b> method. This method will return specific details on that particular item, including whether or not the Authenticity Guarantee Program is available for the item. Look for the <b>qualifiedPrograms</b> array and <b>authenticityGuarantee</b> container in the <b>getItem</b> response for this information.</span><br><br>eBay Plus is a premium account option for buyers, which provides benefits such as fast free domestic shipping and free returns on selected items. Top-Rated eBay sellers must opt in to eBay Plus to be able to offer the program on qualifying listings. Sellers must commit to next-day delivery of those items.<br><br><span class=\"tablenote\"><b>Note: </b> eBay Plus is available only to buyers in Germany, Austria, and Australia marketplaces.</span><br><br>The eBay <a href=\"https://pages.ebay.com/authenticity-guarantee/ \" target=\"_blank\">Authenticity Guarantee</a> program enables third-party authenticators to perform authentication verification inspections on items such as watches and sneakers.",
@@ -2913,6 +2971,13 @@
           "reservePriceMet": {
             "type": "boolean",
             "description": "This indicates if the reserve price of the item has been met. A reserve price is set by the seller and is the minimum amount the seller is willing to sell the item for. <p>If the highest bid is not equal to or higher than the reserve price when the auction ends, the listing ends and the item is not sold.</p> <p><b> Note: </b>This is returned only for auctions that have a reserve price.</p>"
+          },
+          "responsiblePersons": {
+            "type": "array",
+            "description": "This array provides information about one or more EU-based Responsible Persons or entities associated with the listing.",
+            "items": {
+              "$ref": "#/components/schemas/ResponsiblePerson"
+            }
           },
           "returnTerms": {
             "description": "The container that returns an overview of the seller's return policy.",
@@ -3392,7 +3457,7 @@
           },
           "country": {
             "type": "string",
-            "description": "The two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" target=\"_blank\">ISO 3166</a> standard of the country of the address. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/buy/browse/types/ba:CountryCodeEnum'>eBay API documentation</a>"
+            "description": "The two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" target=\"_blank\">ISO 3166</a> standard code for the country of the address. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/buy/browse/types/ba:CountryCodeEnum'>eBay API documentation</a>"
           },
           "countryName": {
             "type": "string",
@@ -3561,6 +3626,58 @@
         },
         "description": "The type that defines the fields for the product identifier type/value pairs of product associated with an item."
       },
+      "ProductSafetyLabelPictogram": {
+        "type": "object",
+        "properties": {
+          "pictogramDescription": {
+            "type": "string",
+            "description": "The description of the safety label pictogram."
+          },
+          "pictogramId": {
+            "type": "string",
+            "description": "The identifier of the safety label pictogram."
+          },
+          "pictogramUrl": {
+            "type": "string",
+            "description": "The URL of the safety label pictogram."
+          }
+        },
+        "description": "This type is used to provide product safety pictogram(s) for the listing."
+      },
+      "ProductSafetyLabelStatement": {
+        "type": "object",
+        "properties": {
+          "statementDescription": {
+            "type": "string",
+            "description": "A description of the nature of the product safety label statement."
+          },
+          "statementId": {
+            "type": "string",
+            "description": "The identifier of the product safety label statement."
+          }
+        },
+        "description": "This type is used to describe the seller provided product safety label statement."
+      },
+      "ProductSafetyLabels": {
+        "type": "object",
+        "properties": {
+          "pictograms": {
+            "type": "array",
+            "description": "An array of seller provided comma-separated string values that provides identifier, URL, and description for one or more pictograms associated with the listing.",
+            "items": {
+              "$ref": "#/components/schemas/ProductSafetyLabelPictogram"
+            }
+          },
+          "statements": {
+            "type": "array",
+            "description": "An array of seller provided comma-separated string values that provide identifier and description for one or more product safety statements associated with the listing.",
+            "items": {
+              "$ref": "#/components/schemas/ProductSafetyLabelStatement"
+            }
+          }
+        },
+        "description": "This type contains seller provided product safety pictograms and statements for the listing."
+      },
       "RatingHistogram": {
         "type": "object",
         "properties": {
@@ -3627,6 +3744,64 @@
           }
         },
         "description": "This type is used to provide region details for a tax jurisdiction."
+      },
+      "ResponsiblePerson": {
+        "type": "object",
+        "properties": {
+          "addressLine1": {
+            "type": "string",
+            "description": "The first line of the Responsible Person's street address."
+          },
+          "addressLine2": {
+            "type": "string",
+            "description": "The second line of the Responsible Person's address. This field is not always used, but can be used for secondary address information such as 'Suite Number' or 'Apt Number'."
+          },
+          "city": {
+            "type": "string",
+            "description": "The city of the Responsible Person's street address."
+          },
+          "companyName": {
+            "type": "string",
+            "description": "The name of the the Responsible Person or entity."
+          },
+          "country": {
+            "type": "string",
+            "description": "The two-letter <a href=\"https://www.iso.org/iso-3166-country-codes.html \" target=\"_blank\">ISO 3166</a> standard of the country of the address. For implementation help, refer to <a href='https://developer.ebay.com/api-docs/buy/browse/types/ba:CountryCodeEnum'>eBay API documentation</a>"
+          },
+          "countryName": {
+            "type": "string",
+            "description": "The country name of the Responsible Person's street address."
+          },
+          "county": {
+            "type": "string",
+            "description": "The county of the Responsible Person's street address."
+          },
+          "email": {
+            "type": "string",
+            "description": "The email of the Responsible Person's street address."
+          },
+          "phone": {
+            "type": "string",
+            "description": "The phone number of the Responsible Person's street address."
+          },
+          "postalCode": {
+            "type": "string",
+            "description": "The postal code of the Responsible Person's street address."
+          },
+          "stateOrProvince": {
+            "type": "string",
+            "description": "The state or province of the Responsible Person's street address."
+          },
+          "types": {
+            "type": "array",
+            "description": "The type(s) associated with the Responsible Person or entity.",
+            "items": {
+              "type": "string",
+              "description": " For implementation help, refer to <a href='https://developer.ebay.com/api-docs/buy/browse/types/gct:ResponsiblePersonTypeEnum'>eBay API documentation</a>"
+            }
+          }
+        },
+        "description": "This type provides information, such as name and contact details, for an EU-based Responsible Person or entity, associated with the product."
       },
       "ReviewRating": {
         "type": "object",

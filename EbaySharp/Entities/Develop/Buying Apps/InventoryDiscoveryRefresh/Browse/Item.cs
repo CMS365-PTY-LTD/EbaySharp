@@ -45,6 +45,7 @@ namespace EbaySharp.Entities.Buy.Browse
         public MarketplaceIdEnum? ListingMarketplaceId { get; set; }
         public List<LocalizedAspect> LocalizedAspects { get; set; }
         public int? LotSize { get; set; }
+        public CompanyAddress Manufacturer { get; set; }
         public MarketingPrice MarketingPrice { get; set; }
         public string Material { get; set; }
         public Amount MinimumPriceToBid { get; set; }
@@ -58,10 +59,12 @@ namespace EbaySharp.Entities.Buy.Browse
         public bool? PriorityListing { get; set; }
         public Product Product { get; set; }
         public string ProductFicheWebUrl { get; set; }
+        public ProductSafetyLabels ProductSafetyLabels { get; set; }
         public List<string> QualifiedPrograms { get; set; }
         public int? QuantityLimitPerBuyer { get; set; }
         public string RepairScore { get; set; }
         public bool? ReservePriceMet { get; set; }
+        public ResponsiblePerson[] ResponsiblePersons { get; set; }
         public ReturnTerms ReturnTerms { get; set; }
         public Seller Seller { get; set; }
         public List<SellerCustomPolicy> SellerCustomPolicies { get; set; }
