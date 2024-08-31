@@ -1,0 +1,22 @@
+{ /* CategorySuggestionResponse */
+  "categorySuggestions": [
+    { /* CategorySuggestion */
+      "category": { /* Category */
+        "categoryId": "string",
+        "categoryName": "string"
+      },
+      "categoryTreeNodeAncestors": [
+        { /* AncestorReference */
+          "categoryId": "string",
+          "categoryName": "string",
+          "categorySubtreeNodeHref": "string",
+          "categoryTreeNodeLevel": "integer"
+        }
+      ],
+      "categoryTreeNodeLevel": "integer",
+      "relevancy": "string"
+    }
+  ],
+  "categoryTreeId": "string",
+  "categoryTreeVersion": "string"
+}

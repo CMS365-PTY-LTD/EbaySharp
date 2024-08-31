@@ -1,0 +1,507 @@
+{ /* Item */
+  "additionalImages": [
+    { /* Image */
+      "height": "integer",
+      "imageUrl": "string",
+      "width": "integer"
+    }
+  ],
+  "addonServices": [
+    { /* AddonService */
+      "selection": "AddonServiceSelectionEnum : [OPTIONAL,REQUIRED]",
+      "serviceFee": { /* ConvertedAmount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      },
+      "serviceId": "string",
+      "serviceType": "AddonServiceTypeEnum : [AUTHENTICITY_GUARANTEE]"
+    }
+  ],
+  "adultOnly": "boolean",
+  "ageGroup": "string",
+  "authenticityGuarantee": { /* AuthenticityGuaranteeProgram */
+    "description": "string",
+    "termsWebUrl": "string"
+  },
+  "authenticityVerification": { /* AuthenticityVerificationProgram */
+    "description": "string",
+    "termsWebUrl": "string"
+  },
+  "availableCoupons": [
+    { /* AvailableCoupon */
+      "constraint": { /* CouponConstraint */
+        "expirationDate": "string"
+      },
+      "discountAmount": { /* Amount */
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      },
+      "discountType": "CouponDiscountType : [ITEM_PRICE]",
+      "message": "string",
+      "redemptionCode": "string",
+      "termsWebUrl": "string"
+    }
+  ],
+  "bidCount": "integer",
+  "brand": "string",
+  "buyingOptions": [
+    "string"
+  ],
+  "categoryId": "string",
+  "categoryIdPath": "string",
+  "categoryPath": "string",
+  "color": "string",
+  "condition": "string",
+  "conditionDescription": "string",
+  "conditionDescriptors": [
+    { /* ConditionDescriptor */
+      "name": "string",
+      "values": [
+        { /* ConditionDescriptorValue */
+          "additionalInfo": [
+            "string"
+          ],
+          "content": "string"
+        }
+      ]
+    }
+  ],
+  "conditionId": "string",
+  "currentBidPrice": { /* ConvertedAmount */
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "convertedFromValue": "string",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "value": "string"
+  },
+  "description": "string",
+  "ecoParticipationFee": { /* ConvertedAmount */
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "convertedFromValue": "string",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "value": "string"
+  },
+  "eligibleForInlineCheckout": "boolean",
+  "enabledForGuestCheckout": "boolean",
+  "energyEfficiencyClass": "string",
+  "epid": "string",
+  "estimatedAvailabilities": [
+    { /* EstimatedAvailability */
+      "availabilityThreshold": "integer",
+      "availabilityThresholdType": "AvailabilityThresholdEnum : [MORE_THAN]",
+      "deliveryOptions": [
+        "DeliveryOptionsEnum : [SHIP_TO_HOME,SELLER_ARRANGED_LOCAL_PICKUP,IN_STORE_PICKUP...]"
+      ],
+      "estimatedAvailabilityStatus": "AvailabilityStatusEnum : [IN_STOCK,LIMITED_STOCK,OUT_OF_STOCK]",
+      "estimatedAvailableQuantity": "integer",
+      "estimatedSoldQuantity": "integer"
+    }
+  ],
+  "gender": "string",
+  "gtin": "string",
+  "hazardousMaterialsLabels": { /* HazardousMaterialsLabels */
+    "additionalInformation": "string",
+    "pictograms": [
+      { /* HazardPictogram */
+        "pictogramDescription": "string",
+        "pictogramId": "string",
+        "pictogramUrl": "string"
+      }
+    ],
+    "signalWord": "string",
+    "signalWordId": "string",
+    "statements": [
+      { /* HazardStatement */
+        "statementDescription": "string",
+        "statementId": "string"
+      }
+    ]
+  },
+  "image": { /* Image */
+    "height": "integer",
+    "imageUrl": "string",
+    "width": "integer"
+  },
+  "inferredEpid": "string",
+  "itemAffiliateWebUrl": "string",
+  "itemCreationDate": "string",
+  "itemEndDate": "string",
+  "itemId": "string",
+  "itemLocation": { /* Address */
+    "addressLine1": "string",
+    "addressLine2": "string",
+    "city": "string",
+    "country": "CountryCodeEnum : [AD,AE,AF...]",
+    "county": "string",
+    "postalCode": "string",
+    "stateOrProvince": "string"
+  },
+  "itemWebUrl": "string",
+  "legacyItemId": "string",
+  "listingMarketplaceId": "MarketplaceIdEnum : [EBAY_AU,EBAY_AT,EBAY_BE...]",
+  "localizedAspects": [
+    { /* TypedNameValue */
+      "name": "string",
+      "type": "ValueTypeEnum : [STRING,STRING_ARRAY]",
+      "value": "string"
+    }
+  ],
+  "lotSize": "integer",
+  "manufacturer": { /* CompanyAddress */
+    "addressLine1": "string",
+    "addressLine2": "string",
+    "city": "string",
+    "companyName": "string",
+    "country": "CountryCodeEnum",
+    "countryName": "string",
+    "county": "string",
+    "email": "string",
+    "phone": "string",
+    "postalCode": "string",
+    "stateOrProvince": "string"
+  },
+  "marketingPrice": { /* MarketingPrice */
+    "discountAmount": { /* ConvertedAmount */
+      "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "convertedFromValue": "string",
+      "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "value": "string"
+    },
+    "discountPercentage": "string",
+    "originalPrice": { /* ConvertedAmount */
+      "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "convertedFromValue": "string",
+      "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "value": "string"
+    },
+    "priceTreatment": "PriceTreatmentEnum : [MINIMUM_ADVERTISED_PRICE,LIST_PRICE,MARKDOWN]"
+  },
+  "material": "string",
+  "minimumPriceToBid": { /* ConvertedAmount */
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "convertedFromValue": "string",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "value": "string"
+  },
+  "mpn": "string",
+  "pattern": "string",
+  "paymentMethods": [
+    { /* PaymentMethod */
+      "paymentMethodType": "PaymentMethodTypeEnum : [CREDIT_CARD,WALLET,DEBIT_CARD...]",
+      "paymentMethodBrands": [
+        { /* PaymentMethodBrand */
+          "paymentMethodBrandType": "PaymentMethodBrandEnum : [VISA,MASTERCARD,DISCOVER...]",
+          "logoImage": { /* Image */
+            "height": "integer",
+            "imageUrl": "string",
+            "width": "integer"
+          }
+        }
+      ],
+      "paymentInstructions": [
+        "PaymentInstructionEnum : [DIRECT_DEBIT,ACH,EFT...]"
+      ],
+      "sellerInstructions": [
+        "SellerInstructionEnum : [ACCEPTS_CREDIT_CARD,SEE_DESCRIPTION]"
+      ]
+    }
+  ],
+  "price": { /* ConvertedAmount */
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "convertedFromValue": "string",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "value": "string"
+  },
+  "priceDisplayCondition": "PriceDisplayConditionEnum : [ONLY_SHOW_WHEN_ADDED_IN_CART,ONLY_SHOW_ON_REQUEST,ALWAYS_SHOW]",
+  "primaryItemGroup": { /* ItemGroupSummary */
+    "itemGroupAdditionalImages": [
+      { /* Image */
+        "height": "integer",
+        "imageUrl": "string",
+        "width": "integer"
+      }
+    ],
+    "itemGroupHref": "string",
+    "itemGroupId": "string",
+    "itemGroupImage": { /* Image */
+      "height": "integer",
+      "imageUrl": "string",
+      "width": "integer"
+    },
+    "itemGroupTitle": "string",
+    "itemGroupType": "ItemGroupTypeEnum : [SELLER_DEFINED_VARIATIONS]"
+  },
+  "primaryProductReviewRating": { /* ReviewRating */
+    "averageRating": "string",
+    "ratingHistograms": [
+      { /* RatingHistogram */
+        "count": "integer",
+        "rating": "string"
+      }
+    ],
+    "reviewCount": "integer"
+  },
+  "priorityListing": "boolean",
+  "product": { /* Product */
+    "additionalImages": [
+      { /* Image */
+        "height": "integer",
+        "imageUrl": "string",
+        "width": "integer"
+      }
+    ],
+    "additionalProductIdentities": [
+      { /* AdditionalProductIdentity */
+        "productIdentity": [
+          { /* ProductIdentity */
+            "identifierType": "string",
+            "identifierValue": "string"
+          }
+        ]
+      }
+    ],
+    "aspectGroups": [
+      { /* AspectGroup */
+        "aspects": [
+          { /* Aspect */
+            "localizedName": "string",
+            "localizedValues": [
+              "string"
+            ]
+          }
+        ],
+        "localizedGroupName": "string"
+      }
+    ],
+    "brand": "string",
+    "description": "string",
+    "gtins": [
+      "string"
+    ],
+    "image": { /* Image */
+      "height": "integer",
+      "imageUrl": "string",
+      "width": "integer"
+    },
+    "mpns": [
+      "string"
+    ],
+    "title": "string"
+  },
+  "productFicheWebUrl": "string",
+  "productSafetyLabels": { /* ProductSafetyLabels */
+    "pictograms": [
+      { /* ProductSafetyLabelPictogram */
+        "pictogramDescription": "string",
+        "pictogramId": "string",
+        "pictogramUrl": "string"
+      }
+    ],
+    "statements": [
+      { /* ProductSafetyLabelStatement */
+        "statementDescription": "string",
+        "statementId": "string"
+      }
+    ]
+  },
+  "qualifiedPrograms": [
+    "string"
+  ],
+  "quantityLimitPerBuyer": "integer",
+  "repairScore": "string",
+  "reservePriceMet": "boolean",
+  "responsiblePersons": [
+    { /* ResponsiblePerson */
+      "addressLine1": "string",
+      "addressLine2": "string",
+      "city": "string",
+      "companyName": "string",
+      "country": "CountryCodeEnum : [AD,AE,AF...]",
+      "countryName": "string",
+      "county": "string",
+      "email": "string",
+      "phone": "string",
+      "postalCode": "string",
+      "stateOrProvince": "string",
+      "types": [
+        "ResponsiblePersonTypeEnum : [EU_RESPONSIBLE_PERSON]"
+      ]
+    }
+  ],
+  "returnTerms": { /* ItemReturnTerms */
+    "extendedHolidayReturnsOffered": "boolean",
+    "refundMethod": "RefundMethodEnum : [MONEY_BACK,MERCHANDISE_CREDIT]",
+    "restockingFeePercentage": "string",
+    "returnInstructions": "string",
+    "returnMethod": "ReturnMethodEnum : [REPLACEMENT,EXCHANGE]",
+    "returnPeriod": { /* TimeDuration */
+      "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+      "value": "integer"
+    },
+    "returnsAccepted": "boolean",
+    "returnShippingCostPayer": "ReturnShippingCostPayerEnum : [SELLER,BUYER]"
+  },
+  "seller": { /* SellerDetail */
+    "feedbackPercentage": "string",
+    "feedbackScore": "integer",
+    "sellerAccountType": "string",
+    "sellerLegalInfo": { /* SellerLegalInfo */
+      "email": "string",
+      "fax": "string",
+      "imprint": "string",
+      "legalContactFirstName": "string",
+      "legalContactLastName": "string",
+      "name": "string",
+      "phone": "string",
+      "registrationNumber": "string",
+      "sellerProvidedLegalAddress": { /* LegalAddress */
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "country": "CountryCodeEnum : [AD,AE,AF...]",
+        "countryName": "string",
+        "county": "string",
+        "postalCode": "string",
+        "stateOrProvince": "string"
+      },
+      "termsOfService": "string",
+      "vatDetails": [
+        { /* VatDetail */
+          "issuingCountry": "CountryCodeEnum : [AD,AE,AF...]",
+          "vatId": "string"
+        }
+      ],
+      "economicOperator": { /* EconomicOperator */
+        "companyName": "string",
+        "addressLine1": "string",
+        "addressLine2": "string",
+        "city": "string",
+        "stateOrProvince": "string",
+        "postalCode": "string",
+        "country": "string",
+        "phone": "string",
+        "email": "string"
+      },
+      "weeeNumber": "string"
+    },
+    "userId": "string",
+    "username": "string"
+  },
+  "sellerCustomPolicies": [
+    { /* SellerCustomPolicy */
+      "description": "string",
+      "label": "string",
+      "type": "SellerCustomPolicyTypeEnum : [PRODUCT_COMPLIANCE,TAKE_BACK]"
+    }
+  ],
+  "sellerItemRevision": "string",
+  "shippingOptions": [
+    { /* ShippingOption */
+      "additionalShippingCostPerUnit": { /* ConvertedAmount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      },
+      "cutOffDateUsedForEstimate": "string",
+      "fulfilledThrough": "FulfilledThroughEnum : [GLOBAL_SHIPPING,INTERNATIONAL_SHIPPING]",
+      "guaranteedDelivery": "boolean",
+      "importCharges": { /* ConvertedAmount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      },
+      "maxEstimatedDeliveryDate": "string",
+      "minEstimatedDeliveryDate": "string",
+      "quantityUsedForEstimate": "integer",
+      "shippingCarrierCode": "string",
+      "shippingCost": { /* ConvertedAmount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      },
+      "shippingCostType": "string",
+      "shippingServiceCode": "string",
+      "shipToLocationUsedForEstimate": { /* ShipToLocation */
+        "country": "CountryCodeEnum : [AD,AE,AF...]",
+        "postalCode": "string"
+      },
+      "trademarkSymbol": "string",
+      "type": "string"
+    }
+  ],
+  "shipToLocations": { /* ShipToLocations */
+    "regionExcluded": [
+      { /* ShipToRegion */
+        "regionId": "string",
+        "regionName": "string",
+        "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY...]"
+      }
+    ],
+    "regionIncluded": [
+      { /* ShipToRegion */
+        "regionId": "string",
+        "regionName": "string",
+        "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY...]"
+      }
+    ]
+  },
+  "shortDescription": "string",
+  "size": "string",
+  "sizeSystem": "string",
+  "sizeType": "string",
+  "subtitle": "string",
+  "taxes": [
+    { /* Taxes */
+      "ebayCollectAndRemitTax": "boolean",
+      "includedInPrice": "boolean",
+      "shippingAndHandlingTaxed": "boolean",
+      "taxJurisdiction": { /* TaxJurisdiction */
+        "region": { /* Region */
+          "regionName": "string",
+          "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY...]"
+        },
+        "taxJurisdictionId": "string"
+      },
+      "taxPercentage": "string",
+      "taxType": "TaxType : [STATE_SALES_TAX,VAT,PROVINCE_SALES_TAX...]"
+    }
+  ],
+  "title": "string",
+  "topRatedBuyingExperience": "boolean",
+  "tyreLabelImageUrl": "string",
+  "uniqueBidderCount": "integer",
+  "unitPrice": { /* ConvertedAmount */
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "convertedFromValue": "string",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "value": "string"
+  },
+  "unitPricingMeasure": "string",
+  "warnings": [
+    { /* ErrorDetailV3 */
+      "category": "string",
+      "domain": "string",
+      "errorId": "integer",
+      "inputRefIds": [
+        "string"
+      ],
+      "longMessage": "string",
+      "message": "string",
+      "outputRefIds": [
+        "string"
+      ],
+      "parameters": [
+        { /* ErrorParameterV3 */
+          "name": "string",
+          "value": "string"
+        }
+      ],
+      "subdomain": "string"
+    }
+  ],
+  "watchCount": "integer"
+}

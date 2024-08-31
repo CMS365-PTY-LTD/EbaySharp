@@ -1,0 +1,43 @@
+{ /* CategoryTree */
+  "applicableMarketplaceIds": [
+    "MarketplaceIdEnum : [EBAY_AT,EBAY_AU,EBAY_BE...]"
+  ],
+  "categoryTreeId": "string",
+  "categoryTreeVersion": "string",
+  "rootCategoryNode": { /* CategoryTreeNode */
+    "category": { /* Category */
+      "categoryId": "string",
+      "categoryName": "string"
+    },
+    "categoryTreeNodeLevel": "integer",
+    "childCategoryTreeNodes": [
+      { /* CategoryTreeNode */
+        "category": { /* Category */
+          "categoryId": "string",
+          "categoryName": "string"
+        },
+        "categoryTreeNodeLevel": "integer",
+        "childCategoryTreeNodes": [
+          { /* CategoryTreeNode */
+            "category": { /* Category */
+              "categoryId": "string",
+              "categoryName": "string"
+            },
+            "categoryTreeNodeLevel": "integer",
+            "childCategoryTreeNodes": [
+              { /* CategoryTreeNode */
+                // CategoryTreeNode is recursive click to go to first occurrence
+              }
+            ],
+            "leafCategoryTreeNode": "boolean",
+            "parentCategoryTreeNodeHref": "string"
+          }
+        ],
+        "leafCategoryTreeNode": "boolean",
+        "parentCategoryTreeNodeHref": "string"
+      }
+    ],
+    "leafCategoryTreeNode": "boolean",
+    "parentCategoryTreeNodeHref": "string"
+  }
+}

@@ -1,0 +1,9 @@
+{ /* SigningKey */
+  "creationTime": "integer",
+  "expirationTime": "integer",
+  "jwe": "string",
+  "privateKey": "string",
+  "publicKey": "string",
+  "signingKeyCipher": "SigningKeyCipher : [ED25519,RSA]",
+  "signingKeyId": "string"
+}

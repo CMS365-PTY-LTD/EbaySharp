@@ -1,0 +1,4 @@
+{ /* BaseCategoryTree */
+  "categoryTreeId": "string",
+  "categoryTreeVersion": "string"
+}

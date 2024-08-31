@@ -1,0 +1,209 @@
+{ /* Offers */
+  "href": "string",
+  "limit": "integer",
+  "next": "string",
+  "offers": [
+    { /* EbayOfferDetailsWithAll */
+      "availableQuantity": "integer",
+      "categoryId": "string",
+      "charity": { /* Charity */
+        "charityId": "string",
+        "donationPercentage": "string"
+      },
+      "extendedProducerResponsibility": { /* ExtendedProducerResponsibility */
+        "ecoParticipationFee": { /* Amount */
+          "currency": "string",
+          "value": "string"
+        },
+        "producerProductId": "string",
+        "productDocumentationId": "string",
+        "productPackageId": "string",
+        "shipmentPackageId": "string"
+      },
+      "format": "FormatTypeEnum : [AUCTION,FIXED_PRICE]",
+      "hideBuyerDetails": "boolean",
+      "includeCatalogProductDetails": "boolean",
+      "listing": { /* ListingDetails */
+        "listingId": "string",
+        "listingOnHold": "boolean",
+        "listingStatus": "ListingStatusEnum : [ACTIVE,OUT_OF_STOCK,INACTIVE...]",
+        "soldQuantity": "integer"
+      },
+      "listingDescription": "string",
+      "listingDuration": "ListingDurationEnum : [DAYS_1,DAYS_3,DAYS_5...]",
+      "listingPolicies": { /* ListingPolicies */
+        "bestOfferTerms": { /* BestOffer */
+          "autoAcceptPrice": { /* Amount */
+            "currency": "string",
+            "value": "string"
+          },
+          "autoDeclinePrice": { /* Amount */
+            "currency": "string",
+            "value": "string"
+          },
+          "bestOfferEnabled": "boolean"
+        },
+        "eBayPlusIfEligible": "boolean",
+        "fulfillmentPolicyId": "string",
+        "paymentPolicyId": "string",
+        "productCompliancePolicyIds": [
+          "string"
+        ],
+        "regionalProductCompliancePolicies": { /* RegionalProductCompliancePolicies */
+          "countryPolicies": [
+            { /* CountryPolicy */
+              "country": "CountryCodeEnum : [AD,AE,AF...]",
+              "policyIds": [
+                "string"
+              ]
+            }
+          ]
+        },
+        "regionalTakeBackPolicies": { /* RegionalTakeBackPolicies */
+          "countryPolicies": [
+            { /* CountryPolicy */
+              "country": "CountryCodeEnum : [AD,AE,AF...]",
+              "policyIds": [
+                "string"
+              ]
+            }
+          ]
+        },
+        "returnPolicyId": "string",
+        "shippingCostOverrides": [
+          { /* ShippingCostOverride */
+            "additionalShippingCost": { /* Amount */
+              "currency": "string",
+              "value": "string"
+            },
+            "priority": "integer",
+            "shippingCost": { /* Amount */
+              "currency": "string",
+              "value": "string"
+            },
+            "shippingServiceType": "ShippingServiceTypeEnum : [DOMESTIC,INTERNATIONAL]",
+            "surcharge": { /* Amount */
+              "currency": "string",
+              "value": "string"
+            }
+          }
+        ],
+        "takeBackPolicyId": "string"
+      },
+      "listingStartDate": "string",
+      "lotSize": "integer",
+      "marketplaceId": "MarketplaceEnum : [EBAY_US,EBAY_MOTORS,EBAY_CA...]",
+      "merchantLocationKey": "string",
+      "offerId": "string",
+      "pricingSummary": { /* PricingSummary */
+        "auctionReservePrice": { /* Amount */
+          "currency": "string",
+          "value": "string"
+        },
+        "auctionStartPrice": { /* Amount */
+          "currency": "string",
+          "value": "string"
+        },
+        "minimumAdvertisedPrice": { /* Amount */
+          "currency": "string",
+          "value": "string"
+        },
+        "originallySoldForRetailPriceOn": "SoldOnEnum : [ON_EBAY,OFF_EBAY,ON_AND_OFF_EBAY]",
+        "originalRetailPrice": { /* Amount */
+          "currency": "string",
+          "value": "string"
+        },
+        "price": { /* Amount */
+          "currency": "string",
+          "value": "string"
+        },
+        "pricingVisibility": "MinimumAdvertisedPriceHandlingEnum : [NONE,PRE_CHECKOUT,DURING_CHECKOUT]"
+      },
+      "quantityLimitPerBuyer": "integer",
+      "regulatory": { /* Regulatory */
+        "documents": [
+          { /* Document */
+            "documentId": "string"
+          }
+        ],
+        "economicOperator": { /* EconomicOperator */
+          "addressLine1": "string",
+          "addressLine2": "string",
+          "city": "string",
+          "companyName": "string",
+          "country": "CountryCodeEnum : [AD,AE,AF...]",
+          "email": "string",
+          "phone": "string",
+          "postalCode": "string",
+          "stateOrProvince": "string"
+        },
+        "energyEfficiencyLabel": { /* EnergyEfficiencyLabel */
+          "imageDescription": "string",
+          "imageURL": "string",
+          "productInformationSheet": "string"
+        },
+        "hazmat": { /* Hazmat */
+          "component": "string",
+          "pictograms": [
+            "string"
+          ],
+          "signalWord": "string",
+          "statements": [
+            "string"
+          ]
+        },
+        "manufacturer": { /* Manufacturer */
+          "addressLine1": "string",
+          "addressLine2": "string",
+          "city": "string",
+          "companyName": "string",
+          "country": "CountryCodeEnum : [AD,AE,AF...]",
+          "email": "string",
+          "phone": "string",
+          "postalCode": "string",
+          "stateOrProvince": "string"
+        },
+        "productSafety": { /* ProductSafety */
+          "component": "string",
+          "pictograms": [
+            "string"
+          ],
+          "statements": [
+            "string"
+          ]
+        },
+        "repairScore": "number",
+        "responsiblePersons": [
+          { /* ResponsiblePerson */
+            "addressLine1": "string",
+            "addressLine2": "string",
+            "city": "string",
+            "companyName": "string",
+            "country": "CountryCodeEnum : [AD,AE,AF...]",
+            "email": "string",
+            "phone": "string",
+            "postalCode": "string",
+            "stateOrProvince": "string",
+            "types": [
+              "ResponsiblePersonTypeEnum : [EU_RESPONSIBLE_PERSON]"
+            ]
+          }
+        ]
+      },
+      "secondaryCategoryId": "string",
+      "sku": "string",
+      "status": "OfferStatusEnum : [PUBLISHED,UNPUBLISHED]",
+      "storeCategoryNames": [
+        "string"
+      ],
+      "tax": { /* Tax */
+        "applyTax": "boolean",
+        "thirdPartyTaxCategory": "string",
+        "vatPercentage": "number"
+      }
+    }
+  ],
+  "prev": "string",
+  "size": "integer",
+  "total": "integer"
+}

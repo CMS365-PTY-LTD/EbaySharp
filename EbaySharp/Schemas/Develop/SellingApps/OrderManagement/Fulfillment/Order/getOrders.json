@@ -1,0 +1,443 @@
+{ /* OrderSearchPagedCollection */
+  "href": "string",
+  "limit": "integer",
+  "next": "string",
+  "offset": "integer",
+  "orders": [
+    { /* Order */
+      "buyer": { /* Buyer */
+        "buyerRegistrationAddress": { /* ExtendedContact */
+          "companyName": "string",
+          "contactAddress": { /* Address */
+            "addressLine1": "string",
+            "addressLine2": "string",
+            "city": "string",
+            "countryCode": "CountryCodeEnum : [AD,AE,AF...]",
+            "county": "string",
+            "postalCode": "string",
+            "stateOrProvince": "string"
+          },
+          "email": "string",
+          "fullName": "string",
+          "primaryPhone": { /* PhoneNumber */
+            "phoneNumber": "string"
+          }
+        },
+        "taxAddress": { /* TaxAddress */
+          "city": "string",
+          "countryCode": "CountryCodeEnum : [AD,AE,AF...]",
+          "postalCode": "string",
+          "stateOrProvince": "string"
+        },
+        "taxIdentifier": { /* TaxIdentifier */
+          "taxpayerId": "string",
+          "taxIdentifierType": "TaxIdentifierTypeEnum : [CODICE_FISCALE,DNI,NIE...]",
+          "issuingCountry": "CountryCodeEnum : [AD,AE,AF...]"
+        },
+        "username": "string"
+      },
+      "buyerCheckoutNotes": "string",
+      "cancelStatus": { /* CancelStatus */
+        "cancelledDate": "string",
+        "cancelRequests": [
+          { /* CancelRequest */
+            "cancelCompletedDate": "string",
+            "cancelInitiator": "string",
+            "cancelReason": "string",
+            "cancelRequestedDate": "string",
+            "cancelRequestId": "string",
+            "cancelRequestState": "CancelRequestStateEnum : [COMPLETED,REJECTED,REQUESTED]"
+          }
+        ],
+        "cancelState": "CancelStateEnum : [CANCELED,IN_PROGRESS,NONE_REQUESTED]"
+      },
+      "creationDate": "string",
+      "ebayCollectAndRemitTax": "boolean",
+      "fulfillmentHrefs": [
+        "string"
+      ],
+      "fulfillmentStartInstructions": [
+        { /* FulfillmentStartInstruction */
+          "appointment": { /* AppointmentDetails */
+            "appointmentEndTime": "string",
+            "appointmentStartTime": "string",
+            "appointmentStatus": "AppointmentStatusEnum : [ON_HOLD,CONFIRMED,CANCELLED...]",
+            "appointmentType": "AppointmentTypeEnum : [TIME_SLOT,MACRO]",
+            "appointmentWindow": "AppointmentWindowEnum : [MORNING,EVENING]",
+            "serviceProviderAppointmentDate": "string"
+          },
+          "destinationTimeZone": "string",
+          "ebaySupportedFulfillment": "boolean",
+          "finalDestinationAddress": { /* Address */
+            "addressLine1": "string",
+            "addressLine2": "string",
+            "city": "string",
+            "countryCode": "CountryCodeEnum : [AD,AE,AF...]",
+            "county": "string",
+            "postalCode": "string",
+            "stateOrProvince": "string"
+          },
+          "fulfillmentInstructionsType": "FulfillmentInstructionsType : [DIGITAL,PREPARE_FOR_PICKUP,SELLER_DEFINED...]",
+          "maxEstimatedDeliveryDate": "string",
+          "minEstimatedDeliveryDate": "string",
+          "pickupStep": { /* PickupStep */
+            "merchantLocationKey": "string"
+          },
+          "shippingStep": { /* ShippingStep */
+            "shippingCarrierCode": "string",
+            "shippingServiceCode": "string",
+            "shipTo": { /* ExtendedContact */
+              "companyName": "string",
+              "contactAddress": { /* Address */
+                "addressLine1": "string",
+                "addressLine2": "string",
+                "city": "string",
+                "countryCode": "CountryCodeEnum : [AD,AE,AF...]",
+                "county": "string",
+                "postalCode": "string",
+                "stateOrProvince": "string"
+              },
+              "email": "string",
+              "fullName": "string",
+              "primaryPhone": { /* PhoneNumber */
+                "phoneNumber": "string"
+              }
+            },
+            "shipToReferenceId": "string"
+          }
+        }
+      ],
+      "lastModifiedDate": "string",
+      "legacyOrderId": "string",
+      "lineItems": [
+        { /* LineItem */
+          "appliedPromotions": [
+            { /* AppliedPromotion */
+              "description": "string",
+              "discountAmount": { /* Amount */
+                "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedFromValue": "string",
+                "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "value": "string"
+              },
+              "promotionId": "string"
+            }
+          ],
+          "deliveryCost": { /* DeliveryCost */
+            "discountAmount": "Amount",
+            "handlingCost": "Amount",
+            "importCharges": { /* Amount */
+              "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "convertedFromValue": "string",
+              "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "value": "string"
+            },
+            "shippingCost": { /* Amount */
+              "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "convertedFromValue": "string",
+              "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "value": "string"
+            },
+            "shippingIntermediationFee": { /* Amount */
+              "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "convertedFromValue": "string",
+              "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "value": "string"
+            }
+          },
+          "discountedLineItemCost": { /* Amount */
+            "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedFromValue": "string",
+            "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "value": "string"
+          },
+          "ebayCollectAndRemitTaxes": [
+            { /* EbayCollectAndRemitTax */
+              "amount": { /* Amount */
+                "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedFromValue": "string",
+                "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "value": "string"
+              },
+              "ebayReference": { /* EbayTaxReference */
+                "name": "string",
+                "value": "string"
+              },
+              "taxType": "TaxTypeEnum : [STATE_SALES_TAX,PROVINCE_SALES_TAX,REGION...]",
+              "collectionMethod": "CollectionMethodEnum : [INVOICE,NET]"
+            }
+          ],
+          "ebayCollectedCharges": { /* EbayCollectedCharges */
+            "ebayShipping": { /* Amount */
+              "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "convertedFromValue": "string",
+              "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "value": "string"
+            }
+          },
+          "giftDetails": { /* GiftDetails */
+            "message": "string",
+            "recipientEmail": "string",
+            "senderName": "string"
+          },
+          "itemLocation": { /* ItemLocation */
+            "countryCode": "CountryCodeEnum : [AD,AE,AF...]",
+            "location": "string",
+            "postalCode": "string"
+          },
+          "legacyItemId": "string",
+          "legacyVariationId": "string",
+          "lineItemCost": { /* Amount */
+            "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedFromValue": "string",
+            "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "value": "string"
+          },
+          "lineItemFulfillmentInstructions": { /* LineItemFulfillmentInstructions */
+            "destinationTimeZone": "string",
+            "guaranteedDelivery": "boolean",
+            "maxEstimatedDeliveryDate": "string",
+            "minEstimatedDeliveryDate": "string",
+            "shipByDate": "string",
+            "sourceTimeZone": "string"
+          },
+          "lineItemFulfillmentStatus": "LineItemFulfillmentStatusEnum : [FULFILLED,IN_PROGRESS,NOT_STARTED]",
+          "lineItemId": "string",
+          "linkedOrderLineItems": [
+            { /* LinkedOrderLineItem */
+              "lineItemAspects": [
+                { /* NameValuePair */
+                  "name": "string",
+                  "value": "string"
+                }
+              ],
+              "lineItemId": "string",
+              "maxEstimatedDeliveryDate": "string",
+              "minEstimatedDeliveryDate": "string",
+              "orderId": "string",
+              "sellerId": "string",
+              "shipments": [
+                { /* TrackingInfo */
+                  "shipmentTrackingNumber": "string",
+                  "shippingCarrierCode": "string"
+                }
+              ],
+              "title": "string"
+            }
+          ],
+          "listingMarketplaceId": "MarketplaceIdEnum : [EBAY_AT,EBAY_AU,EBAY_BE...]",
+          "properties": { /* LineItemProperties */
+            "buyerProtection": "boolean",
+            "fromBestOffer": "boolean",
+            "soldViaAdCampaign": "boolean"
+          },
+          "purchaseMarketplaceId": "MarketplaceIdEnum : [EBAY_AT,EBAY_AU,EBAY_BE...]",
+          "quantity": "integer",
+          "refunds": [
+            { /* LineItemRefund */
+              "amount": { /* Amount */
+                "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedFromValue": "string",
+                "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "value": "string"
+              },
+              "refundDate": "string",
+              "refundId": "string",
+              "refundReferenceId": "string"
+            }
+          ],
+          "sku": "string",
+          "soldFormat": "SoldFormatEnum : [AUCTION,FIXED_PRICE,OTHER...]",
+          "taxes": [
+            { /* Tax */
+              "amount": { /* Amount */
+                "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedFromValue": "string",
+                "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "value": "string"
+              },
+              "taxType": "TaxTypeEnum : [STATE_SALES_TAX,PROVINCE_SALES_TAX,REGION...]"
+            }
+          ],
+          "title": "string",
+          "total": { /* Amount */
+            "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedFromValue": "string",
+            "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "value": "string"
+          },
+          "variationAspects": [
+            { /* NameValuePair */
+              "name": "string",
+              "value": "string"
+            }
+          ]
+        }
+      ],
+      "orderFulfillmentStatus": "OrderFulfillmentStatus : [FULFILLED,IN_PROGRESS,NOT_STARTED]",
+      "orderId": "string",
+      "orderPaymentStatus": "OrderPaymentStatusEnum : [FAILED,FULLY_REFUNDED,PAID...]",
+      "paymentSummary": { /* PaymentSummary */
+        "payments": [
+          { /* Payment */
+            "amount": { /* Amount */
+              "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "convertedFromValue": "string",
+              "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "value": "string"
+            },
+            "paymentDate": "string",
+            "paymentHolds": [
+              { /* PaymentHold */
+                "expectedReleaseDate": "string",
+                "holdAmount": { /* Amount */
+                  "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                  "convertedFromValue": "string",
+                  "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                  "value": "string"
+                },
+                "holdReason": "string",
+                "holdState": "string",
+                "releaseDate": "string",
+                "sellerActionsToRelease": [
+                  { /* SellerActionsToRelease */
+                    "sellerActionToRelease": "string"
+                  }
+                ]
+              }
+            ],
+            "paymentMethod": "PaymentMethodTypeEnum : [CREDIT_CARD,PAYPAL,CASHIER_CHECK...]",
+            "paymentReferenceId": "string",
+            "paymentStatus": "PaymentStatusEnum : [FAILED,PAID,PENDING]"
+          }
+        ],
+        "refunds": [
+          { /* OrderRefund */
+            "amount": { /* Amount */
+              "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "convertedFromValue": "string",
+              "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+              "value": "string"
+            },
+            "refundDate": "string",
+            "refundId": "string",
+            "refundReferenceId": "string",
+            "refundStatus": "RefundStatusEnum : [FAILED,PENDING,REFUNDED]"
+          }
+        ],
+        "totalDueSeller": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        }
+      },
+      "pricingSummary": { /* PricingSummary */
+        "adjustment": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "deliveryCost": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "deliveryDiscount": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "fee": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "priceDiscount": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "priceSubtotal": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "tax": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        },
+        "total": { /* Amount */
+          "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "convertedFromValue": "string",
+          "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+          "value": "string"
+        }
+      },
+      "program": { /* Program */
+        "authenticityVerification": { /* PostSaleAuthenticationProgram */
+          "outcomeReason": "AuthenticityVerificationReasonEnum : [NOT_AUTHENTIC,NOT_AS_DESCRIBED,CUSTOMIZED...]",
+          "status": "AuthenticityVerificationStatusEnum : [PENDING,PASSED,FAILED...]"
+        },
+        "ebayShipping": { /* EbayShipping */
+          "shippingLabelProvidedBy": "string"
+        },
+        "ebayVault": { /* EbayVaultProgram */
+          "fulfillmentType": "EbayVaultFulfillmentTypeEnum : [SELLER_TO_VAULT,VAULT_TO_VAULT,VAULT_TO_BUYER]"
+        },
+        "ebayInternationalShipping": { /* EbayInternationalShipping */
+          "returnsManagedBy": "string"
+        },
+        "fulfillmentProgram": { /* EbayFulfillmentProgram */
+          "fulfilledBy": "string"
+        }
+      },
+      "salesRecordReference": "string",
+      "sellerId": "string",
+      "totalFeeBasisAmount": { /* Amount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      },
+      "totalMarketplaceFee": { /* Amount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "value": "string"
+      }
+    }
+  ],
+  "prev": "string",
+  "total": "integer",
+  "warnings": [
+    { /* ErrorDetailV3 */
+      "category": "string",
+      "domain": "string",
+      "errorId": "integer",
+      "inputRefIds": [
+        "string"
+      ],
+      "longMessage": "string",
+      "message": "string",
+      "outputRefIds": [
+        "string"
+      ],
+      "parameters": [
+        { /* ErrorParameterV3 */
+          "name": "string",
+          "value": "string"
+        }
+      ],
+      "subdomain": "string"
+    }
+  ]
+}

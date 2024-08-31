@@ -46,6 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Schemas\Develop\SellingApps\ListingManagement\Feed\Task\" />
     <Folder Include="Screenshots\" />
     <Folder Include="Wiki\" />
   </ItemGroup>

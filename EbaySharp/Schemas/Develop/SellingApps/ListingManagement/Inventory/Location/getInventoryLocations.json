@@ -1,0 +1,60 @@
+{ /* LocationResponse */
+  "href": "string",
+  "limit": "integer",
+  "next": "string",
+  "offset": "integer",
+  "prev": "string",
+  "total": "integer",
+  "locations": [
+    { /* InventoryLocationResponse */
+      "location": { /* Location */
+        "address": { /* Address */
+          "addressLine1": "string",
+          "addressLine2": "string",
+          "city": "string",
+          "country": "CountryCodeEnum : [AD,AE,AF...]",
+          "county": "string",
+          "postalCode": "string",
+          "stateOrProvince": "string"
+        },
+        "geoCoordinates": { /* GeoCoordinates */
+          "latitude": "number",
+          "longitude": "number"
+        },
+        "locationId": "string"
+      },
+      "locationAdditionalInformation": "string",
+      "locationInstructions": "string",
+      "locationTypes": [
+        "StoreTypeEnum : [STORE,WAREHOUSE]"
+      ],
+      "locationWebUrl": "string",
+      "merchantLocationKey": "string",
+      "merchantLocationStatus": "StatusEnum : [DISABLED,ENABLED]",
+      "name": "string",
+      "operatingHours": [
+        { /* OperatingHours */
+          "dayOfWeekEnum": "DayOfWeekEnum : [MONDAY,TUESDAY,WEDNESDAY...]",
+          "intervals": [
+            { /* Interval */
+              "close": "string",
+              "open": "string"
+            }
+          ]
+        }
+      ],
+      "phone": "string",
+      "specialHours": [
+        { /* SpecialHours */
+          "date": "string",
+          "intervals": [
+            { /* Interval */
+              "close": "string",
+              "open": "string"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

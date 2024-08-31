@@ -1,0 +1,31 @@
+{ /* GetStoreCategoriesResponseType */
+  "storeCategories": [
+    { /* StoreCategoryType */
+      "categoryId": "string",
+      "categoryName": "string",
+      "childrenCategories": [
+        { /* StoreCategoryType */
+          "categoryId": "string",
+          "categoryName": "string",
+          "childrenCategories": [
+            { /* StoreCategoryType */
+              "categoryId": "string",
+              "categoryName": "string",
+              "childrenCategories": [
+                { /* StoreCategoryType */
+                  // StoreCategoryType is recursive click to go to first occurrence
+                }
+              ],
+              "level": "integer",
+              "order": "integer"
+            }
+          ],
+          "level": "integer",
+          "order": "integer"
+        }
+      ],
+      "level": "integer",
+      "order": "integer"
+    }
+  ]
+}

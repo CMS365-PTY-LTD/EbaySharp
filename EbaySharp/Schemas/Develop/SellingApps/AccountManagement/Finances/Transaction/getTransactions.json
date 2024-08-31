@@ -1,0 +1,144 @@
+{ /* Transactions */
+  "href": "string",
+  "limit": "integer",
+  "next": "string",
+  "offset": "integer",
+  "prev": "string",
+  "total": "integer",
+  "transactions": [
+    { /* Transaction */
+      "amount": { /* Amount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedToValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "exchangeRate": "string",
+        "value": "string"
+      },
+      "bookingEntry": "BookingEntryEnum : [CREDIT,DEBIT]",
+      "buyer": { /* Buyer */
+        "username": "string"
+      },
+      "eBayCollectedTaxAmount": { /* Amount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedToValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "exchangeRate": "string",
+        "value": "string"
+      },
+      "feeJurisdiction": { /* FeeJurisdiction */
+        "regionName": "string",
+        "regionType": "RegionTypeEnum : [COUNTRY,STATE_OR_PROVINCE]"
+      },
+      "feeType": "FeeTypeEnum : [BELOW_STANDARD_FEE,BELOW_STANDARD_SHIPPING_FEE,FINAL_VALUE_FEE_FIXED_PER_ORDER...]",
+      "orderId": "string",
+      "orderLineItems": [
+        { /* OrderLineItem */
+          "donations": [
+            { /* Fee */
+              "amount": { /* Amount */
+                "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedFromValue": "string",
+                "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedToValue": "string",
+                "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "exchangeRate": "string",
+                "value": "string"
+              },
+              "feeJurisdiction": { /* FeeJurisdiction */
+                "regionName": "string",
+                "regionType": "RegionTypeEnum : [COUNTRY,STATE_OR_PROVINCE]"
+              },
+              "feeMemo": "string",
+              "feeType": "FeeTypeEnum : [BELOW_STANDARD_FEE,BELOW_STANDARD_SHIPPING_FEE,FINAL_VALUE_FEE_FIXED_PER_ORDER...]"
+            }
+          ],
+          "feeBasisAmount": { /* Amount */
+            "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedFromValue": "string",
+            "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedToValue": "string",
+            "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "exchangeRate": "string",
+            "value": "string"
+          },
+          "lineItemId": "string",
+          "marketplaceFees": [
+            { /* Fee */
+              "amount": { /* Amount */
+                "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedFromValue": "string",
+                "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "convertedToValue": "string",
+                "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+                "exchangeRate": "string",
+                "value": "string"
+              },
+              "feeJurisdiction": { /* FeeJurisdiction */
+                "regionName": "string",
+                "regionType": "RegionTypeEnum : [COUNTRY,STATE_OR_PROVINCE]"
+              },
+              "feeMemo": "string",
+              "feeType": "FeeTypeEnum : [BELOW_STANDARD_FEE,BELOW_STANDARD_SHIPPING_FEE,FINAL_VALUE_FEE_FIXED_PER_ORDER...]"
+            }
+          ]
+        }
+      ],
+      "paymentsEntity": "string",
+      "payoutDetails": { /* PayoutDetails */
+        "payoutIds": [
+          "string"
+        ],
+        "payoutReference": "string"
+      },
+      "payoutId": "string",
+      "references": [
+        { /* Reference */
+          "referenceId": "string",
+          "referenceType": "ReferenceTypeEnum : [CANCELLATION_ID,CASE_ID,INVOICE...]"
+        }
+      ],
+      "salesRecordReference": "string",
+      "taxes": [
+        { /* Tax */
+          "taxType": "TaxTypeEnum : [VAT]",
+          "amount": { /* Amount */
+            "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedFromValue": "string",
+            "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "convertedToValue": "string",
+            "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+            "exchangeRate": "string",
+            "value": "string"
+          }
+        }
+      ],
+      "totalFeeAmount": { /* Amount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedToValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "exchangeRate": "string",
+        "value": "string"
+      },
+      "totalFeeBasisAmount": { /* Amount */
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedFromValue": "string",
+        "convertedToCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "convertedToValue": "string",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "exchangeRate": "string",
+        "value": "string"
+      },
+      "transactionDate": "string",
+      "transactionId": "string",
+      "transactionMemo": "string",
+      "transactionStatus": "TransactionStatusEnum : [FUNDS_ON_HOLD,FUNDS_PROCESSING,FUNDS_AVAILABLE_FOR_PAYOUT...]",
+      "transactionType": "TransactionTypeEnum : [SALE,REFUND,CREDIT...]"
+    }
+  ]
+}

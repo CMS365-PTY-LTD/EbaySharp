@@ -1,0 +1,69 @@
+{ /* ReturnPolicyResponse */
+  "returnPolicies": [
+    { /* ReturnPolicy */
+      "categoryId": "string",
+      "categoryTreeId": "string",
+      "domestic": { /* ReturnPolicyDetails */
+        "policyDescriptionEnabled": "boolean",
+        "refundMethods": [
+          "RefundMethodEnum : [MONEY_BACK]"
+        ],
+        "returnMethods": [
+          "ReturnMethodEnum : [REPLACEMENT]"
+        ],
+        "returnPeriods": [
+          { /* TimeDuration */
+            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+            "value": "integer"
+          }
+        ],
+        "returnsAcceptanceEnabled": "boolean",
+        "returnShippingCostPayers": [
+          "ReturnShippingCostPayerEnum : [BUYER,SELLER]"
+        ]
+      },
+      "international": { /* ReturnPolicyDetails */
+        "policyDescriptionEnabled": "boolean",
+        "refundMethods": [
+          "RefundMethodEnum : [MONEY_BACK]"
+        ],
+        "returnMethods": [
+          "ReturnMethodEnum : [REPLACEMENT]"
+        ],
+        "returnPeriods": [
+          { /* TimeDuration */
+            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+            "value": "integer"
+          }
+        ],
+        "returnsAcceptanceEnabled": "boolean",
+        "returnShippingCostPayers": [
+          "ReturnShippingCostPayerEnum : [BUYER,SELLER]"
+        ]
+      },
+      "required": "boolean"
+    }
+  ],
+  "warnings": [
+    { /* ErrorDetailV3 */
+      "category": "string",
+      "domain": "string",
+      "errorId": "integer",
+      "inputRefIds": [
+        "string"
+      ],
+      "longMessage": "string",
+      "message": "string",
+      "outputRefIds": [
+        "string"
+      ],
+      "parameters": [
+        { /* ErrorParameterV3 */
+          "name": "string",
+          "value": "string"
+        }
+      ],
+      "subdomain": "string"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{ /* ShippingFulfillment */
+  "fulfillmentId": "string",
+  "lineItems": [
+    { /* LineItemReference */
+      "lineItemId": "string",
+      "quantity": "integer"
+    }
+  ],
+  "shipmentTrackingNumber": "string",
+  "shippedDate": "string",
+  "shippingCarrierCode": "string"
+}

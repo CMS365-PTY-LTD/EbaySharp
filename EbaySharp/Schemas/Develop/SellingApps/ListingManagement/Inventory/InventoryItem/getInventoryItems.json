@@ -1,0 +1,99 @@
+{ /* InventoryItems */
+  "href": "string",
+  "inventoryItems": [
+    { /* InventoryItemWithSkuLocaleGroupid */
+      "availability": { /* AvailabilityWithAll */
+        "pickupAtLocationAvailability": [
+          { /* PickupAtLocationAvailability */
+            "availabilityType": "AvailabilityTypeEnum : [IN_STOCK,OUT_OF_STOCK,SHIP_TO_STORE]",
+            "fulfillmentTime": { /* TimeDuration */
+              "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+              "value": "integer"
+            },
+            "merchantLocationKey": "string",
+            "quantity": "integer"
+          }
+        ],
+        "shipToLocationAvailability": { /* ShipToLocationAvailabilityWithAll */
+          "allocationByFormat": { /* FormatAllocation */
+            "auction": "integer",
+            "fixedPrice": "integer"
+          },
+          "availabilityDistributions": [
+            { /* AvailabilityDistribution */
+              "fulfillmentTime": { /* TimeDuration */
+                "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+                "value": "integer"
+              },
+              "merchantLocationKey": "string",
+              "quantity": "integer"
+            }
+          ],
+          "quantity": "integer"
+        }
+      },
+      "condition": "ConditionEnum : [NEW,LIKE_NEW,NEW_OTHER...]",
+      "conditionDescription": "string",
+      "conditionDescriptors": [
+        { /* ConditionDescriptor */
+          "additionalInfo": "string",
+          "name": "string",
+          "values": [
+            "string"
+          ]
+        }
+      ],
+      "groupIds": [
+        "string"
+      ],
+      "inventoryItemGroupKeys": [
+        "string"
+      ],
+      "locale": "LocaleEnum : [en_US,en_CA,fr_CA...]",
+      "packageWeightAndSize": { /* PackageWeightAndSize */
+        "dimensions": { /* Dimension */
+          "height": "number",
+          "length": "number",
+          "unit": "LengthUnitOfMeasureEnum : [INCH,FEET,CENTIMETER...]",
+          "width": "number"
+        },
+        "packageType": "PackageTypeEnum : [LETTER,BULKY_GOODS,CARAVAN...]",
+        "shippingIrregular": "boolean",
+        "weight": { /* Weight */
+          "unit": "WeightUnitOfMeasureEnum : [POUND,KILOGRAM,OUNCE...]",
+          "value": "number"
+        }
+      },
+      "product": { /* Product */
+        "aspects": "string",
+        "brand": "string",
+        "description": "string",
+        "ean": [
+          "string"
+        ],
+        "epid": "string",
+        "imageUrls": [
+          "string"
+        ],
+        "isbn": [
+          "string"
+        ],
+        "mpn": "string",
+        "subtitle": "string",
+        "title": "string",
+        "upc": [
+          "string"
+        ],
+        "videoIds": [
+          "string"
+        ]
+      },
+      "sku": "string"
+    }
+  ],
+  "limit": "integer",
+  "next": "string",
+  "prev": "string",
+  "size": "integer",
+  "total": "integer"
+}
