@@ -15,7 +15,7 @@ namespace EbaySharp.Controllers
 
         #region SHIPPING_FULFILLEMENT
 
-        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
+        public async Task<Fulfillments> GetShippingFulfillments(string? orderId)
         {
             string requestUrl = $"{Constants.API_SERVER_URL}{Constants.SELL.ENDPOINT_URL}{Constants.SELL.FULFILLEMENT.ENDPOINT_URL}{Constants.SELL.FULFILLEMENT.ORDER.ENDPOINT_URL}{string.Format(Constants.SELL.FULFILLEMENT.ORDER.SHIPPING_FULFILLEMENT.METHODS.GET_SHIPPING_FULFILLEMENTS, orderId)}";
             return await new RequestExecuter().ExecuteGetRequest<Fulfillments>(requestUrl, $"Bearer {accessToken}");

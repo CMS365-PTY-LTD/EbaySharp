@@ -354,7 +354,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/invento
 
 ```C#
 
-Dictionary<string, string[]> aspects = new Dictionary<string, string[]>
+Dictionary<string, string[]> aspects = new()
 {
     { "Brand", new[] { "GoPro" } },
     { "Type", new[] { "Helmet/Action" } }

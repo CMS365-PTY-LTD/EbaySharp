@@ -229,7 +229,7 @@ namespace EbaySharp.Controllers
 
         #region SHIPPING_FULFILLEMENT
 
-        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
+        public async Task<Fulfillments> GetShippingFulfillments(string? orderId)
         {
             return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
         }

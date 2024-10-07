@@ -8,7 +8,7 @@ namespace EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed
         public Stream FileContent { get; set; }
         public async Task SaveUncompressed(string folderPath)
         {
-            using (ZipInputStream s = new ZipInputStream(FileContent))
+            using (ZipInputStream s = new(FileContent))
             {
                 ZipEntry theEntry;
                 while ((theEntry = s.GetNextEntry()) != null)
