@@ -126,17 +126,6 @@
             "documentId": "string"
           }
         ],
-        "economicOperator": { /* EconomicOperator */
-          "addressLine1": "string",
-          "addressLine2": "string",
-          "city": "string",
-          "companyName": "string",
-          "country": "CountryCodeEnum : [AD,AE,AF...]",
-          "email": "string",
-          "phone": "string",
-          "postalCode": "string",
-          "stateOrProvince": "string"
-        },
         "energyEfficiencyLabel": { /* EnergyEfficiencyLabel */
           "imageDescription": "string",
           "imageURL": "string",

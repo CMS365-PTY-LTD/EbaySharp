@@ -25,7 +25,7 @@ Install-Package CMS365.EbaySharp
 |                   | Feed API v1.3.1             |
 |                   | Finances API v1.17.2        |
 |                   | Fulfillment API v1.20.4     |
-|                   | Inventory API v1.17.4       |
+|                   | Inventory API v1.17.6       |
 |                   | Key Management API v1.0.0   |
 |                   | Metadata API v1.7.1         |
 |                   | Stores API v1               | 
