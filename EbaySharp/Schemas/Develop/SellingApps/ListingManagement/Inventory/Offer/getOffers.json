@@ -1,17 +1,17 @@
-{ /* Offers */
+{
   "href": "string",
   "limit": "integer",
   "next": "string",
   "offers": [
-    { /* EbayOfferDetailsWithAll */
+    {
       "availableQuantity": "integer",
       "categoryId": "string",
-      "charity": { /* Charity */
+      "charity": {
         "charityId": "string",
         "donationPercentage": "string"
       },
-      "extendedProducerResponsibility": { /* ExtendedProducerResponsibility */
-        "ecoParticipationFee": { /* Amount */
+      "extendedProducerResponsibility": {
+        "ecoParticipationFee": {
           "currency": "string",
           "value": "string"
         },
@@ -23,21 +23,21 @@
       "format": "FormatTypeEnum : [AUCTION,FIXED_PRICE]",
       "hideBuyerDetails": "boolean",
       "includeCatalogProductDetails": "boolean",
-      "listing": { /* ListingDetails */
+      "listing": {
         "listingId": "string",
         "listingOnHold": "boolean",
-        "listingStatus": "ListingStatusEnum : [ACTIVE,OUT_OF_STOCK,INACTIVE...]",
+        "listingStatus": "ListingStatusEnum : [ACTIVE,OUT_OF_STOCK,INACTIVE,ENDED,EBAY_ENDED,NOT_LISTED]",
         "soldQuantity": "integer"
       },
       "listingDescription": "string",
-      "listingDuration": "ListingDurationEnum : [DAYS_1,DAYS_3,DAYS_5...]",
-      "listingPolicies": { /* ListingPolicies */
-        "bestOfferTerms": { /* BestOffer */
-          "autoAcceptPrice": { /* Amount */
+      "listingDuration": "ListingDurationEnum : [DAYS_1,DAYS_3,DAYS_5,DAYS_7,DAYS_10,DAYS_21,DAYS_30,GTC]",
+      "listingPolicies": {
+        "bestOfferTerms": {
+          "autoAcceptPrice": {
             "currency": "string",
             "value": "string"
           },
-          "autoDeclinePrice": { /* Amount */
+          "autoDeclinePrice": {
             "currency": "string",
             "value": "string"
           },
@@ -49,20 +49,20 @@
         "productCompliancePolicyIds": [
           "string"
         ],
-        "regionalProductCompliancePolicies": { /* RegionalProductCompliancePolicies */
+        "regionalProductCompliancePolicies": {
           "countryPolicies": [
-            { /* CountryPolicy */
-              "country": "CountryCodeEnum : [AD,AE,AF...]",
+            {
+              "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
               "policyIds": [
                 "string"
               ]
             }
           ]
         },
-        "regionalTakeBackPolicies": { /* RegionalTakeBackPolicies */
+        "regionalTakeBackPolicies": {
           "countryPolicies": [
-            { /* CountryPolicy */
-              "country": "CountryCodeEnum : [AD,AE,AF...]",
+            {
+              "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
               "policyIds": [
                 "string"
               ]
@@ -71,18 +71,18 @@
         },
         "returnPolicyId": "string",
         "shippingCostOverrides": [
-          { /* ShippingCostOverride */
-            "additionalShippingCost": { /* Amount */
+          {
+            "additionalShippingCost": {
               "currency": "string",
               "value": "string"
             },
             "priority": "integer",
-            "shippingCost": { /* Amount */
+            "shippingCost": {
               "currency": "string",
               "value": "string"
             },
             "shippingServiceType": "ShippingServiceTypeEnum : [DOMESTIC,INTERNATIONAL]",
-            "surcharge": { /* Amount */
+            "surcharge": {
               "currency": "string",
               "value": "string"
             }
@@ -92,46 +92,46 @@
       },
       "listingStartDate": "string",
       "lotSize": "integer",
-      "marketplaceId": "MarketplaceEnum : [EBAY_US,EBAY_MOTORS,EBAY_CA...]",
+      "marketplaceId": "MarketplaceEnum : [EBAY_US,EBAY_MOTORS,EBAY_CA,EBAY_GB,EBAY_AU,EBAY_AT,EBAY_BE,EBAY_FR,EBAY_DE,EBAY_IT,EBAY_NL,EBAY_ES,EBAY_CH,EBAY_TW,EBAY_CZ,EBAY_DK,EBAY_FI,EBAY_GR,EBAY_HK,EBAY_HU,EBAY_IN,EBAY_ID,EBAY_IE,EBAY_IL,EBAY_MY,EBAY_NZ,EBAY_NO,EBAY_PH,EBAY_PL,EBAY_PT,EBAY_PR,EBAY_RU,EBAY_SG,EBAY_ZA,EBAY_SE,EBAY_TH,EBAY_VN,EBAY_CN,EBAY_PE,EBAY_JP]",
       "merchantLocationKey": "string",
       "offerId": "string",
-      "pricingSummary": { /* PricingSummary */
-        "auctionReservePrice": { /* Amount */
+      "pricingSummary": {
+        "auctionReservePrice": {
           "currency": "string",
           "value": "string"
         },
-        "auctionStartPrice": { /* Amount */
+        "auctionStartPrice": {
           "currency": "string",
           "value": "string"
         },
-        "minimumAdvertisedPrice": { /* Amount */
+        "minimumAdvertisedPrice": {
           "currency": "string",
           "value": "string"
         },
         "originallySoldForRetailPriceOn": "SoldOnEnum : [ON_EBAY,OFF_EBAY,ON_AND_OFF_EBAY]",
-        "originalRetailPrice": { /* Amount */
+        "originalRetailPrice": {
           "currency": "string",
           "value": "string"
         },
-        "price": { /* Amount */
+        "price": {
           "currency": "string",
           "value": "string"
         },
         "pricingVisibility": "MinimumAdvertisedPriceHandlingEnum : [NONE,PRE_CHECKOUT,DURING_CHECKOUT]"
       },
       "quantityLimitPerBuyer": "integer",
-      "regulatory": { /* Regulatory */
+      "regulatory": {
         "documents": [
-          { /* Document */
+          {
             "documentId": "string"
           }
         ],
-        "energyEfficiencyLabel": { /* EnergyEfficiencyLabel */
+        "energyEfficiencyLabel": {
           "imageDescription": "string",
           "imageURL": "string",
           "productInformationSheet": "string"
         },
-        "hazmat": { /* Hazmat */
+        "hazmat": {
           "component": "string",
           "pictograms": [
             "string"
@@ -141,18 +141,18 @@
             "string"
           ]
         },
-        "manufacturer": { /* Manufacturer */
+        "manufacturer": {
           "addressLine1": "string",
           "addressLine2": "string",
           "city": "string",
           "companyName": "string",
-          "country": "CountryCodeEnum : [AD,AE,AF...]",
+          "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
           "email": "string",
           "phone": "string",
           "postalCode": "string",
           "stateOrProvince": "string"
         },
-        "productSafety": { /* ProductSafety */
+        "productSafety": {
           "component": "string",
           "pictograms": [
             "string"
@@ -163,18 +163,18 @@
         },
         "repairScore": "number",
         "responsiblePersons": [
-          { /* ResponsiblePerson */
+          {
             "addressLine1": "string",
             "addressLine2": "string",
             "city": "string",
             "companyName": "string",
-            "country": "CountryCodeEnum : [AD,AE,AF...]",
+            "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
             "email": "string",
             "phone": "string",
             "postalCode": "string",
             "stateOrProvince": "string",
             "types": [
-              "ResponsiblePersonTypeEnum : [EU_RESPONSIBLE_PERSON]"
+              "ResponsiblePersonTypeEnum"
             ]
           }
         ]
@@ -185,7 +185,7 @@
       "storeCategoryNames": [
         "string"
       ],
-      "tax": { /* Tax */
+      "tax": {
         "applyTax": "boolean",
         "thirdPartyTaxCategory": "string",
         "vatPercentage": "number"

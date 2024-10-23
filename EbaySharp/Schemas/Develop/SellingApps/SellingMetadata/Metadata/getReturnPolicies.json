@@ -1,51 +1,51 @@
-{ /* ReturnPolicyResponse */
+{
   "returnPolicies": [
-    { /* ReturnPolicy */
+    {
       "categoryId": "string",
       "categoryTreeId": "string",
-      "domestic": { /* ReturnPolicyDetails */
+      "domestic": {
         "policyDescriptionEnabled": "boolean",
         "refundMethods": [
-          "RefundMethodEnum : [MONEY_BACK]"
+          "RefundMethodEnum"
         ],
         "returnMethods": [
-          "ReturnMethodEnum : [REPLACEMENT]"
+          "ReturnMethodEnum"
         ],
         "returnPeriods": [
-          { /* TimeDuration */
-            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+          {
+            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY,HOUR,CALENDAR_DAY,BUSINESS_DAY,MINUTE,SECOND,MILLISECOND]",
             "value": "integer"
           }
         ],
         "returnsAcceptanceEnabled": "boolean",
         "returnShippingCostPayers": [
-          "ReturnShippingCostPayerEnum : [BUYER,SELLER]"
+          "ReturnShippingCostPayerEnum"
         ]
       },
-      "international": { /* ReturnPolicyDetails */
+      "international": {
         "policyDescriptionEnabled": "boolean",
         "refundMethods": [
-          "RefundMethodEnum : [MONEY_BACK]"
+          "RefundMethodEnum"
         ],
         "returnMethods": [
-          "ReturnMethodEnum : [REPLACEMENT]"
+          "ReturnMethodEnum"
         ],
         "returnPeriods": [
-          { /* TimeDuration */
-            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+          {
+            "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY,HOUR,CALENDAR_DAY,BUSINESS_DAY,MINUTE,SECOND,MILLISECOND]",
             "value": "integer"
           }
         ],
         "returnsAcceptanceEnabled": "boolean",
         "returnShippingCostPayers": [
-          "ReturnShippingCostPayerEnum : [BUYER,SELLER]"
+          "ReturnShippingCostPayerEnum"
         ]
       },
       "required": "boolean"
     }
   ],
   "warnings": [
-    { /* ErrorDetailV3 */
+    {
       "category": "string",
       "domain": "string",
       "errorId": "integer",
@@ -58,7 +58,7 @@
         "string"
       ],
       "parameters": [
-        { /* ErrorParameterV3 */
+        {
           "name": "string",
           "value": "string"
         }

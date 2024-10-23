@@ -1,14 +1,14 @@
-{ /* RateLimitsResponse */
+{
   "rateLimits": [
-    { /* RateLimit */
+    {
       "apiContext": "string",
       "apiName": "string",
       "apiVersion": "string",
       "resources": [
-        { /* Resource */
+        {
           "name": "string",
           "rates": [
-            { /* Rate */
+            {
               "limit": "integer",
               "remaining": "integer",
               "reset": "string",

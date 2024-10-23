@@ -1,18 +1,18 @@
-{ /* Item */
+{
   "additionalImages": [
-    { /* Image */
+    {
       "height": "integer",
       "imageUrl": "string",
       "width": "integer"
     }
   ],
   "addonServices": [
-    { /* AddonService */
+    {
       "selection": "AddonServiceSelectionEnum : [OPTIONAL,REQUIRED]",
-      "serviceFee": { /* ConvertedAmount */
-        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "serviceFee": {
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "convertedFromValue": "string",
-        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "value": "string"
       },
       "serviceId": "string",
@@ -21,21 +21,21 @@
   ],
   "adultOnly": "boolean",
   "ageGroup": "string",
-  "authenticityGuarantee": { /* AuthenticityGuaranteeProgram */
+  "authenticityGuarantee": {
     "description": "string",
     "termsWebUrl": "string"
   },
-  "authenticityVerification": { /* AuthenticityVerificationProgram */
+  "authenticityVerification": {
     "description": "string",
     "termsWebUrl": "string"
   },
   "availableCoupons": [
-    { /* AvailableCoupon */
-      "constraint": { /* CouponConstraint */
+    {
+      "constraint": {
         "expirationDate": "string"
       },
-      "discountAmount": { /* Amount */
-        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "discountAmount": {
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "value": "string"
       },
       "discountType": "CouponDiscountType : [ITEM_PRICE]",
@@ -56,10 +56,10 @@
   "condition": "string",
   "conditionDescription": "string",
   "conditionDescriptors": [
-    { /* ConditionDescriptor */
+    {
       "name": "string",
       "values": [
-        { /* ConditionDescriptorValue */
+        {
           "additionalInfo": [
             "string"
           ],
@@ -69,17 +69,17 @@
     }
   ],
   "conditionId": "string",
-  "currentBidPrice": { /* ConvertedAmount */
-    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+  "currentBidPrice": {
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "convertedFromValue": "string",
-    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "value": "string"
   },
   "description": "string",
-  "ecoParticipationFee": { /* ConvertedAmount */
-    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+  "ecoParticipationFee": {
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "convertedFromValue": "string",
-    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "value": "string"
   },
   "eligibleForInlineCheckout": "boolean",
@@ -87,11 +87,11 @@
   "energyEfficiencyClass": "string",
   "epid": "string",
   "estimatedAvailabilities": [
-    { /* EstimatedAvailability */
+    {
       "availabilityThreshold": "integer",
       "availabilityThresholdType": "AvailabilityThresholdEnum : [MORE_THAN]",
       "deliveryOptions": [
-        "DeliveryOptionsEnum : [SHIP_TO_HOME,SELLER_ARRANGED_LOCAL_PICKUP,IN_STORE_PICKUP...]"
+        "DeliveryOptionsEnum"
       ],
       "estimatedAvailabilityStatus": "AvailabilityStatusEnum : [IN_STOCK,LIMITED_STOCK,OUT_OF_STOCK]",
       "estimatedAvailableQuantity": "integer",
@@ -101,10 +101,10 @@
   ],
   "gender": "string",
   "gtin": "string",
-  "hazardousMaterialsLabels": { /* HazardousMaterialsLabels */
+  "hazardousMaterialsLabels": {
     "additionalInformation": "string",
     "pictograms": [
-      { /* HazardPictogram */
+      {
         "pictogramDescription": "string",
         "pictogramId": "string",
         "pictogramUrl": "string"
@@ -113,13 +113,13 @@
     "signalWord": "string",
     "signalWordId": "string",
     "statements": [
-      { /* HazardStatement */
+      {
         "statementDescription": "string",
         "statementId": "string"
       }
     ]
   },
-  "image": { /* Image */
+  "image": {
     "height": "integer",
     "imageUrl": "string",
     "width": "integer"
@@ -129,27 +129,27 @@
   "itemCreationDate": "string",
   "itemEndDate": "string",
   "itemId": "string",
-  "itemLocation": { /* Address */
+  "itemLocation": {
     "addressLine1": "string",
     "addressLine2": "string",
     "city": "string",
-    "country": "CountryCodeEnum : [AD,AE,AF...]",
+    "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
     "county": "string",
     "postalCode": "string",
     "stateOrProvince": "string"
   },
   "itemWebUrl": "string",
   "legacyItemId": "string",
-  "listingMarketplaceId": "MarketplaceIdEnum : [EBAY_AU,EBAY_AT,EBAY_BE...]",
+  "listingMarketplaceId": "MarketplaceIdEnum : [EBAY_AU,EBAY_AT,EBAY_BE,EBAY_CA,EBAY_CH,EBAY_CN,EBAY_CZ,EBAY_DE,EBAY_DK,EBAY_ES,EBAY_FI,EBAY_FR,EBAY_GB,EBAY_GR,EBAY_HALF_US,EBAY_HK,EBAY_HU,EBAY_ID,EBAY_IE,EBAY_IL,EBAY_IN,EBAY_IT,EBAY_JP,EBAY_MOTORS_US,EBAY_MY,EBAY_NL,EBAY_NO,EBAY_NZ,EBAY_PE,EBAY_PH,EBAY_PL,EBAY_PR,EBAY_PT,EBAY_RU,EBAY_SE,EBAY_SG,EBAY_TH,EBAY_TW,EBAY_US,EBAY_VN,EBAY_ZA]",
   "localizedAspects": [
-    { /* TypedNameValue */
+    {
       "name": "string",
       "type": "ValueTypeEnum : [STRING,STRING_ARRAY]",
       "value": "string"
     }
   ],
   "lotSize": "integer",
-  "manufacturer": { /* CompanyAddress */
+  "manufacturer": {
     "addressLine1": "string",
     "addressLine2": "string",
     "city": "string",
@@ -162,38 +162,38 @@
     "postalCode": "string",
     "stateOrProvince": "string"
   },
-  "marketingPrice": { /* MarketingPrice */
-    "discountAmount": { /* ConvertedAmount */
-      "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+  "marketingPrice": {
+    "discountAmount": {
+      "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
       "convertedFromValue": "string",
-      "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
       "value": "string"
     },
     "discountPercentage": "string",
-    "originalPrice": { /* ConvertedAmount */
-      "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "originalPrice": {
+      "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
       "convertedFromValue": "string",
-      "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
       "value": "string"
     },
     "priceTreatment": "PriceTreatmentEnum : [MINIMUM_ADVERTISED_PRICE,LIST_PRICE,MARKDOWN]"
   },
   "material": "string",
-  "minimumPriceToBid": { /* ConvertedAmount */
-    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+  "minimumPriceToBid": {
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "convertedFromValue": "string",
-    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "value": "string"
   },
   "mpn": "string",
   "pattern": "string",
   "paymentMethods": [
-    { /* PaymentMethod */
-      "paymentMethodType": "PaymentMethodTypeEnum : [CREDIT_CARD,WALLET,DEBIT_CARD...]",
+    {
+      "paymentMethodType": "PaymentMethodTypeEnum : [CREDIT_CARD,WALLET,DEBIT_CARD,CREDIT,BANK,CASH,OTHER,CHECK,MONEY_ORDER,WIRE_TRANSFER,DEFERRED]",
       "paymentMethodBrands": [
-        { /* PaymentMethodBrand */
-          "paymentMethodBrandType": "PaymentMethodBrandEnum : [VISA,MASTERCARD,DISCOVER...]",
-          "logoImage": { /* Image */
+        {
+          "paymentMethodBrandType": "PaymentMethodBrandEnum : [VISA,MASTERCARD,DISCOVER,AMERICAN_EXPRESS,CB_NATIONALE,CETELEM,COFIDIS,COFINOGA,MAESTRO,SWITCH,POSTEPAY,CB,DINERS_CLUB,UNION_PAY,PAYPAL_CREDIT,PAYPAL,GOOGLE_PAY,APPLE_PAY,QIWI]",
+          "logoImage": {
             "height": "integer",
             "imageUrl": "string",
             "width": "integer"
@@ -201,23 +201,23 @@
         }
       ],
       "paymentInstructions": [
-        "PaymentInstructionEnum : [DIRECT_DEBIT,ACH,EFT...]"
+        "PaymentInstructionEnum"
       ],
       "sellerInstructions": [
-        "SellerInstructionEnum : [ACCEPTS_CREDIT_CARD,SEE_DESCRIPTION]"
+        "SellerInstructionEnum"
       ]
     }
   ],
-  "price": { /* ConvertedAmount */
-    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+  "price": {
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "convertedFromValue": "string",
-    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "value": "string"
   },
   "priceDisplayCondition": "PriceDisplayConditionEnum : [ONLY_SHOW_WHEN_ADDED_IN_CART,ONLY_SHOW_ON_REQUEST,ALWAYS_SHOW]",
-  "primaryItemGroup": { /* ItemGroupSummary */
+  "primaryItemGroup": {
     "itemGroupAdditionalImages": [
-      { /* Image */
+      {
         "height": "integer",
         "imageUrl": "string",
         "width": "integer"
@@ -225,7 +225,7 @@
     ],
     "itemGroupHref": "string",
     "itemGroupId": "string",
-    "itemGroupImage": { /* Image */
+    "itemGroupImage": {
       "height": "integer",
       "imageUrl": "string",
       "width": "integer"
@@ -233,10 +233,10 @@
     "itemGroupTitle": "string",
     "itemGroupType": "ItemGroupTypeEnum : [SELLER_DEFINED_VARIATIONS]"
   },
-  "primaryProductReviewRating": { /* ReviewRating */
+  "primaryProductReviewRating": {
     "averageRating": "string",
     "ratingHistograms": [
-      { /* RatingHistogram */
+      {
         "count": "integer",
         "rating": "string"
       }
@@ -244,18 +244,18 @@
     "reviewCount": "integer"
   },
   "priorityListing": "boolean",
-  "product": { /* Product */
+  "product": {
     "additionalImages": [
-      { /* Image */
+      {
         "height": "integer",
         "imageUrl": "string",
         "width": "integer"
       }
     ],
     "additionalProductIdentities": [
-      { /* AdditionalProductIdentity */
+      {
         "productIdentity": [
-          { /* ProductIdentity */
+          {
             "identifierType": "string",
             "identifierValue": "string"
           }
@@ -263,9 +263,9 @@
       }
     ],
     "aspectGroups": [
-      { /* AspectGroup */
+      {
         "aspects": [
-          { /* Aspect */
+          {
             "localizedName": "string",
             "localizedValues": [
               "string"
@@ -280,7 +280,7 @@
     "gtins": [
       "string"
     ],
-    "image": { /* Image */
+    "image": {
       "height": "integer",
       "imageUrl": "string",
       "width": "integer"
@@ -291,16 +291,16 @@
     "title": "string"
   },
   "productFicheWebUrl": "string",
-  "productSafetyLabels": { /* ProductSafetyLabels */
+  "productSafetyLabels": {
     "pictograms": [
-      { /* ProductSafetyLabelPictogram */
+      {
         "pictogramDescription": "string",
         "pictogramId": "string",
         "pictogramUrl": "string"
       }
     ],
     "statements": [
-      { /* ProductSafetyLabelStatement */
+      {
         "statementDescription": "string",
         "statementId": "string"
       }
@@ -313,12 +313,12 @@
   "repairScore": "string",
   "reservePriceMet": "boolean",
   "responsiblePersons": [
-    { /* ResponsiblePerson */
+    {
       "addressLine1": "string",
       "addressLine2": "string",
       "city": "string",
       "companyName": "string",
-      "country": "CountryCodeEnum : [AD,AE,AF...]",
+      "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
       "countryName": "string",
       "county": "string",
       "email": "string",
@@ -326,28 +326,28 @@
       "postalCode": "string",
       "stateOrProvince": "string",
       "types": [
-        "ResponsiblePersonTypeEnum : [EU_RESPONSIBLE_PERSON]"
+        "ResponsiblePersonTypeEnum"
       ]
     }
   ],
-  "returnTerms": { /* ItemReturnTerms */
+  "returnTerms": {
     "extendedHolidayReturnsOffered": "boolean",
     "refundMethod": "RefundMethodEnum : [MONEY_BACK,MERCHANDISE_CREDIT]",
     "restockingFeePercentage": "string",
     "returnInstructions": "string",
     "returnMethod": "ReturnMethodEnum : [REPLACEMENT,EXCHANGE]",
-    "returnPeriod": { /* TimeDuration */
-      "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY...]",
+    "returnPeriod": {
+      "unit": "TimeDurationUnitEnum : [YEAR,MONTH,DAY,HOUR,CALENDAR_DAY,BUSINESS_DAY,MINUTE,SECOND,MILLISECOND]",
       "value": "integer"
     },
     "returnsAccepted": "boolean",
     "returnShippingCostPayer": "ReturnShippingCostPayerEnum : [SELLER,BUYER]"
   },
-  "seller": { /* SellerDetail */
+  "seller": {
     "feedbackPercentage": "string",
     "feedbackScore": "integer",
     "sellerAccountType": "string",
-    "sellerLegalInfo": { /* SellerLegalInfo */
+    "sellerLegalInfo": {
       "email": "string",
       "fax": "string",
       "imprint": "string",
@@ -356,11 +356,11 @@
       "name": "string",
       "phone": "string",
       "registrationNumber": "string",
-      "sellerProvidedLegalAddress": { /* LegalAddress */
+      "sellerProvidedLegalAddress": {
         "addressLine1": "string",
         "addressLine2": "string",
         "city": "string",
-        "country": "CountryCodeEnum : [AD,AE,AF...]",
+        "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
         "countryName": "string",
         "county": "string",
         "postalCode": "string",
@@ -368,12 +368,12 @@
       },
       "termsOfService": "string",
       "vatDetails": [
-        { /* VatDetail */
-          "issuingCountry": "CountryCodeEnum : [AD,AE,AF...]",
+        {
+          "issuingCountry": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
           "vatId": "string"
         }
       ],
-      "economicOperator": { /* EconomicOperator */
+      "economicOperator": {
         "companyName": "string",
         "addressLine1": "string",
         "addressLine2": "string",
@@ -390,7 +390,7 @@
     "username": "string"
   },
   "sellerCustomPolicies": [
-    { /* SellerCustomPolicy */
+    {
       "description": "string",
       "label": "string",
       "type": "SellerCustomPolicyTypeEnum : [PRODUCT_COMPLIANCE,TAKE_BACK]"
@@ -398,55 +398,55 @@
   ],
   "sellerItemRevision": "string",
   "shippingOptions": [
-    { /* ShippingOption */
-      "additionalShippingCostPerUnit": { /* ConvertedAmount */
-        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    {
+      "additionalShippingCostPerUnit": {
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "convertedFromValue": "string",
-        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "value": "string"
       },
       "cutOffDateUsedForEstimate": "string",
       "fulfilledThrough": "FulfilledThroughEnum : [GLOBAL_SHIPPING,INTERNATIONAL_SHIPPING]",
       "guaranteedDelivery": "boolean",
-      "importCharges": { /* ConvertedAmount */
-        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "importCharges": {
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "convertedFromValue": "string",
-        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "value": "string"
       },
       "maxEstimatedDeliveryDate": "string",
       "minEstimatedDeliveryDate": "string",
       "quantityUsedForEstimate": "integer",
       "shippingCarrierCode": "string",
-      "shippingCost": { /* ConvertedAmount */
-        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+      "shippingCost": {
+        "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "convertedFromValue": "string",
-        "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+        "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
         "value": "string"
       },
       "shippingCostType": "string",
       "shippingServiceCode": "string",
-      "shipToLocationUsedForEstimate": { /* ShipToLocation */
-        "country": "CountryCodeEnum : [AD,AE,AF...]",
+      "shipToLocationUsedForEstimate": {
+        "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
         "postalCode": "string"
       },
       "trademarkSymbol": "string",
       "type": "string"
     }
   ],
-  "shipToLocations": { /* ShipToLocations */
+  "shipToLocations": {
     "regionExcluded": [
-      { /* ShipToRegion */
+      {
         "regionId": "string",
         "regionName": "string",
-        "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY...]"
+        "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY,WORLD_REGION,WORLDWIDE]"
       }
     ],
     "regionIncluded": [
-      { /* ShipToRegion */
+      {
         "regionId": "string",
         "regionName": "string",
-        "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY...]"
+        "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY,WORLD_REGION,WORLDWIDE]"
       }
     ]
   },
@@ -456,34 +456,34 @@
   "sizeType": "string",
   "subtitle": "string",
   "taxes": [
-    { /* Taxes */
+    {
       "ebayCollectAndRemitTax": "boolean",
       "includedInPrice": "boolean",
       "shippingAndHandlingTaxed": "boolean",
-      "taxJurisdiction": { /* TaxJurisdiction */
-        "region": { /* Region */
+      "taxJurisdiction": {
+        "region": {
           "regionName": "string",
-          "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY...]"
+          "regionType": "RegionTypeEnum : [COUNTRY_REGION,STATE_OR_PROVINCE,COUNTRY,WORLD_REGION,WORLDWIDE]"
         },
         "taxJurisdictionId": "string"
       },
       "taxPercentage": "string",
-      "taxType": "TaxType : [STATE_SALES_TAX,VAT,PROVINCE_SALES_TAX...]"
+      "taxType": "TaxType : [STATE_SALES_TAX,VAT,PROVINCE_SALES_TAX,REGION,GST]"
     }
   ],
   "title": "string",
   "topRatedBuyingExperience": "boolean",
   "tyreLabelImageUrl": "string",
   "uniqueBidderCount": "integer",
-  "unitPrice": { /* ConvertedAmount */
-    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+  "unitPrice": {
+    "convertedFromCurrency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "convertedFromValue": "string",
-    "currency": "CurrencyCodeEnum : [AED,AFN,ALL...]",
+    "currency": "CurrencyCodeEnum : [AED,AFN,ALL,AMD,ANG,AOA,ARS,AUD,AWG,AZN,BAM,BBD,BDT,BGN,BHD,BIF,BMD,BND,BOB,BRL,BSD,BTN,BWP,BYR,BZD,CAD,CDF,CHF,CLP,CNY,COP,CRC,CUP,CVE,CZK,DJF,DKK,DOP,DZD,EGP,ERN,ETB,EUR,FJD,FKP,GBP,GEL,GHS,GIP,GMD,GNF,GTQ,GYD,HKD,HNL,HRK,HTG,HUF,IDR,ILS,INR,IQD,IRR,ISK,JMD,JOD,JPY,KES,KGS,KHR,KMF,KPW,KRW,KWD,KYD,KZT,LAK,LBP,LKR,LRD,LSL,LTL,LYD,MAD,MDL,MGA,MKD,MMK,MNT,MOP,MRO,MUR,MVR,MWK,MXN,MYR,MZN,NAD,NGN,NIO,NOK,NPR,NZD,OMR,PAB,PEN,PGK,PHP,PKR,PLN,PYG,QAR,RON,RSD,RUB,RWF,SAR,SBD,SCR,SDG,SEK,SGD,SHP,SLL,SOS,SRD,STD,SYP,SZL,THB,TJS,TMT,TND,TOP,TRY,TTD,TWD,TZS,UAH,UGX,USD,UYU,UZS,VEF,VND,VUV,WST,XAF,XCD,XOF,XPF,YER,ZAR,ZMW,ZWL]",
     "value": "string"
   },
   "unitPricingMeasure": "string",
   "warnings": [
-    { /* ErrorDetailV3 */
+    {
       "category": "string",
       "domain": "string",
       "errorId": "integer",
@@ -496,7 +496,7 @@
         "string"
       ],
       "parameters": [
-        { /* ErrorParameterV3 */
+        {
           "name": "string",
           "value": "string"
         }
