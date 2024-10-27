@@ -89,16 +89,16 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region Selling Apps
+        #region SELLING_APPS
 
-        #region Account Management
+        #region ACCOUNT_MANAGEMENT
 
         #region FINANCES
-        public async Task<Transactions> GetTransactions(string filter = null, string sort = null, int limit = 20, int offset = 0)
+        public async Task<Transactions> GetTransactions(string? filter = null, string? sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(null, filter, sort, limit, offset);
         }
-        public async Task<Transactions> GetTransactions(SigningKey signingKey, string filter = null, string sort = null, int limit = 20, int offset = 0)
+        public async Task<Transactions> GetTransactions(SigningKey signingKey, string? filter = null, string? sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(signingKey, filter, sort, limit, offset);
         }
@@ -107,7 +107,7 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region Listing Management
+        #region LISTING_MANAGEMENT
 
         #region FEED
 
@@ -151,7 +151,7 @@ namespace EbaySharp.Controllers
         #endregion
 
         #region OFFER
-        
+
         public async Task<Offers> GetOffers(string SKU)
         {
             return await new InventoryController(accessToken).GetOffers(SKU);

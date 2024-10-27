@@ -8,12 +8,12 @@ namespace EbaySharp.Source
 {
     internal class RequestExecuter
     {
-        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authHeaderValue, string? contentLanguageHeaderValue,
+        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authenticationHeaderValue, string? contentLanguageHeaderValue,
             List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, SigningKey? signingKey)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(httpMethod, requestUrl);
-            request.Headers.Add("Authorization", authHeaderValue);
+            request.Headers.Add("Authorization", authenticationHeaderValue);
             
             if (keyValuePayload!=null)
             {
@@ -36,13 +36,13 @@ namespace EbaySharp.Source
             var response = await client.SendAsync(request);
             return response;
         }
-        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authHeaderValue)
+        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authenticationHeaderValue)
         {
-            return await ExecuteGetRequest<T>(requestUrl, authHeaderValue, null);
+            return await ExecuteGetRequest<T>(requestUrl, authenticationHeaderValue, null);
         }
-        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authHeaderValue, SigningKey? signingKey)
+        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authenticationHeaderValue, SigningKey? signingKey)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authHeaderValue, null, null, null, signingKey);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authenticationHeaderValue, null, null, null, signingKey);
 
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
@@ -70,18 +70,18 @@ namespace EbaySharp.Source
             }
             throw new Exception(responseContent);
         }
-        public async Task ExecuteDeleteRequest(string requestUrl, string authHeaderValue)
+        public async Task ExecuteDeleteRequest(string requestUrl, string authenticationHeaderValue)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Delete, requestUrl, authHeaderValue, null, null, null, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Delete, requestUrl, authenticationHeaderValue, null, null, null, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode==false)
             {
                 throw new Exception(responseContent);
             }
         }
-        private async Task<T> executePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
+        private async Task<T> executePostRequest<T>(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, keyValuePayload, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -108,18 +108,18 @@ namespace EbaySharp.Source
             }
             return type;
         }
-        //private async Task executePostRequest(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
+        //private async Task executePostRequest(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
         //{
-        //    HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
+        //    HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
         //    string responseContent = await response.Content.ReadAsStringAsync();
         //    if (response.IsSuccessStatusCode==false)
         //    {
         //        throw new Exception(responseContent);
         //    }
         //}
-        public async Task<T?> ExecutePutRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
+        public async Task<T?> ExecutePutRequest<T>(string requestUrl, string authenticationHeaderValue, string? JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authenticationHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
@@ -127,30 +127,30 @@ namespace EbaySharp.Source
             }
             throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
         {
-            return await executePostRequest<T>(requestUrl, authHeaderValue, keyValuePayload, null, null);
+            return await executePostRequest<T>(requestUrl, authenticationHeaderValue, keyValuePayload, null, null);
         }
         public async Task<T> ExecuteLegacyPostRequest<T>(int siteId, string callName, string payload)
         {
             return await executeLegacyPostRequest<T>(siteId, callName, payload);
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload, string? contentLanguage)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string? JSONPayload, string? contentLanguage)
         {
-            return await executePostRequest<T>(requestUrl, authHeaderValue, null, JSONPayload, contentLanguage);
+            return await executePostRequest<T>(requestUrl, authenticationHeaderValue, null, JSONPayload, contentLanguage);
         }
-        public async Task ExecutePostRequest(string requestUrl, string authHeaderValue, string JSONPayload, string? contentLanguage)
+        public async Task ExecutePostRequest(string requestUrl, string authenticationHeaderValue, string JSONPayload, string? contentLanguage)
         {
-            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authHeaderValue, contentLanguage, null, JSONPayload, null);
+            HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode==false)
             {
                 throw new Exception((new { error = responseContent, payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
             }
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authHeaderValue, string? JSONPayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string? JSONPayload)
         {
-            return await executePostRequest<T>(requestUrl, authHeaderValue, null, JSONPayload, null);
+            return await executePostRequest<T>(requestUrl, authenticationHeaderValue, null, JSONPayload, null);
         }
     }
 }
