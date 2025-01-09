@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
+﻿using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;

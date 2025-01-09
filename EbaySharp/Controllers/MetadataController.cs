@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Sell.Metadata.Marketplace;
+﻿using EbaySharp.Entities.Develop.SellingApps.SellingMetadata.Metadata.Marketplace;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

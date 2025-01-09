@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Buy.Browse;
+﻿using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

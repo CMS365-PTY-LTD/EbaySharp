@@ -289,7 +289,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfill
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-List<EbaySharp.Entities.Sell.Fulfillment.Order.Order> allOrders = new List<EbaySharp.Entities.Sell.Fulfillment.Order.Order>();
+List<EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.Order> allOrders = new List<EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.Order>();
 int totalCount = 0;
 do
 {
@@ -297,12 +297,12 @@ do
     totalCount = eBayOrders.Total;
     allOrders.AddRange(eBayOrders.OrderList);
 } while (allOrders.Count < totalCount);
-EbaySharp.Entities.Sell.Fulfillment.Order.Order order = allOrders.Where(x => x.OrderId == orderTracking.OrderNumber).FirstOrDefault();
+EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.Order order = allOrders.Where(x => x.OrderId == orderTracking.OrderNumber).FirstOrDefault();
 
 //Execute the following block in a loop If you have multiple tracking numbers.
-await ebayController.CreateShippingFulfillment("Order Number", new EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment.Fulfillment()
+await ebayController.CreateShippingFulfillment("Order Number", new EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.ShippingFulfillment.Fulfillment()
 {
-    LineItems = order.LineItems.Select(x => new EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment.LineItem()
+    LineItems = order.LineItems.Select(x => new EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.ShippingFulfillment.LineItem()
     {
         LineItemId = x.LineItemId,
         Quantity = x.Quantity

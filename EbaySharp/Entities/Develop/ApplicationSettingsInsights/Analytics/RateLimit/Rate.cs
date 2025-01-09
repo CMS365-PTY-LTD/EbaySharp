@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Developer.Analytics.RateLimit
+﻿namespace EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit
 {
     public class Rate
     {

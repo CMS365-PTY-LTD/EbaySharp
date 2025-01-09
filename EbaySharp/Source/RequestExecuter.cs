@@ -1,8 +1,8 @@
-﻿using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed;
-using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
+﻿using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using System.Net.Http.Headers;
 using System.Xml;
 using System.Xml.Serialization;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 
 namespace EbaySharp.Source
 {

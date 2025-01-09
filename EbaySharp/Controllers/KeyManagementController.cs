@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
+﻿using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

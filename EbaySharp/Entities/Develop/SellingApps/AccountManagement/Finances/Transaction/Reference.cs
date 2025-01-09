@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.Sell.Finances.Transaction
+﻿namespace EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction
 {
     public class Reference
     {

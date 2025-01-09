@@ -1,7 +1,7 @@
 ﻿using EbaySharp.Entities.Common;
-using EbaySharp.Entities.Sell.Fulfillment.Order;
+using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order;
 
-namespace EbaySharp.Entities.Sell.Finances.Transaction
+namespace EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction
 {
     public class Transaction
     {

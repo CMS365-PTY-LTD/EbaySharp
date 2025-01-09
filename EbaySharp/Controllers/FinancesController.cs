@@ -1,5 +1,5 @@
-﻿using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
-using EbaySharp.Entities.Sell.Finances.Transaction;
+﻿using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
+using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

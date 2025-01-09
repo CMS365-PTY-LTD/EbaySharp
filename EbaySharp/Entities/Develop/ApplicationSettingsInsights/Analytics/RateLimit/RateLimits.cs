@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace EbaySharp.Entities.Developer.Analytics.RateLimit
+namespace EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit
 {
     public class RateLimits
     {

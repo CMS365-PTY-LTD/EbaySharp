@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Developer.Analytics.RateLimit;
+﻿using EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

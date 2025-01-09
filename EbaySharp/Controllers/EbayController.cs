@@ -1,18 +1,18 @@
-﻿using EbaySharp.Entities.Buy.Browse;
-using EbaySharp.Entities.Common;
-using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed;
+﻿using EbaySharp.Entities.Common;
+using EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit;
+using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item;
+using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
+using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Location;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Offer;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Stores.Store;
+using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order;
+using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.ShippingFulfillment;
+using EbaySharp.Entities.Develop.SellingApps.SellingMetadata.Metadata.Marketplace;
 using EbaySharp.Entities.Develop.Taxonomy;
-using EbaySharp.Entities.Developer.Analytics.RateLimit;
-using EbaySharp.Entities.Developer.KeyManagement.SigningKey;
-using EbaySharp.Entities.Sell.Finances.Transaction;
-using EbaySharp.Entities.Sell.Fulfillment.Order;
-using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
-using EbaySharp.Entities.Sell.Metadata.Marketplace;
 using EbaySharp.Entities.TraditionalSelling.Trading;
 
 namespace EbaySharp.Controllers

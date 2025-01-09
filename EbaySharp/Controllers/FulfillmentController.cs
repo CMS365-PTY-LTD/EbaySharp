@@ -1,5 +1,5 @@
-﻿using EbaySharp.Entities.Sell.Fulfillment.Order;
-using EbaySharp.Entities.Sell.Fulfillment.Order.ShippingFulfillment;
+﻿using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order;
+using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers

@@ -22,6 +22,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Schemas\Develop\ApplicationSettingsInsights\Analytics\UserRateLimit\**" />
+    <EmbeddedResource Remove="Schemas\Develop\ApplicationSettingsInsights\Analytics\UserRateLimit\**" />
+    <None Remove="Schemas\Develop\ApplicationSettingsInsights\Analytics\UserRateLimit\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Entities\Develop\SellingApps\ListingManagement\Inventory\InventoryItem\LocaleEnum.cs" />
   </ItemGroup>
 

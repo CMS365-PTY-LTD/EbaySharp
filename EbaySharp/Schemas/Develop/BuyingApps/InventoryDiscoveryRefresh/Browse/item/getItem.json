@@ -124,6 +124,7 @@
     "imageUrl": "string",
     "width": "integer"
   },
+  "immediatePay": "boolean",
   "inferredEpid": "string",
   "itemAffiliateWebUrl": "string",
   "itemCreationDate": "string",

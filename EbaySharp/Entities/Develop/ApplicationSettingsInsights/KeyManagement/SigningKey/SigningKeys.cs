@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace EbaySharp.Entities.Developer.KeyManagement.SigningKey
+namespace EbaySharp.Entities.Develop.KeyManagement.SigningKey
 {
     public class SigningKeys
     {

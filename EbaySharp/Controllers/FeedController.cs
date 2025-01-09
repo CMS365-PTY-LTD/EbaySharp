@@ -1,4 +1,4 @@
-﻿using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed;
+﻿using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Source;
 
 namespace EbaySharp.Controllers
