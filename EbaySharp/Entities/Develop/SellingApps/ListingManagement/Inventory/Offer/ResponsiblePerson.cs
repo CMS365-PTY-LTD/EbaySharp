@@ -8,6 +8,7 @@ namespace EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Off
         public string AddressLine2 { get; set; }
         public string City { get; set; }
         public string CompanyName { get; set; }
+        public string ContactUrl { get; set; }
         public CountryCodeEnum? Country { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
