@@ -2,7 +2,7 @@
 
 namespace EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item
 {
-    public class ResponsiblePerson
+    public class Manufacturer
     {
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
@@ -16,6 +16,5 @@ namespace EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse
         public string Phone { get; set; }
         public string PostalCode { get; set; }
         public string StateOrProvince { get; set; }
-        public ResponsiblePersonTypeEnum[]? Types { get; set; }
     }
 }

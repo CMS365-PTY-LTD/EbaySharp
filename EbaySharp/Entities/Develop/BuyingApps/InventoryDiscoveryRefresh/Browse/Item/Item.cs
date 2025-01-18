@@ -45,7 +45,7 @@ namespace EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse
         public MarketplaceIdEnum? ListingMarketplaceId { get; set; }
         public List<LocalizedAspect> LocalizedAspects { get; set; }
         public int? LotSize { get; set; }
-        public CompanyAddress Manufacturer { get; set; }
+        public Manufacturer Manufacturer { get; set; }
         public MarketingPrice MarketingPrice { get; set; }
         public string Material { get; set; }
         public Amount MinimumPriceToBid { get; set; }
