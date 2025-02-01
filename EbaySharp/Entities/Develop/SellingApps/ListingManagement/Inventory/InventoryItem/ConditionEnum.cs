@@ -16,6 +16,8 @@
         USED_VERY_GOOD,
         USED_GOOD,
         USED_ACCEPTABLE,
-        FOR_PARTS_OR_NOT_WORKING
+        FOR_PARTS_OR_NOT_WORKING,
+        PRE_OWNED_EXCELLENT,
+        PRE_OWNED_FAIR
     }
 }
