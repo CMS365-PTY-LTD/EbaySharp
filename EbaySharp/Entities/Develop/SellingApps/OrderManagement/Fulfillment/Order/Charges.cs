@@ -2,9 +2,9 @@
 
 namespace EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order
 {
-    public class EbayCollectedCharges
+    public class Charges
     {
-        public Amount EbayShipping { get; set; }
-        public Charges[] Charges { get; set; }
+        public Amount Amount { get; set; }
+        public ChargeTypeEnum ChargeType { get; set; }
     }
 }
