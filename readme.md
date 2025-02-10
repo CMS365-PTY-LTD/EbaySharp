@@ -21,15 +21,15 @@ Install-Package CMS365.EbaySharp
 | EbaySharp version | eBay REST API version       |
 | ----------------- | ----------------------------|
 | 8.X.X             | Analytics API v1_beta.0.0   |
-|                   | Browse API v1.19.7          |
+|                   | Browse API v1.20.1          |
 |                   | Feed API v1.3.1             |
 |                   | Finances API v1.17.2        |
-|                   | Fulfillment API v1.20.4     |
-|                   | Inventory API v1.17.6       |
+|                   | Fulfillment API v1.20.6     |
+|                   | Inventory API v1.18.2       |
 |                   | Key Management API v1.0.0   |
-|                   | Metadata API v1.7.1         |
-|                   | Stores API v1               | 
-|                   | Taxonomy API v1.0.1         |
+|                   | Metadata API v1.9.0         |
+|                   | Stores API v1.0.0           | 
+|                   | Taxonomy API v1.1.0         |
 |                   | Trading API (Legacy) v1363  |
 
 EbaySharp currently supports the following Ebay REST APIs:
