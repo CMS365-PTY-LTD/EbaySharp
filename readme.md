@@ -234,7 +234,7 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
 ```
 # Sell
-# Feed
+## Feed
 You can see a list of Feed API methods [here](https://developer.ebay.com/api-docs/sell/feed/resources/methods)
 ### Task
 #### Get result file
