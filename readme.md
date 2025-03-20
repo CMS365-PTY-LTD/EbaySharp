@@ -65,6 +65,7 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Finances](#finances)
         - [Transaction](#transaction)
             - [Get transactions](#get-transactions)
+            - [Get transaction summary](#get-transaction-summary)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
             - [Get orders by order numbers](#get-orders-by-order-numbers)
@@ -246,15 +247,25 @@ await resultFile.SaveUncompressed("C:\\Work");
 ## Finances
 You can see a list of Finances API methods [here](https://developer.ebay.com/api-docs/sell/finances/resources/methods)
 ### Transaction
+//Important! Due to EU & UK Payments regulatory requirements, an additional security verification via Digital Signatures is required for certain API calls that are made on behalf of EU/UK sellers, including all Finances API methods.
+```C#
+SigningKey signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
+```
 #### Get transactions
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/transaction/methods/getTransactions)
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-//Important! Due to EU & UK Payments regulatory requirements, an additional security verification via Digital Signatures is required for certain API calls that are made on behalf of EU/UK sellers, including all Finances API methods.
-SigningKey signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
 Transactions transactions = await ebayController.GetTransactions(signingKey);
 or
 Transactions transactions = await ebayController.GetTransactions();
+```
+#### Get transaction summary
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/transaction/methods/getTransactionSummary)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+TransactionSummary transaction = await ebayController.GetTransactionSummary(signingKey, "transactionStatus:{PAYOUT}");
+or
+TransactionSummary transaction = await ebayController.GetTransactionSummary("transactionStatus:{PAYOUT}");
 ```
 ## Fulfillment
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)

@@ -3,6 +3,7 @@ using EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit
 using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item;
 using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
+using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.TransactionSummary;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
@@ -13,6 +14,7 @@ using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order;
 using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.ShippingFulfillment;
 using EbaySharp.Entities.Develop.SellingApps.SellingMetadata.Metadata.Marketplace;
 using EbaySharp.Entities.Develop.Taxonomy;
+using EbaySharp.Entities.Exceptions;
 using EbaySharp.Entities.TraditionalSelling.Trading;
 
 namespace EbaySharp.Controllers
@@ -98,9 +100,21 @@ namespace EbaySharp.Controllers
         {
             return await new FinancesController(accessToken).GetTransactions(null, filter, sort, limit, offset);
         }
-        public async Task<Transactions> GetTransactions(SigningKey signingKey, string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        public async Task<Transactions> GetTransactions(SigningKey? signingKey, string? filter = null, string? sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(signingKey, filter, sort, limit, offset);
+        }
+        public async Task<TransactionSummary> GetTransactionSummary(SigningKey? signingKey, string filter)
+        {
+            if (string.IsNullOrEmpty(filter))
+            {
+                throw new FilterRequiredException();
+            }
+            return await new FinancesController(accessToken).GetTransactionSummary(signingKey, filter);
+        }
+        public async Task<TransactionSummary> GetTransactionSummary(string filter)
+        {
+            return await this.GetTransactionSummary(null, filter);
         }
 
         #endregion

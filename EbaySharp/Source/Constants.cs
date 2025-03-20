@@ -35,6 +35,7 @@
                 internal struct METHODS
                 {
                     internal const string GET_TRANSACTIONS = "/transaction?limit={0}&offset={1}";
+                    internal const string GET_TRANSACTION_SUMMARY = "/transaction_summary";
                 }
             }
             internal struct INVENTORY
@@ -131,7 +132,7 @@
                     internal const string GET_USER_RATE_LIMITS = "/user_rate_limit";
                 }
             }
-            
+
         }
         internal struct BUY
         {
