@@ -2,7 +2,6 @@
 {
     public enum BookingEntryEnum
     {
-        CREDIT,
-        DEBIT
+        CREDIT, DEBIT
     }
 }
