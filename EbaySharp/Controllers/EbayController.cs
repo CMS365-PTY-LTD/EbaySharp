@@ -3,7 +3,6 @@ using EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit
 using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item;
 using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
-using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.TransactionSummary;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
