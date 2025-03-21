@@ -36,6 +36,7 @@
                 {
                     internal const string GET_TRANSACTIONS = "/transaction?limit={0}&offset={1}";
                     internal const string GET_TRANSACTION_SUMMARY = "/transaction_summary";
+                    internal const string GET_PAYOUT_SUMMARY = "/payout_summary";
                 }
             }
             internal struct INVENTORY

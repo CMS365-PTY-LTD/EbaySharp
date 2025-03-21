@@ -2,6 +2,7 @@
 using EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit;
 using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item;
 using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
+using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Payout;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
@@ -114,6 +115,14 @@ namespace EbaySharp.Controllers
         public async Task<TransactionSummary> GetTransactionSummary(string filter)
         {
             return await this.GetTransactionSummary(null, filter);
+        }
+        public async Task<PayoutSummary> GetPayoutSummary(SigningKey? signingKey, string? filter)
+        {
+            return await new FinancesController(accessToken).GetPayoutSummary(signingKey, filter);
+        }
+        public async Task<PayoutSummary> GetPayoutSummary(string? filter)
+        {
+            return await this.GetPayoutSummary(null, filter);
         }
 
         #endregion
