@@ -66,7 +66,7 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Transaction](#transaction)
             - [Get transactions](#get-transactions)
             - [Get transaction summary](#get-transaction-summary)
-        - [Payout](#transaction)
+        - [Payout](#payout)
             - [Get payout summary](#get-payout-summary)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
