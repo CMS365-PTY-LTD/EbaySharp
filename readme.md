@@ -66,6 +66,8 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Transaction](#transaction)
             - [Get transactions](#get-transactions)
             - [Get transaction summary](#get-transaction-summary)
+        - [Payout](#payout)
+            - [Get payout summary](#get-payout-summary)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
             - [Get orders by order numbers](#get-orders-by-order-numbers)
@@ -263,9 +265,18 @@ Transactions transactions = await ebayController.GetTransactions();
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/transaction/methods/getTransactionSummary)
 ```C#
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-TransactionSummary transaction = await ebayController.GetTransactionSummary(signingKey, "transactionStatus:{PAYOUT}");
+TransactionSummary transactionSummary = await ebayController.GetTransactionSummary(signingKey, "transactionStatus:{PAYOUT}");
 or
-TransactionSummary transaction = await ebayController.GetTransactionSummary("transactionStatus:{PAYOUT}");
+TransactionSummary transactionSummary = await ebayController.GetTransactionSummary("transactionStatus:{PAYOUT}");
+```
+### Payout
+#### Get payout summary
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/payout/methods/getPayoutSummary)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+PayoutSummary payoutSummary = await ebayController.GetPayoutSummary(signingKey, "payoutDate:[2025-02-01T00:00:01.000Z..2025-03-20T00:00:01.000Z]");
+or
+PayoutSummary payoutSummary = await ebayController.GetPayoutSummary("payoutDate:[2025-02-01T00:00:01.000Z..2025-03-20T00:00:01.000Z]");
 ```
 ## Fulfillment
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)
