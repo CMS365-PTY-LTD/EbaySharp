@@ -69,6 +69,7 @@ EbaySharp currently supports the following Ebay REST APIs:
         - [Payout](#payout)
             - [Get payout summary](#get-payout-summary)
             - [Get payouts](#get-payouts)
+            - [Get payout](#get-payout)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
             - [Get orders by order numbers](#get-orders-by-order-numbers)
@@ -286,6 +287,14 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 PayoutList payoutList = await ebayController.GetPayouts(signingKey, "payoutStatus:{SUCCEEDED}");
 or
 PayoutList payoutList = await ebayController.GetPayouts("payoutStatus:{SUCCEEDED}");
+```
+#### Get payout
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/payout/methods/getPayout)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+Payout payout = await ebayController.GetPayout(signingKey, 6801425208);
+or
+Payout payout = await ebayController.GetPayout(6801425208);
 ```
 ## Fulfillment
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)

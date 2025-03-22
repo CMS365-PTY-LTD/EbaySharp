@@ -38,6 +38,7 @@
                     internal const string GET_TRANSACTION_SUMMARY = "/transaction_summary";
                     internal const string GET_PAYOUT_SUMMARY = "/payout_summary";
                     internal const string GET_PAYOUTS = "/payout";
+                    internal const string GET_PAYOUT = "/payout/{0}";
                 }
             }
             internal struct INVENTORY
