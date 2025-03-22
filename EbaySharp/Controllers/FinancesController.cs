@@ -38,6 +38,13 @@ namespace EbaySharp.Controllers
             requestUrl = string.IsNullOrEmpty(filter) ? requestUrl : $"{requestUrl}?filter=" + filter;
             return await new RequestExecuter().ExecuteGetRequest<PayoutSummary>(requestUrl, $"Bearer {accessToken}", signingKey);
         }
+        public async Task<PayoutList> GetPayouts(SigningKey? signingKey, string? filter, string? sort, int limit = 0, int offset = 0)
+        {
+            string requestUrl = $"{Constants.APIZ_SERVER_URL}{Constants.SELL.ENDPOINT_URL}{Constants.SELL.FINANCES.ENDPOINT_URL}{string.Format(Constants.SELL.FINANCES.METHODS.GET_PAYOUTS, limit, offset)}";
+            requestUrl = string.IsNullOrEmpty(filter) ? requestUrl : $"{requestUrl}?filter=" + filter;
+            requestUrl = string.IsNullOrEmpty(sort) ? requestUrl : $"{requestUrl}&sort=" + sort;
+            return await new RequestExecuter().ExecuteGetRequest<PayoutList>(requestUrl, $"Bearer {accessToken}", signingKey);
+        }
 
         #endregion
     }
