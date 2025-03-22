@@ -140,6 +140,14 @@ namespace EbaySharp.Controllers
         {
             return await GetPayouts(null, filter, sort, limit, offset);
         }
+        public async Task<Payout> GetPayout(SigningKey? signingKey, long payoutNumber)
+        {
+            return await new FinancesController(accessToken).GetPayout(signingKey, payoutNumber);
+        }
+        public async Task<Payout> GetPayout(long payoutNumber)
+        {
+            return await GetPayout(null, payoutNumber);
+        }
 
         #endregion
 
