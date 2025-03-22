@@ -68,6 +68,7 @@ EbaySharp currently supports the following Ebay REST APIs:
             - [Get transaction summary](#get-transaction-summary)
         - [Payout](#payout)
             - [Get payout summary](#get-payout-summary)
+            - [Get payouts](#get-payouts)
     - [Fulfillment](#fulfillment)
         - [Order](#order)
             - [Get orders by order numbers](#get-orders-by-order-numbers)
@@ -249,7 +250,7 @@ await resultFile.SaveUncompressed("C:\\Work");
 ## Finances
 You can see a list of Finances API methods [here](https://developer.ebay.com/api-docs/sell/finances/resources/methods)
 ### Transaction
-//Important! Due to EU & UK Payments regulatory requirements, an additional security verification via Digital Signatures is required for certain API calls that are made on behalf of EU/UK sellers, including all Finances API methods.
+<span style="color:red">Important! Due to EU & UK Payments regulatory requirements, an additional security verification via Digital Signatures is required for certain API calls that are made on behalf of EU/UK sellers, including all Finances API methods.</span>
 ```C#
 SigningKey signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
 ```
@@ -277,6 +278,14 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 PayoutSummary payoutSummary = await ebayController.GetPayoutSummary(signingKey, "payoutDate:[2025-02-01T00:00:01.000Z..2025-03-20T00:00:01.000Z]");
 or
 PayoutSummary payoutSummary = await ebayController.GetPayoutSummary("payoutDate:[2025-02-01T00:00:01.000Z..2025-03-20T00:00:01.000Z]");
+```
+#### Get payouts
+You can find more detail [here](https://developer.ebay.com/api-docs/sell/finances/resources/payout/methods/getPayouts)
+```C#
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+PayoutList payoutList = await ebayController.GetPayouts(signingKey, "payoutStatus:{SUCCEEDED}");
+or
+PayoutList payoutList = await ebayController.GetPayouts("payoutStatus:{SUCCEEDED}");
 ```
 ## Fulfillment
 You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfillment/resources/methods)

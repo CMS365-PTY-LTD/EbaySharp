@@ -96,6 +96,9 @@ namespace EbaySharp.Controllers
         #region ACCOUNT_MANAGEMENT
 
         #region FINANCES
+
+        #region TRANSACTION
+
         public async Task<Transactions> GetTransactions(string? filter = null, string? sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(null, filter, sort, limit, offset);
@@ -114,16 +117,31 @@ namespace EbaySharp.Controllers
         }
         public async Task<TransactionSummary> GetTransactionSummary(string filter)
         {
-            return await this.GetTransactionSummary(null, filter);
+            return await GetTransactionSummary(null, filter);
         }
+
+        #endregion
+
+        #region PAYOUT
+
         public async Task<PayoutSummary> GetPayoutSummary(SigningKey? signingKey, string? filter)
         {
             return await new FinancesController(accessToken).GetPayoutSummary(signingKey, filter);
         }
         public async Task<PayoutSummary> GetPayoutSummary(string? filter)
         {
-            return await this.GetPayoutSummary(null, filter);
+            return await GetPayoutSummary(null, filter);
         }
+        public async Task<PayoutList> GetPayouts(SigningKey? signingKey, string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        {
+            return await new FinancesController(accessToken).GetPayouts(signingKey, filter, sort, limit, offset);
+        }
+        public async Task<PayoutList> GetPayouts(string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        {
+            return await GetPayouts(null, filter, sort, limit, offset);
+        }
+
+        #endregion
 
         #endregion
 
