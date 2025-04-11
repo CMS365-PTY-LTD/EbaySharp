@@ -108,7 +108,6 @@
         }
       ],
       "lastModifiedDate": "string",
-      "legacyOrderId": "string",
       "lineItems": [
         {
           "appliedPromotions": [

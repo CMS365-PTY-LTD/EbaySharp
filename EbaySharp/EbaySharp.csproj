@@ -3,11 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <ApplicationIcon>EbaySharp_ico.ico</ApplicationIcon>
     <PackageID>CMS365.EbaySharp</PackageID>
     <Title>EbaySharp</Title>
-    <Version>8.2.0</Version>
+    <Version>8.2.1</Version>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
     <Description>EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. It's used for creating listings and managing orders using C# and .NET</Description>
@@ -23,8 +22,11 @@
 
   <ItemGroup>
     <Compile Remove="Schemas\Develop\ApplicationSettingsInsights\Analytics\UserRateLimit\**" />
+    <Compile Remove="Schemas\Develop\SellingApps\ListingManagement\Feed\**" />
     <EmbeddedResource Remove="Schemas\Develop\ApplicationSettingsInsights\Analytics\UserRateLimit\**" />
+    <EmbeddedResource Remove="Schemas\Develop\SellingApps\ListingManagement\Feed\**" />
     <None Remove="Schemas\Develop\ApplicationSettingsInsights\Analytics\UserRateLimit\**" />
+    <None Remove="Schemas\Develop\SellingApps\ListingManagement\Feed\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,7 +54,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Schemas\Develop\SellingApps\ListingManagement\Feed\Task\" />
     <Folder Include="Screenshots\" />
     <Folder Include="Wiki\" />
   </ItemGroup>

@@ -12,7 +12,6 @@ namespace EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Ord
         public List<string> FulfillmentHrefs { get; set; }
         public List<FulfillmentStartInstruction> FulfillmentStartInstructions { get; set; }
         public string LastModifiedDate { get; set; }
-        public string LegacyOrderId { get; set; }
         public List<LineItem> LineItems { get; set; }
         public OrderFulfillmentStatus? OrderFulfillmentStatus { get; set; }
         public string OrderId { get; set; }

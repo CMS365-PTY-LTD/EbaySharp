@@ -9,6 +9,7 @@
           "name": "string",
           "rates": [
             {
+              "count": "integer",
               "limit": "integer",
               "remaining": "integer",
               "reset": "string",
