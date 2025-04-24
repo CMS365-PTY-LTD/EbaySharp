@@ -381,7 +381,7 @@ You can find more detail [here](https://developer.ebay.com/api-docs/commerce/ide
 ```C#
 
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
-InventoryItemsList inventoryItemsList = await ebayController.GetInventoryItems(limit, offset);
+User user = await ebayController.GetUser();
 
 ```
 
