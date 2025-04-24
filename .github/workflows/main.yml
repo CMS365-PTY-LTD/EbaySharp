@@ -1,8 +1,9 @@
 name: Action to build and publish the project as a nuget package to github package registry
 
 on:
+  workflow_dispatch:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build:
