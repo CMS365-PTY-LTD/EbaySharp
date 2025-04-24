@@ -38,7 +38,7 @@ jobs:
     - name: Verify project Path
       run: ls -la /home/runner/work/EbaySharp/EbaySharp/EbaySharp/EbaySharp.csproj
     - name: Build and Pack NuGet package
-      run: dotnet pack /home/runner/work/EbaySharp/EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release --output ./bin/Release
+      run: dotnet pack /home/runner/work/EbaySharp/EbaySharp/EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release --output ./bin/Release
     - name: Verify Artifact Path
       run: ls -la ./bin/Release
     - name: Upload NuGet package to GitHub
