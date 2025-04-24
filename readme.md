@@ -705,7 +705,8 @@ EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.
 StoreCategories storeCategories = await ebayController.GetStoreCategories();
 ```
 ## Trading
-This is a legacy API, I have added only 1 method with a few important fields only. You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
+> [!WARNING]  
+> This is a legacy API, I have added only 1 method with a few important fields only. You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
 ### Standard Listing Calls
 #### GetSellerList
 This method is used to get a list of all active and ended items. You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetSellerList.html)
