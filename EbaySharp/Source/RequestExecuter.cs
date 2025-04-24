@@ -1,8 +1,9 @@
 ﻿using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Xml;
 using System.Xml.Serialization;
-using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 
 namespace EbaySharp.Source
 {
@@ -14,8 +15,8 @@ namespace EbaySharp.Source
             var client = new HttpClient();
             var request = new HttpRequestMessage(httpMethod, requestUrl);
             request.Headers.Add("Authorization", authenticationHeaderValue);
-            
-            if (keyValuePayload!=null)
+
+            if (keyValuePayload != null)
             {
                 var content = new FormUrlEncodedContent(keyValuePayload);
                 request.Content = content;
@@ -48,10 +49,10 @@ namespace EbaySharp.Source
             if (response.IsSuccessStatusCode)
             {
                 MediaTypeHeaderValue? contentType = response.Content.Headers.ContentType;
-                if (contentType!=null && contentType.MediaType== "application/octet-stream")
+                if (contentType != null && contentType.MediaType == "application/octet-stream")
                 {
                     string? contentDisposition = response.Content.Headers.GetValues("Content-Disposition").FirstOrDefault();
-                    if (contentDisposition!=null)
+                    if (contentDisposition != null)
                     {
                         string fileName = contentDisposition.Split(";", StringSplitOptions.RemoveEmptyEntries)[1].Split("=", StringSplitOptions.RemoveEmptyEntries)[1];
                         if (contentDisposition != null)
@@ -60,7 +61,7 @@ namespace EbaySharp.Source
                             return (T)Convert.ChangeType(resultFile, typeof(T));
                         }
                     }
-                    
+
                 }
                 if (string.IsNullOrEmpty(responseContent))
                 {
@@ -68,13 +69,17 @@ namespace EbaySharp.Source
                 }
                 return responseContent.DeserializeToObject<T>();
             }
+            else
+            {
+                responseContent = JsonSerializer.Serialize(new { Reason = response.ReasonPhrase, StatusCode = response.StatusCode });
+            }
             throw new Exception(responseContent);
         }
         public async Task ExecuteDeleteRequest(string requestUrl, string authenticationHeaderValue)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Delete, requestUrl, authenticationHeaderValue, null, null, null, null);
             string responseContent = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode==false)
+            if (response.IsSuccessStatusCode == false)
             {
                 throw new Exception(responseContent);
             }
@@ -143,7 +148,7 @@ namespace EbaySharp.Source
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
-            if (response.IsSuccessStatusCode==false)
+            if (response.IsSuccessStatusCode == false)
             {
                 throw new Exception((new { error = responseContent, payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
             }

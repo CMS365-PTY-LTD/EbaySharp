@@ -12,7 +12,7 @@ namespace EbaySharp.Controllers
         }
         public async Task<StoreCategories> GetStoreCategories()
         {
-            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.SELL.ENDPOINT_URL}{Constants.SELL.STORES.ENDPOINT_URL}{Constants.SELL.STORES.STORE.ENDPOINT_URL}{Constants.SELL.STORES.STORE.METHODS.GET_STORE_CATEGORIES}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.DEVELOP.SELLING_APPS.ENDPOINT_URL}{Constants.DEVELOP.SELLING_APPS.LISTING_MANAGEMENT.STORES.ENDPOINT_URL}{Constants.DEVELOP.SELLING_APPS.LISTING_MANAGEMENT.STORES.STORE.ENDPOINT_URL}{Constants.DEVELOP.SELLING_APPS.LISTING_MANAGEMENT.STORES.STORE.METHODS.GET_STORE_CATEGORIES}";
             return await new RequestExecuter().ExecuteGetRequest<StoreCategories>(requestUrl, $"Bearer {accessToken}");
         }
     }

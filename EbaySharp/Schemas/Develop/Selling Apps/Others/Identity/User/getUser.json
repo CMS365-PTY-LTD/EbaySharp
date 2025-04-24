@@ -1,0 +1,60 @@
+{
+  "accountType": "AccountTypeEnum : [INDIVIDUAL,BUSINESS]",
+  "businessAccount": {
+    "address": {
+      "addressLine1": "string",
+      "addressLine2": "string",
+      "city": "string",
+      "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
+      "county": "string",
+      "postalCode": "string",
+      "stateOrProvince": "string"
+    },
+    "doingBusinessAs": "string",
+    "email": "string",
+    "name": "string",
+    "primaryContact": {
+      "firstName": "string",
+      "lastName": "string"
+    },
+    "primaryPhone": {
+      "countryCode": "string",
+      "number": "string",
+      "phoneType": "string"
+    },
+    "secondaryPhone": {
+      "countryCode": "string",
+      "number": "string",
+      "phoneType": "string"
+    },
+    "website": "string"
+  },
+  "individualAccount": {
+    "email": "string",
+    "firstName": "string",
+    "lastName": "string",
+    "primaryPhone": {
+      "countryCode": "string",
+      "number": "string",
+      "phoneType": "string"
+    },
+    "registrationAddress": {
+      "addressLine1": "string",
+      "addressLine2": "string",
+      "city": "string",
+      "country": "CountryCodeEnum : [AD,AE,AF,AG,AI,AL,AM,AN,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW]",
+      "county": "string",
+      "postalCode": "string",
+      "stateOrProvince": "string"
+    },
+    "secondaryPhone": {
+      "countryCode": "string",
+      "number": "string",
+      "phoneType": "string"
+    }
+  },
+  "registrationMarketplaceId": "MarketplaceIdEnum : [EBAY_AT,EBAY_AU,EBAY_BE,EBAY_CA,EBAY_CH,EBAY_CN,EBAY_CZ,EBAY_DE,EBAY_DK,EBAY_ES,EBAY_FI,EBAY_FR,EBAY_GB,EBAY_GR,EBAY_HK,EBAY_HU,EBAY_ID,EBAY_IE,EBAY_IL,EBAY_IN,EBAY_IT,EBAY_JP,EBAY_MY,EBAY_NL,EBAY_NO,EBAY_NZ,EBAY_PE,EBAY_PH,EBAY_PL,EBAY_PR,EBAY_PT,EBAY_RU,EBAY_SE,EBAY_SG,EBAY_TH,EBAY_TW,EBAY_US,EBAY_VN,EBAY_ZA,EBAY_HALF_US,EBAY_MOTORS_US]",
+  "status": "UserStatusEnum : [CONFIRMED,UNCONFIRMED,ACCOUNTONHOLD,UNDETERMINED]",
+  "userId": "string",
+  "username": "string"
+}

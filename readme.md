@@ -25,6 +25,7 @@ Install-Package CMS365.EbaySharp
 |                   | Feed API v1.3.1             |
 |                   | Finances API v1.17.2        |
 |                   | Fulfillment API v1.20.7     |
+|                   | Identity API v1.1.0         |
 |                   | Inventory API v1.18.2       |
 |                   | Key Management API v1.0.0   |
 |                   | Metadata API v1.9.0         |
@@ -78,6 +79,9 @@ EbaySharp currently supports the following Ebay REST APIs:
                 - [Create shipping fulfillment](#create-shipping-fulfillment)
                 - [Get shipping fulfillments](#get-shipping-fulfillments)
                 - [Get shipping fulfillment](#get-shipping-fulfillment)
+    - [Identity](#identity)
+        - [User](#user)
+            - [Get user](#get-user)
     - [Inventory](#inventory)
         - [Inventory item](#inventory-item)
             - [Get inventory items](#get-inventory-items)
@@ -137,8 +141,8 @@ Copy the URL of the thank you page and assign it to a variable called "secureURL
 public async Task<string> GetRefreshToken()
 {
     string secureURL="replace with the URL of the thank you page";
-    EbaySharp.Controllers.IdentityController identityController = new EbaySharp.Controllers.IdentityController();
-    string refreshToken = await IdentityController.GetRefreshToken(ReplaceYourClientId, ReplaceYourClientSecret, 
+    EbaySharp.Controllers.AuthenticationController authenticationController = new EbaySharp.Controllers.AuthenticationController();
+    string refreshToken = await authenticationController.GetRefreshToken(ReplaceYourClientId, ReplaceYourClientSecret, 
         , secureURL, Replace with RU);
 }
 ```
@@ -146,8 +150,8 @@ public async Task<string> GetRefreshToken()
 This method returns a refresh token which is valid for 18 months or If you change your user/id or password. You will need to re run this function after 18 months when refresh token has expired. We will use the refresh token and generate an access token.
 
 ```C#
-IdentityController identityController=new IdentityController();
-var clientCredentials = await identityController.GetClientCredentials(ReplaceYourClientId, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
+AuthenticationController authenticationController=new AuthenticationController();
+var clientCredentials = await authenticationController.GetClientCredentials(ReplaceYourClientId, ReplaceYourClientSecret, ReplaceWithRefreshToken , ReplaceWithScopes);
 ```
 Provide scope separated by a space, for example https://api.ebay.com/oauth/api_scope https://api.ebay.com/oauth/api_scope/sell.marketing.readonly
 This method now gives you ClientCredentialsResponse object which contains an access token.
@@ -368,6 +372,19 @@ You can find more detail [here](https://developer.ebay.com/api-docs/sell/fulfill
 EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
 Fulfillment fulfillment = await ebayController.GetShippingFulfillment("Order Number", "Fulfillment Id");
 ```
+## Identity
+You can see a list of Identity API methods [here](https://developer.ebay.com/api-docs/commerce/identity/resources/methods)
+### User
+#### Get user
+You can find more detail [here](https://developer.ebay.com/api-docs/commerce/identity/resources/user/methods/getUser)
+
+```C#
+
+EbaySharp.Controllers.EbayController ebayController = new EbaySharp.Controllers.EbayController(clientCredentials.AccessToken);
+InventoryItemsList inventoryItemsList = await ebayController.GetInventoryItems(limit, offset);
+
+```
+
 ## Inventory
 You can see a list of Inventory API methods [here](https://developer.ebay.com/api-docs/sell/inventory/resources/methods)
 ### Inventory Item

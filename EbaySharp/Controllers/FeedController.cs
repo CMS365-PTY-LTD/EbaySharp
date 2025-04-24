@@ -15,7 +15,7 @@ namespace EbaySharp.Controllers
 
         public async Task<ResultFile> GetResultFile(string taskId)
         {
-            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.SELL.ENDPOINT_URL}{Constants.SELL.FEED.ENDPOINT_URL}{string.Format(Constants.SELL.FEED.METHODS.GET_DOWNLOAD_RESULT_FILE, taskId)}";
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.DEVELOP.SELLING_APPS.ENDPOINT_URL}{Constants.DEVELOP.SELLING_APPS.LISTING_MANAGEMENT.FEED.ENDPOINT_URL}{string.Format(Constants.DEVELOP.SELLING_APPS.LISTING_MANAGEMENT.FEED.METHODS.GET_DOWNLOAD_RESULT_FILE, taskId)}";
             return await new RequestExecuter().ExecuteGetRequest<ResultFile>(requestUrl, $"Bearer {accessToken}");
         }
 

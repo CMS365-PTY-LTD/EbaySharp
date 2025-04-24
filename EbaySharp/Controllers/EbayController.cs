@@ -4,6 +4,7 @@ using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Ite
 using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Payout;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
+using EbaySharp.Entities.Develop.SellingApps.Identity.User;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
@@ -91,9 +92,9 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region SELLING_APPS
+        #region Selling Apps
 
-        #region ACCOUNT_MANAGEMENT
+        #region Account Management
 
         #region FINANCES
 
@@ -155,7 +156,7 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region LISTING_MANAGEMENT
+        #region Listing Management
 
         #region FEED
 
@@ -311,7 +312,7 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-        #region Selling Metadata
+        #region Listing Metadata
 
         #region METADATA 
 
@@ -319,10 +320,6 @@ namespace EbaySharp.Controllers
         {
             return await new MetadataController(accessToken).GetReturnPolicies(MarketplaceId);
         }
-
-        #endregion
-
-        #endregion
 
         #endregion
 
@@ -340,6 +337,23 @@ namespace EbaySharp.Controllers
         {
             return await new TaxonomyController(accessToken).GetCategoryTree(CategoryTreeId);
         }
+
+        #endregion
+
+        #endregion
+
+        #region Others
+
+        #region Identity
+
+        public async Task<User> GetUser()
+        {
+            return await new IdentityController(accessToken).GetUser();
+        }
+
+        #endregion
+
+        #endregion
 
         #endregion
 

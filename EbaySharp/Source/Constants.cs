@@ -18,94 +18,116 @@
                 }
             }
         }
-        internal struct SELL
+        internal struct DEVELOP
         {
-            internal const string ENDPOINT_URL = "/sell";
-            internal struct FEED
+            internal struct SELLING_APPS
             {
-                internal const string ENDPOINT_URL = "/feed/v1";
-                internal struct METHODS
+                internal const string ENDPOINT_URL = "/sell";
+                internal struct ACCOUNT_MANAGEMENT
                 {
-                    internal const string GET_DOWNLOAD_RESULT_FILE = "/task/{0}/download_result_file";
-                }
-            }
-            internal struct FINANCES
-            {
-                internal const string ENDPOINT_URL = "/finances/v1";
-                internal struct METHODS
-                {
-                    internal const string GET_TRANSACTIONS = "/transaction?limit={0}&offset={1}";
-                    internal const string GET_TRANSACTION_SUMMARY = "/transaction_summary";
-                    internal const string GET_PAYOUT_SUMMARY = "/payout_summary";
-                    internal const string GET_PAYOUTS = "/payout";
-                    internal const string GET_PAYOUT = "/payout/{0}";
-                }
-            }
-            internal struct INVENTORY
-            {
-                internal const string ENDPOINT_URL = "/inventory/v1";
-                internal struct METHODS
-                {
-                    internal const string BULK_MIGRATE_LISTING = "/bulk_migrate_listing";
-                    internal const string INVENTORY_ITEMS = "/inventory_item?limit={0}&offset={1}";
-                    internal const string INVENTORY_ITEM = "/inventory_item/{0}";
-                    internal const string OFFERS = "/offer?sku={0}";
-                    internal const string OFFER = "/offer/{0}";
-                    internal const string CREATE_OFFER = "/offer";
-                    internal const string LOCATIONS = "/location?limit={0}&offset={1}";
-                    internal const string LOCATION = "/location/{0}";
-                }
-            }
-            internal struct METADATA
-            {
-                internal const string ENDPOINT_URL = "/metadata/v1";
-                internal struct MARKETPLACE
-                {
-                    internal const string ENDPOINT_URL = "/marketplace";
-                    internal struct METHODS
+                    internal struct FINANCES
                     {
-                        internal const string GET_RETURN_POLICIES = "/{0}/get_return_policies";
-                    }
-                }
-            }
-            internal struct FULFILLEMENT
-            {
-                internal const string ENDPOINT_URL = "/fulfillment/v1";
-                internal struct ORDER
-                {
-                    internal const string ENDPOINT_URL = "/order";
-                    internal struct SHIPPING_FULFILLEMENT
-                    {
+                        internal const string ENDPOINT_URL = "/finances/v1";
                         internal struct METHODS
                         {
-                            internal const string GET_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
-                            internal const string GET_SHIPPING_FULFILLEMENT = "/{0}/shipping_fulfillment/{1}";
-                            internal const string CREATE_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
-
+                            internal const string GET_TRANSACTIONS = "/transaction?limit={0}&offset={1}";
+                            internal const string GET_TRANSACTION_SUMMARY = "/transaction_summary";
+                            internal const string GET_PAYOUT_SUMMARY = "/payout_summary";
+                            internal const string GET_PAYOUTS = "/payout";
+                            internal const string GET_PAYOUT = "/payout/{0}";
                         }
                     }
-                    internal struct METHODS
+                }
+                internal struct LISTING_MANAGEMENT
+                {
+                    internal struct FEED
                     {
-                        internal const string GET_ORDER = "/{0}";
-                        internal const string GET_ORDERS_BY_ORDER_NUMBERS = "?orderIds={0}";
-                        internal const string GET_ORDERS_BY_FILTER = "?filter={0}&limit={1}&offset={2}";
+                        internal const string ENDPOINT_URL = "/feed/v1";
+                        internal struct METHODS
+                        {
+                            internal const string GET_DOWNLOAD_RESULT_FILE = "/task/{0}/download_result_file";
+                        }
+                    }
+                    internal struct INVENTORY
+                    {
+                        internal const string ENDPOINT_URL = "/inventory/v1";
+                        internal struct METHODS
+                        {
+                            internal const string BULK_MIGRATE_LISTING = "/bulk_migrate_listing";
+                            internal const string INVENTORY_ITEMS = "/inventory_item?limit={0}&offset={1}";
+                            internal const string INVENTORY_ITEM = "/inventory_item/{0}";
+                            internal const string OFFERS = "/offer?sku={0}";
+                            internal const string OFFER = "/offer/{0}";
+                            internal const string CREATE_OFFER = "/offer";
+                            internal const string LOCATIONS = "/location?limit={0}&offset={1}";
+                            internal const string LOCATION = "/location/{0}";
+                        }
+                    }
+                    internal struct STORES
+                    {
+                        internal const string ENDPOINT_URL = "/stores/v1";
+                        internal struct STORE
+                        {
+                            internal const string ENDPOINT_URL = "/store";
+                            internal struct METHODS
+                            {
+                                internal const string GET_STORE_CATEGORIES = "/categories";
+                            }
+                        }
                     }
                 }
-            }
-            internal struct STORES
-            {
-                internal const string ENDPOINT_URL = "/stores/v1";
-                internal struct STORE
+                internal struct ORDERS_MANAGEMENT
                 {
-                    internal const string ENDPOINT_URL = "/store";
-                    internal struct METHODS
+                    internal struct FULFILLEMENT
                     {
-                        internal const string GET_STORE_CATEGORIES = "/categories";
+                        internal const string ENDPOINT_URL = "/fulfillment/v1";
+                        internal struct ORDER
+                        {
+                            internal const string ENDPOINT_URL = "/order";
+                            internal struct SHIPPING_FULFILLEMENT
+                            {
+                                internal struct METHODS
+                                {
+                                    internal const string GET_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
+                                    internal const string GET_SHIPPING_FULFILLEMENT = "/{0}/shipping_fulfillment/{1}";
+                                    internal const string CREATE_SHIPPING_FULFILLEMENTS = "/{0}/shipping_fulfillment";
+
+                                }
+                            }
+                            internal struct METHODS
+                            {
+                                internal const string GET_ORDER = "/{0}";
+                                internal const string GET_ORDERS_BY_ORDER_NUMBERS = "?orderIds={0}";
+                                internal const string GET_ORDERS_BY_FILTER = "?filter={0}&limit={1}&offset={2}";
+                            }
+                        }
+                    }
+                }
+                internal struct LISTING_METADATA
+                {
+                    internal struct METADATA
+                    {
+                        internal const string ENDPOINT_URL = "/metadata/v1";
+                        internal struct MARKETPLACE
+                        {
+                            internal const string ENDPOINT_URL = "/marketplace";
+                            internal struct METHODS
+                            {
+                                internal const string GET_RETURN_POLICIES = "/{0}/get_return_policies";
+                            }
+                        }
+                    }
+                }
+                internal struct OTHERS
+                {
+                    internal struct IDENTITY
+                    {
+                        internal const string GET_USER = "/commerce/identity/v1/user/";
                     }
                 }
             }
         }
-        internal struct IDENTITY
+        internal struct AUTHENTICATION
         {
             internal const string ENDPOINT_URL = "/identity/v1/oauth2";
             internal struct METHODS
@@ -135,7 +157,6 @@
                     internal const string GET_USER_RATE_LIMITS = "/user_rate_limit";
                 }
             }
-
         }
         internal struct BUY
         {
