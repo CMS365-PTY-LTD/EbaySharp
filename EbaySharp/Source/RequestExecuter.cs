@@ -9,8 +9,8 @@ namespace EbaySharp.Source
 {
     internal class RequestExecuter
     {
-        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authenticationHeaderValue, string? contentLanguageHeaderValue,
-            List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, SigningKey? signingKey)
+        private async Task<HttpResponseMessage> executeRequest(HttpMethod httpMethod, string requestUrl, string authenticationHeaderValue, string contentLanguageHeaderValue,
+            List<KeyValuePair<string, string>> keyValuePayload, string JSONPayload, SigningKey signingKey)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(httpMethod, requestUrl);
@@ -41,17 +41,17 @@ namespace EbaySharp.Source
         {
             return await ExecuteGetRequest<T>(requestUrl, authenticationHeaderValue, null);
         }
-        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authenticationHeaderValue, SigningKey? signingKey)
+        public async Task<T> ExecuteGetRequest<T>(string requestUrl, string authenticationHeaderValue, SigningKey signingKey)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Get, requestUrl, authenticationHeaderValue, null, null, null, signingKey);
 
             string responseContent = await response.Content.ReadAsStringAsync();
             if (response.IsSuccessStatusCode)
             {
-                MediaTypeHeaderValue? contentType = response.Content.Headers.ContentType;
+                MediaTypeHeaderValue contentType = response.Content.Headers.ContentType;
                 if (contentType != null && contentType.MediaType == "application/octet-stream")
                 {
-                    string? contentDisposition = response.Content.Headers.GetValues("Content-Disposition").FirstOrDefault();
+                    string contentDisposition = response.Content.Headers.GetValues("Content-Disposition").FirstOrDefault();
                     if (contentDisposition != null)
                     {
                         string fileName = contentDisposition.Split(";", StringSplitOptions.RemoveEmptyEntries)[1].Split("=", StringSplitOptions.RemoveEmptyEntries)[1];
@@ -84,7 +84,7 @@ namespace EbaySharp.Source
                 throw new Exception(responseContent);
             }
         }
-        private async Task<T> executePostRequest<T>(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
+        private async Task<T> executePostRequest<T>(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>> keyValuePayload, string JSONPayload, string contentLanguage)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, keyValuePayload, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
@@ -113,7 +113,7 @@ namespace EbaySharp.Source
             }
             return type;
         }
-        //private async Task executePostRequest(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload, string? JSONPayload, string? contentLanguage)
+        //private async Task executePostRequest(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>> keyValuePayload, string JSONPayload, string contentLanguage)
         //{
         //    HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, keyValuePayload, JSONPayload);
         //    string responseContent = await response.Content.ReadAsStringAsync();
@@ -122,7 +122,7 @@ namespace EbaySharp.Source
         //        throw new Exception(responseContent);
         //    }
         //}
-        public async Task<T?> ExecutePutRequest<T>(string requestUrl, string authenticationHeaderValue, string? JSONPayload, string? contentLanguage)
+        public async Task<T> ExecutePutRequest<T>(string requestUrl, string authenticationHeaderValue, string JSONPayload, string contentLanguage)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Put, requestUrl, authenticationHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
@@ -132,7 +132,7 @@ namespace EbaySharp.Source
             }
             throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>>? keyValuePayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, List<KeyValuePair<string, string>> keyValuePayload)
         {
             return await executePostRequest<T>(requestUrl, authenticationHeaderValue, keyValuePayload, null, null);
         }
@@ -140,11 +140,11 @@ namespace EbaySharp.Source
         {
             return await executeLegacyPostRequest<T>(siteId, callName, payload);
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string? JSONPayload, string? contentLanguage)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string JSONPayload, string contentLanguage)
         {
             return await executePostRequest<T>(requestUrl, authenticationHeaderValue, null, JSONPayload, contentLanguage);
         }
-        public async Task ExecutePostRequest(string requestUrl, string authenticationHeaderValue, string JSONPayload, string? contentLanguage)
+        public async Task ExecutePostRequest(string requestUrl, string authenticationHeaderValue, string JSONPayload, string contentLanguage)
         {
             HttpResponseMessage response = await executeRequest(HttpMethod.Post, requestUrl, authenticationHeaderValue, contentLanguage, null, JSONPayload, null);
             string responseContent = await response.Content.ReadAsStringAsync();
@@ -153,7 +153,7 @@ namespace EbaySharp.Source
                 throw new Exception((new { error = responseContent, payload = JSONPayload.DeserializeToObject<object>() }).SerializeToJson());
             }
         }
-        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string? JSONPayload)
+        public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string JSONPayload)
         {
             return await executePostRequest<T>(requestUrl, authenticationHeaderValue, null, JSONPayload, null);
         }

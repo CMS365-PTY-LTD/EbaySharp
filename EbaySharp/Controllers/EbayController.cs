@@ -100,15 +100,15 @@ namespace EbaySharp.Controllers
 
         #region TRANSACTION
 
-        public async Task<Transactions> GetTransactions(string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        public async Task<Transactions> GetTransactions(string filter = null, string sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(null, filter, sort, limit, offset);
         }
-        public async Task<Transactions> GetTransactions(SigningKey? signingKey, string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        public async Task<Transactions> GetTransactions(SigningKey signingKey, string filter = null, string sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetTransactions(signingKey, filter, sort, limit, offset);
         }
-        public async Task<TransactionSummary> GetTransactionSummary(SigningKey? signingKey, string filter)
+        public async Task<TransactionSummary> GetTransactionSummary(SigningKey signingKey, string filter)
         {
             if (string.IsNullOrEmpty(filter))
             {
@@ -125,23 +125,23 @@ namespace EbaySharp.Controllers
 
         #region PAYOUT
 
-        public async Task<PayoutSummary> GetPayoutSummary(SigningKey? signingKey, string? filter)
+        public async Task<PayoutSummary> GetPayoutSummary(SigningKey signingKey, string filter)
         {
             return await new FinancesController(accessToken).GetPayoutSummary(signingKey, filter);
         }
-        public async Task<PayoutSummary> GetPayoutSummary(string? filter)
+        public async Task<PayoutSummary> GetPayoutSummary(string filter)
         {
             return await GetPayoutSummary(null, filter);
         }
-        public async Task<PayoutList> GetPayouts(SigningKey? signingKey, string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        public async Task<PayoutList> GetPayouts(SigningKey signingKey, string filter = null, string sort = null, int limit = 20, int offset = 0)
         {
             return await new FinancesController(accessToken).GetPayouts(signingKey, filter, sort, limit, offset);
         }
-        public async Task<PayoutList> GetPayouts(string? filter = null, string? sort = null, int limit = 20, int offset = 0)
+        public async Task<PayoutList> GetPayouts(string filter = null, string sort = null, int limit = 20, int offset = 0)
         {
             return await GetPayouts(null, filter, sort, limit, offset);
         }
-        public async Task<Payout> GetPayout(SigningKey? signingKey, long payoutNumber)
+        public async Task<Payout> GetPayout(SigningKey signingKey, long payoutNumber)
         {
             return await new FinancesController(accessToken).GetPayout(signingKey, payoutNumber);
         }
@@ -278,7 +278,7 @@ namespace EbaySharp.Controllers
 
         #region SHIPPING_FULFILLEMENT
 
-        public async Task<Fulfillments> GetShippingFulfillments(string? orderId)
+        public async Task<Fulfillments> GetShippingFulfillments(string orderId)
         {
             return await new FulfillmentController(accessToken).GetShippingFulfillments(orderId);
         }

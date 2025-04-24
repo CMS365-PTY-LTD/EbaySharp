@@ -16,6 +16,6 @@ namespace EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse
         public string Phone { get; set; }
         public string PostalCode { get; set; }
         public string StateOrProvince { get; set; }
-        public ResponsiblePersonTypeEnum[]? Types { get; set; }
+        public ResponsiblePersonTypeEnum[] Types { get; set; }
     }
 }
