@@ -40,7 +40,7 @@ jobs:
     - name: Verify Artifact Path
       run: ls -la ./bin/Release
     - name: Upload NuGet package to GitHub
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: nugetPackage
         path: bin/Release/
