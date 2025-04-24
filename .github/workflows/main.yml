@@ -35,6 +35,8 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 6.0.x
+    - name: Verify project Path
+      run: ls -la /home/runner/work/EbaySharp/EbaySharp/EbaySharp.csproj
     - name: Build and Pack NuGet package
       run: dotnet pack /home/runner/work/EbaySharp/EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release --output ./bin/Release
     - name: Verify Artifact Path
