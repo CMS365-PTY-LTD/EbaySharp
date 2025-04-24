@@ -69,7 +69,7 @@ namespace EbaySharp.Source
                 }
                 return responseContent.DeserializeToObject<T>();
             }
-            else
+            else if (string.IsNullOrEmpty(responseContent))
             {
                 responseContent = JsonSerializer.Serialize(new { Reason = response.ReasonPhrase, StatusCode = response.StatusCode });
             }
