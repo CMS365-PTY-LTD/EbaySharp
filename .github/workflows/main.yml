@@ -34,7 +34,7 @@ jobs:
       #Build/pack the project
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 6.0.x
     - name: Build and Pack NuGet package
       run: dotnet pack /home/runner/work/EbaySharp/EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release --output ./bin/Release
     - name: Verify Artifact Path
@@ -44,6 +44,11 @@ jobs:
       with:
         name: nugetPackage
         path: bin/Release/
+
+    - name: Download nuget package artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: nugetPackage
 
   release:
     runs-on: ubuntu-latest
