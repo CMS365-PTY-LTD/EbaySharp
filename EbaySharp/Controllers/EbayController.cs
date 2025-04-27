@@ -1,6 +1,5 @@
 ﻿using EbaySharp.Entities.Common;
 using EbaySharp.Entities.Develop.ApplicationSettingsInsights.Analytics.RateLimit;
-using EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item;
 using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Payout;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
@@ -16,7 +15,8 @@ using EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Order.S
 using EbaySharp.Entities.Develop.SellingApps.SellingMetadata.Metadata.Marketplace;
 using EbaySharp.Entities.Develop.Taxonomy;
 using EbaySharp.Entities.Exceptions;
-using EbaySharp.Entities.TraditionalSelling.Trading;
+using EbaySharp.Entities.TraditionalSelling.Trading.GetAccount;
+using EbaySharp.Entities.TraditionalSelling.Trading.GetSellerList;
 
 namespace EbaySharp.Controllers
 {
@@ -81,7 +81,7 @@ namespace EbaySharp.Controllers
 
         #region BROWSE
 
-        public async Task<Item> GetItem(string itemId)
+        public async Task<Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse.Item.Item> GetItem(string itemId)
         {
             return await new BrowseController(accessToken).GetItem(itemId);
         }
@@ -366,6 +366,14 @@ namespace EbaySharp.Controllers
         public async Task<GetSellerListResponse> GetItems(int siteId, int pageNumber, int entriesPerPage, string endTimeFrom, string endTimeTo)
         {
             return await new TradingController(accessToken).GetItems(siteId, pageNumber, entriesPerPage, endTimeFrom, endTimeTo);
+        }
+        public async Task<GetAccountResponse> GetAccount(int siteId, string inputXml, SigningKey signingKey)
+        {
+            return await new TradingController(accessToken).GetAccount(siteId, inputXml, signingKey);
+        }
+        public async Task<GetAccountResponse> GetAccount(int siteId, string inputXml)
+        {
+            return await GetAccount(siteId, inputXml, null);
         }
 
         #endregion

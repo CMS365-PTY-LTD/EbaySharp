@@ -1,8 +1,8 @@
 ﻿using EbaySharp.Entities.Common;
 
-namespace EbaySharp.Entities.TraditionalSelling.Trading
+namespace EbaySharp.Entities.TraditionalSelling.Trading.GetSellerList
 {
-    public class LegacyItem
+    public class Item
     {
         public string Title { get; set; }
         public string ItemID { get; set; }

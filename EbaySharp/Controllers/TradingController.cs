@@ -1,4 +1,6 @@
-﻿using EbaySharp.Entities.TraditionalSelling.Trading;
+﻿using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
+using EbaySharp.Entities.TraditionalSelling.Trading.GetAccount;
+using EbaySharp.Entities.TraditionalSelling.Trading.GetSellerList;
 using EbaySharp.Source;
 using System.Text;
 using System.Xml.Linq;
@@ -34,7 +36,11 @@ namespace EbaySharp.Controllers
             xmlDocument.Save(memory);
             string xmlText = Encoding.UTF8.GetString(memory.ToArray()).Replace("xmlns=\"\"", "");
 
-            return await new RequestExecuter().ExecuteLegacyPostRequest<GetSellerListResponse>(siteId, Constants.TRADIONAL.CALLS.GetSellerList, xmlText);
+            return await new RequestExecuter().ExecuteLegacyPostRequest<GetSellerListResponse>(siteId, Constants.TRADIONAL.CALLS.GetSellerList, xmlText, 967, null);
+        }
+        public async Task<GetAccountResponse> GetAccount(int siteId, string inputXml, SigningKey signingKey)
+        {
+            return await new RequestExecuter().ExecuteLegacyPostRequest<GetAccountResponse>(siteId, Constants.TRADIONAL.CALLS.GetAccount, inputXml, 986, signingKey);
         }
     }
 }

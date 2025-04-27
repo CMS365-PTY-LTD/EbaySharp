@@ -721,5 +721,39 @@ while (hasMoreResults)
     //Process items response here.
 }
 ```
+#### GetAccount
+This is a legacy XML call and you should be considering [Finances API](#finances) as a recommended approach and please read [Issue](#https://github.com/CMS365-PTY-LTD/EbaySharp/issues/19) for more detail.
+
+This method is used to get account information which contains transactions, payouts and invoice related data. You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetAccount.html)
+```C#
+//FOR EU
+    SigningKey signingKey = await ebayController.CreateSigningKey(SigningKeyCipher.ED25519);
+    int siteId = 3;
+
+    //For AU
+    //int siteId=15
+
+    XNamespace ns = "urn:ebay:apis:eBLBaseComponents";
+    XDocument xmlDocument = new XDocument(
+        new XDeclaration("1.0", "utf-8", "yes"),
+        new XElement(ns + "GetAccountRequest", new XAttribute("xmlns", ns),
+            new XElement("RequesterCredentials",
+                new XElement("eBayAuthToken", accessToken)
+            ),
+            new XElement("AccountEntrySortType", "AccountEntryFeeTypeAscending"),
+            new XElement("AccountHistorySelection", "LastInvoice"),
+            new XElement("Pagination",
+                new XElement("EntriesPerPage", 10),
+                new XElement("PageNumber", 1)
+            )
+        )
+    );
+    var memory = new MemoryStream();
+    xmlDocument.Save(memory);
+    string inputXml = Encoding.UTF8.GetString(memory.ToArray()).Replace("xmlns=\"\"", "");
+    GetAccountResponse getAccountResponse = await ebayController.GetAccount(siteId, inputXml, signingKey);
+    or
+    GetAccountResponse getAccountResponse = await ebayController.GetAccount(siteId, inputXml);
+```
 
 

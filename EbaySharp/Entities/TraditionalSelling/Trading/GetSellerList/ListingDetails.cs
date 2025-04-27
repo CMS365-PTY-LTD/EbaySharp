@@ -1,4 +1,4 @@
-﻿namespace EbaySharp.Entities.TraditionalSelling.Trading
+﻿namespace EbaySharp.Entities.TraditionalSelling.Trading.GetSellerList
 {
     public class ListingDetails
     {

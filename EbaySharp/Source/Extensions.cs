@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.OpenSsl;
 using Org.BouncyCastle.Security;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -27,7 +28,7 @@ namespace EbaySharp.Source
             options.Converters.Add(new JsonStringEnumConverter());
             return JsonSerializer.Deserialize<T>(json, options);
         }
-        public static void GenerateEbaySignatureHeader(this HttpRequestMessage request, HttpMethod httpMethod, string requestUrl, SigningKey signingKey)
+        public static void GenerateEbaySignatureHeader(this HttpRequestMessage request, HttpMethod httpMethod, string requestUrl, string payLoad, SigningKey signingKey)
         {
             // Extract method, path, and authority from the request URL and HTTP method
             string method = httpMethod.Method.ToUpper();
@@ -72,6 +73,18 @@ namespace EbaySharp.Source
             verifier.BlockUpdate(signatureBaseBytes, 0, signatureBaseBytes.Length);
             bool verified = verifier.VerifySignature(signedSignatureBytes);
             if (!verified) throw new InvalidOperationException("Signature verification failed");
+
+            if (string.IsNullOrEmpty(payLoad) == false)
+            {
+                byte[] hashBytes;
+                using (var sha256Hash = SHA256.Create())
+                {
+                    hashBytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(payLoad));
+                }
+                var hashResult = Convert.ToBase64String(hashBytes);
+                request.Headers.Add("Content-Digest", $"sha-256=:{hashResult}:");
+            }
+
 
             // Add Signature and Signature-Input headers to the request
             request.Headers.Add("Signature", $"sig1=:{signatureBase64}:");

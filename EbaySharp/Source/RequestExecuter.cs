@@ -23,7 +23,7 @@ namespace EbaySharp.Source
             }
             else if (signingKey != null)
             {
-                request.GenerateEbaySignatureHeader(httpMethod, requestUrl, signingKey);
+                request.GenerateEbaySignatureHeader(httpMethod, requestUrl, null, signingKey);
             }
             else if (JSONPayload != null)
             {
@@ -94,13 +94,19 @@ namespace EbaySharp.Source
             }
             throw new Exception((new { error = responseContent.DeserializeToObject<object>(), payload = JSONPayload?.DeserializeToObject<object>() }).SerializeToJson());
         }
-        private async Task<T> executeLegacyPostRequest<T>(int siteId, string callName, string payload)
+        private async Task<T> executeLegacyPostRequest<T>(int siteId, string callName, string payload, int compatibilityLevel, SigningKey signingKey)
         {
             var client = new HttpClient();
-            var request = new HttpRequestMessage(HttpMethod.Post, $"{Constants.API_SERVER_URL}{Constants.TRADIONAL.ENDPOINT_URL}");
+            client.Timeout = TimeSpan.FromSeconds(60 * 3);
+            string requestUrl = $"{Constants.API_SERVER_URL}{Constants.TRADIONAL.ENDPOINT_URL}";
+            var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
             request.Headers.Add("X-EBAY-API-SITEID", siteId.ToString());
-            request.Headers.Add("X-EBAY-API-COMPATIBILITY-LEVEL", "967");
+            request.Headers.Add("X-EBAY-API-COMPATIBILITY-LEVEL", compatibilityLevel.ToString());
             request.Headers.Add("X-EBAY-API-CALL-NAME", callName);
+            if (signingKey != null)
+            {
+                request.GenerateEbaySignatureHeader(HttpMethod.Post, requestUrl, payload, signingKey);
+            }
             var content = new StringContent(payload, null, "application/xml");
             request.Content = content;
             var response = await client.SendAsync(request);
@@ -136,9 +142,9 @@ namespace EbaySharp.Source
         {
             return await executePostRequest<T>(requestUrl, authenticationHeaderValue, keyValuePayload, null, null);
         }
-        public async Task<T> ExecuteLegacyPostRequest<T>(int siteId, string callName, string payload)
+        public async Task<T> ExecuteLegacyPostRequest<T>(int siteId, string callName, string payload, int compatibilityLevel, SigningKey signingKey)
         {
-            return await executeLegacyPostRequest<T>(siteId, callName, payload);
+            return await executeLegacyPostRequest<T>(siteId, callName, payload, compatibilityLevel, signingKey);
         }
         public async Task<T> ExecutePostRequest<T>(string requestUrl, string authenticationHeaderValue, string JSONPayload, string contentLanguage)
         {

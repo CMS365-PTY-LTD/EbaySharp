@@ -180,6 +180,7 @@
             internal struct CALLS
             {
                 public const string GetSellerList = "GetSellerList";
+                public const string GetAccount = "GetAccount";
             }
         }
     }
