@@ -723,7 +723,7 @@ while (hasMoreResults)
 }
 ```
 #### GetAccount
-This is a legacy XML call and you should be considering [Finances API](#finances) as a recommended approach and please read [Issue](#https://github.com/CMS365-PTY-LTD/EbaySharp/issues/19) for more detail.
+This is a legacy XML call and you should be considering [Finances API](#finances) as a recommended approach and please read [Issue](https://github.com/CMS365-PTY-LTD/EbaySharp/issues/19) for more detail.
 
 This method is used to get account information which contains transactions, payouts and invoice related data. You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetAccount.html)
 ```C#
