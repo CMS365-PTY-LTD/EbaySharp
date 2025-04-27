@@ -116,6 +116,7 @@ EbaySharp currently supports the following Ebay REST APIs:
     - [Trading](#trading)
         - [Standard Listing Calls](#standard-listing-calls)
             - [GetSellerList](#getsellerlist)
+            - [GetAccount](#getaccount)
             
 # Access and Security
 
