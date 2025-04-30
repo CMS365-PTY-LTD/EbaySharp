@@ -1,6 +1,7 @@
 # EbaySharp: A .NET wrapper library for eBay REST API.
 
 [![NuGet version](https://img.shields.io/nuget/v/CMS365.EbaySharp.svg?maxAge=3600)](https://www.nuget.org/packages/CMS365.EbaySharp/)
+![NuGet Downloads](https://img.shields.io/nuget/dt/CMS365.EbaySharp)
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/EbaySharp/main.svg?logo=github)
 [![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionID=9)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
@@ -707,7 +708,7 @@ StoreCategories storeCategories = await ebayController.GetStoreCategories();
 ```
 ## Trading
 > [!WARNING]  
-> This is a legacy API, I have added only 1 method with a few important fields only. You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
+> This is a legacy API, I am adding methods based on a request only. You can see a list of Trading call categories [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/index.html)
 ### Standard Listing Calls
 #### GetSellerList
 This method is used to get a list of all active and ended items. You can find more detail [here](https://developer.ebay.com/devzone/xml/docs/reference/ebay/GetSellerList.html)
