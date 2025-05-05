@@ -12,6 +12,7 @@ jobs:
       REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
       clientId: ${{ secrets.CLIENT_ID }}
       clientSecret: ${{ secrets.CLIENT_SECRET }}
+      refreshToken: ${{ secrets.REFRESH_TOKEN }}
     runs-on: ubuntu-latest
     # outputs:
     #   Version: ${{ steps.gitversion.outputs.SemVer }}
@@ -47,9 +48,9 @@ jobs:
         run: dotnet restore $SLN_FILE
       - name: Build
         run: dotnet build --no-restore --configuration Release $SLN_FILE
-      - name: Display secrets
-        run: |
-          echo clientId: $clientId
-          echo clientSecret: $clientSecret
+      # - name: Display secrets
+      #   run: |
+      #     echo clientId: $clientId
+      #     echo clientSecret: $clientSecret
       - name: Test
         run: dotnet test --verbosity normal --configuration Release $SLN_FILE
