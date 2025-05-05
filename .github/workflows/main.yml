@@ -53,4 +53,14 @@ jobs:
       #     echo clientId: $clientId
       #     echo clientSecret: $clientSecret
       - name: Test
-        run: dotnet test --verbosity normal --configuration Release $SLN_FILE
+        run: dotnet test --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --configuration Release $SLN_FILE
+      - name: Test Report
+        uses: dorny/test-reporter@v1
+        if: success() || failure() # run this step even if previous step failed
+        with:
+          name: DOTNET Tests # Name of the check run which will be created
+          reporter: dotnet-trx # Format of test results
+          list-tests: "all"
+          fail-on-error: "true"
+          #artifact: test-results
+          path: ${{ github.workspace }}\TestResults\test-results.trx # Path to test results (inside artifact .zip)
