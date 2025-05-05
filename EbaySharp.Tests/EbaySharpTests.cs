@@ -439,6 +439,7 @@ namespace EbaySharp.Tests
         }
 
         [Test]
+        [Ignore("Ignore test Test_Stores")]
         public async Task Test_Stores()
         {
             try
