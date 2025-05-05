@@ -13,6 +13,8 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  clientId: $(CLIENT_ID)
+  clientSecret: $(CLIENT_SECRET)
 
 steps:
 - task: NuGetToolInstaller@1
