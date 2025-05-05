@@ -45,6 +45,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release $SLN_FILE
   Test:
+    needs: Build
     env:
       SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
       REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
