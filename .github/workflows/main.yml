@@ -50,8 +50,8 @@ jobs:
         run: dotnet build --no-restore --configuration Release $SLN_FILE
       - name: Display secrets
         run: |
-          echo "clientId: $clientId"
-          echo "test: $test"
+          echo clientId: $clientId
+          echo test: $test
           echo "test: ${{ secrets.test }}"
       - name: Test
         run: dotnet test --verbosity normal --configuration Release $SLN_FILE
