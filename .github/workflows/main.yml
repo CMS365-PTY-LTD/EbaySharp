@@ -17,7 +17,8 @@ jobs:
     # outputs:
     #   Version: ${{ steps.gitversion.outputs.SemVer }}
     #   CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
-
+    permissions:
+      checks: write
     steps:
       - uses: actions/checkout@v4
         with:
