@@ -220,7 +220,7 @@ namespace EbaySharp.Tests
             try
             {
 
-                string SKU = "AWN-B-ARM-25X20-GREY";
+                string SKU = "AWN-B-ARM-REMOTE-25X20-GREY";
                 string merchantLocationKey = "au_vic";
 
                 InventoryLocations inventoryLocations = await ebayController.GetInventoryLocations(200, 0);
