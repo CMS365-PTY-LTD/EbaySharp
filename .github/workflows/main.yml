@@ -10,9 +10,9 @@ jobs:
     env:
       SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
       REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
-      # clientId: ${{ secrets.CLIENT_ID }}
-      # clientSecret: ${{ secrets.CLIENT_SECRET }}
-      # refreshToken: ${{ secrets.REFRESH_TOKEN }}
+      clientId: ${{ secrets.CLIENT_ID }}
+      clientSecret: ${{ secrets.CLIENT_SECRET }}
+      refreshToken: ${{ secrets.REFRESH_TOKEN }}
     runs-on: ubuntu-latest
     # outputs:
     #   Version: ${{ steps.gitversion.outputs.SemVer }}

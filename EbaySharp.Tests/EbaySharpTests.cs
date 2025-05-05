@@ -14,7 +14,6 @@ namespace EbaySharp.Tests
             var builder = new ConfigurationBuilder().AddUserSecrets<EbaySharpTests>().AddEnvironmentVariables();
             Configuration = builder.Build();
         }
-
         [SetUp]
         public async Task Setup()
         {
@@ -26,7 +25,6 @@ namespace EbaySharp.Tests
             accessToken = clientCredentials.AccessToken;
             ebayController = new EbayController(accessToken);
         }
-
         [Test]
         public void Test_AccessToken()
         {
