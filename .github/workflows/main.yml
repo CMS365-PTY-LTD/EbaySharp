@@ -1,4 +1,4 @@
-name: Action to build and publish the project as a nuget package to github package registry
+name: Build and Test
 
 on:
   workflow_dispatch:
@@ -6,10 +6,9 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  Build:
     env:
       SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
-      REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
     runs-on: ubuntu-latest
     outputs:
       Version: ${{ steps.gitversion.outputs.SemVer }}
@@ -45,3 +44,24 @@ jobs:
         run: dotnet restore $SLN_FILE
       - name: Build
         run: dotnet build --no-restore --configuration Release $SLN_FILE
+  Test:
+    env:
+      SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
+      REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 #fetch-depth is needed for GitVersion
+      - name: Setup .NET
+        #Build/pack the project
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Verify solution Path
+        run: ls -la $SLN_FILE
+
+      - name: Restore dependencies
+        run: dotnet restore $SLN_FILE
+      - name: Test
+      run: dotnet test --no-build --verbosity normal --configuration Release --test-adapter-path:. --logger:"junit;LogFilePath=$REPORTS_PATH/junit.xml;MethodFormat=Class;FailureBodyFormat=Verbose" $SLN_FILE
