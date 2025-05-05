@@ -3,51 +3,45 @@ name: Action to build and publish the project as a nuget package to github packa
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
+    env:
+      SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
+      REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
     runs-on: ubuntu-latest
     outputs:
       Version: ${{ steps.gitversion.outputs.SemVer }}
       CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0 #fetch-depth is needed for GitVersion
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 #fetch-depth is needed for GitVersion
 
-    #Install and calculate the new version with GitVersion  
-    - name: Install GitVersion
-      uses: gittools/actions/gitversion/setup@v0.9.7
-      with:
-        versionSpec: 5.x
-    - name: Determine Version
-      uses: gittools/actions/gitversion/execute@v0.9.7
-      id: gitversion # step id used as reference for output values
-    - name: Display GitVersion outputs
-      run: |
-        echo "Version: ${{ steps.gitversion.outputs.SemVer }}"
-        echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
+      # #Install and calculate the new version with GitVersion
+      # - name: Install GitVersion
+      #   uses: gittools/actions/gitversion/setup@v0.9.7
+      #   with:
+      #     versionSpec: 5.x
+      # - name: Determine Version
+      #   uses: gittools/actions/gitversion/execute@v0.9.7
+      #   id: gitversion # step id used as reference for output values
+      # - name: Display GitVersion outputs
+      #   run: |
+      #     echo "Version: ${{ steps.gitversion.outputs.SemVer }}"
+      #     echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
 
-    - name: Setup .NET
-      #Build/pack the project
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Verify project Path
-      run: ls -la /home/runner/work/EbaySharp/EbaySharp/EbaySharp/EbaySharp.csproj
-    - name: Build and Pack NuGet package
-      run: dotnet pack /home/runner/work/EbaySharp/EbaySharp/EbaySharp/EbaySharp.csproj -p:Version='${{ steps.gitversion.outputs.SemVer }}' -c Release --output ./bin/Release
-    - name: Verify Artifact Path
-      run: ls -la ./bin/Release
-    - name: Upload NuGet package to GitHub
-      uses: actions/upload-artifact@v4
-      with:
-        name: nugetPackage
-        path: bin/Release/
+      - name: Setup .NET
+        #Build/pack the project
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Verify solution Path
+        run: ls -la $SLN_FILE
 
-    - name: Download nuget package artifact
-      uses: actions/download-artifact@v4
-      with:
-        name: nugetPackage
+      - name: Restore dependencies
+        run: dotnet restore $SLN_FILE
+      - name: Build
+        run: dotnet build --no-restore --configuration Release $SLN_FILE
