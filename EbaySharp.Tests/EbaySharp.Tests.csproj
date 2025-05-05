@@ -7,8 +7,6 @@
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
     <UserSecretsId>dde81bf3-bafd-4978-bcdb-280ab525f729</UserSecretsId>
-	<VSTestLogger>trx%3bLogFileName=$(MSBuildProjectName).trx</VSTestLogger>
-	<VSTestResultsDirectory>$(MSBuildThisFileDirectory)/TestResults/$(TargetFramework)</VSTestResultsDirectory>
   </PropertyGroup>
 
   <ItemGroup>

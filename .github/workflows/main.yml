@@ -14,28 +14,12 @@ jobs:
       clientSecret: ${{ secrets.CLIENT_SECRET }}
       refreshToken: ${{ secrets.REFRESH_TOKEN }}
     runs-on: ubuntu-latest
-    # outputs:
-    #   Version: ${{ steps.gitversion.outputs.SemVer }}
-    #   CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}
     permissions:
       checks: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0 #fetch-depth is needed for GitVersion
-
-      # #Install and calculate the new version with GitVersion
-      # - name: Install GitVersion
-      #   uses: gittools/actions/gitversion/setup@v0.9.7
-      #   with:
-      #     versionSpec: 5.x
-      # - name: Determine Version
-      #   uses: gittools/actions/gitversion/execute@v0.9.7
-      #   id: gitversion # step id used as reference for output values
-      # - name: Display GitVersion outputs
-      #   run: |
-      #     echo "Version: ${{ steps.gitversion.outputs.SemVer }}"
-      #     echo "CommitsSinceVersionSource: ${{ steps.gitversion.outputs.CommitsSinceVersionSource }}"
 
       - name: Setup .NET
         #Build/pack the project

@@ -26,7 +26,7 @@ namespace EbaySharp.Tests
             ebayController = new EbayController(accessToken);
         }
         [Test]
-        public void Test_AccessToken()
+        public void Test_AccessTokenNotEmpty()
         {
             Assert.That(string.IsNullOrEmpty(accessToken) == false);
         }
