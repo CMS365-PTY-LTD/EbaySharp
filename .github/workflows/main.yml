@@ -10,9 +10,9 @@ jobs:
     env:
       SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
       REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
-      clientId: ${{ secrets.clientId }}
-      clientSecret: ${{ secrets.clientSecret }}
-      test: ${{ secrets.test }}
+      clientId: ${{ secrets.CLIENT_ID }}
+      clientSecret: ${{ secrets.CLIENT_SECRET }}
+      TEST: ${{ secrets.TEST }}
     runs-on: ubuntu-latest
     # outputs:
     #   Version: ${{ steps.gitversion.outputs.SemVer }}
@@ -51,7 +51,6 @@ jobs:
       - name: Display secrets
         run: |
           echo clientId: $clientId
-          echo test: $test
-          echo "test: ${{ secrets.test }}"
+          echo clientSecret: $clientSecret
       - name: Test
         run: dotnet test --verbosity normal --configuration Release $SLN_FILE
