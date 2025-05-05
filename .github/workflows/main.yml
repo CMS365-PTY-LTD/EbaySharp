@@ -49,3 +49,7 @@ jobs:
           fail-on-error: "true"
           #artifact: test-results
           path: ${{ github.workspace }}/TestResults/test-results.trx # Path to test results (inside artifact .zip)
+  # TestReport:
+  #   steps:
+  #     - name: Test
+  #       run: dotnet test --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "TestResults" --configuration Release $SLN_FILE
