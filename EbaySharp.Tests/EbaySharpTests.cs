@@ -11,7 +11,7 @@ namespace EbaySharp.Tests
         private IConfiguration Configuration { get; }
         public EbaySharpTests()
         {
-            var builder = new ConfigurationBuilder().AddUserSecrets<EbaySharpTests>();
+            var builder = new ConfigurationBuilder().AddUserSecrets<EbaySharpTests>().AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 

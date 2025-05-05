@@ -12,7 +12,6 @@ jobs:
       REPORTS_PATH: "./test-reports/build_$GITHUB_RUN_ATTEMPT"
       clientId: ${{ secrets.CLIENT_ID }}
       clientSecret: ${{ secrets.CLIENT_SECRET }}
-      TEST: ${{ secrets.TEST }}
     runs-on: ubuntu-latest
     # outputs:
     #   Version: ${{ steps.gitversion.outputs.SemVer }}
