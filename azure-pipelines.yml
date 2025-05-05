@@ -30,5 +30,11 @@ steps:
 
 - task: VSTest@2
   inputs:
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\bin\**\*test.dll
+      **\bin\**\*tests.dll
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    testRunTitle: 'Test Results'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
