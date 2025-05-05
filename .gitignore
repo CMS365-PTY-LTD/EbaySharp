@@ -6,3 +6,6 @@
 /.vs
 /EbaySharp/bin/Debug/net6.0
 /EbaySharp/bin
+/EbaySharp.Tests/bin/Debug/net9.0
+*.csproj
+/EbaySharp.Tests/obj
