@@ -63,4 +63,4 @@ jobs:
           list-tests: "all"
           fail-on-error: "true"
           #artifact: test-results
-          path: ${{ github.workspace }}\TestResults\test-results.trx # Path to test results (inside artifact .zip)
+          path: ${{ github.workspace }}/TestResults/test-results.trx # Path to test results (inside artifact .zip)
