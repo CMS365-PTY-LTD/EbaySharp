@@ -64,4 +64,4 @@ jobs:
       - name: Restore dependencies
         run: dotnet restore $SLN_FILE
       - name: Test
-      run: dotnet test --no-build --verbosity normal --configuration Release --test-adapter-path:. --logger:"junit;LogFilePath=$REPORTS_PATH/junit.xml;MethodFormat=Class;FailureBodyFormat=Verbose" $SLN_FILE
+        run: dotnet test --no-build --verbosity normal --configuration Release --test-adapter-path:. --logger:"junit;LogFilePath=$REPORTS_PATH/junit.xml;MethodFormat=Class;FailureBodyFormat=Verbose" $SLN_FILE
