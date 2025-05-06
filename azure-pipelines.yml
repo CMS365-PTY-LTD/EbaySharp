@@ -46,3 +46,4 @@ steps:
   env:
     clientId: $(CLIENT_ID)
     clientSecret: $(CLIENT_SECRET)
+    refreshToken: $(REFRESH_TOKEN)
