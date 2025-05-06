@@ -40,5 +40,5 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
   env:
-    clientId: $(CLIENT_ID)
-    clientSecret: $(CLIENT_SECRET)
+    clientId: $(Secrets:CLIENT_ID)
+    clientSecret: $(Secrets:CLIENT_SECRET)
