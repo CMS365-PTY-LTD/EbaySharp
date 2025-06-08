@@ -9,11 +9,12 @@
     <Version>9.0.1</Version>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
-    <Description>EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. It's used for creating listings and managing orders using C# and .NET</Description>
+    <Description>EbaySharp is a .NET library that enables you to authenticate and make REST API
+      calls to eBay. It's used for creating listings and managing orders using C# and .NET</Description>
     <PackageProjectUrl>https://github.com/CMS365-PTY-LTD/EbaySharp</PackageProjectUrl>
     <PackageIcon>EbaySharp_ico.png</PackageIcon>
-<PackageIconUrl>https://raw.githubusercontent.com/CMS365-PTY-LTD/EbaySharp/refs/heads/main/EbaySharp_ico.ico</PackageIconUrl>
-  </PropertyGroup>
+    <PackageIconUrl>
+      https://raw.githubusercontent.com/CMS365-PTY-LTD/EbaySharp/refs/heads/main/EbaySharp_ico.ico</PackageIconUrl>
     <PackageReadmeFile>readme.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/CMS365-PTY-LTD/EbaySharp.git</RepositoryUrl>
     <PackageTags>eBay;.net;c#</PackageTags>
@@ -25,14 +26,16 @@
   <ItemGroup>
     <Compile Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
     <Compile Remove="Schemas\Develop\Selling Apps\Listing Management\Feed\**" />
-    <EmbeddedResource Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
+    <EmbeddedResource
+      Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
     <EmbeddedResource Remove="Schemas\Develop\Selling Apps\Listing Management\Feed\**" />
     <None Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
     <None Remove="Schemas\Develop\Selling Apps\Listing Management\Feed\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Entities\Develop\SellingApps\ListingManagement\Inventory\InventoryItem\LocaleEnum.cs" />
+    <Compile
+      Remove="Entities\Develop\SellingApps\ListingManagement\Inventory\InventoryItem\LocaleEnum.cs" />
   </ItemGroup>
 
   <ItemGroup>
