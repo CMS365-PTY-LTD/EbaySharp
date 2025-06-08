@@ -5,6 +5,7 @@
 ![GitHub last commit (main)](https://img.shields.io/github/last-commit/CMS365-PTY-LTD/EbaySharp/main.svg?logo=github)
 [![Build status](https://img.shields.io/azure-devops/build/cms-365/EbaySharp/9.svg?logo=azuredevops)](https://cms-365.visualstudio.com/EbaySharp/_build?definitionID=9)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+![GitHub Stars](https://img.shields.io/github/stars/CMS365-PTY-LTD/EbaySharp?style=social)
 
 EbaySharp is a .NET library that enables you to authenticate and make REST API calls to eBay. This .NET SDK used for creating listings and managing orders using C#.
 
