@@ -5,6 +5,6 @@ namespace EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Ord
     public class Charges
     {
         public Amount Amount { get; set; }
-        public ChargeTypeEnum ChargeType { get; set; }
+        public ChargeTypeEnum? ChargeType { get; set; }
     }
 }

@@ -26,16 +26,14 @@
   <ItemGroup>
     <Compile Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
     <Compile Remove="Schemas\Develop\Selling Apps\Listing Management\Feed\**" />
-    <EmbeddedResource
-      Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
+    <EmbeddedResource Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
     <EmbeddedResource Remove="Schemas\Develop\Selling Apps\Listing Management\Feed\**" />
     <None Remove="Schemas\Develop\Application Settings Insights\Analytics\UserRateLimit\**" />
     <None Remove="Schemas\Develop\Selling Apps\Listing Management\Feed\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile
-      Remove="Entities\Develop\SellingApps\ListingManagement\Inventory\InventoryItem\LocaleEnum.cs" />
+    <Compile Remove="Entities\Develop\SellingApps\ListingManagement\Inventory\InventoryItem\LocaleEnum.cs" />
   </ItemGroup>
 
   <ItemGroup>

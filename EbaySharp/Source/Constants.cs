@@ -43,9 +43,17 @@
                     internal struct FEED
                     {
                         internal const string ENDPOINT_URL = "/feed/v1";
-                        internal struct METHODS
+                        internal struct TASK
                         {
-                            internal const string GET_DOWNLOAD_RESULT_FILE = "/task/{0}/download_result_file";
+                            internal const string ENDPOINT_URL = "/task";
+                            internal struct METHODS
+                            {
+                                internal const string GET_DOWNLOAD_RESULT_FILE = "/{0}/download_result_file";
+                            }
+                        }
+                        internal struct INVENTORY_TASK
+                        {
+                            internal const string ENDPOINT_URL = "/inventory_task";
                         }
                     }
                     internal struct INVENTORY

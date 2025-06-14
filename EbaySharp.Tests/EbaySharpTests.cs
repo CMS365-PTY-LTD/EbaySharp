@@ -5,6 +5,7 @@ using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Payout;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
 using EbaySharp.Entities.Develop.SellingApps.Identity.User;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.InventoryTask;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Location;
@@ -107,12 +108,29 @@ namespace EbaySharp.Tests
             Assert.Pass();
         }
         [Test]
+        public async Task Test_CreateInventory_Task()
+        {
+            try
+            {
+                await ebayController.CreateInventoryTask(new()
+                {
+                    SchemaVersion = "1.0",
+                    FeedType = "LMS_ACTIVE_INVENTORY_REPORT",
+                });
+                Assert.That(true, Is.True); // If no exception is thrown, the test passes
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail(ex.Message);
+            }
+        }
+        [Test]
         [Ignore("Ignoring Test_Feeds")]
         public async Task Test_Feeds()
         {
             try
             {
-                ResultFile resultFile = await ebayController.GetResultFile("task-10-11171747566");
+                ResultFile resultFile = await ebayController.GetResultFile("task-20-21595364458498");
                 Assert.That(resultFile, Is.Not.Null);
                 await resultFile.SaveUncompressed("C:\\Work");
             }
@@ -120,7 +138,6 @@ namespace EbaySharp.Tests
             {
                 Assert.Fail(ex.Message);
             }
-            Assert.Pass();
         }
         [Test]
         public async Task Test_Finances()

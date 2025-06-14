@@ -4,7 +4,7 @@
     {
         public float Height { get; set; }
         public float Length { get; set; }
-        public LengthUnitOfMeasureEnum Unit { get; set; }
+        public LengthUnitOfMeasureEnum? Unit { get; set; }
         public float Width { get; set; }
     }
 }

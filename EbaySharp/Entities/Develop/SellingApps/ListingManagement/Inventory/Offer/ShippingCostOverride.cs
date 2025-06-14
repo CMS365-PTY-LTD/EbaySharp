@@ -7,7 +7,7 @@ namespace EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Off
         public Amount AdditionalShippingCost { get; set; }
         public int Priority { get; set; }
         public Amount ShippingCost { get; set; }
-        public ShippingServiceTypeEnum ShippingServiceType { get; set; }
+        public ShippingServiceTypeEnum? ShippingServiceType { get; set; }
         public Amount Surcharge { get; set; }
     }
 }

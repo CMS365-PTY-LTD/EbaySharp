@@ -28,7 +28,7 @@ namespace EbaySharp.Controllers
         public async Task CreateShippingFulfillment(string orderId, Fulfillment fulfillment)
         {
             string requestUrl = $"{Constants.API_SERVER_URL}{Constants.DEVELOP.SELLING_APPS.ENDPOINT_URL}{Constants.DEVELOP.SELLING_APPS.ORDERS_MANAGEMENT.FULFILLEMENT.ENDPOINT_URL}{Constants.DEVELOP.SELLING_APPS.ORDERS_MANAGEMENT.FULFILLEMENT.ORDER.ENDPOINT_URL}{string.Format(Constants.DEVELOP.SELLING_APPS.ORDERS_MANAGEMENT.FULFILLEMENT.ORDER.SHIPPING_FULFILLEMENT.METHODS.CREATE_SHIPPING_FULFILLEMENTS, orderId)}";
-            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", fulfillment.SerializeToJson(), null);
+            await new RequestExecuter().ExecutePostRequest(requestUrl, $"Bearer {accessToken}", fulfillment.SerializeToJson());
         }
 
         #endregion

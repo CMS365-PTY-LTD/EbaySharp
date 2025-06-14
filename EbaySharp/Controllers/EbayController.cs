@@ -4,6 +4,7 @@ using EbaySharp.Entities.Develop.KeyManagement.SigningKey;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Payout;
 using EbaySharp.Entities.Develop.SellingApps.AccountManagement.Finances.Transaction;
 using EbaySharp.Entities.Develop.SellingApps.Identity.User;
+using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.InventoryTask;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Feed.Task;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.InventoryItem;
 using EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Listing;
@@ -160,10 +161,23 @@ namespace EbaySharp.Controllers
 
         #region FEED
 
+        #region INVENTORY_TASK
+
+        public async Task CreateInventoryTask(CreateInventoryRequest createInventoryRequest)
+        {
+            await new FeedController(this.accessToken).CreateInventoryTask(createInventoryRequest);
+        }
+
+        #endregion
+
+        #region TASK
+
         public async Task<ResultFile> GetResultFile(string taskId)
         {
             return await new FeedController(this.accessToken).GetResultFile(taskId);
         }
+
+        #endregion
 
         #endregion
 

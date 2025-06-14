@@ -8,7 +8,7 @@ namespace EbaySharp.Entities.Develop.SellingApps.ListingManagement.Inventory.Lis
         public string InventoryItemGroupKey { get; set; }
         public List<BulkMigrateListingInventoryItem> InventoryItems { get; set; }
         public string ListingId { get; set; }
-        public MarketplaceEnum MarketplaceId { get; set; }
+        public MarketplaceEnum? MarketplaceId { get; set; }
         public int StatusCode { get; set; }
         public List<BulkMigrateListingWarning> Warnings { get; set; }
     }

@@ -9,7 +9,7 @@ namespace EbaySharp.Entities.TraditionalSelling.Trading.GetSellerList
         public string SKU { get; set; }
         public int Quantity { get; set; }
         public SellingStatus SellingStatus { get; set; }
-        public CountryCodeEnum Country { get; set; }
+        public CountryCodeEnum? Country { get; set; }
         public ListingDetails ListingDetails { get; set; }
         public PrimaryCategory PrimaryCategory { get; set; }
     }

@@ -8,7 +8,7 @@
         public List<StoreTypeEnum> LocationTypes { get; set; }
         public string LocationWebUrl { get; set; }
         public string MerchantLocationKey { get; set; }
-        public StatusEnum MerchantLocationStatus { get; set; }
+        public StatusEnum? MerchantLocationStatus { get; set; }
         public string Name { get; set; }
         public List<OperatingHour> OperatingHours { get; set; }
         public string Phone { get; set; }

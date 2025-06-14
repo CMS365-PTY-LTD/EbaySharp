@@ -163,5 +163,9 @@ namespace EbaySharp.Source
         {
             return await executePostRequest<T>(requestUrl, authenticationHeaderValue, null, JSONPayload, null);
         }
+        public async Task ExecutePostRequest(string requestUrl, string authenticationHeaderValue, string JSONPayload)
+        {
+            await ExecutePostRequest(requestUrl, authenticationHeaderValue, JSONPayload, null);
+        }
     }
 }
