@@ -2,6 +2,6 @@
 {
     public enum AuthenticityVerificationStatusEnum
     {
-        PENDING,PASSED,FAILED,PASSED_WITH_EXCEPTION
+        PENDING, PASSED, FAILED, PASSED_WITH_EXCEPTION
     }
 }

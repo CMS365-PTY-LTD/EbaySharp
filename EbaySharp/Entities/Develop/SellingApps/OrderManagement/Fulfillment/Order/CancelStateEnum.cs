@@ -2,6 +2,6 @@
 {
     public enum CancelStateEnum
     {
-        CANCELED,IN_PROGRESS,NONE_REQUESTED
+        CANCELED, IN_PROGRESS, NONE_REQUESTED
     }
 }

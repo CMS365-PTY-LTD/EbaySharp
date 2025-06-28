@@ -2,6 +2,6 @@
 {
     public enum PaymentStatusEnum
     {
-        FAILED,PAID,PENDING
+        FAILED, PAID, PENDING
     }
 }

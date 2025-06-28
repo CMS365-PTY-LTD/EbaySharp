@@ -2,7 +2,7 @@
 {
     public enum ListingFormatEnum
     {
-        AUCTION, 
+        AUCTION,
         FIXED_PRICE
     }
 }

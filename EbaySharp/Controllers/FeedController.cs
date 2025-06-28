@@ -22,7 +22,7 @@ namespace EbaySharp.Controllers
 
         #endregion
 
-            #region INVENTORY_TASK
+        #region INVENTORY_TASK
 
         public async Task CreateInventoryTask(CreateInventoryRequest createInventoryRequest)
         {
