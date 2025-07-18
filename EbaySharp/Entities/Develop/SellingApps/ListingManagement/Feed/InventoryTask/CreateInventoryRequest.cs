@@ -4,6 +4,6 @@
     {
         public string FeedType { get; set; }
         public string SchemaVersion { get; set; }
-        public FilterCritera? FilterCritera { get; set; }
+        public FilterCriteria FilterCriteria { get; set; }
     }
 }
