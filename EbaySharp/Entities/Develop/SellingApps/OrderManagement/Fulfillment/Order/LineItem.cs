@@ -5,6 +5,7 @@ namespace EbaySharp.Entities.Develop.SellingApps.OrderManagement.Fulfillment.Ord
     public class LineItem
     {
         public List<AppliedPromotion> AppliedPromotions { get; set; }
+        public List<CompatibilityProperty> CompatibilityProperties { get; set; }
         public DeliveryCost DeliveryCost { get; set; }
         public Amount DiscountedLineItemCost { get; set; }
         public List<EbayCollectAndRemitTaxis> EbayCollectAndRemitTaxes { get; set; }

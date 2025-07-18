@@ -122,6 +122,13 @@
               "promotionId": "string"
             }
           ],
+          "compatibilityProperties": [
+            {
+              "propertyDisplayName": "string",
+              "propertyName": "string",
+              "propertyValue": "string"
+            }
+          ],
           "deliveryCost": {
             "discountAmount": "Amount",
             "handlingCost": "Amount",
