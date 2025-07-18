@@ -6,7 +6,7 @@
     <ApplicationIcon>EbaySharp_ico.ico</ApplicationIcon>
     <PackageID>CMS365.EbaySharp</PackageID>
     <Title>EbaySharp</Title>
-    <Version>9.0.1</Version>
+    <Version>9.0.2</Version>
     <Authors>Shafaqat Ali</Authors>
     <Company>CMS365 PTY LTD</Company>
     <Description>EbaySharp is a .NET library that enables you to authenticate and make REST API
