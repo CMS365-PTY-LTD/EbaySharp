@@ -1,13 +1,15 @@
-name: Build & Test PROD
+name: Build & Test DEV
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
 
 jobs:
   build_and_test:
     name: "Build & Test"
     runs-on: windows-latest
-    environment: PROD
+    environment: DEV
     env:
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
       CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
