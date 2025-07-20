@@ -8,6 +8,7 @@ on:
 jobs:
   Build_and_Test:
     name: "Build & Test"
+    runs-on: windows-latest
     environment: PROD
     env:
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
@@ -15,7 +16,7 @@ jobs:
       REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
     # env:
     #   SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
-    runs-on: windows-latest
+    
     permissions:
       checks: write
     steps:
