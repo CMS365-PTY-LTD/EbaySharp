@@ -1,4 +1,4 @@
-name: Build and Test PROD
+name: Build & Test PROD
 
 on:
   workflow_dispatch:
@@ -9,6 +9,10 @@ jobs:
   Build_and_Test:
     name: "Build & Test"
     environment: PROD
+    env:
+      CLIENT_ID: ${{ secrets.CLIENT_ID }}
+      CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+      REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
     # env:
     #   SLN_FILE: "/home/runner/work/EbaySharp/EbaySharp/EbaySharp.sln"
     runs-on: windows-latest
@@ -46,7 +50,7 @@ jobs:
           list-tests: "all"
           fail-on-error: "false"
           #artifact: test-results
-          path: ${{ github.workspace }}/TestResults/test-results.trx # Path to test results (inside artifact .zip)
+          path: TestResults/test-results.trx # Path to test results (inside artifact .zip)
   # TestReport:
   #   steps:
   #     - name: Test
