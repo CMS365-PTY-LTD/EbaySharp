@@ -181,7 +181,7 @@ namespace EbaySharp.Tests
             try
             {
                 string dateFormat = "yyyy-MM-ddThh:mm:00.0Z";
-                string dateRange = $"{(DateTime.UtcNow.AddDays(-10).ToString(dateFormat))}..{(DateTime.UtcNow.AddHours(-2).ToString(dateFormat))}";
+                string dateRange = $"{(DateTime.UtcNow.AddDays(-10).ToString(dateFormat))}..{(DateTime.UtcNow.ToString(dateFormat))}";
                 Orders orders = await ebayController.GetOrders($"creationdate:[{dateRange}]", 50);
                 Assert.That(orders.OrderList != null, Is.True);
 
