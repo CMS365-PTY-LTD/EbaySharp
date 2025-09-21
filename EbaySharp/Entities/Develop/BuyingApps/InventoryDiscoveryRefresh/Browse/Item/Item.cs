@@ -17,6 +17,7 @@ namespace EbaySharp.Entities.Develop.BuyingApps.InventoryDiscoveryRefresh.Browse
         public string CategoryId { get; set; }
         public string CategoryIdPath { get; set; }
         public string CategoryPath { get; set; }
+        public CharityTerms CharityTerms { get; set; }
         public string Color { get; set; }
         public string Condition { get; set; }
         public string ConditionDescription { get; set; }

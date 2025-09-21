@@ -52,6 +52,17 @@
   "categoryId": "string",
   "categoryIdPath": "string",
   "categoryPath": "string",
+  "charityTerms": {
+    "charityOrgId": "string",
+    "donationPercentage": "number",
+    "LogoImage": {
+      "height": "integer",
+      "imageUrl": "string",
+      "width": "integer"
+    },
+    "name": "string",
+    "website": "string"
+  },
   "color": "string",
   "condition": "string",
   "conditionDescription": "string",
